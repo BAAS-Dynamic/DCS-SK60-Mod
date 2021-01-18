@@ -1,7 +1,3 @@
-local F-22A = require "UnitPayloads.F-22A"
-local F-22A = require "UnitPayloads.F-22A"
-local F-22A = require "UnitPayloads.F-22A"
-
 SK_60 =  {
       
 		Name 			= 'SK-60',--AG
@@ -44,9 +40,9 @@ SK_60 =  {
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,"Battleplanes",},--AG WSTYPE_PLACEHOLDER
 	Categories			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
 	
-		M_empty 					=   2849, -- kg	-- kg  with pilot and nose load
-		M_nominal					=	3983,	-- kg (Empty Plus Full Internal Fuel)
-		M_max						=	4635,	-- kg (Maximum Take Off Weight)
+		M_empty 					=   2150, -- kg	-- kg  with pilot and nose load
+		M_nominal					=	3600,	-- kg (Empty Plus Full Internal Fuel)
+		M_max						=	4000,	-- kg (Maximum Take Off Weight)
 		M_fuel_max					=	1640,	-- kg (Internal Fuel Only) use the JP-5 fuel 6.8 lbs/gal, 0.82 kg/L
 		H_max						=	13500,	-- m  (Maximum Operational Ceiling)
 		average_fuel_consumption	=	0.172,
@@ -102,10 +98,10 @@ SK_60 =  {
 		thrust_sum_max				=	2585.476,	-- thrust in kgf (64.3 kN)
 		thrust_sum_ab				=	2585.476,	-- thrust in kgf (95.1 kN)
 		-- 10000 ft/min
-		Vy_max						=	50.8,		-- Max climb speed in m/s (for AI)
+		Vy_max						=	30.8,		-- Max climb speed in m/s (for AI)
 		flaps_maneuver				=	1, -- flap position for take-off
 		Mach_max					=	0.81,	-- Max speed in Mach (for AI)
-		range						=	1600,	-- Max range in km (for AI)
+		range						=	2800,	-- Max range in km (for AI)
 		RCS							=	2.5,		-- Radar Cross Section m2
 		Ny_max_e					=	8,		-- Max G (for AI)
 		detection_range_max			=	60,
@@ -124,10 +120,19 @@ SK_60 =  {
 		TACAN_AA					= true,--I think this will not work for a client slot but AI might add a TACAN for the unit.
 
 		
-		engines_nozzles = {
+	engines_nozzles = {
 		[1] = 
 		{
-			pos 		        = {-7.5, 0, 0}, -- nozzle coords
+			pos 		        = {-3.469, 0.2461, 0.7668}, -- nozzle coords
+			elevation           = 0,                -- AFB cone elevation
+			diameter	        = 0.2,                -- AFB cone diameter
+			exhaust_length_ab   = 3,                -- lenght in m
+			exhaust_length_ab_K = 0.76,             -- AB animation
+			smokiness_level 	= 0.0
+		},  -- end of [1]
+		[2] = 
+		{
+			pos 		        = {-3.469, 0.2461,-0.7668}, -- -07668 Y = -3469
 			elevation           = 0,                -- AFB cone elevation
 			diameter	        = 0.2,                -- AFB cone diameter
 			exhaust_length_ab   = 3,                -- lenght in m
@@ -142,7 +147,13 @@ SK_60 =  {
 			{
 				ejection_seat_name	=	17,--17=FA-18 58=F-15
 				drop_canopy_name	=	0;  --need to update this .EDM file for it to work again.
-				pos = 	{6.49,	0.94,	0},
+				pos = 	{6.49,	0.94,	- 0.4},
+			},
+			[2] = 
+			{
+				ejection_seat_name	=	17,--17=FA-18 58=F-15
+				drop_canopy_name	=	0;  --need to update this .EDM file for it to work again.
+				pos = 	{6.49,	0.94,	0.4},
 			},
 		},
 		
@@ -306,8 +317,11 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 			cx_brk		=	0.12,    -- coefficient, drag, air breaks 
 			table_data  = 
 			{	--      M		Cx0		 	Cya			B		 	B4	    	Omxmax		Aldop		Cymax
-				[1] = 	{0.0,	0.050,		0.07,		0.042,		0.012,		2.0,		21,			1.2},
-				[2] = 	{0.6,	0.060,		0.08,		0.072,		0.12,		4.2,		21,			1.16},
+				[1] = 	{0.0,	0.015,		0.07,		0.042,		0.012,		2.0,		21,			1.16},
+				[2] = 	{0.6,	0.016,		0.08,		0.072,		0.12,		4.2,		15,			1.12},
+				[3] = 	{0.8,	0.020,		0.08,		0.072,		0.12,		4.2,		11,			1.18},
+				[4] = 	{0.9,	0.060,		0.08,		0.072,		0.12,		4.2,		10,			1.25},
+				[5] = 	{1.0,	0.490,		0.08,		0.072,		0.12,		4.2,		10,			2.35},
 			}, -- end of table_data
 			-- M - Mach number
 			-- Cx0 - Coefficient, drag, profile, of the airplane
@@ -326,8 +340,8 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 			Nmg		=	48, -- RPM at idle
 			MinRUD	=	0, -- Min state of the throttle
 			MaxRUD	=	1, -- Max state of the throttle
-			MaksRUD	=	0.96, -- Military power state of the throttle 1 89
-			ForsRUD	=	0.98, -- Afterburner state of the throttle	94
+			MaksRUD	=	1, -- Military power state of the throttle 1 89
+			ForsRUD	=	1, -- Afterburner state of the throttle	94
 			typeng	=	0,
 			-- [[
 				-- E_TURBOJET = 0
@@ -338,7 +352,7 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 				-- E_TURBOSHAFT = 5
 			--]]
 			
-			hMaxEng	=	19, -- Max altitude for safe engine operation in km
+			hMaxEng	=	13, -- Max altitude for safe engine operation in km
 			dcx_eng	=	0.015, -- Engine drag coefficient 0.015
 			cemax	=	1.24, -- not used for fuel calculation , only for AI routines to check flight time ( fuel calculation algorithm is built in )
 			cefor	=	2.56, -- not used for fuel calculation , only for AI routines to check flight time ( fuel calculation algorithm is built in )
