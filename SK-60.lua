@@ -360,10 +360,11 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 			dpdh_f	=	16200,  --  altitude coefficient for AB thrust
 			table_data = 
 			{		--   M		Pmax		 Pfor	
-				[1] = 	{0.0,	28000,	35000},
-				[2] = 	{0.6,	35000,	37000},
-
-				
+				[1] = 	{0.0,	25363,	26000},
+				[2] = 	{0.6,	22150,	23000},
+				[3] = 	{0.8, 	21000, 	21000},
+				[4] = 	{1.0, 	17000, 	18000},
+				-- p for is not used
 			}, -- end of table_data
 			-- M - Mach number
 			-- Pmax - Engine thrust at military power
