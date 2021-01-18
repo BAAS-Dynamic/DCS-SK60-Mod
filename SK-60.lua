@@ -1,3 +1,6 @@
+local F-22A = require "UnitPayloads.F-22A"
+local F-22A = require "UnitPayloads.F-22A"
+local F-22A = require "UnitPayloads.F-22A"
 
 SK_60 =  {
       
@@ -28,38 +31,12 @@ SK_60 =  {
 		},
 	},
 	
-	LandRWCategories = 
-        {
-        [1] = 
-        {
-			Name = "AircraftCarrier",
-        },
-        [2] = 
-        {
-            Name = "AircraftCarrier With Catapult",
-        }, 
-        [3] = 
-        {
-            Name = "AircraftCarrier With Tramplin",
-        }, 
-    },
-        TakeOffRWCategories = 
-        {
-        [1] = 
-        {
-			Name = "AircraftCarrier",
-        },
-        [2] = 
-        {
-            Name = "AircraftCarrier With Catapult",
-        }, 
-        [3] = 
-        {
-            Name = "AircraftCarrier With Tramplin",
-        }, 
-    },
-	
-	Countries = {"USA","USAF Aggressors", "SWE"},
+	-- apply the SK-60 for all countries currently
+	Countries = {"Abkhazia","Australia","Austria","Belarus","Belgium","Brazil","Bulgaria","Canada","China","Croatia",
+	"Czech Republic","Denmark","Egypt","Finland","France","Georgia","Germany","Greece","Hungary",
+	"India","Insurgents","Iran","Iraq","Israel","Italy","Japan","Kazakhstan","The Netherlands","North Korea",
+	"Norway","Pakistan","Poland","Romania","Russia","Saudi Arabia","Serbia","Slovakia","South Korea",
+	"South Ossetia","Spain","Sweden","Switzerland","Syria","Turkey","UK","Ukraine","USA","USAF Aggressors"},
 	
 	
 	mapclasskey 		= "P0091000024",
@@ -67,10 +44,10 @@ SK_60 =  {
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,"Battleplanes",},--AG WSTYPE_PLACEHOLDER
 	Categories			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
 	
-		M_empty 					=   2849, -- kg	-- kg  with pilot and nose load, F15
+		M_empty 					=   2849, -- kg	-- kg  with pilot and nose load
 		M_nominal					=	3983,	-- kg (Empty Plus Full Internal Fuel)
 		M_max						=	4635,	-- kg (Maximum Take Off Weight)
-		M_fuel_max					=	1134,	-- kg (Internal Fuel Only)
+		M_fuel_max					=	1640,	-- kg (Internal Fuel Only) use the JP-5 fuel 6.8 lbs/gal, 0.82 kg/L
 		H_max						=	13500,	-- m  (Maximum Operational Ceiling)
 		average_fuel_consumption	=	0.172,
 		CAS_min						=	56,		-- Minimum CAS speed (m/s) (for AI)
@@ -100,7 +77,8 @@ SK_60 =  {
 	    nose_gear_amortizer_direct_stroke   		=  -1.5,      -- down from nose_gear_pos !!!
 	    nose_gear_amortizer_reversal_stroke  		= -0,      -- up 
 	    nose_gear_amortizer_normal_weight_stroke 	= -0,      -- down from nose_gear_pos
-	    nose_gear_wheel_diameter 	                =  0.754,  -- in m
+		nose_gear_wheel_diameter 	                =  0.754,  -- in m
+		tand_gear_max				=	0.5774,	-- +- 30 deg for both sides 
 	
 	    main_gear_pos 						 	    = {-1.598,	-0.8,	2.380},-- maingear coord {-1.598,	-1.0,	2.380}
 		--main_gear_pos 						 	    = {2.380,	-1.32,	-1.598},-- maingear coord
@@ -111,18 +89,21 @@ SK_60 =  {
 		
 
 		AOA_take_off				=	0.16,	-- AoA in take off (for AI)
-		stores_number				=	11,
+		stores_number				=	2,
 		bank_angle_max				=	60,		-- Max bank angle (for AI)
-		Ny_min						=	-3,		-- Min G (for AI)
+		Ny_min						=	-2.5,		-- Min G (for AI)
 		Ny_max						=	8,		-- Max G (for AI)
-		tand_gear_max				=	1.420,	--XX  FA18 3.73, 
-		V_max_sea_level				=	250,	-- Max speed at sea level in m/s (for AI)
-		V_max_h						=	212,	-- Max speed at max altitude in m/s (for AI)
+		-- adjust speed
+		V_max_sea_level				=	263.889,	-- Max speed at sea level in m/s (for AI)
+		V_max_h						=	244.444,	-- Max speed at max altitude in m/s (for AI)
+		-- wing area is corrected
 		wing_area					=	16.3,	-- wing area in m2
-		thrust_sum_max				=	80000,	-- thrust in kgf (64.3 kN)
-		thrust_sum_ab				=	80000,	-- thrust in kgf (95.1 kN)
-		Vy_max						=	22,		-- Max climb speed in m/s (for AI)
-		flaps_maneuver				=	1,
+		-- thrust has been reset to what it should be
+		thrust_sum_max				=	2585.476,	-- thrust in kgf (64.3 kN)
+		thrust_sum_ab				=	2585.476,	-- thrust in kgf (95.1 kN)
+		-- 10000 ft/min
+		Vy_max						=	50.8,		-- Max climb speed in m/s (for AI)
+		flaps_maneuver				=	1, -- flap position for take-off
 		Mach_max					=	0.81,	-- Max speed in Mach (for AI)
 		range						=	1600,	-- Max range in km (for AI)
 		RCS							=	2.5,		-- Radar Cross Section m2
@@ -135,7 +116,7 @@ SK_60 =  {
 		wing_type 					= 	0,		-- 0=FIXED_WING/ 1=VARIABLE_GEOMETRY/ 2=FOLDED_WING/ 3=ARIABLE_GEOMETRY_FOLDED
 		length						=	10.8,	--XX
 		height						=	2.7,	--XX
-		crew_size					=	1, 		--XX
+		crew_size					=	2, 		--XX
 		engines_count				=	2, 		--XX
 		wing_tip_pos 				= 	{-0.522, -0.039,	-5.172},-- wingtip coords for visual effects
 		
