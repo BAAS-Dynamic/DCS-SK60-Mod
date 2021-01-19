@@ -36,15 +36,17 @@ creators[devices.LIGHT_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scr
 -- 定义显示器
 -- Indicators
 indicators = {}
+
+-- EADI left
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EADI/EADI_L_init.lua",nil,{{"LEAD_center","LAEDI_down","LEAD_right"},{sx_l =  -0.001,}}}
 -- HUD
--- 只保留最完整的HUD作为屏幕显示的参考
 -- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"HUD_Center","HUD_Down","HUD_Right"}}}
 -- RADAR RAW DISPLAY
 -- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."avRadar/indicator/init.lua",nil,{{},{sz_l = 0.0,sx_l = -0.50, sy_l = -0.1},1}}		
---RADAROFF indicators[#indicators + 1] = {"ccIndicator",LockOn_Options.script_path.."RADAR/Indicator/init.lua",--init script 初始化脚本
---RADAROFF   nil,--id of parent device  --父设备从属
+--RADAROFF indicators[#indicators + 1] = {"ccIndicator",LockOn_Options.script_path.."RADAR/Indicator/init.lua",--init script
+--RADAROFF   nil,--id of parent device
 --RADAROFF   {
---RADAROFF 	{}, -- initial geometry anchor , triple of connector names 初始化三个connector（helper）
+--RADAROFF 	{}, -- initial geometry anchor , triple of connector names 
 --RADAROFF 	{sx_l =  0,  -- center position correction in meters (forward , backward)1
 --RADAROFF 	 sy_l =  0,  -- center position correction in meters (up , down)
 --RADAROFF 	 sz_l =  0.3,  -- center position correction in meters (left , right)
@@ -53,5 +55,5 @@ indicators = {}
 --RADAROFF 	 rz_l =  0,  -- rotation corrections
 --RADAROFF 	 rx_l =  0,
 --RADAROFF 	 ry_l =  0}
---RADAROFF   } -- 这些是屏幕矫正数据
---RADAROFF } --RADAR
+--RADAROFF   }
+--RADAROFF }
