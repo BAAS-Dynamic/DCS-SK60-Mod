@@ -38,7 +38,7 @@ creators[devices.LIGHT_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scr
 indicators = {}
 -- HUD
 -- 只保留最完整的HUD作为屏幕显示的参考
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"HUD_Center","HUD_Down","HUD_Right"}}}
+-- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"HUD_Center","HUD_Down","HUD_Right"}}}
 -- RADAR RAW DISPLAY
 -- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."avRadar/indicator/init.lua",nil,{{},{sz_l = 0.0,sx_l = -0.50, sy_l = -0.1},1}}		
 --RADAROFF indicators[#indicators + 1] = {"ccIndicator",LockOn_Options.script_path.."RADAR/Indicator/init.lua",--init script 初始化脚本

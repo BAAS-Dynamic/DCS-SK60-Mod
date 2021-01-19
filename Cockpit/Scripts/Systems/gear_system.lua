@@ -90,7 +90,7 @@ end
 local gear_level_pos = gear_level:get()
 
 function update()
-    -- local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
+    local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
 
     local n_gear_status = get_aircraft_draw_argument_value(0)
     local l_gear_status = get_aircraft_draw_argument_value(5)
@@ -139,12 +139,12 @@ function update()
             -- lower canopy in increments of time_increse_step (50x per second)
             gear_level_pos = gear_level_pos + 0.1
             gear_level:set(gear_level_pos)
-            --gear_handle_click_ref:update()
+            gear_handle_click_ref:update()
         elseif (nose_gear_status == 1 and gear_level_pos > 0) then
             -- lower canopy in increments of time_increse_step (50x per second)
             gear_level_pos = gear_level_pos - 0.1
             gear_level:set(gear_level_pos)
-            --gear_handle_click_ref:update()
+            gear_handle_click_ref:update()
         end
 
         ngear_pos_ind:set(n_gear_status)

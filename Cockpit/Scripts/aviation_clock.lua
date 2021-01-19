@@ -31,6 +31,12 @@ function update()
     end
     if target_seconds > current_seconds then
         current_seconds = current_seconds + 0.1
+    elseif target_seconds < 5 and current_seconds > 58 then
+        if current_seconds < 60 then
+            current_seconds = current_seconds + 0.1
+        else
+            current_seconds = current_seconds + 0.1 - 60
+        end
     end
     hour_ind:set(current_hour / 12)
     min_ind:set(current_minute / 60)
