@@ -337,7 +337,7 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 		},-- end of aerodynamics
 		engine = 
 		{
-			Nmg		=	48, -- RPM at idle
+			Nmg		=	56.4, -- RPM at idle
 			MinRUD	=	0, -- Min state of the throttle
 			MaxRUD	=	1, -- Max state of the throttle
 			MaksRUD	=	1, -- Military power state of the throttle 1 89

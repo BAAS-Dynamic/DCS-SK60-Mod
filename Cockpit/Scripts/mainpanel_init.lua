@@ -63,6 +63,10 @@ animation_list = {
     {"PT_R", 310},
     {"OP_L", 311},
     {"OP_R", 312},
+    {"AIRBREAK_IND", 316},
+    {"NoseWPOS_IND",318},
+    {"MainLWPOS_IND", 319},
+    {"MainRWPOS_IND", 320},
     {"AIR_SPEED", 321},
     {"MACH_IND", 322},
     {"G_METER", 323},
@@ -73,9 +77,9 @@ animation_list = {
     {"CLOCK_S", 328},
     {"OXY_QUAN", 329},
     {"BARO_ALT", 330},
-    {"BARO_x1K", 331},
-    {"BARO_x1W", 332},
-    {"BARO_x1X", 333},
+    {"BARO_x1H", 331},
+    {"BARO_x1K", 332},
+    {"BARO_x1W", 333},
     {"QNH_x1K", 334},
     {"QNH_x100", 335},
     {"QNH_x10", 336},
@@ -182,63 +186,11 @@ RightRPM.input						= {0, 120}
 RightRPM.output						= {0, 1}
 RightRPM.controller					= controllers.base_gauge_EngineRightRPM
 
-BaroAlt								= CreateGauge ()
-BaroAlt.arg_number					= 330
-BaroAlt.input						= {0, 1000}
-BaroAlt.output						= {0, 1}
-BaroAlt.controller					= controllers.base_gauge_BarometricAltitude
-
---TurnInd								= CreateGauge ()
---TurnInd.arg_number					= 340
---TurnInd.input						= {0, 1}
---TurnInd.output						= {-1, 1}
---TurnInd.controller					= controllers.base_gauge_RateOfYaw
-
-IAS									= CreateGauge ()
-IAS.arg_number						= 321
-IAS.input							= {0, 250}
-IAS.output							= {0, 1}
-IAS.controller						= controllers.base_gauge_IndicatedAirSpeed
-
 Fuel									= CreateGauge ()
 Fuel.arg_number						= 354
 Fuel.input							= {0, 1134}
 Fuel.output							= {0, 1}
 Fuel.controller						= controllers.base_gauge_TotalFuelWeight
 
-Air_Break_Ind    					= CreateGauge("parameter")
-Air_Break_Ind.arg_number		    = 316
-Air_Break_Ind.input				    = {0, 1}
-Air_Break_Ind.output			    = {0, 1}
-Air_Break_Ind.parameter_name		= "AIRBREAK_IND"
-
---Altimeter
-AltNeedle							= CreateGauge( "cycled" )
-AltNeedle.arg_number 				= 330
-AltNeedle.cycle_value 				= 1000
-AltNeedle. input 					= {0, 100}
-AltNeedle. output 					= {0, 1}
-AltNeedle.controller 				=controllers.base_gauge_BarometricAltitude
-
-Alt100								= CreateGauge( "cycled" )
-Alt100.arg_number 					= 331
-Alt100.cycle_value 					= 1000
-Alt100. input 						= {0, 1000}
-Alt100. output 						= {0, 1}
-Alt100.controller 					=controllers.base_gauge_BarometricAltitude
-
-Alt1000								= CreateGauge( "cycled" )
-Alt1000.arg_number 					= 332
-Alt1000.cycle_value 				= 10000
-Alt1000. input 						= {0, 10000}
-Alt1000. output 					= {0, 1}
-Alt1000.controller 					=controllers.base_gauge_BarometricAltitude
-
-Alt10000							= CreateGauge( "cycled" )
-Alt10000.arg_number 				= 333
-Alt10000.cycle_value 				= 100000
-Alt10000. input 					= {0, 100000}
-Alt10000. output 					= {0, 1}
-Alt10000.controller 				=controllers.base_gauge_BarometricAltitude
 
 need_to_be_closed = false
