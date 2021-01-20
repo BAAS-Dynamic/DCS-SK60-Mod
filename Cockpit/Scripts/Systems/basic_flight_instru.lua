@@ -107,8 +107,8 @@ end
 
 function update_Gyro_Display()
     if (get_elec_primary_ac_ok() == true) then
-        Gauge_display_state[gyro_roll][2] = -sensor_data.getRoll() * RAD_TO_DEGREE / 90 / 2
-        Gauge_display_state[gyro_pitch][2] = sensor_data.getPitch() * RAD_TO_DEGREE / 90
+        Gauge_display_state[gyro_roll][2] = sensor_data.getRoll() * RAD_TO_DEGREE / 90 / 2
+        Gauge_display_state[gyro_pitch][2] = - sensor_data.getPitch() * RAD_TO_DEGREE / 90
     else
         Gauge_display_state[gyro_roll][2] = -0.3
         Gauge_display_state[gyro_pitch][2] = 0.3

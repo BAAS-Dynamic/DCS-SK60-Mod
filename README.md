@@ -10,3 +10,6 @@ Development of the SK60 mod for Digital Combat Simulator
 + Basic Gauge working as expected
 + Engine Start Procedure
 + Add a Data recorder system to check flight model performance
+
+### Some Unkown License Things
++ font on EADI: http://aircraft-in-focus.com/ath_aircraft_fonts/
