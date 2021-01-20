@@ -9,7 +9,17 @@ ViewSettings = {
 		limits_6DOF            = {x = {-0.050000,0.4500000},y ={-0.300000,0.100000},z = {-0.220000,0.220000},roll = 90.000000}, --Bewegen = hinten vorne,oben unten,links rechts
 		ShoulderSize		   = 0.2,-- bewegt K�rper, wenn Azimuth Wert mehr als 90 Grad
 		Allow360rotation	   = false,
-	},	
+		},
+	[2] = {-- player slot 1
+		CockpitLocalPoint = { 2.96,0.4653, 0.2576},--{6.957000,1.322000,0.000000} with dummy at 0,0,0, 3rd is across, 2nd is up/down, 1st is forward backward 
+		CameraViewAngleLimits  = {20.000000,140.000000},
+		CameraAngleRestriction = {false	   ,90.000000,0.500000},
+		CameraAngleLimits      = {200,-80.000000,110.000000},--Kopf drehen = links rechts,runter,hoch
+		EyePoint               = {0 ,0 ,0},-- { 2.96   , 1.4653 , -0.2576},
+		limits_6DOF            = {x = {-0.050000,0.4500000},y ={-0.300000,0.100000},z = {-0.220000,0.220000},roll = 90.000000}, --Bewegen = hinten vorne,oben unten,links rechts
+		ShoulderSize		   = 0.2,-- bewegt K�rper, wenn Azimuth Wert mehr als 90 Grad
+		Allow360rotation	   = false,
+		},	
 	}, -- Cockpit 
 	Chase = {
 		LocalPoint      = {2.532000,1.800000,0.000000},

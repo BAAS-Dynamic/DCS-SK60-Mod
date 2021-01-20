@@ -68,20 +68,20 @@ SK_60 =  {
 	    --main_gear_amortizer_normal_weight_stroke    =  -0.228,     --  down from main_gear_pos -0.228
 	    --main_gear_wheel_diameter 				    =   0.972, --  in m  
 		
-		nose_gear_pos 				                = {5.981,	-1.205,	0},   --{6.30,	-1.75,	0}, {5.981,	-1.515,	0}
+		nose_gear_pos 				                = {4.35,	-1.25,	0},   --{6.30,	-1.75,	0}, {5.981,	-1.515,	0}
 		--nose_gear_pos 				                = {-0.001,	-1.2,	4.032},   --{6.30,	-1.75,	0},
-	    nose_gear_amortizer_direct_stroke   		=  -1.5,      -- down from nose_gear_pos !!!
-	    nose_gear_amortizer_reversal_stroke  		= -0,      -- up 
-	    nose_gear_amortizer_normal_weight_stroke 	= -0,      -- down from nose_gear_pos
-		nose_gear_wheel_diameter 	                =  0.754,  -- in m
-		tand_gear_max				=	0.5774,	-- +- 30 deg for both sides 
+	    nose_gear_amortizer_direct_stroke   		=  0,      -- down from nose_gear_pos !!!
+	    nose_gear_amortizer_reversal_stroke  		=  - 0.15,      -- up 
+	    nose_gear_amortizer_normal_weight_stroke 	=  - 0.05,      -- down from nose_gear_pos
+		nose_gear_wheel_diameter 	                =  0.454,  -- in m
+		tand_gear_max								=  0.5774,	-- +- 30 deg for both sides 
 	
-	    main_gear_pos 						 	    = {-1.598,	-0.8,	2.380},-- maingear coord {-1.598,	-1.0,	2.380}
+	    main_gear_pos 						 	    = {0.598,	-1.05,	1.05},-- maingear coord {-1.598,	-1.0,	2.380}
 		--main_gear_pos 						 	    = {2.380,	-1.32,	-1.598},-- maingear coord
 	    main_gear_amortizer_direct_stroke	 	    =   0,     --  down from main_gear_pos !!!
-	    main_gear_amortizer_reversal_stroke  	    =  -0,     --  up 
-	    main_gear_amortizer_normal_weight_stroke  	=  -0,     --  down from main_gear_pos
-	    main_gear_wheel_diameter 				    =   0.972, --  in m
+	    main_gear_amortizer_reversal_stroke  	    =  - 0.05,     --  up 
+	    main_gear_amortizer_normal_weight_stroke  	=  - 0.01,     --  down from main_gear_pos
+	    main_gear_wheel_diameter 				    =   0.572, --  in m
 		
 
 		AOA_take_off				=	0.16,	-- AoA in take off (for AI)
@@ -114,7 +114,7 @@ SK_60 =  {
 		height						=	2.7,	--XX
 		crew_size					=	2, 		--XX
 		engines_count				=	2, 		--XX
-		wing_tip_pos 				= 	{-0.522, -0.039,	-5.172},-- wingtip coords for visual effects
+		wing_tip_pos 				= 	{ 0.252, 0.39, -4.6},-- wingtip coords for visual effects
 		
 		EPLRS 					    = true,--can you be seen on the A-10C TAD Page?
 		TACAN_AA					= true,--I think this will not work for a client slot but AI might add a TACAN for the unit.
@@ -123,7 +123,7 @@ SK_60 =  {
 	engines_nozzles = {
 		[1] = 
 		{
-			pos 		        = {-3.469, 0.2461, 0.7668}, -- nozzle coords
+			pos 		        = {- 2, 0.2461, 0.7668}, -- nozzle coords
 			elevation           = 0,                -- AFB cone elevation
 			diameter	        = 0.2,                -- AFB cone diameter
 			exhaust_length_ab   = 3,                -- lenght in m
@@ -132,7 +132,7 @@ SK_60 =  {
 		},  -- end of [1]
 		[2] = 
 		{
-			pos 		        = {-3.469, 0.2461,-0.7668}, -- -07668 Y = -3469
+			pos 		        = {- 2, 0.2461,-0.7668}, -- -07668 Y = -3469
 			elevation           = 0,                -- AFB cone elevation
 			diameter	        = 0.2,                -- AFB cone diameter
 			exhaust_length_ab   = 3,                -- lenght in m
@@ -148,12 +148,26 @@ SK_60 =  {
 				ejection_seat_name	=	17,--17=FA-18 58=F-15
 				drop_canopy_name	=	0;  --need to update this .EDM file for it to work again.
 				pos = 	{6.49,	0.94,	- 0.4},
-			},
+				g_suit 			    =  6,
+				can_be_playable   	= true,
+				canopy_arg          = 38,
+				ejection_order    	= 2,
+				ejection_added_speed= {-3,15,-3}, --pilot on the left
+				role      			= "pilot",
+				role_display_name   = _("Pilot"),
+			}, -- end of [1]
 			[2] = 
 			{
 				ejection_seat_name	=	17,--17=FA-18 58=F-15
 				drop_canopy_name	=	0;  --need to update this .EDM file for it to work again.
 				pos = 	{6.49,	0.94,	0.4},
+				g_suit 			    =  6,
+				can_be_playable   	= true,
+				canopy_arg          = 38,
+				ejection_order    	= 2,
+				ejection_added_speed= {-3,15,-3}, --pilot on the right
+				role      			= "pilot",
+				role_display_name   = _("Pilot"),
 			},
 		},
 		
