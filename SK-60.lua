@@ -105,7 +105,7 @@ SK_60 =  {
 		RCS							=	2.5,		-- Radar Cross Section m2
 		Ny_max_e					=	8,		-- Max G (for AI)
 		detection_range_max			=	60,
-		IR_emission_coeff			=	0.2,	-- Normal engine -- IR_emission_coeff = 1 is Su-27 without afterburner. It is reference.
+		IR_emission_coeff			=	0.5,	-- Normal engine -- IR_emission_coeff = 1 is Su-27 without afterburner. It is reference.
 		IR_emission_coeff_ab		=	0,		-- With afterburner
 		tanker_type					=	2,		--F14=2/S33=4/M29=0/S27=0/F15=1/F16=1/To=0/F18=2/A10A=1/M29K=4/M2000=2/F4=0/F5=0/
 		wing_span					=	9.5,	--XX   wing spain in m 13.05 19.54 
