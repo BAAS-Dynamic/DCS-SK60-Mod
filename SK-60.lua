@@ -80,7 +80,7 @@ SK_60 =  {
 		--main_gear_pos 						 	    = {2.380,	-1.32,	-1.598},-- maingear coord
 	    main_gear_amortizer_direct_stroke	 	    =   0,     --  down from main_gear_pos !!!
 	    main_gear_amortizer_reversal_stroke  	    =  - 0.05,     --  up 
-	    main_gear_amortizer_normal_weight_stroke  	=  - 0.01,     --  down from main_gear_pos
+	    main_gear_amortizer_normal_weight_stroke  	=  - 0.03,     --  down from main_gear_pos
 	    main_gear_wheel_diameter 				    =   0.572, --  in m
 		
 
