@@ -4,7 +4,7 @@ dofile(LockOn_Options.common_script_path.."Fonts/fonts_cmn.lua")
 -------MATERIALS-------
 materials = {}
 materials["DBG_GREY"]    = {5, 5, 5, 255}
-materials["DBG_BLACK"]   = {0, 0, 0, 100}
+materials["DBG_BLACK"]   = {0, 0, 0, 255}
 materials["DBG_BLUE"]   = {0, 0, 100, 100}
 materials["DBG_GREEN"]   = {0, 80, 0, 100}
 materials["DBG_RED"]     = {255, 0, 0, 100}

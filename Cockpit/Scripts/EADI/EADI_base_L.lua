@@ -27,11 +27,47 @@ eadi_base_clip.controllers          = {{"opacity_using_parameter",0}}
 eadi_base_clip.isvisible		    = SHOW_MASKS
 Add(eadi_base_clip)
 
+-- 612 * 606 move down center for 3
+local adi_surround_tex 				        = CreateElement "ceTexPoly"
+adi_surround_tex.vertices                   = EADI_vert_gen(4000,3961)
+adi_surround_tex.indices                    = {0,1,2,2,3,0}
+adi_surround_tex.tex_coords                 = tex_coord_gen(0,0,612,606,1024,1024)
+adi_surround_tex.material                   = basic_eadi_material
+adi_surround_tex.name 			            = create_guid_string()
+adi_surround_tex.init_pos                   = {0, -80/2000, 0}
+adi_surround_tex.init_rot		            = {0, 0, 0}
+adi_surround_tex.collimated	                = true
+adi_surround_tex.element_params             = {"LEADI_DIS_ENABLE"}              -- Initialize the main display control
+adi_surround_tex.controllers                = {{"opacity_using_parameter",0}}
+adi_surround_tex.use_mipfilter              = true
+adi_surround_tex.additive_alpha             = true
+adi_surround_tex.h_clip_relation            = h_clip_relations.COMPARE
+adi_surround_tex.level                      = EADI_DEFAULT_NOCLIP_LEVEL
+adi_surround_tex.parent_element	            = "eadi_base_clip"
+Add(adi_surround_tex)
+
+local LTOP_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+LTOP_text_box.material          = "hud_font_base"    --FONT_             --Material type (note the font material created above)
+LTOP_text_box.init_pos          = {-1950/2000, 2050/2000}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LTOP_text_box.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+LTOP_text_box.stringdefs        = {0.8*0.004,0.8 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LTOP_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LTOP_text_box.element_params    = {"L_EADI_DISPLAY_TL1"} -- top left first line display
+LTOP_text_box.controllers       = {{"text_using_parameter",0},}
+LTOP_text_box.collimated        = true
+LTOP_text_box.use_mipfilter     = true
+LTOP_text_box.additive_alpha    = true
+LTOP_text_box.isvisible		    = true
+LTOP_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+LTOP_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
+LTOP_text_box.parent_element    = "eadi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(LTOP_text_box)
+
 -- 250 * 16
 
 local eadi_adi_clip 			    = CreateElement "ceMeshPoly" --create second clip
 eadi_adi_clip.name 			        = "eadi_adi_clip"
-eadi_adi_clip.vertices 		        = create_EADI_circle_pos(61, 0, 0, 1900)
+eadi_adi_clip.vertices 		        = create_EADI_circle_pos(61, 0, 0, 1800)
 eadi_adi_clip.indices 		        = create_EADI_circle_index(61)
 eadi_adi_clip.init_pos		        = {0, 0, 0}
 eadi_adi_clip.init_rot		        = {0, 0, 0}
@@ -50,7 +86,7 @@ center_tex.indices                  = {0,1,2,2,3,0}
 center_tex.tex_coords               = tex_coord_gen(0,728,250,160,1024,1024)
 center_tex.material                 = basic_eadi_material
 center_tex.name 			        = create_guid_string()
-center_tex.init_pos                 = {0, -0.1, 0}
+center_tex.init_pos                 = {0, -0.01, 0}
 center_tex.init_rot		            = {0, 0, 0}
 center_tex.collimated	            = true
 center_tex.element_params           = {"LEADI_DIS_ENABLE"}              -- Initialize the main display control
