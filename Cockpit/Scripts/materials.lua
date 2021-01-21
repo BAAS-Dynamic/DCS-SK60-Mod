@@ -7,7 +7,7 @@ materials["DBG_GREY"]    = {5, 5, 5, 255}
 materials["DBG_BLACK"]   = {0, 0, 0, 255}
 materials["DBG_BLUE"]   = {0, 0, 100, 100}
 materials["DBG_GREEN"]   = {0, 80, 0, 100}
-materials["DBG_RED"]     = {255, 0, 0, 100}
+materials["DBG_RED"]     = {255, 0, 0, 255}
 materials["DBG_CLEAR"]   = {0, 0, 0, 0}
 materials["BLOB_COLOR"] = {0,128,0,192}
 materials["TEST_MATERIAL"] 	= {17,80,7,20}
@@ -259,6 +259,7 @@ fontdescription["font_HUD"] = {
 	fonts["mpcd_font_base"]			= {fontdescription["font_MPCD"], 10, materials["TEST_COLOR"]}
 	fonts["hud_font_base"]			= {fontdescription["font_HUD"], 10, materials["HUD_DAY_COLOR"] }
 	fonts["EADI_font"]				= {fontdescription["font_EADI"], 10, {200,200,200,255} }
+	fonts["EADI_font_black"]		= {fontdescription["font_EADI"], 10, {0,0,0,255} }
 
 
 -- force preload resources to avoid freeze on start (list of texture files)

@@ -29,15 +29,15 @@ Add(eadi_base_clip)
 
 local eadi_adi_clip 			    = CreateElement "ceMeshPoly" --create second clip
 eadi_adi_clip.name 			        = "eadi_test_clip"
-eadi_adi_clip.vertices 		        = EADI_vert_gen(400,1000)
+eadi_adi_clip.vertices 		        = EADI_vert_gen(2000,600)
 eadi_adi_clip.indices 		        = {0,1,2,0,2,3}
-eadi_adi_clip.init_pos		        = {1900/2000, 0, 10/2000}
+eadi_adi_clip.init_pos		        = {0, 0, 10/2000}
 eadi_adi_clip.init_rot		        = {0, 0, 0}
-eadi_adi_clip.material		        = "DBG_GREY"
+eadi_adi_clip.material		        = "DBG_RED"
 eadi_adi_clip.h_clip_relation       = h_clip_relations.REWRITE_LEVEL--COMPARE --REWRITE_LEVEL
 eadi_adi_clip.level			        = EADI_DEFAULT_NOCLIP_LEVEL
 eadi_adi_clip.change_opacity        = false
 eadi_adi_clip.element_params        = {"LEADI_DIS_ENABLE"}              -- Initialize the main display control
 eadi_adi_clip.controllers           = {{"opacity_using_parameter",0}}
-eadi_adi_clip.isvisible		        = true
+eadi_adi_clip.isvisible		        = false
 Add(eadi_adi_clip)
