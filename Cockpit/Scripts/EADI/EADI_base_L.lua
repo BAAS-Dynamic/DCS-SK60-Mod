@@ -46,22 +46,73 @@ adi_surround_tex.level                      = EADI_DEFAULT_NOCLIP_LEVEL
 adi_surround_tex.parent_element	            = "eadi_base_clip"
 Add(adi_surround_tex)
 
-local LTOP_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-LTOP_text_box.material          = "hud_font_base"    --FONT_             --Material type (note the font material created above)
-LTOP_text_box.init_pos          = {-1950/2000, 2050/2000}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
-LTOP_text_box.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-LTOP_text_box.stringdefs        = {0.8*0.004,0.8 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
-LTOP_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
-LTOP_text_box.element_params    = {"L_EADI_DISPLAY_TL1"} -- top left first line display
-LTOP_text_box.controllers       = {{"text_using_parameter",0},}
-LTOP_text_box.collimated        = true
-LTOP_text_box.use_mipfilter     = true
-LTOP_text_box.additive_alpha    = true
-LTOP_text_box.isvisible		    = true
-LTOP_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
-LTOP_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
-LTOP_text_box.parent_element    = "eadi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
-Add(LTOP_text_box)
+local RBOT_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+RBOT_text_box.material          = "EADI_font"    --FONT_             --Material type (note the font material created above)
+RBOT_text_box.init_pos          = {-1950/2000, 2050/2000}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RBOT_text_box.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+RBOT_text_box.stringdefs        = {0.8*0.004,0.8 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RBOT_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RBOT_text_box.element_params    = {"L_EADI_DISPLAY_TL1"} -- top left first line display
+RBOT_text_box.controllers       = {{"text_using_parameter",0},}
+RBOT_text_box.collimated        = true
+RBOT_text_box.use_mipfilter     = true
+RBOT_text_box.additive_alpha    = true
+RBOT_text_box.isvisible		    = true
+RBOT_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+RBOT_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
+RBOT_text_box.parent_element    = "eadi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(RBOT_text_box)
+
+local RTOP_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+RTOP_text_box.material          = "EADI_font"    --FONT_             --Material type (note the font material created above)
+RTOP_text_box.init_pos          = {1950/2000, 2050/2000}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RTOP_text_box.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+RTOP_text_box.stringdefs        = {0.8*0.006,0.8 * 0.006, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RTOP_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RTOP_text_box.element_params    = {"L_EADI_DISPLAY_TR1"} -- top left first line display
+RTOP_text_box.controllers       = {{"text_using_parameter",0},}
+RTOP_text_box.collimated        = true
+RTOP_text_box.use_mipfilter     = true
+RTOP_text_box.additive_alpha    = true
+RTOP_text_box.isvisible		    = true
+RTOP_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+RTOP_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
+RTOP_text_box.parent_element    = "eadi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(RTOP_text_box)
+
+local RBOT_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+RBOT_text_box.material          = "EADI_font"    --FONT_             --Material type (note the font material created above)
+RBOT_text_box.init_pos          = {1950/2000, -1850/2000}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RBOT_text_box.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+RBOT_text_box.stringdefs        = {0.8*0.004,0.8 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RBOT_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RBOT_text_box.element_params    = {"L_EADI_DISPLAY_BR1"} -- top left first line display
+RBOT_text_box.controllers       = {{"text_using_parameter",0},}
+RBOT_text_box.collimated        = true
+RBOT_text_box.use_mipfilter     = true
+RBOT_text_box.additive_alpha    = true
+RBOT_text_box.isvisible		    = true
+RBOT_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+RBOT_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
+RBOT_text_box.parent_element    = "eadi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(RBOT_text_box)
+
+local RBOT_text_box             = CreateElement "ceStringPoly"
+RBOT_text_box.material          = "EADI_font"    
+RBOT_text_box.init_pos          = {-1950/2000, 1850/2000}         
+RBOT_text_box.alignment         = "LeftTop"
+RBOT_text_box.stringdefs        = {0.8*0.004,0.8 * 0.004, 0, 0} 
+RBOT_text_box.formats           = {"%s","%s"}
+RBOT_text_box.element_params    = {"L_EADI_DISPLAY_TL2"}
+RBOT_text_box.controllers       = {{"text_using_parameter",0},}
+RBOT_text_box.collimated        = true
+RBOT_text_box.use_mipfilter     = true
+RBOT_text_box.additive_alpha    = true
+RBOT_text_box.isvisible		    = true
+RBOT_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+RBOT_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
+RBOT_text_box.parent_element    = "eadi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(RBOT_text_box)
 
 -- 250 * 16
 

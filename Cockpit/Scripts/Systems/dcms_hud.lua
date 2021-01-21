@@ -31,6 +31,9 @@ local hud_nav_data_1 = get_param_handle("HUD_NAV_DATA_1_DIS")
 local hud_nav_data_2 = get_param_handle("HUD_NAV_DATA_2_DIS")
 local hud_nav_data_3 = get_param_handle("HUD_NAV_DATA_3_DIS")
 local eadi_lf1_display = get_param_handle("L_EADI_DISPLAY_TL1")
+local eadi_rf1_display = get_param_handle("L_EADI_DISPLAY_TR1")
+local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
+local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 
 local hud_adi_movx = get_param_handle("HUD_ADI_MOVX") 
 
@@ -92,4 +95,7 @@ function update()
     hud_adi_movx:set(current_aos)
     hud_FD_y:set(current_aoa)
     eadi_lf1_display:set("VERSION 2")
+    eadi_lf2_display:set("EADI OK")
+    eadi_rf1_display:set("TO")
+    eadi_rb1_display:set("ERECT")
 end
