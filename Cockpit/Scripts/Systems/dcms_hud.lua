@@ -96,6 +96,6 @@ function update()
     hud_FD_y:set(current_aoa)
     eadi_lf1_display:set("VERSION 2")
     eadi_lf2_display:set("EADI OK")
-    eadi_rf1_display:set("TO")
+    eadi_rf1_display:set(sensor_data.getIndicatedAirSpeed()*3.6)
     eadi_rb1_display:set("ERECT")
 end
