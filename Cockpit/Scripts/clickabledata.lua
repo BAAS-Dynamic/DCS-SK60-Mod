@@ -459,6 +459,7 @@ multi_tumb_click_list = {
     {"PTN_549", "Gun Safe Switch", devices.WEAPON_SYSTEM, 549, Keys.GunsModeSwitchUP, Keys.GunsModeSwitchDOWN},
     {"PTN_558", "Missile Control", devices.WEAPON_SYSTEM, 558, Keys.MissileControl},
     {"PTN_559", "Missile Head Cooling", devices.WEAPON_SYSTEM, 559, Keys.MissileCoolingUP, Keys.MissileCoolingDOWN},
+    {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
 }
 
 for k,v in pairs(multi_tumb_click_list) do
