@@ -35,6 +35,9 @@ local eadi_rf1_display = get_param_handle("L_EADI_DISPLAY_TR1")
 local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
 local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 
+local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
+local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
+
 local hud_adi_movx = get_param_handle("HUD_ADI_MOVX") 
 
 local sensor_data = get_base_data()
@@ -98,4 +101,7 @@ function update()
     eadi_lf2_display:set("EADI OK")
     eadi_rf1_display:set(sensor_data.getMachNumber())
     eadi_rb1_display:set("ERECT")
+
+    erpm_ln2:set(sensor_data.getEngineLeftRPM())
+    erpm_rn2:set(sensor_data.getEngineRightRPM())
 end
