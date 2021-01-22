@@ -1,0 +1,4 @@
+wave = "Effects/Aircrafts/SK-60/SK60_CanopyOpen"
+inner_radius = 10
+outer_radius = 100
+gain = 1
