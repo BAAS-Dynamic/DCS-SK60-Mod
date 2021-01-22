@@ -50,7 +50,7 @@ function update()
 		CanoStatus = CanoStatus - 0.01
         set_aircraft_draw_argument_value(38,CanoStatus)
         CANOPY_ANI_INSIDE:set(CanoStatus)
-	elseif (CANOPY_COMMAND == 1 and CanoStatus < 1) then
+	elseif (CANOPY_COMMAND == 1 and CanoStatus < 0.9) then
         -- raise canopy in increment of 0.01 (50x per second)
 		CanoStatus = CanoStatus + 0.01
         set_aircraft_draw_argument_value(38,CanoStatus)
