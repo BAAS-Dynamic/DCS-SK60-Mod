@@ -119,7 +119,7 @@ SK_60 =  {
 		EPLRS 					    = true,--can you be seen on the A-10C TAD Page?
 		TACAN_AA					= true,--I think this will not work for a client slot but AI might add a TACAN for the unit.
 
-	sounderName = "Aircraft/Planes/SK-60-Sound",
+	-- sounderName = "Aircraft/Planes/SK-60-Sound",
 	
 	engines_nozzles = {
 		[1] = 

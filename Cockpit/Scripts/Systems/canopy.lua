@@ -24,8 +24,8 @@ function post_initialize()
     elseif birth=="GROUND_COLD" then
         CANOPY_COMMAND = 1
     end
-
-    -- set_aircraft_draw_argument_value(38,CANOPY_COMMAND)
+    sndhost_cockpit         = create_sound_host("COCKPIT","3D",0,0,2) 
+    snd_canopy_sound        = sndhost_cockpit:create_sound("Aircrafts/SK-60/Canopy")
 end
 
 set_aircraft_draw_argument_value(38, 0)
@@ -50,11 +50,21 @@ function update()
 		CanoStatus = CanoStatus - 0.01
         set_aircraft_draw_argument_value(38,CanoStatus)
         CANOPY_ANI_INSIDE:set(CanoStatus)
+        if not snd_canopy_sound:is_playing() then
+            snd_canopy_sound:play_continue() 
+        end
 	elseif (CANOPY_COMMAND == 1 and CanoStatus < 0.9) then
         -- raise canopy in increment of 0.01 (50x per second)
 		CanoStatus = CanoStatus + 0.01
         set_aircraft_draw_argument_value(38,CanoStatus)
         CANOPY_ANI_INSIDE:set(CanoStatus)
+        if not snd_canopy_sound:is_playing() then
+            snd_canopy_sound:play_continue() 
+        end
+    else
+        if snd_canopy_sound:is_playing() then
+            snd_canopy_sound:stop()
+        end
     end
     
 end
