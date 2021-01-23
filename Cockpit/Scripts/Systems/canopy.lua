@@ -14,6 +14,27 @@ local CANOPY_ANI_INSIDE = get_param_handle("CanopyInsideView")
 local canopy_system = GetSelf()
 canopy_system:listen_command(Canopy)
 
+local SWITCH_OFF = 0
+local SWITCH_ON = 1
+local SWITCH_TEST = -1
+
+switch_count = 0
+function _switch_counter()
+    switch_count = switch_count + 1
+    return switch_count
+end
+
+local canopy_switch = _switch_counter()
+
+target_status = {
+    {canopy_switch , SWITCH_OFF, get_param_handle("PTN_601"), "PTN_601", 1},
+}
+
+current_status = {
+    {canopy_switch , SWITCH_OFF,},
+}
+
+
 function post_initialize()
 	local CANOPY_ANI_INSIDE = get_param_handle("CanopyInsideView")
     local birth = LockOn_Options.init_conditions.birth_place
@@ -27,30 +48,63 @@ function post_initialize()
     sndhost_cockpit         = create_sound_host("COCKPIT","3D",0,-1,0) 
     snd_canopy_open_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen")
     snd_canopy_close_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyClose")
+    for k, v in pairs(target_status)do
+        current_status[k][2] = target_status[k][2]
+        target_status[k][3]:set(current_status[k][2])
+    end
+    set_aircraft_draw_argument_value(38, CANOPY_COMMAND)
 end
 
-set_aircraft_draw_argument_value(38, 0)
 CANOPY_ANI_INSIDE:set(0)
 
 LOCK_TIME_COUNT = 0
 
 function SetCommand(command,value)			
-	if (command == Canopy) then
-        CANOPY_COMMAND = 1 - CANOPY_COMMAND
-        if (CANOPY_COMMAND == 1) then
-            print_message_to_user("Opening Canopy") -- 这是游戏内的调试输出，会显示在左上角，遇到奇怪的问题就用这个打印参数
+    if (command == Canopy) then
+        if not snd_canopy_close_sound:is_playing() and not snd_canopy_open_sound:is_playing() then
+            CANOPY_COMMAND = 1 - CANOPY_COMMAND
+            if (CANOPY_COMMAND == 1) then
+                print_message_to_user("Opening Canopy") -- 这是游戏内的调试输出，会显示在左上角，遇到奇怪的问题就用这个打印参数
+                LOCK_TIME_COUNT = 0
+            else
+                print_message_to_user("Closing Canopy")
+            end
             LOCK_TIME_COUNT = 0
+            target_status[canopy_switch][2] = SWITCH_ON 
         else
-            print_message_to_user("Closing Canopy")
+            print_message_to_user("Canopy Acuactor is Moving")
         end
-        LOCK_TIME_COUNT = 0
 	end
+end
+
+function update_switch_status()
+    local switch_moving_step = 0.25
+    for k,v in pairs(target_status) do
+        if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
+            current_status[k][2] = target_status[k][2]
+        elseif target_status[k][2] > current_status[k][2] then
+            current_status[k][2] = current_status[k][2] + switch_moving_step
+        elseif target_status[k][2] < current_status[k][2] then
+            current_status[k][2] = current_status[k][2] - switch_moving_step
+        end
+        target_status[k][3]:set(current_status[k][2])
+        local temp_switch_ref = get_clickable_element_reference(target_status[k][4])
+        temp_switch_ref:update()
+        if target_status[k][5] == 1 then
+            if current_status[k][2] == SWITCH_ON then
+                current_status[k][2] = SWITCH_OFF
+            end
+        end
+        -- print_message_to_user(k)
+    end
 end
 
 function update()		
     local CanoStatus= CANOPY_ANI_INSIDE:get()	--get_aircraft_draw_argument_value(38)
     -- 50 times/s 6 sec to finish
     -- step will be 1/300
+
+    update_switch_status()
     
     if (CANOPY_COMMAND == 0 and CanoStatus > 0) then
         LOCK_TIME_COUNT = 0
