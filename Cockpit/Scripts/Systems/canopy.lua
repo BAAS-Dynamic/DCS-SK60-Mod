@@ -27,7 +27,7 @@ end
 local canopy_switch = _switch_counter()
 
 target_status = {
-    {canopy_switch , SWITCH_OFF, get_param_handle("PTN_601"), "PTN_601", 1},
+    {canopy_switch , SWITCH_OFF, get_param_handle("PTN_601"), "PTN_601", 1/40, 0},
 }
 
 current_status = {
@@ -47,7 +47,8 @@ function post_initialize()
     end
     sndhost_cockpit         = create_sound_host("COCKPIT","3D",0,-1,0) 
     snd_canopy_open_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen")
-    snd_canopy_close_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyClose")
+    -- use same for open and close
+    snd_canopy_close_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen") -- sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyClose")
     for k, v in pairs(target_status)do
         current_status[k][2] = target_status[k][2]
         target_status[k][3]:set(current_status[k][2])
@@ -65,12 +66,11 @@ function SetCommand(command,value)
             CANOPY_COMMAND = 1 - CANOPY_COMMAND
             if (CANOPY_COMMAND == 1) then
                 print_message_to_user("Opening Canopy") -- 这是游戏内的调试输出，会显示在左上角，遇到奇怪的问题就用这个打印参数
-                LOCK_TIME_COUNT = 0
             else
                 print_message_to_user("Closing Canopy")
             end
             LOCK_TIME_COUNT = 0
-            target_status[canopy_switch][2] = SWITCH_ON 
+            target_status[canopy_switch][2] = CANOPY_COMMAND
         else
             print_message_to_user("Canopy Acuactor is Moving")
         end
@@ -78,19 +78,18 @@ function SetCommand(command,value)
 end
 
 function update_switch_status()
-    local switch_moving_step = 0.25
     for k,v in pairs(target_status) do
-        if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
+        if math.abs(target_status[k][2] - current_status[k][2]) < target_status[k][5] then
             current_status[k][2] = target_status[k][2]
         elseif target_status[k][2] > current_status[k][2] then
-            current_status[k][2] = current_status[k][2] + switch_moving_step
+            current_status[k][2] = current_status[k][2] + target_status[k][5]
         elseif target_status[k][2] < current_status[k][2] then
-            current_status[k][2] = current_status[k][2] - switch_moving_step
+            current_status[k][2] = current_status[k][2] - target_status[k][5]
         end
         target_status[k][3]:set(current_status[k][2])
         local temp_switch_ref = get_clickable_element_reference(target_status[k][4])
         temp_switch_ref:update()
-        if target_status[k][5] == 1 then
+        if target_status[k][6] == 1 then
             if current_status[k][2] == SWITCH_ON then
                 current_status[k][2] = SWITCH_OFF
             end
@@ -107,11 +106,15 @@ function update()
     update_switch_status()
     
     if (CANOPY_COMMAND == 0 and CanoStatus > 0) then
-        LOCK_TIME_COUNT = 0
-		-- lower canopy in increments of 0.01 (50x per second)
-		CanoStatus = CanoStatus - 0.95/300
-        set_aircraft_draw_argument_value(38,CanoStatus)
-        CANOPY_ANI_INSIDE:set(CanoStatus)
+        -- LOCK_TIME_COUNT = 0
+        -- lower canopy in increments of 0.01 (50x per second)
+        if LOCK_TIME_COUNT > 40 then
+            CanoStatus = CanoStatus - 0.95/300
+            set_aircraft_draw_argument_value(38,CanoStatus)
+            CANOPY_ANI_INSIDE:set(CanoStatus)
+        else
+            LOCK_TIME_COUNT = LOCK_TIME_COUNT + 1
+        end
         if not snd_canopy_close_sound:is_playing() then
             snd_canopy_close_sound:play_continue() 
         end
@@ -130,12 +133,11 @@ function update()
     else
         if snd_canopy_open_sound:is_playing() then
             snd_canopy_open_sound:stop()
+            LOCK_TIME_COUNT = 0
         end
         if snd_canopy_close_sound:is_playing() then
-            LOCK_TIME_COUNT = LOCK_TIME_COUNT + 1
-            if LOCK_TIME_COUNT > 40 then
-                snd_canopy_close_sound:stop()
-            end
+            snd_canopy_close_sound:stop()
+            LOCK_TIME_COUNT = 0
         end
     end
     
