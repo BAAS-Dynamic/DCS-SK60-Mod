@@ -61,3 +61,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ERPM/
 --RADAROFF 	 ry_l =  0}
 --RADAROFF   }
 --RADAROFF }
+
+
+-- Enable KneeBoard for Test
+dofile(LockOn_Options.common_script_path.."KNEEBOARD/declare_kneeboard_device.lua")
