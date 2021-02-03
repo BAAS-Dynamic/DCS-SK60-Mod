@@ -1,7 +1,7 @@
 SK_60 =  {
       
 		Name 			= 'SK-60',--AG
-		DisplayName		= _('SK-60'),--AG
+		DisplayName		= _('SK-60W'),--AG
         Picture 		= "SK60.png",
         Rate 			= "50",
         Shape			= "SK-60",--AG	
@@ -68,7 +68,7 @@ SK_60 =  {
 	    --main_gear_amortizer_normal_weight_stroke    =  -0.228,     --  down from main_gear_pos -0.228
 	    --main_gear_wheel_diameter 				    =   0.972, --  in m  
 		
-		nose_gear_pos 				                = {4.35,	-1.25,	0},   --{6.30,	-1.75,	0}, {5.981,	-1.515,	0}
+		nose_gear_pos 				                = {3.5, -1.5, 0},	-- {4.35,	-1.25,	0},
 		--nose_gear_pos 				                = {-0.001,	-1.2,	4.032},   --{6.30,	-1.75,	0},
 	    nose_gear_amortizer_direct_stroke   		=  0,      -- down from nose_gear_pos !!!
 	    nose_gear_amortizer_reversal_stroke  		=  - 0.15,      -- up 
@@ -76,7 +76,7 @@ SK_60 =  {
 		nose_gear_wheel_diameter 	                =  0.454,  -- in m
 		tand_gear_max								=  0.5774,	-- +- 30 deg for both sides 
 	
-	    main_gear_pos 						 	    = {0.598,	-1.05,	1.05},-- maingear coord {-1.598,	-1.0,	2.380}
+	    main_gear_pos 						 	    = {- 0.5, -1.5, 1.05}, --{0.598,	-1.05,	1.05},
 		--main_gear_pos 						 	    = {2.380,	-1.32,	-1.598},-- maingear coord
 	    main_gear_amortizer_direct_stroke	 	    =   0,     --  down from main_gear_pos !!!
 	    main_gear_amortizer_reversal_stroke  	    =  - 0.05,     --  up 
@@ -114,7 +114,7 @@ SK_60 =  {
 		height						=	2.7,	--XX
 		crew_size					=	2, 		--XX
 		engines_count				=	2, 		--XX
-		wing_tip_pos 				= 	{ 0.252, 0.39, -4.6},-- wingtip coords for visual effects
+		wing_tip_pos 				= 	{ -1 , 0, -4.6},-- wingtip coords for visual effects
 		
 		EPLRS 					    = true,--can you be seen on the A-10C TAD Page?
 		TACAN_AA					= true,--I think this will not work for a client slot but AI might add a TACAN for the unit.
@@ -124,7 +124,7 @@ SK_60 =  {
 	engines_nozzles = {
 		[1] = 
 		{
-			pos 		        = {- 2, 0.2461, 0.7668}, -- nozzle coords
+			pos 		        = {- 2.7, 0, 0.7668}, -- nozzle coords
 			elevation           = 0,                -- AFB cone elevation
 			diameter	        = 0.2,                -- AFB cone diameter
 			exhaust_length_ab   = 3,                -- lenght in m
@@ -133,7 +133,7 @@ SK_60 =  {
 		},  -- end of [1]
 		[2] = 
 		{
-			pos 		        = {- 2, 0.2461,-0.7668}, -- -07668 Y = -3469
+			pos 		        = {- 2.7, 0, -0.7668}, -- -07668 Y = -3469
 			elevation           = 0,                -- AFB cone elevation
 			diameter	        = 0.2,                -- AFB cone diameter
 			exhaust_length_ab   = 3,                -- lenght in m

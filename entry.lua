@@ -4,7 +4,7 @@ declare_plugin(self_ID,
 image     	 = "FC3.bmp",
 installed 	 = true, -- if false that will be place holder , or advertising
 dirName	  	 = current_mod_path,
-displayName  = _("SK-60"),
+displayName  = _("SK-60W"),
 developerName = _("Saab"),
 
 fileMenuName = _("SK-60"),
