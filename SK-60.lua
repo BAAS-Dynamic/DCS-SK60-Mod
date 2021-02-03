@@ -76,7 +76,7 @@ SK_60 =  {
 		nose_gear_wheel_diameter 	                =  0.454,  -- in m
 		tand_gear_max								=  0.5774,	-- +- 30 deg for both sides 
 	
-	    main_gear_pos 						 	    = {- 0.5, -1.5, 1.05}, --{0.598,	-1.05,	1.05},
+	    main_gear_pos 						 	    = {- 0.5, -1.3, 1.05}, --{0.598,	-1.05,	1.05},
 		--main_gear_pos 						 	    = {2.380,	-1.32,	-1.598},-- maingear coord
 	    main_gear_amortizer_direct_stroke	 	    =   0,     --  down from main_gear_pos !!!
 	    main_gear_amortizer_reversal_stroke  	    =  - 0.05,     --  up 
