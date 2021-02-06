@@ -102,7 +102,7 @@ function update()
     eadi_rf1_display:set(sensor_data.getMachNumber())
     eadi_rb1_display:set("ERECT")
 
-    erpm_ln2:set(sensor_data.getEngineLeftRPM())
-    erpm_rn2:set(sensor_data.getEngineRightRPM())
+    erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100)
+    erpm_rn2:set(sensor_data.getEngineRightRPM() * 100)
 
 end
