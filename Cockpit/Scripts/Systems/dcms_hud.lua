@@ -104,4 +104,5 @@ function update()
 
     erpm_ln2:set(sensor_data.getEngineLeftRPM())
     erpm_rn2:set(sensor_data.getEngineRightRPM())
+
 end
