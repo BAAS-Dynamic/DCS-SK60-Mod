@@ -1,7 +1,7 @@
 SK_60 =  {
       
 		Name 			= 'SK-60',--AG
-		DisplayName		= _('SK-60W'),--AG
+		DisplayName		= _('SK-60B'),--AG
         Picture 		= "SK60.png",
         Rate 			= "50",
         Shape			= "SK-60",--AG	
