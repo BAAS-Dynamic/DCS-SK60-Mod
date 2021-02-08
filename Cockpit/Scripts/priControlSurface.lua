@@ -26,11 +26,11 @@ function update()
     set_aircraft_draw_argument_value(17, -RUDDER_STATE)
     set_aircraft_draw_argument_value(18, -RUDDER_STATE)
 	
-	if (get_aircraft_draw_argument_value(0) > 0.5) then
-		set_aircraft_draw_argument_value(2, -RUDDER_STATE*0.666) -- limit visual nosewheel deflection to 30 degrees
-	else
-		set_aircraft_draw_argument_value(2, 0)
-	end
+	-- if (get_aircraft_draw_argument_value(0) > 0.5) then
+	--	set_aircraft_draw_argument_value(2, -RUDDER_STATE*0.666) -- limit visual nosewheel deflection to 30 degrees
+	--else
+	--	set_aircraft_draw_argument_value(2, 0)
+	--end
 	--print(ROLL_STATE)
 	--print(PITCH_STATE)
 end

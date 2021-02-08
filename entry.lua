@@ -103,7 +103,7 @@ if FM_dll then
 		-- the moment_of_inertia is following the data from nasa
 		-- reverse the axis of y and z
 		moment_of_inertia = {10000, 39500, 35000, 2000},
-		suspension = test_susp,
+		suspension = suspension_data,
 	}
 else
     FM=nil

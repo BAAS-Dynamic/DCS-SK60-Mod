@@ -2,4 +2,5 @@ model = {
     lods = {
         {"SK_60_V1CorrectCG.edm",7500000.000000};
     };
+	collision_shell = "SK-60_collision.edm";
 }

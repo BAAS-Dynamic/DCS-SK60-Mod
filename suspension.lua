@@ -1,4 +1,4 @@
-multiplier_suspen = 17;
+multiplier_suspen = 250000;
 
 suspension_data = 
 {
@@ -10,26 +10,26 @@ suspension_data =
 		--damage_element = 0, 
 		self_attitude = false,
 		-- wheel_axle_offset = 0,
-		yaw_limit = math.rad(63.0),
+		yaw_limit = math.rad(35.0),
 		damper_coeff = 300.0, 
-		allowable_hard_contact_length	= 0.289,				
+		allowable_hard_contact_length	= 0.2,				
 
 		amortizer_min_length					= 0.0,
-		amortizer_max_length					= 0.284,
-		amortizer_basic_length					= 0.284, -- - 3.25 + 3.394,
-		amortizer_spring_force_factor			= 349546369232614, --10623.044,
-		amortizer_spring_force_factor_rate		= 13,
-		amortizer_static_force					= 21720,--4720,
-		amortizer_reduce_length					= 0.284, -- - 3.25 + 3.394,
-		amortizer_direct_damper_force_factor	= 13800,
-		amortizer_back_damper_force_factor		= 16000,
+		amortizer_max_length					= 0.15,
+		amortizer_basic_length					= 0.15, -- - 3.25 + 3.394,
+		amortizer_spring_force_factor			= 3495463692326140, --10623.044,
+		amortizer_spring_force_factor_rate		= 10,
+		amortizer_static_force					= 2720,--4720,
+		amortizer_reduce_length					= 0.15, -- - 3.25 + 3.394,
+		amortizer_direct_damper_force_factor	= 3800,
+		amortizer_back_damper_force_factor		= 4600,
 
 
-		wheel_radius				  = 0.45 / 2,
-		wheel_static_friction_factor  = 1.0 , --Static friction when wheel is not moving (fully braked)
-		wheel_side_friction_factor    = 0.75 ,
-		wheel_roll_friction_factor    = 0.1, -- Rolling friction factor when wheel moving
-		wheel_glide_friction_factor   = 0.4 , -- Sliding aircraft
+		wheel_radius				  = 0.4 / 2,
+		wheel_static_friction_factor  = 2.0 , --Static friction when wheel is not moving (fully braked)
+		wheel_side_friction_factor    = 1.45 ,
+		wheel_roll_friction_factor    = 0.35, -- Rolling friction factor when wheel moving
+		wheel_glide_friction_factor   = 0.95 , -- Sliding aircraft
 		wheel_damage_force_factor     = 1450.0, -- Tire is explosing due to hard landing
 		wheel_damage_speed			  = 180.0, -- Tire burst due to excessive speed
 
@@ -66,30 +66,30 @@ suspension_data =
 		yaw_limit		    = math.rad(0.0),
 		damper_coeff	    = 160.0,
 		
-		allowable_hard_contact_length			= - 2.791 + 3.226 + 0.05,
+		allowable_hard_contact_length			= 0.07,
 
 		amortizer_min_length					= 0.0,
-		amortizer_max_length					= - 2.791 + 3.226,
-		amortizer_basic_length					= - 2.791 + 3.226,
+		amortizer_max_length					= 0.07,
+		amortizer_basic_length					= 0.07,
 		amortizer_spring_force_factor			= 1631740 * multiplier_suspen,
 		amortizer_spring_force_factor_rate		= 4.5,
-		amortizer_static_force					= 41897,
-		amortizer_reduce_length					= - 2.791 + 3.226,
-		amortizer_direct_damper_force_factor 	= 44000,
-		amortizer_back_damper_force_factor 		= 35000,
+		amortizer_static_force					= 8897,
+		amortizer_reduce_length					= 0.07,
+		amortizer_direct_damper_force_factor 	= 14000,
+		amortizer_back_damper_force_factor 		= 14000,
 
 		anti_skid_installed = true,
 
-		wheel_radius				  = 0.385 ,
+		wheel_radius				  = 0.572/2 ,
 		wheel_static_friction_factor  = 1.0 ,
 		wheel_side_friction_factor    = 0.75 ,
-		wheel_roll_friction_factor    = 0.1,
-		wheel_glide_friction_factor   = 0.4 ,
+		wheel_roll_friction_factor    = 0.15,
+		wheel_glide_friction_factor   = 0.65 ,
 		wheel_damage_force_factor     = 1450.0,
 		wheel_damage_speed			  = 180.0,
 		wheel_moment_of_inertia   = 3.6, --wheel moi as rotation body
 
-		wheel_brake_moment_max = 9000.0, -- maximum value of braking moment  , N*m 
+		wheel_brake_moment_max = 10000.0, -- maximum value of braking moment  , N*m 
 
 		wheel_kz_factor					= 0.25,
 		noise_k							= 0.4,
@@ -120,51 +120,51 @@ suspension_data =
 		
 		--damage_element	    = 5,
 		-- wheel_axle_offset 	= 0 ,
+		
 		self_attitude	    = false,
 		yaw_limit		    = math.rad(0.0),
 		damper_coeff	    = 160.0,
 		
-		allowable_hard_contact_length			= - 2.791 + 3.226 + 0.05,
+		allowable_hard_contact_length			= 0.07,
 
 		amortizer_min_length					= 0.0,
-		amortizer_max_length					= - 2.791 + 3.226,
-		amortizer_basic_length					= - 2.791 + 3.226,
+		amortizer_max_length					= 0.07,
+		amortizer_basic_length					= 0.07,
 		amortizer_spring_force_factor			= 1631740 * multiplier_suspen,
 		amortizer_spring_force_factor_rate		= 4.5,
-		amortizer_static_force					= 41897,
-		amortizer_reduce_length					= - 2.791 + 3.226,
-		amortizer_direct_damper_force_factor 	= 44000,
-		amortizer_back_damper_force_factor 		= 35000,
+		amortizer_static_force					= 8897,
+		amortizer_reduce_length					= 0.07,
+		amortizer_direct_damper_force_factor 	= 14000,
+		amortizer_back_damper_force_factor 		= 14000,
 
 		anti_skid_installed = true,
 
-		wheel_radius				  = 0.385 ,
+		wheel_radius				  = 0.572/2 ,
 		wheel_static_friction_factor  = 1.0 ,
 		wheel_side_friction_factor    = 0.75 ,
-		wheel_roll_friction_factor    = 0.1,
-		wheel_glide_friction_factor   = 0.4 ,
+		wheel_roll_friction_factor    = 0.15,
+		wheel_glide_friction_factor   = 0.65 ,
 		wheel_damage_force_factor     = 1450.0,
 		wheel_damage_speed			  = 180.0,
 		wheel_moment_of_inertia   = 3.6, --wheel moi as rotation body
 
-		wheel_brake_moment_max = 9000.0, -- maximum value of braking moment  , N*m 
-		
-		--[[
-		args_post	  = {0,3,5};
-		args_amortizer = {1,4,6};
-		args_wheel	  = {101,102,103};
-		args_wheel_yaw = {2,-1,-1};
-		--]]
+		wheel_brake_moment_max = 10000.0, -- maximum value of braking moment  , N*m 
 
 		wheel_kz_factor					= 0.25,
 		noise_k							= 0.4,
 		wheel_damage_speedX				= 108,
 		wheel_damage_delta_speedX		= 15,
-
+		
 		crossover_locked_wheel_protection = true,
 		crossover_locked_wheel_protection_speed_min = 18.0,
 		anti_skid_improved = true,
 		anti_skid_gain = 200.0,
+		--[[
+		args_post	  = {0,3,5};
+		args_amortizer = {1,4,6};
+		args_wheel	  = {76,77,77};
+		args_wheel_yaw = {2,-1,-1};
+		--]]
 		
 		arg_post             = 3,
 		arg_amortizer        = 4,
