@@ -21,6 +21,8 @@ join(res.keyCommands,{
 --Flight Control
 {combos = {{key = 'T', reformers = {'LAlt'}}}, down = iCommandPlaneTrimOn, up = iCommandPlaneTrimOff, name = _('T/O Trim'), category = _('Flight Control')},
 
+{down = iCommandPlaneAirBrakeOn,	up = iCommandPlaneAirBrakeOff,			name = _('HOTAS_Airbrake'),					category = _('Systems') },
+
 -- Systems
 --{combos = {{key = 'F', reformers = {'LShift'}}}, down = Keys.FlapUp, name = _('Flaps Up'), category = _('Systems')},
 --{combos = {{key = 'F', reformers = {'LCtrl'}}}, down = Keys.FlapDown, name = _('Flaps Down'), category = _('Systems')},
