@@ -1,4 +1,4 @@
-multiplier_suspen = 250000;
+multiplier_suspen = 850;
 
 suspension_data = 
 {
@@ -17,7 +17,7 @@ suspension_data =
 		amortizer_min_length					= 0.0,
 		amortizer_max_length					= 0.15,
 		amortizer_basic_length					= 0.15, -- - 3.25 + 3.394,
-		amortizer_spring_force_factor			= 3495463692326140, --10623.044,
+		amortizer_spring_force_factor			= 34954636923261, --10623.044,
 		amortizer_spring_force_factor_rate		= 10,
 		amortizer_static_force					= 2720,--4720,
 		amortizer_reduce_length					= 0.15, -- - 3.25 + 3.394,
