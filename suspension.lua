@@ -1,4 +1,5 @@
-multiplier_suspen = 850;
+multiplier_suspen = 550;
+multi2 = 3;
 
 suspension_data = 
 {
@@ -17,7 +18,7 @@ suspension_data =
 		amortizer_min_length					= 0.0,
 		amortizer_max_length					= 0.15,
 		amortizer_basic_length					= 0.15, -- - 3.25 + 3.394,
-		amortizer_spring_force_factor			= 34954636923261, --10623.044,
+		amortizer_spring_force_factor			= 3495463692326.1, --10623.044,
 		amortizer_spring_force_factor_rate		= 10,
 		amortizer_static_force					= 2720,--4720,
 		amortizer_reduce_length					= 0.15, -- - 3.25 + 3.394,
@@ -72,7 +73,7 @@ suspension_data =
 		amortizer_max_length					= 0.07,
 		amortizer_basic_length					= 0.07,
 		amortizer_spring_force_factor			= 1631740 * multiplier_suspen,
-		amortizer_spring_force_factor_rate		= 4.5,
+		amortizer_spring_force_factor_rate		= multi2,
 		amortizer_static_force					= 8897,
 		amortizer_reduce_length					= 0.07,
 		amortizer_direct_damper_force_factor 	= 14000,
@@ -131,7 +132,7 @@ suspension_data =
 		amortizer_max_length					= 0.07,
 		amortizer_basic_length					= 0.07,
 		amortizer_spring_force_factor			= 1631740 * multiplier_suspen,
-		amortizer_spring_force_factor_rate		= 4.5,
+		amortizer_spring_force_factor_rate		= multi2,
 		amortizer_static_force					= 8897,
 		amortizer_reduce_length					= 0.07,
 		amortizer_direct_damper_force_factor 	= 14000,

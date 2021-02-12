@@ -97,5 +97,8 @@ join(res.axisCommands,{
 {action = iCommandWheelBrake,		name = _('Wheel Brake')},
 {action = iCommandLeftWheelBrake,	name = _('Wheel Brake Left')},
 {action = iCommandRightWheelBrake,	name = _('Wheel Brake Right')},
+
+-- trim
+{action = iCommandPlaneTrimPitch,	name = _('Elevator Trim')},
 })
 return res
