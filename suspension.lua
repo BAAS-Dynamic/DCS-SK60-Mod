@@ -27,10 +27,10 @@ suspension_data =
 
 
 		wheel_radius				  = 0.4 / 2,
-		wheel_static_friction_factor  = 2.0 , --Static friction when wheel is not moving (fully braked)
-		wheel_side_friction_factor    = 1.45 ,
-		wheel_roll_friction_factor    = 0.35, -- Rolling friction factor when wheel moving
-		wheel_glide_friction_factor   = 0.95 , -- Sliding aircraft
+		wheel_static_friction_factor  = 1.0 , --Static friction when wheel is not moving (fully braked)
+		wheel_side_friction_factor    = 0.75 ,
+		wheel_roll_friction_factor    = 0.15, -- Rolling friction factor when wheel moving
+		wheel_glide_friction_factor   = 0.65 , -- Sliding aircraft
 		wheel_damage_force_factor     = 1450.0, -- Tire is explosing due to hard landing
 		wheel_damage_speed			  = 180.0, -- Tire burst due to excessive speed
 
