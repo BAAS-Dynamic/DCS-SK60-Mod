@@ -102,7 +102,7 @@ if FM_dll then
 		center_of_mass = {0, 0, 0},--{5.8784 - 4.572, -0.7883, 0},
 		-- the moment_of_inertia is following the data from nasa
 		-- reverse the axis of y and z
-		moment_of_inertia = {19066.11, 44944.01, 36962.9, 1413.4},
+		moment_of_inertia = {19066.11, 44944.01, 44962.9, 1413.4},
 		suspension = suspension_data,
 	}
 else
