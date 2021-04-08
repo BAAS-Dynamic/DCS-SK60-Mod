@@ -5,6 +5,11 @@ make_default_activity(update_time_step) -- enables call to update
 
 local sensor_data = get_base_data()
 
+-- transfer path to efm for key chain verify
+local mod_path_param = get_param_handle("KEYFILEPATH")
+local mod_key_path = LockOn_Options.script_path.."\\Certs\\"
+mod_path_param:set(mod_key_path)
+
 function post_initialize()
 end
 
