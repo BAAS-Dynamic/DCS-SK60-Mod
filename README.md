@@ -1,5 +1,8 @@
 # DCS-SK60-Mod
 Development of the SK60 mod for Digital Combat Simulator
+## Notice For this Branch
++ This branch is a back up of Version 1 and will be locked
+
 ## Rough Planning
 ### In May
 + make most of the avionics working
