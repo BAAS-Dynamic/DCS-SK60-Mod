@@ -167,13 +167,13 @@ ThrottleLeft						= CreateGauge()
 ThrottleLeft.arg_number				= 104
 ThrottleLeft.input					= {0, 1}
 ThrottleLeft.output					= {0, 1}
-ThrottleLeft.controller				= controllers.base_gauge_ThrottleLeftPosition
+ThrottleLeft.parameter_name			= "EFM_LEFT_THRUST_A"
 
 ThrottleRight						= CreateGauge()
 ThrottleRight.arg_number			= 105
 ThrottleRight.input					= {0, 1}
 ThrottleRight.output				= {0, 1}
-ThrottleRight.controller			= controllers.base_gauge_ThrottleRightPosition
+ThrottleRight.parameter_name		= "EFM_RIGHT_THRUST_A"
 
 --INSTRUMENTS--
 LeftRPM								= CreateGauge ()

@@ -38,6 +38,8 @@ local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
 
+local gps_base = get_param_handle("NS430_POWER")
+
 local hud_adi_movx = get_param_handle("HUD_ADI_MOVX") 
 
 local sensor_data = get_base_data()
@@ -55,6 +57,7 @@ function post_initialize()
     hud_adi_level_enable:set(1)
     hud_enable:set(1)
     hud_maxg_dis:set(1)
+    gps_base:set(1)
 end
 
 function SetCommand(command,value)
@@ -62,6 +65,7 @@ function SetCommand(command,value)
 end
 
 function update()
+    gps_base:set(1)
     hud_adi_rot:set(sensor_data.getRoll())
     hud_adi_pitch:set(-sensor_data.getPitch())
     hud_speed_dis:set(sensor_data.getIndicatedAirSpeed()*ias_conversion_to_kmh)
@@ -102,6 +106,7 @@ function update()
     eadi_rf1_display:set(sensor_data.getMachNumber())
     eadi_rb1_display:set("ERECT")
 
-    erpm_ln2:set(sensor_data.getEngineLeftRPM())
-    erpm_rn2:set(sensor_data.getEngineRightRPM())
+    erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100)
+    erpm_rn2:set(sensor_data.getEngineRightRPM() * 100)
+
 end

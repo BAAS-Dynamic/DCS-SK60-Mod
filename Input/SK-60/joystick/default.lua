@@ -17,6 +17,8 @@ join(res.keyCommands,{
 --Flight Control
 {down = iCommandPlaneTrimOn, up = iCommandPlaneTrimOff, name = _('T/O Trim'), category = _('Flight Control')},
 
+{down = iCommandPlaneAirBrakeOn,	up = iCommandPlaneAirBrakeOff,			name = _('HOTAS_Airbrake'),					category = _('Systems') },
+
 -- Systems
 --{down = Keys.FlapUp, name = _('Flaps Up'), category = _('Systems')},
 --{down = Keys.FlapDown, name = _('Flaps Down'), category = _('Systems')},
@@ -95,5 +97,8 @@ join(res.axisCommands,{
 {action = iCommandWheelBrake,		name = _('Wheel Brake')},
 {action = iCommandLeftWheelBrake,	name = _('Wheel Brake Left')},
 {action = iCommandRightWheelBrake,	name = _('Wheel Brake Right')},
+
+-- trim
+{action = iCommandPlaneTrimPitch,	name = _('Elevator Trim')},
 })
 return res

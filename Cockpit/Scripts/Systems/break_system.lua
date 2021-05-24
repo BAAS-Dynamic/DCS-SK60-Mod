@@ -70,16 +70,16 @@ function SetCommand(command,value)
         dispatch_action(nil,iCommandPlaneWheelBrakeOn)
     elseif (command == Keys.BrakesOff) and (parking_brake_target == 0) then
         dispatch_action(nil,iCommandPlaneWheelBrakeOff)
-    elseif (command == Airbrake) then
-        if (air_brake_state == 0) then
-            air_brake_state =0 
-        elseif (air_brake_state == 1) then
-            air_brake_state = 0
-        end
-    elseif (command == AirbrakeOn) then
-        air_brake_state = 1
-    elseif (command == AirbrakeOff) then
-        air_brake_state = 0
+    --elseif (command == Airbrake) then
+    --    if (air_brake_state == 0) then
+    --        air_brake_state =0 
+    --    elseif (air_brake_state == 1) then
+    --        air_brake_state = 0
+    --    end
+    --elseif (command == AirbrakeOn) then
+    --    air_brake_state = 1
+    --elseif (command == AirbrakeOff) then
+    --    air_brake_state = 0
     elseif (command == Keys.ParkingBrakesOn) then
         print_message_to_user("pb on")
         dispatch_action(nil,iCommandPlaneWheelBrakeOn)
@@ -104,16 +104,18 @@ function SetCommand(command,value)
 end
 
 function update()
-    air_brake_pos = tonumber(string.format(fmt, air_brake_pos))
-    if (air_brake_pos < air_brake_state) then
-        air_brake_pos = air_brake_pos + 0.02
-        set_aircraft_draw_argument_value(21, air_brake_pos)
-        air_brake_pos_ind:set(air_brake_pos)
-    elseif (air_brake_pos > air_brake_state) then
-        air_brake_pos = air_brake_pos - 0.02
-        set_aircraft_draw_argument_value(21, air_brake_pos)
-        air_brake_pos_ind:set(air_brake_pos)
-    end
+    --[[
+        air_brake_pos = tonumber(string.format(fmt, air_brake_pos))
+        if (air_brake_pos < air_brake_state) then
+            air_brake_pos = air_brake_pos + 0.02
+            set_aircraft_draw_argument_value(21, air_brake_pos)
+            air_brake_pos_ind:set(air_brake_pos)
+        elseif (air_brake_pos > air_brake_state) then
+            air_brake_pos = air_brake_pos - 0.02
+            set_aircraft_draw_argument_value(21, air_brake_pos)
+            air_brake_pos_ind:set(air_brake_pos)
+        end
+    ]]--
 	--print_message_to_user("BREAKPOS")
 	--print_message_to_user(air_brake_pos)
 	--print_message_to_user("BREAKTAR")

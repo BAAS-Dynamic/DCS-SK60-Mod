@@ -36,6 +36,10 @@ gear_system:listen_command(gear_down)
 gear_system:listen_command(click_cmd.GearLevel)
 gear_system:listen_command(120)
 
+local n_gear_status
+local l_gear_status
+local r_gear_status
+
 function post_initialize()
     local birth = LockOn_Options.init_conditions.birth_place
     if birth=="GROUND_HOT" then
@@ -51,6 +55,10 @@ function post_initialize()
         l_main_gear_status = 1
         r_main_gear_status = 1
     end
+
+    n_gear_status = nose_gear_status
+    l_gear_status = l_main_gear_status
+    r_gear_status = r_main_gear_status
 
     if (gear_level_init == 0) then
         --gear_system:performClickableAction(click_cmd.GearLevel, 1, false)
@@ -91,10 +99,6 @@ local gear_level_pos = gear_level:get()
 
 function update()
     local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
-
-    local n_gear_status = get_aircraft_draw_argument_value(0)
-    local l_gear_status = get_aircraft_draw_argument_value(5)
-    local r_gear_status = get_aircraft_draw_argument_value(3)
 
         --takes 7 seconds to full extended
         -- set globle time count
