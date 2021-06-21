@@ -80,8 +80,8 @@ function update()
     end
     hud_mach_dis:set(sensor_data.getMachNumber())
     hud_hdg_dis:set(sensor_data.getMagneticHeading() * RAD_TO_DEGREE)
-    hud_ln2_dis:set(sensor_data.getEngineLeftRPM())
-    hud_rn2_dis:set(sensor_data.getEngineRightRPM())
+    hud_ln2_dis:set(sensor_data.getEngineLeftRPM() / 1.2)
+    hud_rn2_dis:set(sensor_data.getEngineRightRPM() / 1.2)
     -- getMagneticHeading
 
     hud_nav_data_1:set("NAV UNSET")
@@ -103,10 +103,10 @@ function update()
     hud_FD_y:set(current_aoa)
     eadi_lf1_display:set("VERSION 2")
     eadi_lf2_display:set("EADI OK")
-    eadi_rf1_display:set(sensor_data.getMachNumber())
+    --eadi_rf1_display:set(sensor_data.getMachNumber())
     eadi_rb1_display:set("ERECT")
 
-    erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100)
-    erpm_rn2:set(sensor_data.getEngineRightRPM() * 100)
+    erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
+    erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
 
 end
