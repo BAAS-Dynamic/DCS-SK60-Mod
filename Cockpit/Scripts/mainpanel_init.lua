@@ -111,6 +111,8 @@ animation_list = {
 	{"MainLWPOS_IND", 319},
 	{"MainRWPOS_IND", 320},
 
+    {"Inside_Canopy", 38, {0, 1}, {1, 0}},
+
     {"PTN_109", 109},
     {"PTN_110", 110},
     {"PTN_112", 112},

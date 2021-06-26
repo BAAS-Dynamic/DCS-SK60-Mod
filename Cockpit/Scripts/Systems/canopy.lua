@@ -10,6 +10,7 @@ local Canopy = 71  --定义舱盖按键
 
 local CANOPY_COMMAND = 1   --舱盖状态 0 关闭, 1 开启
 local CANOPY_ANI_INSIDE = get_param_handle("CanopyInsideView")
+local CANOPY_INSIDE = get_param_handle("Inside_Canopy")
 
 local canopy_system = GetSelf()
 canopy_system:listen_command(Canopy)
@@ -57,6 +58,7 @@ function post_initialize()
 end
 
 CANOPY_ANI_INSIDE:set(0)
+CANOPY_INSIDE:set(0)
 
 LOCK_TIME_COUNT = 0
 
@@ -99,7 +101,7 @@ function update_switch_status()
 end
 
 function update()		
-    local CanoStatus= CANOPY_ANI_INSIDE:get()	--get_aircraft_draw_argument_value(38)
+    local CanoStatus= CANOPY_INSIDE:get()	--get_aircraft_draw_argument_value(38)
     -- 50 times/s 6 sec to finish
     -- step will be 1/300
 
@@ -112,6 +114,7 @@ function update()
             CanoStatus = CanoStatus - 0.95/300
             set_aircraft_draw_argument_value(38,CanoStatus)
             CANOPY_ANI_INSIDE:set(CanoStatus)
+            CANOPY_INSIDE:set(CanoStatus)
         else
             LOCK_TIME_COUNT = LOCK_TIME_COUNT + 1
         end
@@ -124,6 +127,7 @@ function update()
             CanoStatus = CanoStatus + 0.95/300
             set_aircraft_draw_argument_value(38,CanoStatus)
             CANOPY_ANI_INSIDE:set(CanoStatus)
+            CANOPY_INSIDE:set(CanoStatus)
         else
             LOCK_TIME_COUNT = LOCK_TIME_COUNT + 1
         end
