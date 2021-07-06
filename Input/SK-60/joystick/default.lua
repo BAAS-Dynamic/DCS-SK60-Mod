@@ -83,6 +83,10 @@ join(res.keyCommands,{
 {down = iCommandPlaneSalvoOnOff, name = _('Salvo Mode'), category = _('Weapons')},
 {combos = {{key = 'JOY_BTN2'}}, down = iCommandPlanePickleOn,	up = iCommandPlanePickleOff, name = _('Weapon Release'), category = _('Weapons')},
 --{down = iCommandChangeGunRateOfFire, name = _('Cannon Rate Of Fire / Cut Of Burst select'), category = _('Weapons')},
+
+-- self define for EFM
+{down = Keys.YawDamperSwitch, name = _('Yaw Damper Engage'), category = _('Flight Control')},
+
 })
 -- joystick axes 
 join(res.axisCommands,{

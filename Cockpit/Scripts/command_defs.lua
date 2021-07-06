@@ -272,6 +272,7 @@ Keys =
     NoseWheelSteeringOff = 5051,
     -- LeftEngineOFF = __custom_counter(),
     -- RightEngineOFF = __custom_counter(),
+    YawDamperSwitch = 5052,
 }
 
 --从5000开始递增点击指令
