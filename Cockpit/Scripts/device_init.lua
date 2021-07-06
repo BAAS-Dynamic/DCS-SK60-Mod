@@ -45,6 +45,8 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EADI/
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ERPM/ERPM_init.lua",nil,{{"LN2_center","LN2_down","LN2_right"},{sx_l =  -0.0001,}}}
 -- NS430
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430/NS430_init.lua",nil,{{"GPS_center","GPS_down","GPS_right"},{sx_l =  -0.001,}}}
+-- E Altimeter
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EALT/EALT_init.lua",nil,{{"ALT_center","ALT_down","ALT_right"}}}
 -- HUD USE for AUTH display now
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"HUD_Center","HUD_Down","HUD_Right"}}}
 -- RADAR RAW DISPLAY
