@@ -35,6 +35,8 @@ local eadi_rf1_display = get_param_handle("L_EADI_DISPLAY_TR1")
 local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
 local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 
+local ealt_enable = get_param_handle("EALT_DIS_ENABLE")
+
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
 
@@ -109,4 +111,5 @@ function update()
     erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
     erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
 
+    ealt_enable:set(1);
 end
