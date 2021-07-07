@@ -29,10 +29,10 @@ Add(eadi_base_clip)
 
 local LLINEA_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 LLINEA_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-LLINEA_TEXT.init_pos          = {-0.22 , 0.42*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LLINEA_TEXT.init_pos          = {-0.2 , 0.45*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 LLINEA_TEXT.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-LLINEA_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
-LLINEA_TEXT.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LLINEA_TEXT.stringdefs        = {0.8*0.02,0.8 * 0.02, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LLINEA_TEXT.formats           = {"%.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 LLINEA_TEXT.element_params    = {"ALT_XK_DIGTAL"} -- top left first line display
 LLINEA_TEXT.controllers       = {{"text_using_parameter",0},}
 LLINEA_TEXT.collimated        = true
@@ -46,10 +46,10 @@ Add(LLINEA_TEXT)
 
 local LLINEB_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 LLINEB_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-LLINEB_TEXT.init_pos          = {-0.98 , -0.55*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LLINEB_TEXT.init_pos          = {-0.2 , -0.55*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 LLINEB_TEXT.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-LLINEB_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
-LLINEB_TEXT.formats           = {"%4.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LLINEB_TEXT.stringdefs        = {0.8*0.012,0.8 * 0.012, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LLINEB_TEXT.formats           = {"%.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 LLINEB_TEXT.element_params    = {"ALT_BARO_DIGTAL"} -- top left first line display
 LLINEB_TEXT.controllers       = {{"text_using_parameter",0},}
 LLINEB_TEXT.collimated        = true
@@ -63,10 +63,10 @@ Add(LLINEB_TEXT)
 
 local LLINECMARK_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 LLINECMARK_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-LLINECMARK_TEXT.init_pos          = {-0.98, -0.25*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LLINECMARK_TEXT.init_pos          = {-1, -0.25*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 LLINECMARK_TEXT.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-LLINECMARK_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
-LLINECMARK_TEXT.formats           = {"%.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LLINECMARK_TEXT.stringdefs        = {0.8*0.009,0.8 * 0.009, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LLINECMARK_TEXT.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 LLINECMARK_TEXT.element_params    = {"ALT_BARO_UNIT_DIGTAL"} -- top left first line display
 LLINECMARK_TEXT.controllers       = {{"text_using_parameter",0},}
 LLINECMARK_TEXT.collimated        = true
@@ -80,9 +80,9 @@ Add(LLINECMARK_TEXT)
 
 local RLINEAMARK_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 RLINEAMARK_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-RLINEAMARK_TEXT.init_pos          = {1 , 0.48*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RLINEAMARK_TEXT.init_pos          = {0.95 , 0.5*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 RLINEAMARK_TEXT.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-RLINEAMARK_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RLINEAMARK_TEXT.stringdefs        = {0.8*0.0075,0.8 * 0.0075, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 RLINEAMARK_TEXT.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 RLINEAMARK_TEXT.element_params    = {"ALT_UNIT_DIGTAL"} -- top left first line display
 RLINEAMARK_TEXT.controllers       = {{"text_using_parameter",0},}
@@ -97,10 +97,10 @@ Add(RLINEAMARK_TEXT)
 
 local RLINEA_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 RLINEA_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-RLINEA_TEXT.init_pos          = {0.1 , 0.3*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RLINEA_TEXT.init_pos          = {0.1 , 0.35*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 RLINEA_TEXT.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-RLINEA_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
-RLINEA_TEXT.formats           = {"%3.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RLINEA_TEXT.stringdefs        = {0.8*0.018,0.8 * 0.018, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RLINEA_TEXT.formats           = {"%03.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 RLINEA_TEXT.element_params    = {"ALT_XH_DIGTAL"} -- top left first line display
 RLINEA_TEXT.controllers       = {{"text_using_parameter",0},}
 RLINEA_TEXT.collimated        = true

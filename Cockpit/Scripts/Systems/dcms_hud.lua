@@ -40,8 +40,8 @@ local ealt_enable = get_param_handle("EALT_DIS_ENABLE")
 local ealt_unit_baro = get_param_handle("ALT_BARO_UNIT_DIGTAL")
 local ealt_unit = get_param_handle("ALT_UNIT_DIGTAL")
 local ealt_baro_correct = get_param_handle("ALT_BARO_DIGTAL")
-local ealt_x1000 = get_param_handle()
-local ealt_x100 = get_param_handle("ALT_XH_DIGTAL")
+local ealt_x1000_obj = get_param_handle("ALT_XK_DIGTAL")
+local ealt_x100_obj = get_param_handle("ALT_XH_DIGTAL")
 
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
@@ -124,14 +124,15 @@ function update()
 
     ealt_enable:set(1)
     ealt_unit:set("FT")
-    ealt_unit_baro:set("hPa")
+    ealt_unit_baro:set("HPA")
     ealt_baro_correct:set(1013)
-    ealt_x100:set(baro_x100)
-    if (baro_x1k == 0) then
+    ealt_x100_obj:set(baro_x100)
+    if baro_x1k == 0 then
         if baro_x100 < 0 then
             baro_x1k = "-0"
         else
             baro_x1k = "0"
         end
     end
+    ealt_x1000_obj:set(baro_x1k)
 end
