@@ -27,3 +27,87 @@ eadi_base_clip.controllers          = {{"opacity_using_parameter",0}}
 eadi_base_clip.isvisible		    = SHOW_MASKS
 Add(eadi_base_clip)
 
+local LLINEA_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+LLINEA_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
+LLINEA_TEXT.init_pos          = {-0.22 , 0.42*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LLINEA_TEXT.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+LLINEA_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LLINEA_TEXT.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LLINEA_TEXT.element_params    = {"ALT_XK_DIGTAL"} -- top left first line display
+LLINEA_TEXT.controllers       = {{"text_using_parameter",0},}
+LLINEA_TEXT.collimated        = true
+LLINEA_TEXT.use_mipfilter     = true
+LLINEA_TEXT.additive_alpha    = true
+LLINEA_TEXT.isvisible		  = true
+LLINEA_TEXT.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+LLINEA_TEXT.level			  = EALT_DEFAULT_NOCLIP_LEVEL
+LLINEA_TEXT.parent_element    = "ealt_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(LLINEA_TEXT)
+
+local LLINEB_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+LLINEB_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
+LLINEB_TEXT.init_pos          = {-0.98 , -0.55*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LLINEB_TEXT.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+LLINEB_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LLINEB_TEXT.formats           = {"%4.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LLINEB_TEXT.element_params    = {"ALT_BARO_DIGTAL"} -- top left first line display
+LLINEB_TEXT.controllers       = {{"text_using_parameter",0},}
+LLINEB_TEXT.collimated        = true
+LLINEB_TEXT.use_mipfilter     = true
+LLINEB_TEXT.additive_alpha    = true
+LLINEB_TEXT.isvisible		  = true
+LLINEB_TEXT.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+LLINEB_TEXT.level			  = EALT_DEFAULT_NOCLIP_LEVEL
+LLINEB_TEXT.parent_element    = "ealt_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(LLINEB_TEXT)
+
+local LLINECMARK_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+LLINECMARK_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
+LLINECMARK_TEXT.init_pos          = {-0.98, -0.25*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LLINECMARK_TEXT.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+LLINECMARK_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LLINECMARK_TEXT.formats           = {"%.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+LLINECMARK_TEXT.element_params    = {"ALT_BARO_UNIT_DIGTAL"} -- top left first line display
+LLINECMARK_TEXT.controllers       = {{"text_using_parameter",0},}
+LLINECMARK_TEXT.collimated        = true
+LLINECMARK_TEXT.use_mipfilter     = true
+LLINECMARK_TEXT.additive_alpha    = true
+LLINECMARK_TEXT.isvisible		  = true
+LLINECMARK_TEXT.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+LLINECMARK_TEXT.level			  = EALT_DEFAULT_NOCLIP_LEVEL
+LLINECMARK_TEXT.parent_element    = "ealt_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(LLINECMARK_TEXT)
+
+local RLINEAMARK_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+RLINEAMARK_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
+RLINEAMARK_TEXT.init_pos          = {1 , 0.48*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RLINEAMARK_TEXT.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+RLINEAMARK_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RLINEAMARK_TEXT.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RLINEAMARK_TEXT.element_params    = {"ALT_UNIT_DIGTAL"} -- top left first line display
+RLINEAMARK_TEXT.controllers       = {{"text_using_parameter",0},}
+RLINEAMARK_TEXT.collimated        = true
+RLINEAMARK_TEXT.use_mipfilter     = true
+RLINEAMARK_TEXT.additive_alpha    = true
+RLINEAMARK_TEXT.isvisible		  = true
+RLINEAMARK_TEXT.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+RLINEAMARK_TEXT.level			  = EALT_DEFAULT_NOCLIP_LEVEL
+RLINEAMARK_TEXT.parent_element    = "ealt_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(RLINEAMARK_TEXT)
+
+local RLINEA_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+RLINEA_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
+RLINEA_TEXT.init_pos          = {0.1 , 0.3*aspect}        -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RLINEA_TEXT.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+RLINEA_TEXT.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RLINEA_TEXT.formats           = {"%3.0f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RLINEA_TEXT.element_params    = {"ALT_XH_DIGTAL"} -- top left first line display
+RLINEA_TEXT.controllers       = {{"text_using_parameter",0},}
+RLINEA_TEXT.collimated        = true
+RLINEA_TEXT.use_mipfilter     = true
+RLINEA_TEXT.additive_alpha    = true
+RLINEA_TEXT.isvisible		  = true
+RLINEA_TEXT.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+RLINEA_TEXT.level			  = EALT_DEFAULT_NOCLIP_LEVEL
+RLINEA_TEXT.parent_element    = "ealt_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(RLINEA_TEXT)
