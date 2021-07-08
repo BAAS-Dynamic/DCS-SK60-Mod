@@ -13,8 +13,8 @@ local aspect       = GetAspect()
 local eadi_base_clip 			 	= CreateElement "ceMeshPoly" --This is the clipping layer
 eadi_base_clip.name 			    = "ealt_base_clip"
 eadi_base_clip.primitivetype   	    = "triangles"
-eadi_base_clip.vertices 		    = {{-0.92, 0.45*aspect},{-0.92, -0.25*aspect},{-1, -0.25*aspect},{-1, -aspect},{-0.2, -aspect},{-0.2, 0.45*aspect}--[[left unit]], {0.35, 0.5*aspect}, {0.35, 0.3*aspect}, {0.1, 0.3*aspect}, {0.1, -0.35*aspect}, {0.35, -0.35*aspect}, {0.35, -0.55*aspect}, {-0.1, -0.55*aspect}, {-0.1,-aspect},{1, -aspect}, {1,0.5 *aspect}, } --{ {1, aspect}, { 1,-aspect}, { -1,-aspect}, {-1,aspect},} --四个边角
-eadi_base_clip.indices 		        = {1,2,3,1,3,4,1,4,5,0,1,5--[[left display unit]],7,8,9,7,9,10,11,12,13,11,13,14,10,11,14,10,14,15,6,10,15}
+eadi_base_clip.vertices 		    = {{-0.92, 0.45*aspect},{-0.92, -0.25*aspect},{-1, -0.25*aspect},{-1, -aspect},{-0.2, -aspect},{-0.2, 0.45*aspect}--[[left unit]], {0.35, 0.5*aspect}, {0.35, 0.3*aspect}, {0.1, 0.3*aspect}, {0.1, -0.35*aspect}, {0.35, -0.35*aspect}, {0.35, -0.55*aspect}, {-0.1, -0.55*aspect}, {-0.1,-aspect},{1, -aspect}, {1,0.5 *aspect},--[[left display]] {-1,aspect},{-1,0.65*aspect},{-0.355,0.65*aspect},{-0.355,aspect},{-0.32,aspect},{-0.32,0.65*aspect},{0.32,0.65*aspect},{0.32,aspect},{0.355,aspect},{0.355,0.5*aspect},{1,0.5*aspect},{1,aspect},} --{ {1, aspect}, { 1,-aspect}, { -1,-aspect}, {-1,aspect},} --四个边角
+eadi_base_clip.indices 		        = {1,2,3,1,3,4,1,4,5,0,1,5--[[left display unit]],7,8,9,7,9,10,11,12,13,11,13,14,10,11,14,10,14,15,6,10,15--[[roght display unit]],16,17,18,16,18,19,20,21,22,20,22,23,24,25,26,24,26,27}
 eadi_base_clip.init_pos		        = {0, 0, 0}
 eadi_base_clip.init_rot		        = {0, 0, 0}
 eadi_base_clip.material		        = "EALT_BG_COLOR"
@@ -26,6 +26,21 @@ eadi_base_clip.element_params       = {"EALT_DIS_ENABLE"}              -- Initia
 eadi_base_clip.controllers          = {{"opacity_using_parameter",0}}
 eadi_base_clip.isvisible		    = SHOW_MASKS
 Add(eadi_base_clip)
+
+local eadi_dark_color_clip 			        = CreateElement "ceMeshPoly" --create second clip
+eadi_dark_color_clip.name 			        = "eadi_dark_color_clip"
+eadi_dark_color_clip.vertices 		        = {{-1.1,1.1*aspect},{-1.1,0.49*aspect},{1.1,0.49*aspect},{1.1,1.1*aspect},}
+eadi_dark_color_clip.indices 		        = {0,1,2,0,2,3}
+eadi_dark_color_clip.init_pos		        = {0, 0, 0}
+eadi_dark_color_clip.init_rot		        = {0, 0, 0}
+eadi_dark_color_clip.material		        = "EALT_BG_DARK_COLOR"
+eadi_dark_color_clip.h_clip_relation        = h_clip_relations.INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
+eadi_dark_color_clip.level			        = EALT_DEFAULT_LEVEL - 1
+eadi_dark_color_clip.change_opacity         = false
+eadi_dark_color_clip.element_params         = {"EALT_DIS_ENABLE"}              -- Initialize the main display control
+eadi_dark_color_clip.controllers            = {{"opacity_using_parameter",0}}
+eadi_dark_color_clip.isvisible		        = SHOW_MASKS
+Add(eadi_dark_color_clip)
 
 local LLINEA_TEXT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 LLINEA_TEXT.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)

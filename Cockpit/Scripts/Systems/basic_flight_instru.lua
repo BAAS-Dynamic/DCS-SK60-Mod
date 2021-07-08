@@ -92,7 +92,7 @@ function Altitude_Cal()
 
     if (get_elec_primary_ac_ok() == true) then
         -- print_message_to_user(radar_altitude)
-        baro_altitude = sensor_data.getBarometricAltitude()
+        baro_altitude = sensor_data.getBarometricAltitude() * METER_TO_INCH
 
         baro_x1w_target = math.modf(baro_altitude/10000)
         baro_x1k_target = math.modf(math.fmod(baro_altitude,10000)/1000)

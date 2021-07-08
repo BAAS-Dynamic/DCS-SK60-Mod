@@ -16,7 +16,8 @@ materials["RADAR_SCRIBE"] = {0,200,0,192}
 materials["GUNSIGHT_GLASS"] = {0,120,0,128}
 materials["TEST_COLOR"] = {50,250,0,255}
 materials["HUD_DAY_COLOR"]          = {0,200,0,200}
-materials["EALT_BG_COLOR"]	= {20,80,255,255}
+materials["EALT_BG_COLOR"]	= {0,50,255,255}
+materials["EALT_BG_DARK_COLOR"]	= {0,30,120,255}
 
 
 local IndicationFontPath = LockOn_Options.script_path.."../Textures/Fonts/"
