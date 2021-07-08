@@ -14,7 +14,7 @@ developerName = _("Saab"),
 
 fileMenuName = _("SK-60"),
 update_id    = "SK-60",
-version		 = "V1.5.1-alpha3",
+version		 = "V1.5.2-alpha1",
 state		 = "installed",
 info		 = _("SK-60 or Saab-105 is a swedish twin seat high performance training jet."),
 encyclopedia_path = current_mod_path..'/Encyclopedia',
@@ -110,7 +110,7 @@ else
     FM=nil
 end
 
-
+dofile(current_mod_path.."/sk-60_weapons.lua")
 dofile(current_mod_path.."/Views.lua")
 make_view_settings('SK-60', ViewSettings, SnapViews)
 make_flyable('SK-60',current_mod_path..'/Cockpit/Scripts/', FM , current_mod_path..'/Comm.lua')

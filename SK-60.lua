@@ -126,18 +126,18 @@ SK_60 =  {
 		{
 			pos 		        = {- 2.7, 0, 0.7668}, -- nozzle coords
 			elevation           = 0,                -- AFB cone elevation
-			diameter	        = 0.2,                -- AFB cone diameter
-			exhaust_length_ab   = 3,                -- lenght in m
-			exhaust_length_ab_K = 0.76,             -- AB animation
+			diameter	        = 0,                -- AFB cone diameter
+			exhaust_length_ab   = 0,                -- lenght in m
+			exhaust_length_ab_K = 0,             -- AB animation
 			smokiness_level 	= 0.0
 		},  -- end of [1]
 		[2] = 
 		{
 			pos 		        = {- 2.7, 0, -0.7668}, -- -07668 Y = -3469
 			elevation           = 0,                -- AFB cone elevation
-			diameter	        = 0.2,                -- AFB cone diameter
-			exhaust_length_ab   = 3,                -- lenght in m
-			exhaust_length_ab_K = 0.76,             -- AB animation
+			diameter	        = 0,                -- AFB cone diameter
+			exhaust_length_ab   = 0,                -- lenght in m
+			exhaust_length_ab_K = 0,             -- AB animation
 			smokiness_level 	= 0.0
 		},  -- end of [1]
 	},      -- end of engines_nozzles
@@ -250,21 +250,21 @@ ECM 			= "AN/ALQ-135"--F15
 
 --pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 8, 5, 7, 6},
 --pylons_enumeration = {2, 1, 3, 4, 5, 6, 7, 8, 9, 11, 10},  --test for new setup
-pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
+pylons_enumeration = {1, 3, 4, 2},
 	
 	Pylons =     {
 
-        pylon(1, 0, 0.6593, 0.35, -2.425, --Left Side Bay (1, 0, 0.4593, 1.2, -1.365
+        pylon(1, 0, 0, -0.2, -2.2, --Left Wing pylon
             {
 				use_full_connector_position = true,
             },
             {
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder red
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E742}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder green
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder blue
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E744}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder white
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder yellow
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E746}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder orange
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder orange
 				{ CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3 },
 				{CLSID = "{Robot74}"},
 				{CLSID	=	"{ARAKM70BHE}"}, -- ARAK M70HE pod
@@ -275,17 +275,17 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 				{ CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5 }, -- Mk-82 * 2 -- 暂无双联挂架
             }
         ),
-        pylon(2, 1, 0.6593, 0.35, 2.425, --Left Wing Pylon (2, 1, 0.4593, 1.2, 1.365
+        pylon(2, 1, 0, -0.2, 2.2, --Right Wing Pylon
             {
 				use_full_connector_position = true,
             },
             {
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E741}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder red
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E742}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder green
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E743}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder blue
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E744}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder white
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E745}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder yellow
-				{CLSID = "{A4BCC903-06C8-47bb-9937-A30FEDB4E746}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder orange
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder orange
 				{ CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3 },
 				{CLSID = "{Robot74}"},
 				{CLSID	=	"{ARAKM70BHE}"}, -- ARAK M70HE pod
@@ -296,17 +296,35 @@ pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 5, 7, 8, 6},
 				{ CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5 }, -- Mk-82 * 2 -- 暂无双联挂架
             }
         ),
-		pylon(3, 2, -1.2, 0, -0.6,
+		pylon(3, 2, - 2.5, 0, -0.7668,
             {
 				use_full_connector_position=true,
-                connector 		= "SmokeWhite",
-				DisplayName 	= "Smoke",
+				DisplayName 	= "Left Nozzle Smoke",
             },
             {
-                {CLSID = "{INV-SMOKE-WHITE}"},		--Smoke Generator - white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
             }
-        ),	
-},
+        ),
+		pylon(4, 2, - 2.5, 0, 0.7668,
+			{
+				use_full_connector_position=true,
+				DisplayName 	= "Right Nozzle Smoke",
+			},
+			{
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
+			}
+		),
+	},
 	
 	Tasks = {
         aircraft_task(CAP),

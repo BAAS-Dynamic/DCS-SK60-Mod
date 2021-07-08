@@ -273,6 +273,10 @@ Keys =
     -- LeftEngineOFF = __custom_counter(),
     -- RightEngineOFF = __custom_counter(),
     YawDamperSwitch = 5052,
+
+    -- Weapon Part
+    WingPylonSmokeOn = 5053,
+    NozzleSmokeOn = 5054,
 }
 
 --从5000开始递增点击指令
