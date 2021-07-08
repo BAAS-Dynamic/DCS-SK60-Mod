@@ -20,8 +20,23 @@ external_model_canopy_arg	 = 38
 -- 是否使用外部模型的座舱（指是否默认设置好114隐藏外部模型的座舱
 use_external_views = false
 
+local controllers = LoRegisterPanelControls()
+
 day_texture_set_value   = 0.0
 night_texture_set_value = 0.1
+
+-- mirror settings
+mirrors_data = {
+    center_point      = {0, 0, 0},--{ 0.2, 0.4 , 0.2576}, --{ 0.279, 0.4, 0.00 }, difference from cockpit_local_point {3.1, 0.55, 0.0},
+    width 			  = 1.5, --integrated (keep in mind that mirrors can be none planar )
+    aspect 			  = 2,--0.8/0.3,
+	rotation 	 	  = math.rad(10);
+	animation_speed   = 2.0;
+	near_clip 		  = 0.1;
+	middle_clip		  = 100;		
+	far_clip		  = 60000;	
+	arg_value_when_on = 1.0;
+}
 
 TEMP_VAR = {}
 
@@ -42,8 +57,6 @@ function create_cockpit_animation_controller(input_num, set_parameter, _arg_numb
 end
 
 counter_rec = 0
-
-local controllers = LoRegisterPanelControls()
 
 function _counter()
     counter_rec = counter_rec + 1

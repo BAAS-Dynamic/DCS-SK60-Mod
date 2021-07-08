@@ -88,5 +88,12 @@ join(res.keyCommands,{
 
 -- self define for EFM
 {down = Keys.YawDamperSwitch, name = _('Yaw Damper Engage'), category = _('Flight Control')},
+
+{combos = {{key = 'M'}},down = iCommandToggleMirrors,	name = _('Toggle Mirrors'),		category = _('View Cockpit') , features = {"Mirrors"}},
+
+--Multicrew Control
+{combos = {{key = 'J'}},	down = iCommandNetCrewRequestControl,	name = _('Request Aircraft Control'),	category = _('Flight Control')},
+{combos = {{key = '1'}},	down = iCommandViewCockpitChangeSeat, value_down = 1, name = _('Occupy Seat 1'),	category = _('View Cockpit')},
+{combos = {{key = '2'}},	down = iCommandViewCockpitChangeSeat, value_down = 2, name = _('Occupy Seat 2'),	category = _('View Cockpit')},
 })
 return res

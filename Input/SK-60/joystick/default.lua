@@ -87,6 +87,8 @@ join(res.keyCommands,{
 -- self define for EFM
 {down = Keys.YawDamperSwitch, name = _('Yaw Damper Engage'), category = _('Flight Control')},
 
+{down = iCommandToggleMirrors,	name = _('Toggle Mirrors'),		category = _('View Cockpit') , features = {"Mirrors"}},
+
 })
 -- joystick axes 
 join(res.axisCommands,{

@@ -11,7 +11,7 @@ ViewSettings = {
 		Allow360rotation	   = false,
 		},
 	[2] = {-- player slot 1
-		CockpitLocalPoint = { 2.11, 0.2153, 0.2576},-- with dummy at 0,0,0, 3rd is across, 2nd is up/down, 1st is forward backward 
+		CockpitLocalPoint = { 2.00, 0.2553, 0.2576},-- with dummy at 0,0,0, 3rd is across, 2nd is up/down, 1st is forward backward 
 		CameraViewAngleLimits  = {20.000000,140.000000},
 		CameraAngleRestriction = {false	   ,90.000000,0.500000},
 		CameraAngleLimits      = {200,-80.000000,110.000000},--Kopf drehen = links rechts,runter,hoch
