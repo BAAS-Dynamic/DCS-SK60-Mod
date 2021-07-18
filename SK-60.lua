@@ -254,7 +254,7 @@ pylons_enumeration = {1, 3, 4, 2},
 	
 	Pylons =     {
 
-        pylon(1, 0, 0, -0.2, -2.2, --Left Wing pylon
+        pylon(1, 0, 0, 0.1, -2.2, --Left Wing pylon
             {
 				use_full_connector_position = true,
             },
@@ -275,7 +275,7 @@ pylons_enumeration = {1, 3, 4, 2},
 				{ CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5 }, -- Mk-82 * 2 -- 暂无双联挂架
             }
         ),
-        pylon(2, 1, 0, -0.2, 2.2, --Right Wing Pylon
+        pylon(2, 1, 0, 0.1, 2.2, --Right Wing Pylon
             {
 				use_full_connector_position = true,
             },
