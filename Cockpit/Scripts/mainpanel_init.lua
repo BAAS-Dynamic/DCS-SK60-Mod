@@ -30,7 +30,7 @@ mirrors_data = {
     center_point      = { 0.418, 0.054 , 0.0 }, --{ 0.279, 0.4, 0.00 }, difference from cockpit_local_point {3.1, 0.55, 0.0},
     width 			  = 0.7, --integrated (keep in mind that mirrors can be none planar old=0.7)
     aspect 			  = 1,--0.8/0.3,
-	rotation 	 	  = math.rad(-6);
+	rotation 	 	  = math.rad(0);
 	animation_speed   = 2.0;
 	near_clip 		  = 0.1;
 	middle_clip		  = 100;		
