@@ -14,8 +14,9 @@ developerName = _("Saab"),
 
 fileMenuName = _("SK-60"),
 update_id    = "SK-60",
-version		 = "V1.5.2-alpha1",
+version		 = "V1.5.3-alpha1",
 state		 = "installed",
+developerName	= _("BAAS Group"),
 info		 = _("SK-60 or Saab-105 is a swedish twin seat high performance training jet."),
 encyclopedia_path = current_mod_path..'/Encyclopedia',
 binaries   =
