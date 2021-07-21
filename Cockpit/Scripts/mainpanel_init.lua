@@ -80,7 +80,6 @@ animation_list = {
     {"NoseWPOS_IND",318},
     {"MainLWPOS_IND", 319},
     {"MainRWPOS_IND", 320},
-    {"AIR_SPEED", 321},
     {"MACH_IND", 322},
     {"G_METER", 323},
     {"GYRO_ROLL", 324},
@@ -147,6 +146,7 @@ animation_list = {
     {"STICK_ROLL", 2},
     {"EFM_LEFT_THRUST_A", 104},
     {"EFM_RIGHT_THRUST_A", 105},
+    {"AIRSPEED_IND", 321},
 }
 
 --[[
