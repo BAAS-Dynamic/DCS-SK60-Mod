@@ -353,6 +353,9 @@ return {
     {down = Keys.WingPylonSmokeOn,	name = _('Smoke Pod On/Off'),		category = _('Weapons')},
     {down = Keys.NozzleSmokeOn,	name = _('Nozzle Smoke On/Off'),		category = _('Weapons')},
 
+    -- debug
+    {down = 5005,	name = _('DEBUG RECORD'),		category = _('Debugs')},
+
     --Multicrew Control
     {combos = {{key = 'J'}},	down = iCommandNetCrewRequestControl,	name = _('Request Aircraft Control'),	category = _('Flight Control')},
     {combos = {{key = '1'}},	down = iCommandViewCockpitChangeSeat, value_down = 1, name = _('Occupy Seat 1'),	category = _('View Cockpit')},
