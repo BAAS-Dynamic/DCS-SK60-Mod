@@ -35,10 +35,10 @@ local console_light_switch = _switch_counter()
 local approach_index_switch = _switch_counter()
 
 target_status = {
-    {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_124"), "PTN_124"},
+    {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
     {taxi_light_switch , SWITCH_OFF, get_param_handle("PTN_125"), "PTN_125"},
     {tail_navi_switch , SWITCH_OFF, get_param_handle("PTN_128"), "PTN_128"},
-    {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_129"), "PTN_129"},
+    {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_417"), "PTN_417"},
     {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
     {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
     {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
@@ -62,10 +62,10 @@ function post_initialize()
     local birth = LockOn_Options.init_conditions.birth_place
     if birth == "GROUND_HOT" then
         target_status = {
-            {strobe_light_switch , SWITCH_ON, get_param_handle("PTN_124"), "PTN_124"},
+            {strobe_light_switch , SWITCH_ON, get_param_handle("PTN_429"), "PTN_429"},
             {taxi_light_switch , SWITCH_OFF, get_param_handle("PTN_125"), "PTN_125"},
             {tail_navi_switch , SWITCH_ON, get_param_handle("PTN_128"), "PTN_128"},
-            {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_129"), "PTN_129"},
+            {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_417"), "PTN_417"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
             {instrument_light_switch , SWITCH_ON, get_param_handle("PTN_132"), "PTN_132"},
@@ -74,10 +74,10 @@ function post_initialize()
         }
     elseif birth == "AIR_HOT" then
         target_status = {
-            {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_124"), "PTN_124"},
+            {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
             {taxi_light_switch , SWITCH_OFF, get_param_handle("PTN_125"), "PTN_125"},
             {tail_navi_switch , SWITCH_OFF, get_param_handle("PTN_128"), "PTN_128"},
-            {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_129"), "PTN_129"},
+            {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_417"), "PTN_417"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
             {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
@@ -87,7 +87,8 @@ function post_initialize()
     end
 end
 
-LightSystem:listen_command(Keys.LightStrobe)
+LightSystem:listen_command(Keys.LightStrobeUP)
+LightSystem:listen_command(Keys.LightStrobeDOWN)
 LightSystem:listen_command(Keys.LightTaxi)
 LightSystem:listen_command(Keys.LightNaviWingUP)
 LightSystem:listen_command(Keys.LightNaviWingDOWN)
@@ -103,9 +104,14 @@ LightSystem:listen_command(Keys.LightApproIndexBRT)
 
 function SetCommand(command, value)
     local new_value
-    if command == Keys.LightStrobe then
-        -- current_status[strobe_light_switch][3] = current_status[strobe_light_switch][2]
-        target_status[strobe_light_switch][2] = 1 - target_status[strobe_light_switch][2]
+    if command == Keys.LightStrobeUP then
+        if target_status[strobe_light_switch][2] < 0.5 then
+            target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] + 1
+        end
+    elseif command == Keys.LightStrobeDOWN then
+        if target_status[strobe_light_switch][2] > - 0.5 then
+            target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] - 1
+        end    
     elseif command == Keys.LightTaxi then
         target_status[taxi_light_switch][2] = 1 - target_status[taxi_light_switch][2]
     elseif command == Keys.LightNaviTailUP then
@@ -188,38 +194,52 @@ function SetCommand(command, value)
 end
 
 STROBE_FLASH_COUNT = 0
+STROBE_ROTATION = 0
 
 function update_externel_light_status()
+    local anticolmulti = 1;
     if get_elec_primary_ac_ok() == true then
         if current_status[wing_navi_switch][2] < 0 then
-            set_aircraft_draw_argument_value(190, - current_status[wing_navi_switch][2] * 0.5)
+            --set_aircraft_draw_argument_value(190, - current_status[wing_navi_switch][2] * 0.5)
         else
-            set_aircraft_draw_argument_value(190, current_status[wing_navi_switch][2]) -- wing navi 190
-        end
-        if current_status[tail_navi_switch][2] < 0 then
-            set_aircraft_draw_argument_value(192, - current_status[tail_navi_switch][2] * 0.5)
-        else
-            set_aircraft_draw_argument_value(192, current_status[tail_navi_switch][2]) -- tail navi 192
-        end
-        if current_status[formation_switch][2] < 0 then
-            set_aircraft_draw_argument_value(192, - current_status[formation_switch][2] * 0.5)
-        else
-            set_aircraft_draw_argument_value(88, current_status[formation_switch][2]) -- formation 88
+            --set_aircraft_draw_argument_value(190, current_status[wing_navi_switch][2]) -- wing navi 190
         end
         set_aircraft_draw_argument_value(51, current_status[taxi_light_switch][2]) -- taxi light 51
-        if current_status[strobe_light_switch][2] > 0.5 then
+
+        -- rotation mode
+        if math.abs(current_status[strobe_light_switch][2]) > 0.5 then
+            if (current_status[strobe_light_switch][2] < -0.5) then
+                anticolmulti = 0.5
+            else
+                anticolmulti = 1
+            end
+            set_aircraft_draw_argument_value(192, anticolmulti)
+            STROBE_ROTATION = STROBE_ROTATION + 0.08
+            if (STROBE_ROTATION > 1) then
+                STROBE_ROTATION = STROBE_ROTATION - 1
+            end
+            set_aircraft_draw_argument_value(193, STROBE_ROTATION)
+        end
+        --[[
+        if abs(current_status[strobe_light_switch][2]) > 0.5 then
             STROBE_FLASH_COUNT = STROBE_FLASH_COUNT + 0.05
             if STROBE_FLASH_COUNT > 2 then
                 STROBE_FLASH_COUNT = 0
             end
-            if STROBE_FLASH_COUNT <= 1 then
-                set_aircraft_draw_argument_value(83, STROBE_FLASH_COUNT)
+            if (current_status[strobe_light_switch][2]) < -0.5) then
+                anticolmulti = 0.5
             else
-                set_aircraft_draw_argument_value(83, 2 - STROBE_FLASH_COUNT)
+                anticolmulti = 1
             end
-        elseif current_status[strobe_light_switch][2] < 0.5 then
+            if STROBE_FLASH_COUNT <= 1 then
+                set_aircraft_draw_argument_value(192, STROBE_FLASH_COUNT * anticolmulti)
+            else
+                set_aircraft_draw_argument_value(192, (2 - STROBE_FLASH_COUNT) * anticolmulti)
+            end
+        elseif abs(current_status[strobe_light_switch][2]) < 0.5 then
             STROBE_FLASH_COUNT = 0
         end
+        ]]-- flash mode
     end
 end
 

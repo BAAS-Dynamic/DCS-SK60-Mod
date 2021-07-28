@@ -390,10 +390,10 @@ multi_tumb_click_list = {
     {"PTN_148", "Fuselarge Tank Dump", devices.FUEL_SYSTEM, 148, Keys.FuseTankDump},
     {"PTN_149", "Fuel Ready", devices.FUEL_SYSTEM, 149, Keys.FuelReadyUP, Keys.FuelReadyDOWN},
 
-    {"PTN_124", "Collision Light", devices.LIGHT_SYSTEM, 124, Keys.LightStrobe},
+    {"PTN_429", "Anti-Collision Light", devices.LIGHT_SYSTEM, 429, Keys.LightStrobeUP, Keys.LightStrobeDOWN},
     {"PTN_125", "Taxi/Probe Light", devices.LIGHT_SYSTEM, 125, Keys.LightTaxi},
     {"PTN_128", "Tail Navigation Light", devices.LIGHT_SYSTEM, 128, Keys.LightNaviTailUP, Keys.LightNaviTailDOWN},
-    {"PTN_129", "Wing Navigation Light", devices.LIGHT_SYSTEM, 129, Keys.LightNaviWingUP, Keys.LightNaviWingDOWN},
+    {"PTN_417", "Navigation Light", devices.LIGHT_SYSTEM, 417, Keys.LightNaviWingUP},
     {"PTN_130", "Formation Light", devices.LIGHT_SYSTEM, 130, Keys.LightFormationUP, Keys.LightFormationDOWN},
     {"PTN_133", "Flood Light", devices.LIGHT_SYSTEM, 133, Keys.LightFloodUP, Keys.LightFloodDOWN},
     -- autopilot

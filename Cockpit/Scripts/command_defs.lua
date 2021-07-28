@@ -140,7 +140,8 @@ Keys =
     FuelReadyDOWN = __custom_counter(),
     BoostPumpTestDOWN = __custom_counter(),
 
-    LightStrobe = __custom_counter(),
+    LightStrobeUP = __custom_counter(),
+    LightStrobeDOWN = __custom_counter(),
     LightTaxi = __custom_counter(),
     LightNaviWingUP = __custom_counter(),
     LightNaviWingDOWN = __custom_counter(),

@@ -491,16 +491,7 @@ pylons_enumeration = {1, 3, 4, 2},
 	
     [1] = { typename = "collection", -- WOLALIGHT_STROBES
 					lights = {	
-						--{typename  = "natostrobelight",	argument_1  = 199, period = 1.2, color = {0.8,0,0}, connector = "RESERV_BANO_1"},--R
-						--{typename  = "natostrobelight",	argument_1  = 199, period = 1.2, color = {0.8,0,0}, connector = "RESERV1_BANO_1"},--L
-						--{typename  = "natostrobelight",	argument_1  = 199, period = 1.2, color = {0.8,0,0}, connector = "RESERV2_BANO_1"},--H
-						--{typename  = "natostrobelight",	argument_1  = 195, period = 1.2, color = {0.8,0,0}, connector = "WHITE_BEACON L"},--195
-						--{typename  = "natostrobelight",	argument_1  = 196, period = 1.2, color = {0.8,0,0}, connector = "WHITE_BEACON R"},--196
-						--{typename  = "natostrobelight",	argument_1  = 192, period = 1.2, color = {0.8,0,0}, connector = "BANO_0_BACK"},
-						--{typename  = "natostrobelight",	argument_1  = 195, period = 1.2, color = {0.8,0,0}, connector = "RED_BEACON L"},
-						--{typename  = "natostrobelight",	argument_1  = 196, period = 1.2, color = {0.8,0,0}, connector = "RED_BEACON R"},
-						--{typename = "argnatostrobelight", argument = 195, period = 1.2, phase_shift = 0},-- beacon lights
-						{typename = "argnatostrobelight", argument = 199, period = 1.2, phase_shift = 0},-- beacon lights
+						{typename = "argumentlight", argument = 192, period = 1.2, phase_shift = 3},-- beacon lights
 							}
 			},
 	[2] = { typename = "collection",
@@ -518,10 +509,6 @@ pylons_enumeration = {1, 3, 4, 2},
 			},
 	[4] = { typename = "collection", -- formation_lights_default
 					lights = {
-						--{typename  = "argumentlight" ,argument  = 200,},--formation_lights_tail_1 = 200;
-						--{typename  = "argumentlight" ,argument  = 201,},--formation_lights_tail_2 = 201;
-						--{typename  = "argumentlight" ,argument  = 202,},--formation_lights_left   = 202;
-						--{typename  = "argumentlight" ,argument  = 203,},--formation_lights_right  = 203;
 						{typename  = "argumentlight" ,argument  =  88,},--old aircraft arg 
 							}
 			},

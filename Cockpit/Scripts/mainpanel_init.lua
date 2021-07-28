@@ -141,6 +141,9 @@ animation_list = {
     
     {"PTN_601", 601},
 
+    {"PTN_417", 417}, -- Nav light
+    {"PTN_429", 429}, -- Anti Col light
+
     {"RUDDER_PADEL", 3},
     {"STICK_PITCH", 1, {-1, 1}, {1, -1}},
     {"STICK_ROLL", 2},
