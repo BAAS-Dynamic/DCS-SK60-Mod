@@ -27,15 +27,15 @@ night_texture_set_value = 0.1
 
 -- mirror settings
 mirrors_data = {
-    center_point      = { 0.418, 0.054 , 0.0 }, --{ 0.279, 0.4, 0.00 }, difference from cockpit_local_point {3.1, 0.55, 0.0},
-    width 			  = 0.7, --integrated (keep in mind that mirrors can be none planar old=0.7)
-    aspect 			  = 1,--0.8/0.3,
-	rotation 	 	  = math.rad(0);
-	animation_speed   = 2.0;
-	near_clip 		  = 0.1;
-	middle_clip		  = 100;		
-	far_clip		  = 60000;	
-	arg_value_when_on = 1.0;
+    center_point      	= { 0.30,0.12, 0.0 }, --{ 0.279, 0.4, 0.00 }, difference from cockpit_local_point {3.1, 0.55, 0.0},
+    width 			  	= 1.0, --integrated (keep in mind that mirrors can be none planar old=0.7)
+    aspect 			  	= 1.0,--0.8/0.3,
+	rotation 	 	 	= math.rad(-15);
+	animation_speed  	= 2.0;
+	near_clip 		  	= 0.1;
+	--middle_clip		= 100;		
+	--far_clip		  	= 60000;	
+	arg_value_when_on 	= 1.0;
 }
 
 TEMP_VAR = {}
