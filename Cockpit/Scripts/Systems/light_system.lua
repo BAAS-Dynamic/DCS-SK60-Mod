@@ -219,6 +219,9 @@ function update_externel_light_status()
                 STROBE_ROTATION = STROBE_ROTATION - 1
             end
             set_aircraft_draw_argument_value(193, STROBE_ROTATION)
+        else
+            anticolmulti = 0
+            set_aircraft_draw_argument_value(192, anticolmulti)
         end
         --[[
         if abs(current_status[strobe_light_switch][2]) > 0.5 then
