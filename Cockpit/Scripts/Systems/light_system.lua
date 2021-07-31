@@ -6,7 +6,7 @@ dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 
 --设置循环次数
-local update_rate = 0.05 -- 20次每秒
+local update_rate = 0.02 -- 50次每秒
 make_default_activity(update_rate)
 
 --初始化DCS读取API
@@ -214,7 +214,7 @@ function update_externel_light_status()
                 anticolmulti = 1
             end
             set_aircraft_draw_argument_value(192, anticolmulti)
-            STROBE_ROTATION = STROBE_ROTATION + 0.04
+            STROBE_ROTATION = STROBE_ROTATION + 0.02
             if (STROBE_ROTATION > 1) then
                 STROBE_ROTATION = STROBE_ROTATION - 1
             end
