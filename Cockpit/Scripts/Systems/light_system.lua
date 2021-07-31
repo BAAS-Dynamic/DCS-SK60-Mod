@@ -214,7 +214,7 @@ function update_externel_light_status()
                 anticolmulti = 1
             end
             set_aircraft_draw_argument_value(192, anticolmulti)
-            STROBE_ROTATION = STROBE_ROTATION + 0.08
+            STROBE_ROTATION = STROBE_ROTATION + 0.04
             if (STROBE_ROTATION > 1) then
                 STROBE_ROTATION = STROBE_ROTATION - 1
             end
