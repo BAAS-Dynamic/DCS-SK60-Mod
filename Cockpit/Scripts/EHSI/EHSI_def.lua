@@ -17,7 +17,7 @@ DEBUG_COLOR                 = {0,255,0,200}
 
 EHSI_DAY_COLOR              = {200,200,200,255}
 
-basic_ehsi_material = MakeMaterial(EHSI_IND_TEX_PATH.."EHSI_BASE_IND.dds", EHSI_DAY_COLOR)
+basic_ehsi_material = MakeMaterial(EHSI_IND_TEX_PATH.."EHSI_BASE_IND.dds", EHSI_DAY_COLOR) -- white
 
 default_ehsi_x = 2000
 default_ehsi_y = 2000

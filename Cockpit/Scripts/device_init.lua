@@ -48,7 +48,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430
 -- E Altimeter
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EALT/EALT_init.lua",nil,{{"ALT_center","ALT_down","ALT_right"}}}
 -- SANDEL SN3500 EHSI
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EALT/EALT_init.lua",nil,{{"ALT_center","ALT_down","ALT_right"}}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EHSI/EHSI_init.lua",nil,{{"EHSI_center","EHSI_down","EHSI_right"}}}
 -- HUD USE for AUTH display now
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"HUD_Center","HUD_Down","HUD_Right"}}}
 -- RADAR RAW DISPLAY
