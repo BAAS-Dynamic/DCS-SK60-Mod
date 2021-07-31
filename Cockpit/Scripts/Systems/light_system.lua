@@ -247,7 +247,7 @@ function update_externel_light_status()
 end
 
 function update_switch_status()
-    local switch_moving_step = 0.25
+    local switch_moving_step = 0.15
     for k,v in pairs(target_status) do
         if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
             current_status[k][2] = target_status[k][2]
