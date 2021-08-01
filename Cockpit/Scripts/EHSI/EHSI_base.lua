@@ -45,9 +45,9 @@ Add(ehsi_compass_rot_ctrl)
 
 -- full view compass center distance
 local hsi_compass_pattern 				       = CreateElement "ceTexPoly"
-hsi_compass_pattern.vertices                   = EHSI_vert_gen(3500,3500)
+hsi_compass_pattern.vertices                   = EHSI_vert_gen(1751,876)
 hsi_compass_pattern.indices                    = {0,1,2,2,3,0}
-hsi_compass_pattern.tex_coords                 = tex_coord_gen(256,1024,512,1536,2048,2048)
+hsi_compass_pattern.tex_coords                 = tex_coord_gen(1024,256,512,256,2048,2048)
 hsi_compass_pattern.material                   = basic_ehsi_material
 hsi_compass_pattern.name 			           = create_guid_string()
 hsi_compass_pattern.init_pos                   = {0, 0, 0}
@@ -85,10 +85,10 @@ HEADING = {"N","E","S","W"}
 
 for i = 0, 330, 30 do
     local compass_mark             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-    compass_mark.material          = EHSI_font_white    --FONT_             --Material type (note the font material created above)
-    compass_mark.init_pos          = {(math.cos(math.rad(i)) * 1650)/default_ehsi_x, (math.sin(math.rad(i)) * 1650)/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    compass_mark.material          = "EHSI_font_white"    --FONT_             --Material type (note the font material created above)
+    compass_mark.init_pos          = {(math.cos((- math.rad(i-90))) * 1300)/default_ehsi_x, (math.sin((- math.rad(i-90))) * 1300)/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     compass_mark.alignment         = "CenterCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
-    compass_mark.stringdefs        = {0.8*0.004,0.8 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+    compass_mark.stringdefs        = {1.1*0.004,1.1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     if (math.fmod(i, 90) == 0) then
         compass_mark.formats           = {HEADING[i/90+1], "%s"}
     else

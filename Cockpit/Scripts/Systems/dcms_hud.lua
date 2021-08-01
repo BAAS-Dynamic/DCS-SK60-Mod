@@ -142,5 +142,5 @@ function update()
 
     ehsi_enable:set(1)
     ehsi_full_compass_enable:set(1)
-    ehsi_compass:set(sensor_data.sensor_data.getMagneticHeading() * RAD_TO_DEGREE)
+    ehsi_compass:set(sensor_data.getMagneticHeading() * RAD_TO_DEGREE  / 180)
 end
