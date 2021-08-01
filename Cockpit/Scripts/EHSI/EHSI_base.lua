@@ -43,7 +43,22 @@ ehsi_compass_rot_ctrl.parent_element	        = "ehsi_base_clip"
 ehsi_compass_rot_ctrl.isvisible                 = false
 Add(ehsi_compass_rot_ctrl)
 
--- full view compass center distance
+-- Full view course selection control element
+local ehsi_compass_rot_ctrl                     = CreateElement "ceSimple"
+ehsi_compass_rot_ctrl.name                      = "ehsi_course_rot_ctrl"
+ehsi_compass_rot_ctrl.init_pos                  = {0, 0, 0}
+ehsi_compass_rot_ctrl.element_params            = {"COURSE_ROLL","COMPASS_FULL_ENABLE",}
+ehsi_compass_rot_ctrl.controllers               = {{"rotate_using_parameter", 0, 0.0174532925199433 * 180},{"opacity_using_parameter",1}}
+ehsi_compass_rot_ctrl.collimated	            = true
+ehsi_compass_rot_ctrl.use_mipfilter             = true
+ehsi_compass_rot_ctrl.additive_alpha            = true
+ehsi_compass_rot_ctrl.h_clip_relation           = h_clip_relations.COMPARE
+ehsi_compass_rot_ctrl.level                     = EHSI_DEFAULT_NOCLIP_LEVEL
+ehsi_compass_rot_ctrl.parent_element	        = "ehsi_compass_rot_ctrl"
+ehsi_compass_rot_ctrl.isvisible                 = false
+Add(ehsi_compass_rot_ctrl)
+
+-- full view compass center distance ind
 local hsi_compass_pattern 				       = CreateElement "ceTexPoly"
 hsi_compass_pattern.vertices                   = EHSI_vert_gen(1751,876)
 hsi_compass_pattern.indices                    = {0,1,2,2,3,0}
@@ -59,7 +74,7 @@ hsi_compass_pattern.use_mipfilter              = true
 hsi_compass_pattern.additive_alpha             = true
 hsi_compass_pattern.h_clip_relation            = h_clip_relations.COMPARE
 hsi_compass_pattern.level                      = EHSI_DEFAULT_NOCLIP_LEVEL
-hsi_compass_pattern.parent_element	           = "ehsi_base_clip"
+hsi_compass_pattern.parent_element	           = "ehsi_course_rot_ctrl"
 Add(hsi_compass_pattern)
 
 -- full view compass element

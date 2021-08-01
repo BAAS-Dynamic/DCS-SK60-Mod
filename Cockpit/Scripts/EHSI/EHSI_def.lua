@@ -16,8 +16,12 @@ EHSI_DEFAULT_NOCLIP_LEVEL  = EHSI_DEFAULT_LEVEL - 1
 DEBUG_COLOR                 = {0,255,0,200}
 
 EHSI_DAY_COLOR              = {200,200,200,255}
+EHSI_GREEN                  = {4,239,113,255}
+EHSI_PURPLE                 = {217,40,113,255}
 
 basic_ehsi_material = MakeMaterial(EHSI_IND_TEX_PATH.."EHSI_BASE_IND.dds", EHSI_DAY_COLOR) -- white
+green_ehsi_material = MakeMaterial(EHSI_IND_TEX_PATH.."EHSI_BASE_IND.dds", EHSI_GREEN) -- white
+purple_ehsi_material = MakeMaterial(EHSI_IND_TEX_PATH.."EHSI_BASE_IND.dds", EHSI_PURPLE) -- white
 
 default_ehsi_x = 2000
 default_ehsi_y = 2000

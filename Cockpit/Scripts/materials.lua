@@ -336,7 +336,8 @@ fontdescription["font_LCD"] = {
 	fonts["EADI_font_black"]		= {fontdescription["font_EADI"], 10, {0,0,0,255} }
 	fonts["LCD_font_white"]			= {fontdescription["font_LCD"], 10, {200,200,200,255} }
 	fonts["EHSI_font_white"]		= {fontdescription["font_EADI"], 10, {200,200,200,255} }
-
+	fonts["EHSI_font_green"]		= {fontdescription["font_EADI"], 10, {4,239,113,255} }
+	fonts["EHSI_font_purple"]		= {fontdescription["font_EADI"], 10, {217,40,113,255} }
 
 -- force preload resources to avoid freeze on start (list of texture files)
 --[[
