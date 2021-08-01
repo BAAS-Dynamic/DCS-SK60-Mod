@@ -48,7 +48,11 @@ local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
 
 local gps_base = get_param_handle("NS430_POWER")
 
-local hud_adi_movx = get_param_handle("HUD_ADI_MOVX") 
+local hud_adi_movx = get_param_handle("HUD_ADI_MOVX")
+
+local ehsi_enable = get_param_handle("EHSI_DIS_ENABLE")
+local ehsi_full_compass_enable = get_param_handle("COMPASS_FULL_ENABLE")
+local ehsi_compass = get_param_handle("COMPASS_ROLL")
 
 local sensor_data = get_base_data()
 local ias_conversion_to_knots = 1.9504132
@@ -135,4 +139,8 @@ function update()
         end
     end
     ealt_x1000_obj:set(baro_x1k)
+
+    ehsi_enable:set(1)
+    ehsi_full_compass_enable:set(1)
+    ehsi_compass:set(sensor_data.sensor_data.getMagneticHeading() * RAD_TO_DEGREE)
 end
