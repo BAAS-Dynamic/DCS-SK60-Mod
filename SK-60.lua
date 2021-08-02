@@ -431,6 +431,34 @@ pylons_enumeration = {1, 3, 4, 2},
 		}, -- end of engine
 	},
 
+	net_animation = -- transmit animations over network (multiplayer)
+	{
+        0, -- nose gear
+		1, -- nose suspension
+		2, -- nose wheel steering
+        3, -- right gear
+		4, -- right suspension
+        5, -- left gear
+		6, -- left suspension
+        9, -- right flap
+        10, -- left flap
+        11, -- right aileron
+        12, -- left aileron
+        15, -- right elevator
+        17, -- rudder
+        21, -- air brake
+        38, -- canopy
+		39, -- pilot head
+		76,
+		77,
+		99, 
+		190, 
+		191, 
+		192,
+		193, -- launch bar
+		209,
+	},
+
 
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
 	Damage = {

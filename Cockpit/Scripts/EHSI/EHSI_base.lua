@@ -166,7 +166,7 @@ Add(hsi_course_tail)
 
 local compass_mark             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 compass_mark.material          = "EHSI_font_white"    --FONT_             --Material type (note the font material created above)
-compass_mark.init_pos          = {0 , 1750/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+compass_mark.init_pos          = {0 , 1800/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 compass_mark.alignment         = "CenterDown"       --Alignment settings：Left/Right/Center; Top/Down/Center
 compass_mark.stringdefs        = {1*0.004,1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 compass_mark.formats           = {"%03.0f;", "%s"}
