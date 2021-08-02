@@ -53,6 +53,9 @@ local hud_adi_movx = get_param_handle("HUD_ADI_MOVX")
 local ehsi_enable = get_param_handle("EHSI_DIS_ENABLE")
 local ehsi_full_compass_enable = get_param_handle("COMPASS_FULL_ENABLE")
 local ehsi_compass = get_param_handle("COMPASS_ROLL")
+local nav_mode = get_param_handle("ACTIVE_NAV_MOD")
+local ehsi_mag_heading = get_param_handle("EHSI_HEADING")
+local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 
 local sensor_data = get_base_data()
 local ias_conversion_to_knots = 1.9504132
@@ -143,4 +146,13 @@ function update()
     ehsi_enable:set(1)
     ehsi_full_compass_enable:set(1)
     ehsi_compass:set(sensor_data.getMagneticHeading() * RAD_TO_DEGREE  / 180)
+    local deg_heading = sensor_data.getMagneticHeading() * RAD_TO_DEGREE
+    if deg_heading < 0 then
+        deg_heading = deg_heading + 360
+    elseif deg_heading > 360 then
+        deg_heading = deg_heading - 360
+    end
+    ehsi_mag_heading:set(deg_heading)
+    ehsi_course_heading:set(0 * RAD_TO_DEGREE)
+    nav_mode:set(1)
 end
