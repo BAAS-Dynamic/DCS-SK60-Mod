@@ -377,18 +377,6 @@ elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BRE
 elements["PTN_118"] = default_button("Boost Pump Test", devices.FUEL_SYSTEM, Keys.BoostPumpTestUP, Keys.BoostPumpTestDOWN, 118)
 
 multi_tumb_click_list = {
-    {"PTN_101", "Fuel Gauge Main Select", devices.FUEL_SYSTEM, 101, Keys.FuelDisMain},
-    {"PTN_102", "Fuel Gauge Wing Select", devices.FUEL_SYSTEM, 102, Keys.FuelDisWing},
-    {"PTN_103", "Fuel Gauge CTR Select", devices.FUEL_SYSTEM, 103, Keys.FuelDisCtr},
-    {"PTN_104", "Fuel Gauge L out Select", devices.FUEL_SYSTEM, 104, Keys.FuelDisLout},
-    {"PTN_105", "Fuel Gauge L in Select", devices.FUEL_SYSTEM, 105, Keys.FuelDisLin},
-    {"PTN_106", "Fuel Gauge R in Select", devices.FUEL_SYSTEM, 106, Keys.FuelDisRin},
-    {"PTN_107", "Fuel Gauge R out Select", devices.FUEL_SYSTEM, 107, Keys.FuelDisRout},
-    {"PTN_145", "Fuel Tank Press", devices.FUEL_SYSTEM, 145, Keys.FuelTankPressUP, Keys.FuelTankPressDOWN},
-    {"PTN_146", "Wing Drop Tank Trans", devices.FUEL_SYSTEM, 146, Keys.WingDropTankTransUP, Keys.WingDropTankTransDOWN},
-    {"PTN_147", "Wing Tank Dump", devices.FUEL_SYSTEM, 147, Keys.WingTankDump},
-    {"PTN_148", "Fuselarge Tank Dump", devices.FUEL_SYSTEM, 148, Keys.FuseTankDump},
-    {"PTN_149", "Fuel Ready", devices.FUEL_SYSTEM, 149, Keys.FuelReadyUP, Keys.FuelReadyDOWN},
 
     {"PTN_429", "Anti-Collision Light", devices.LIGHT_SYSTEM, 429, Keys.LightStrobeUP, Keys.LightStrobeDOWN},
     {"PTN_125", "Taxi/Probe Light", devices.LIGHT_SYSTEM, 125, Keys.LightTaxi},
@@ -396,70 +384,9 @@ multi_tumb_click_list = {
     {"PTN_417", "Navigation Light", devices.LIGHT_SYSTEM, 417, Keys.LightNaviWingUP},
     {"PTN_130", "Formation Light", devices.LIGHT_SYSTEM, 130, Keys.LightFormationUP, Keys.LightFormationDOWN},
     {"PTN_133", "Flood Light", devices.LIGHT_SYSTEM, 133, Keys.LightFloodUP, Keys.LightFloodDOWN},
-    -- autopilot
-    {"PTN_172", "Autopilot engage", devices.AUTO_PILOT, 172, Keys.AutoPilotPowerSwitch},
-    {"PTN_173", "Autopilot Mode", devices.AUTO_PILOT, 173, Keys.AutoPilotStabSwitch},
-    {"PTN_174", "Autopilot CMD (Not Used)", devices.AUTO_PILOT, 174, Keys.AutoPilotCmdSwitch},
-    {"PTN_175", "Autopilot Alt hold", devices.AUTO_PILOT, 175, Keys.AutoPilotAltHoldSwitch},
-    {"PTN_177", "Autopilot Mach hold", devices.AUTO_PILOT, 176, Keys.AutoPilotMachHoldSwitch},
-    
-    -- ECS Aircondition
-    {"PTN_209", "Cockpit Aircondition", devices.ECS_SYSTEM, 209, Keys.AircondCockpitSwitchUP, Keys.AircondCockpitSwitchDOWN},
-    {"PTN_210", "Aircondition Mode", devices.ECS_SYSTEM, 210, Keys.AircondAutoManSwitch},
-    {"PTN_212", "Aircondition Master", devices.ECS_SYSTEM, 212, Keys.AircondMasterSwitch},
-    {"PTN_214", "CMPTR EMER cooling", devices.ECS_SYSTEM, 214, Keys.AircondCMPTREmerUP, Keys.AircondCMPTREmerDOWN},
-    {"PTN_215", "Engine Anti ice", devices.ECS_SYSTEM, 215, Keys.DeiceEngine},
-    {"PTN_216", "Windshield Wash and Heat", devices.ECS_SYSTEM, 216, Keys.DeiceWindShieldUP, Keys.DeiceWindShieldDOWN},
-    {"PTN_217", "Pitot Heat", devices.ECS_SYSTEM, 217, Keys.DeicePitot},
 
-    -- Carrier landing ext
-    {"PTN_053", "Hook Handle", devices.GEAR_SYSTEM, 1153, Keys.HookHandle},
-    {"PTN_054", "Launch Bar Handle", devices.GEAR_SYSTEM, 1144, Keys.LaunchBarHandle},
-
-    -- UHF
-    {"PTN_182", "Guard type", devices.RADIO_SYSTEM, 182, Keys.UHFGuard},
-    -- antanna
-    {"PTN_235", "TACAN Antanna Selection", devices.RADIO_SYSTEM, 235, Keys.TACANAntUP, Keys.TACANAntDOWN},
-    {"PTN_236", "UHF Antanna Selection", devices.RADIO_SYSTEM, 236, Keys.UHFAntUP, Keys.UHFAntDOWN},
-
-    -- VDI control
-    {"PTN_135", "VDI Display Off", devices.VDI_DCMS, 135, Keys.VDIControlOff},
-    {"PTN_136", "VDI Display STBY Page", devices.VDI_DCMS, 136, Keys.VDIControlSTBY},
-    {"PTN_137", "VDI Display Terrian Clearance Calibrate", devices.VDI_DCMS, 137, Keys.VDIControlTC},
-    {"PTN_138", "VDI Display Terrian Clearance", devices.VDI_DCMS, 138, Keys.VDIControlTCCal},
-    {"PTN_139", "VDI Display Analog Page", devices.VDI_DCMS, 139, Keys.VDIControlAnalog},
-    {"PTN_140", "VDI Display TEST", devices.VDI_DCMS, 140, Keys.VDIControlTest},
-
-    --weapon_system
-    {"PTN_521", "Master Arm Switch", devices.WEAPON_SYSTEM, 521, Keys.MasterArmamentUP, Keys.MasterArmamentDOWN},
-
-    {"PTN_516", "Pylon 1 Sel Switch", devices.WEAPON_SYSTEM, 516, Keys.Pylon1SelUP, Keys.Pylon1SelDOWN},
-    {"PTN_517", "Pylon 2 Sel Switch", devices.WEAPON_SYSTEM, 517, Keys.Pylon2SelUP, Keys.Pylon2SelDOWN},
-    {"PTN_518", "Pylon 3 Sel Switch", devices.WEAPON_SYSTEM, 518, Keys.Pylon3SelUP, Keys.Pylon3SelDOWN},
-    {"PTN_519", "Pylon 4 Sel Switch", devices.WEAPON_SYSTEM, 519, Keys.Pylon4SelUP, Keys.Pylon4SelDOWN},
-    {"PTN_520", "Pylon 5 Sel Switch", devices.WEAPON_SYSTEM, 520, Keys.Pylon5SelUP, Keys.Pylon5SelDOWN},
-
-    {"PTN_531", "Selection Jettsion", devices.WEAPON_SYSTEM, 531, Keys.ReleaseJettison},
-    {"PTN_532", "Guns Release Mode", devices.WEAPON_SYSTEM, 532, Keys.ReleaseGun},
-    {"PTN_533", "Missile Release Mode", devices.WEAPON_SYSTEM, 533, Keys.ReleaseMissile},
-    {"PTN_534", "Rocket Salvo Mode", devices.WEAPON_SYSTEM, 534, Keys.ReleaseRocketSalvo},
-    {"PTN_535", "Rocket Train Mode", devices.WEAPON_SYSTEM, 535, Keys.ReleaseRocketTrain},
-    {"PTN_536", "Bomb Salvo Mode", devices.WEAPON_SYSTEM, 536, Keys.ReleaseBombSalve},
-    {"PTN_537", "Bomb Train Mode", devices.WEAPON_SYSTEM, 537, Keys.ReleaseBombTrain},
-    {"PTN_538", "Step Mode (Manual)", devices.WEAPON_SYSTEM, 538, Keys.ReleaseStep},
-
-    {"PTN_539", "Ground Control Based Attack Mode", devices.WEAPON_SYSTEM, 539, Keys.AttackGCB},
-    {"PTN_540", "Delay Attack Mode", devices.WEAPON_SYSTEM, 540, Keys.AttackDelay},
-    {"PTN_541", "LABS TGT Attack Mode", devices.WEAPON_SYSTEM, 541, Keys.AttackLabTGT},
-    {"PTN_542", "LABS IP Attack Mode", devices.WEAPON_SYSTEM, 542, Keys.AttackLabIP},
-    {"PTN_543", "Rocket Attack Mode", devices.WEAPON_SYSTEM, 543, Keys.AttackRocket},
-    {"PTN_544", "Hi Loft Attack Mode", devices.WEAPON_SYSTEM, 544, Keys.AttackHILoft},
-    {"PTN_545", "Straight Path Attack Mode", devices.WEAPON_SYSTEM, 545, Keys.AttackStraight},
-    {"PTN_546", "General Attack Mode", devices.WEAPON_SYSTEM, 546, Keys.AttackGeneral},
-    {"PTN_549", "Gun Safe Switch", devices.WEAPON_SYSTEM, 549, Keys.GunsModeSwitchUP, Keys.GunsModeSwitchDOWN},
-    {"PTN_558", "Missile Control", devices.WEAPON_SYSTEM, 558, Keys.MissileControl},
-    {"PTN_559", "Missile Head Cooling", devices.WEAPON_SYSTEM, 559, Keys.MissileCoolingUP, Keys.MissileCoolingDOWN},
-    {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
+    -- GNS430
+    {"PTN_509", "COM frequency Flip-flop", devices.HUD_DCMS, 509, Keys.COM_Freq_Swap},
 }
 
 for k,v in pairs(multi_tumb_click_list) do

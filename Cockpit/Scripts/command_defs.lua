@@ -278,6 +278,29 @@ Keys =
     -- Weapon Part
     WingPylonSmokeOn = 5053,
     NozzleSmokeOn = 5054,
+    
+    -- 5100-5200 Navigation input
+    -- GNS 430
+    COM_Freq_Swap = 5100,
+    VLOC_freq_Swap = 5101,
+    Freq_Degi = 5102,
+    Freq_Num = 5103,
+    Freq_Knob_Push = 5104
+    Nav_Map_range_increse = 5105,
+    Nav_Map_range_decrease = 5106,
+    Nav_Direct_to = 5107,
+    Nav_Menu = 5108,
+    Nav_Clear = 5109,
+    Nav_Ent = 5110,
+    Nav_CDI = 5111,
+    Nav_OBS = 5112,
+    Nav_MSG = 5113,
+    Nav_FPL = 5114,
+    Nav_PROC = 5115,
+    Nav_Right_Knob_L = 5116,
+    Nav_Right_Knob_S = 5117,
+    Nav_Right_Knob_Push = 5118,
+    -- SN3500
 }
 
 --从5000开始递增点击指令
