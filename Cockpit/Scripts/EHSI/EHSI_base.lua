@@ -153,8 +153,8 @@ hsi_course_tail.init_pos                   = {0, -1250/2000, 0}
 hsi_course_tail.init_rot		           = {0, 0, 0}
 hsi_course_tail.collimated	               = true
 hsi_course_tail.element_params             = {"COMPASS_FULL_ENABLE", "ACTIVE_NAV_MOD"}              -- Initialize the main display control
--- 0: loc, 1: NAV, 
-hsi_course_tail.controllers                = {{"opacity_using_parameter",0},{"change_color_when_parameter_equal_to_number", 1, 1, 4/255,239/255,40/255}}
+-- 0: off;1: loc, 2: NAV, 
+hsi_course_tail.controllers                = {{"opacity_using_parameter",0},{"change_color_when_parameter_equal_to_number", 1, 2, 4/255,239/255,40/255},{"opacity_using_parameter",1 }}
 hsi_course_tail.use_mipfilter              = true
 hsi_course_tail.additive_alpha             = true
 hsi_course_tail.h_clip_relation            = h_clip_relations.COMPARE

@@ -150,6 +150,9 @@ animation_list = {
     {"EFM_LEFT_THRUST_A", 104},
     {"EFM_RIGHT_THRUST_A", 105},
     {"AIRSPEED_IND", 321},
+
+    {"POD_SMOKE", 900},
+    {"NOZZLE_SMOKE", 901},
 }
 
 --[[

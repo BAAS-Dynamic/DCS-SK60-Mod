@@ -37,6 +37,9 @@ local ir_missile_des_el_param = get_param_handle("WS_IR_MISSILE_SEEKER_DESIRED_E
 WeaponSystem:listen_command(Keys.WingPylonSmokeOn)
 WeaponSystem:listen_command(Keys.NozzleSmokeOn)
 
+local pod_smoke_light = get_param_handle("POD_SMOKE")
+local nozzle_smoke_light = get_param_handle("NOZZLE_SMOKE")
+
 function post_initialize()
 
 end
@@ -44,30 +47,58 @@ end
 local smokepodstatus = 0
 local nozzlesmokestatus = 0
 
+-- 0,1,2,3 position
+local loading_list = {0,0,0,0}
+
+function check_load_status()
+    for i = 1,4,1 do
+        local station = WeaponSystem:get_station_info(i-1)
+        if (string.sub(station.CLSID,1,36) == "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c") then
+            loading_list[i] = 1
+        elseif (string.sub(station.CLSID,1,36) == "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d") then
+            loading_list[i] = 1
+        else
+            loading_list[i] = 0
+        end
+    end
+end
+
 function SetCommand(command,value)
     if (command == Keys.WingPylonSmokeOn) then
-        WeaponSystem:launch_station(0)
-        WeaponSystem:launch_station(1)
-        smokepodstatus = 1 - smokepodstatus
-        if smokepodstatus == 1 then
-            print_message_to_user("Smoke pod is ON")
+        if (loading_list[1] == 1 or loading_list[2] == 1) then
+            WeaponSystem:launch_station(0)
+            WeaponSystem:launch_station(1)
+            smokepodstatus = 1 - smokepodstatus
+            if smokepodstatus == 1 then
+                print_message_to_user("Smoke pod is ON")
+            else
+                print_message_to_user("Smoke pod is OFF")
+            end
         else
-            print_message_to_user("Smoke pod is OFF")
+            print_message_to_user("No Smoke Pod on Pylon")
+            smokepodstatus = 0
         end
     elseif (command == Keys.NozzleSmokeOn) then
-        WeaponSystem:launch_station(2)
-        WeaponSystem:launch_station(3)
-        nozzlesmokestatus = 1 - nozzlesmokestatus
-        if nozzlesmokestatus == 1 then
-            print_message_to_user("Nozzle smoke is ON")
+        if (loading_list[3] == 1 or loading_list[4] == 1) then
+            WeaponSystem:launch_station(2)
+            WeaponSystem:launch_station(3)
+            nozzlesmokestatus = 1 - nozzlesmokestatus
+            if nozzlesmokestatus == 1 then
+                print_message_to_user("Nozzle smoke is ON")
+            else
+                print_message_to_user("Nozzle smoke is OFF")
+            end
         else
-            print_message_to_user("Nozzle smoke is OFF")
+            nozzlesmokestatus = 0
+            print_message_to_user("Nozzle Smoke Not Loaded")
         end
     end
 end
 
 function update()
-
+    check_load_status()
+    pod_smoke_light:set(smokepodstatus)
+    nozzle_smoke_light:set(nozzlesmokestatus)
 end
 
 need_to_be_closed = false
