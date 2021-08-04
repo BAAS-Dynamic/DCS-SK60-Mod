@@ -457,6 +457,9 @@ pylons_enumeration = {1, 3, 4, 2},
 		192,
 		193, -- launch bar
 		209,
+
+		-- multicrew sync test
+		520,
 	},
 
 
