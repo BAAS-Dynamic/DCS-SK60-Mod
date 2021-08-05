@@ -386,10 +386,10 @@ multi_tumb_click_list = {
     {"PTN_133", "Flood Light", devices.LIGHT_SYSTEM, 133, Keys.LightFloodUP, Keys.LightFloodDOWN},
 
     -- GNS430
-    {"PTN_509", "COM frequency Flip-flop", devices.HUD_DCMS, 509, Keys.COM_Freq_Swap},
-    {"PTN_510", "VLOC frequency Flip-flop", devices.HUD_DCMS, 510, Keys.VLOC_Freq_Swap},
-    {"PTN_511", "Freqency MHz Knob", devices.HUD_DCMS, 511, Keys.Freq_Num},
-    {"PTN_512", "Freqency kHz Knob", devices.HUD_DCMS, 512, Keys.Freq_Degi},
+    {"PTN_514", "COM frequency Flip-flop", devices.HUD_DCMS, 514, Keys.COM_Freq_Swap},
+    {"PTN_515", "VLOC frequency Flip-flop", devices.HUD_DCMS, 515, Keys.VLOC_Freq_Swap},
+
+    {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
 }
 
 for k,v in pairs(multi_tumb_click_list) do
@@ -423,6 +423,18 @@ elements["PTN_554"] = default_axis("Quantity x1", devices.WEAPON_SYSTEM, Keys.Qu
 elements["PTN_555"] = default_axis("Time x100", devices.WEAPON_SYSTEM, Keys.TimeTumbWheel100, 1134, 0, 0.1)
 elements["PTN_556"] = default_axis("Time x10", devices.WEAPON_SYSTEM, Keys.TimeTumbWheel10, 1134, 0, 0.1)
 elements["PTN_557"] = default_axis("Time x1", devices.WEAPON_SYSTEM, Keys.TimeTumbWheel, 1134, 0, 0.1)
+
+-- EHSI SANDEL SN3500
+elements["PTN_534"] = default_axis("Course Selection Knob", devices.HUD_DCMS, Keys.Nav_Course_Sel, 1134, 0, 0.1)
+elements["PTN_541"] = default_axis("Heading Selection Knob", devices.HUD_DCMS, Keys.Nav_Heading_Sel, 1134, 0, 0.1)
+
+-- GNS430 Unit
+elements["PTN_509"] = default_axis("Vol/PWR Knob", devices.HUD_DCMS, Keys.Nav_Vol_PWR, 1134, 0, 0.1)
+elements["PTN_510"] = default_axis("Vol Knob", devices.HUD_DCMS, Keys.Nav_Vol, 1134, 0, 0.1)
+elements["PTN_511"] = default_axis("Freqency MHz Knob", devices.HUD_DCMS, Keys.Freq_Num, 1134, 0, 0.1)
+elements["PTN_512"] = default_axis("Freqency kHz Knob", devices.HUD_DCMS, Keys.Freq_Degi, 1134, 0, 0.1)
+elements["PTN_527"] = default_axis("Right Large Knob", devices.HUD_DCMS, Keys.Nav_Right_Knob_L, 1134, 0, 0.1)
+elements["PTN_528"] = default_axis("Right Small Knob", devices.HUD_DCMS, Keys.Nav_Right_Knob_S, 1134, 0, 0.1)
 
 
 elements["PTN_179"] = springloaded_3_pos_tumb("UHF tens of Mega hertz", devices.RADIO_SYSTEM, Keys.UHFFreqAUP, Keys.UHFFreqASTOP, Keys.UHFFreqADOWN, Keys.UHFFreqASTOP, 1134)

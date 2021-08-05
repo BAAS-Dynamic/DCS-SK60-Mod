@@ -300,7 +300,11 @@ Keys =
     Nav_Right_Knob_L = 5116,
     Nav_Right_Knob_S = 5117,
     Nav_Right_Knob_Push = 5118,
+    Nav_Vol_PWR = 5119,
+    Nav_Vol = 5120,
     -- SN3500
+    Nav_Course_Sel = 5150,
+    Nav_Heading_Sel = 5151,
 }
 
 --从5000开始递增点击指令
