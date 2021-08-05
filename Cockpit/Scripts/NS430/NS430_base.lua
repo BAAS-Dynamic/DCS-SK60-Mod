@@ -8,6 +8,7 @@ local half_width   = GetScale()
 local half_height  = GetAspect() * half_width
 
 local aspect       = GetAspect()
+default_gps_y = 1000 * aspect
 
 -- This is the top trim layer of the total instrument
 local ns430_base_clip 			 	    = CreateElement "ceMeshPoly" --This is the clipping layer

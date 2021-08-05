@@ -1,6 +1,3 @@
-
-dofile(LockOn_Options.script_path.."EHSI/EHSI_def.lua")
-
 SHOW_MASKS = true -- enable debug
 
 -- This operation can align the newly created cropping block to the three connectors
@@ -8,7 +5,10 @@ SHOW_MASKS = true -- enable debug
 local half_width   = GetScale()
 local half_height  = GetAspect() * half_width
 
+dofile(LockOn_Options.script_path.."EHSI/EHSI_def.lua")
+
 local aspect       = GetAspect()
+default_ehsi_y = 2000 * aspect
 
 -- This is the top trim layer of the total instrument
 local ehsi_base_clip 			 	= CreateElement "ceMeshPoly" --This is the clipping layer
