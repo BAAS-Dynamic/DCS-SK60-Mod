@@ -66,6 +66,26 @@ local METER_TO_INCH = 3.2808
 
 local maxG_record = 1
 
+dev:listen_command(Keys.COM_Freq_Swap)
+dev:listen_command(Keys.LOC_Freq_Swap)
+dev:listen_command(Keys.Freq_Degi)
+dev:listen_command(Keys.Freq_Num)
+dev:listen_command(Keys.Freq_Knob_Push)
+dev:listen_command(Keys.Nav_Map_range_increse)
+dev:listen_command(Keys.Nav_Map_range_decrease)
+dev:listen_command(Keys.Nav_Direct_to)
+dev:listen_command(Keys.Nav_Menu)
+dev:listen_command(Keys.Nav_Clear)
+dev:listen_command(Keys.Nav_Ent)
+dev:listen_command(Keys.Nav_CDI)
+dev:listen_command(Keys.Nav_OBS)
+dev:listen_command(Keys.Nav_MSG)
+dev:listen_command(Keys.Nav_FPL)
+dev:listen_command(Keys.Nav_PROC)
+dev:listen_command(Keys.Nav_Right_Knob_L)
+dev:listen_command(Keys.Nav_Right_Knob_S)
+dev:listen_command(Keys.Nav_Right_Knob_Push)
+
 function post_initialize()
     hud_FD_x:set(0)
     hud_FD_y:set(0)

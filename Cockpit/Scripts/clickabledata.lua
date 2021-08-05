@@ -388,6 +388,8 @@ multi_tumb_click_list = {
     -- GNS430
     {"PTN_509", "COM frequency Flip-flop", devices.HUD_DCMS, 509, Keys.COM_Freq_Swap},
     {"PTN_510", "VLOC frequency Flip-flop", devices.HUD_DCMS, 510, Keys.VLOC_Freq_Swap},
+    {"PTN_511", "Freqency MHz Knob", devices.HUD_DCMS, 511, Keys.Freq_Num},
+    {"PTN_512", "Freqency kHz Knob", devices.HUD_DCMS, 512, Keys.Freq_Degi},
 }
 
 for k,v in pairs(multi_tumb_click_list) do

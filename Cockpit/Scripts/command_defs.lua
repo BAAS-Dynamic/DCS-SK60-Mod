@@ -282,7 +282,7 @@ Keys =
     -- 5100-5200 Navigation input
     -- GNS 430
     COM_Freq_Swap = 5100,
-    VLOC_freq_Swap = 5101,
+    VLOC_Freq_Swap = 5101,
     Freq_Degi = 5102,
     Freq_Num = 5103,
     Freq_Knob_Push = 5104,
