@@ -66,12 +66,12 @@ ns430_startup_info.level                        = NS430_DEFAULT_NOCLIP_LEVEL
 ns430_startup_info.parent_element	            = "ns430_base_clip"
 Add(ns430_startup_info)
 
--- StartUp acknology
+-- Base Screen
 local ns430_startup_info 				        = CreateElement "ceTexPoly"
 ns430_startup_info.vertices                     = GPS_vert_gen(2000,2000*aspect)
 ns430_startup_info.indices                      = {0,1,2,2,3,0}
 ns430_startup_info.tex_coords                   = tex_coord_gen(0,0,1024,512,2048,2048)
-ns430_startup_info.material                     = basic_ns430_material
+ns430_startup_info.material                     = blue_ns430_material
 ns430_startup_info.name 			            = create_guid_string()
 ns430_startup_info.init_pos                     = {0, 0, 0}
 ns430_startup_info.init_rot		                = {0, 0, 0}
