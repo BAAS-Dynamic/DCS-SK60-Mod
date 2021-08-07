@@ -66,7 +66,11 @@ ns430_startup_info.level                        = NS430_DEFAULT_NOCLIP_LEVEL
 ns430_startup_info.parent_element	            = "ns430_base_clip"
 Add(ns430_startup_info)
 
--- Base Screen
+-- Base Enable as a whole group
+-- including the Left and Down surround and display
+-- only disable when some setting page take whole screen
+
+-- Base Screen background
 local ns430_startup_info 				        = CreateElement "ceTexPoly"
 ns430_startup_info.vertices                     = GPS_vert_gen(2000,2000*aspect)
 ns430_startup_info.indices                      = {0,1,2,2,3,0}
@@ -84,3 +88,5 @@ ns430_startup_info.h_clip_relation              = h_clip_relations.COMPARE
 ns430_startup_info.level                        = NS430_DEFAULT_NOCLIP_LEVEL
 ns430_startup_info.parent_element	            = "ns430_base_clip"
 Add(ns430_startup_info)
+
+-- Third Layer for Moving Map display
