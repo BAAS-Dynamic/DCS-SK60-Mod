@@ -386,8 +386,10 @@ multi_tumb_click_list = {
     {"PTN_133", "Flood Light", devices.LIGHT_SYSTEM, 133, Keys.LightFloodUP, Keys.LightFloodDOWN},
 
     -- GNS430
+    {"PTN_513", "VLOC/COM Focus Change", devices.HUD_DCMS, 513, Keys.Freq_Knob_Push},
     {"PTN_514", "COM frequency Flip-flop", devices.HUD_DCMS, 514, Keys.COM_Freq_Swap},
     {"PTN_515", "VLOC frequency Flip-flop", devices.HUD_DCMS, 515, Keys.VLOC_Freq_Swap},
+    {"PTN_526", "Enter", devices.HUD_DCMS, 526, Keys.Nav_Ent},
 
     {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
 }

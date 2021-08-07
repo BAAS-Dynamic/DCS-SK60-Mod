@@ -1,6 +1,6 @@
 dofile(LockOn_Options.common_script_path.."elements_defs.lua")
 
-GPS_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/NS430/" 
+GPS_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/NAVU/" 
 
 -- set fov here to make sure always same
 SetScale(FOV)
@@ -17,10 +17,10 @@ DEBUG_COLOR                 = {0,255,0,200}
 
 GPS_DAY_COLOR              = {200,200,200,255}
 
-basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."EADI_BASE_IND.dds", GPS_DAY_COLOR)
+basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 
 default_gps_x = 1000
-default_gps_y = 500
+default_gps_y = 1000
 
 default_gps_z_offset = 0
 default_gps_rot_offset = 0

@@ -57,6 +57,12 @@ local nav_mode = get_param_handle("ACTIVE_NAV_MOD")
 local ehsi_mag_heading = get_param_handle("EHSI_HEADING")
 local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 
+--NS430 Page Test
+local ns430_logo_page = get_param_handle("NAVU_PAGE1_ENABLE")
+local ns430_info_page = get_param_handle("NAVU_PAGE2_ENABLE")
+local ns430_base_page = get_param_handle("NAVU_BASE_ENABLE")
+
+
 local sensor_data = get_base_data()
 local ias_conversion_to_knots = 1.9504132
 local ias_conversion_to_kmh =  1.9504132 -- easily convert to knots -- 3.6 
@@ -95,8 +101,15 @@ function post_initialize()
     gps_base:set(1)
 end
 
-function SetCommand(command,value)
+NS430_Test_Status = 0;
 
+function SetCommand(command,value)
+    if (command == Keys.Nav_Ent) then
+        NS430_Test_Status = NS430_Test_Status + 1
+        if (NS430_Test_Status > 2) then
+            NS430_Test_Status = 0
+        end 
+    end
 end
 
 function update()
@@ -175,4 +188,18 @@ function update()
     ehsi_mag_heading:set(deg_heading)
     ehsi_course_heading:set(0 * RAD_TO_DEGREE)
     nav_mode:set(1)
+
+    if (NS430_Test_Status == 0) then
+        ns430_logo_page:set(1)
+        ns430_info_page:set(0)
+        ns430_base_page:set(0)
+    elseif (NS430_Test_Status == 1) then
+        ns430_logo_page:set(0)
+        ns430_info_page:set(1)
+        ns430_base_page:set(0)
+    else
+        ns430_logo_page:set(0)
+        ns430_info_page:set(0)
+        ns430_base_page:set(1)
+    end
 end
