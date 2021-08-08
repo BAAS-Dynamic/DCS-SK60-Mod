@@ -141,7 +141,12 @@ animation_list = {
     
     {"PTN_601", 601},
 
-    {"PTN_417", 417}, -- Nav light
+    -- Electric power
+    {"PTN_401", 401}, -- Main Power
+    {"PTN_402", 402}, -- Left Gen
+    {"PTN_404", 404}, -- Right Gen
+
+    {"PTN_424", 424}, -- Nav light
     {"PTN_429", 429}, -- Anti Col light
 
     {"RUDDER_PADEL", 3},

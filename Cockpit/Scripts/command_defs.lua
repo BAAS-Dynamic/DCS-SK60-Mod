@@ -112,11 +112,8 @@ Keys =
     FuelMasterLeft = __custom_counter(),
     FuelMasterRight = __custom_counter(),
 
-    PowerGeneratorLeftUP = __custom_counter(),
-    PowerGeneratorLeftDOWN = __custom_counter(),
-
-    PowerGeneratorRightUP = __custom_counter(),
-    PowerGeneratorRightDOWN = __custom_counter(),
+    --PowerGeneratorLeft = __custom_counter(),
+    --PowerGeneratorRight = __custom_counter(),
 
     LeftEngineIDLE = __custom_counter(),
     RightEngineIDLE = __custom_counter(),

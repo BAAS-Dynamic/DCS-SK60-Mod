@@ -16,115 +16,125 @@ local batteryStatus = 0
 
 electric_system:listen_command(Keys.PowerGeneratorLeft)
 electric_system:listen_command(Keys.PowerGeneratorRight)
--- electric_system:listen_command(Keys.BatteryPower)
+electric_system:listen_command(Keys.BatteryPower)
 
 electric_system:DC_Battery_on(true)
 
-local genLeftSwitch = get_param_handle("GenLeftSwitch")
-local genRightSwitch = get_param_handle("GenRightSwitch")
--- local BatterySwitch = get_param_handle("BatterySwitch") no battery switch, default open
+local SWITCH_OFF = 0
+local SWITCH_ON = 1
+local SWITCH_TEST = -1
+
+switch_count = 0
+function _switch_counter()
+    switch_count = switch_count + 1
+    return switch_count
+end
+
+local main_power_switch = _switch_counter()
+local left_gen_switch = _switch_counter()
+local right_gen_switch = _switch_counter()
+
+target_status = {
+    {main_power_switch , SWITCH_OFF, get_param_handle("PTN_401"), "PTN_401"},
+    {left_gen_switch , SWITCH_OFF, get_param_handle("PTN_402"), "PTN_402"},
+    {right_gen_switch , SWITCH_OFF, get_param_handle("PTN_404"), "PTN_404"},
+}
+
+current_status = {
+    {main_power_switch , SWITCH_OFF, SWITCH_OFF},
+    {left_gen_switch , SWITCH_OFF, SWITCH_OFF},
+    {right_gen_switch , SWITCH_OFF, SWITCH_OFF},
+}
+
+function update_switch_status()
+    local switch_moving_step = 0.15
+    for k,v in pairs(target_status) do
+        if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
+            current_status[k][2] = target_status[k][2]
+        elseif target_status[k][2] > current_status[k][2] then
+            current_status[k][2] = current_status[k][2] + switch_moving_step
+        elseif target_status[k][2] < current_status[k][2] then
+            current_status[k][2] = current_status[k][2] - switch_moving_step
+        end
+        target_status[k][3]:set(current_status[k][2])
+        -- local temp_switch_ref = get_clickable_element_reference(target_status[k][4])
+        -- temp_switch_ref:update()
+        -- print_message_to_user(k)
+    end
+end
 
 function update_elec_state() --更新电力总线状态
     if (electric_system:get_AC_Bus_1_voltage() > 0 or electric_system:get_AC_Bus_2_voltage() > 0) then
         -- 主发电机状态正常（双备份）
-        elec_primary_ac_ok:set(1)
+        elec_ac_status:set(1)
     else
-        elec_primary_ac_ok:set(0)
+        elec_ac_status:set(0)
     end
 
-    if electric_system:get_DC_Bus_1_voltage() > 0 and batteryStatus == 1 then 
-        elec_primary_dc_ok:set(1)
+    if electric_system:get_DC_Bus_1_voltage() > 0 and target_status[main_power_switch][2] == 1 then 
+        elec_dc_status:set(1)
     else
-        elec_primary_dc_ok:set(0)
+        elec_dc_status:set(0)
     end
 end
 
 function post_initialize() --默认初始化函数
-    set_aircraft_draw_argument_value(114, 1) -- clear the default outer cockpit
-
-    local dev = GetSelf()
+    --local dev = GetSelf()
     local birth = LockOn_Options.init_conditions.birth_place
     if birth=="GROUND_HOT" or birth=="AIR_HOT" then --"GROUND_COLD","GROUND_HOT","AIR_HOT"
         electric_system:AC_Generator_1_on(true)
-        electric_system:AC_Generator_2_on(true) -- A-6A have 2 engine, so two generator
-        electric_system:DC_Battery_on(true) -- A-6 have a battery
-        genLeftStatus = 1
-        genRightStatus = 1
-        batteryStatus = 1
-        genLeftSwitch:set(0)
-        genRightSwitch:set(0)
-        --BatterySwitch:set(0)
+        electric_system:AC_Generator_2_on(true)
+        electric_system:DC_Battery_on(true)
+        target_status[main_power_switch][2] = SWITCH_ON
+        target_status[left_gen_switch][2] = SWITCH_ON
+        target_status[right_gen_switch][2] = SWITCH_ON
+        current_status[main_power_switch][2] = SWITCH_ON
+        current_status[left_gen_switch][2] = SWITCH_ON
+        current_status[right_gen_switch][2] = SWITCH_ON
     elseif birth=="GROUND_COLD" then
         electric_system:AC_Generator_1_on(false) 
-        electric_system:AC_Generator_2_on(false) -- A-6A have 2 engine, so two generator
-        electric_system:DC_Battery_on(true) -- A-6 have a battery but default open
-        genLeftStatus = 0
-        genRightStatus = 0
-        batteryStatus = 0
-        genLeftSwitch:set(1)
-        genRightSwitch:set(1)
-        --BatterySwitch:set(1)
+        electric_system:AC_Generator_2_on(false)
+        electric_system:DC_Battery_on(false)
+        target_status[main_power_switch][2] = SWITCH_OFF
+        target_status[left_gen_switch][2] = SWITCH_OFF
+        target_status[right_gen_switch][2] = SWITCH_OFF
+        current_status[main_power_switch][2] = SWITCH_OFF
+        current_status[left_gen_switch][2] = SWITCH_OFF
+        current_status[right_gen_switch][2] = SWITCH_OFF
     end
-
+    update_switch_status()
     update_elec_state()
 end
 
 function SetCommand(command,value)
     -- 最基础的航电功能监听
-    if command == Keys.PowerGeneratorLeftUP then
-        if genLeftStatus < 0.5 then
-            genLeftStatus = genLeftStatus + 1
-        end
-        if (genLeftStatus >= 1) then
+    if command == Keys.PowerGeneratorLeft then
+        target_status[left_gen_switch][2] = 1 - target_status[left_gen_switch][2]
+        if target_status[left_gen_switch][2] < 0.5 then
+            electric_system:AC_Generator_1_on(false)
+        else
             electric_system:AC_Generator_1_on(true)
+        end
+    elseif command == Keys.PowerGeneratorRight then
+        target_status[right_gen_switch][2] = 1 - target_status[right_gen_switch][2]
+        if target_status[right_gen_switch][2] < 0.5 then
+            electric_system:AC_Generator_2_on(false)
         else
-            --electric_system:AC_Generator_1_on(false)
-        end
-    elseif command == Keys.PowerGeneratorLeftDOWN then
-        if genLeftStatus > -0.5 then
-            genLeftStatus = genLeftStatus - 1
-        end
-        if (genLeftStatus >= 1) then
-            electric_system:AC_Generator_1_on(true)
-        else
-            --electric_system:AC_Generator_1_on(false)
-        end
-    elseif command == Keys.PowerGeneratorRightUP then
-        if genRightStatus < 0.5 then
-            genRightStatus = genRightStatus + 1
-        end
-        if (genRightStatus >= 1) then
             electric_system:AC_Generator_2_on(true)
-        else
-            --electric_system:AC_Generator_2_on(false)
         end
-    elseif command == Keys.PowerGeneratorRightDOWN then
-        if genRightStatus > -0.5 then
-            genRightStatus = genRightStatus - 1
-        end
-        if (genRightStatus >= 1) then
-            electric_system:AC_Generator_2_on(true)
+    elseif command == Keys.BatteryPower then
+        target_status[main_power_switch][2] = 1 - target_status[main_power_switch][2]
+        if target_status[main_power_switch][2] < 0.5 then
+            electric_system:DC_Battery_on(false)
         else
-            --electric_system:AC_Generator_2_on(false)
+            electric_system:DC_Battery_on(true)
         end
     end
 end
 
 function update() --刷新状态
-
+    update_switch_status()
     update_elec_state()
-
-    if (genLeftStatus > genLeftSwitch:get()) then
-        genLeftSwitch:set(genLeftSwitch:get() + 0.2)
-    elseif (genLeftStatus < genLeftSwitch:get()) then
-        genLeftSwitch:set(genLeftSwitch:get() - 0.2)
-    end
-
-    if (genRightStatus > genRightSwitch:get()) then
-        genRightSwitch:set(genRightSwitch:get() + 0.2)
-    elseif (genRightStatus < genRightSwitch:get()) then
-        genRightSwitch:set(genRightSwitch:get() - 0.2)
-    end
 end
 
 --[[
