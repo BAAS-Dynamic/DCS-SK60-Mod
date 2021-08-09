@@ -276,7 +276,7 @@ Keys =
     WingPylonSmokeOn = 5053,
     NozzleSmokeOn = 5054,
     
-    -- 5100-5200 Navigation input
+    -- 5100-5500 Navigation input
     -- GNS 430
     COM_Freq_Swap = 5100,
     VLOC_Freq_Swap = 5101,
@@ -302,6 +302,9 @@ Keys =
     -- SN3500
     Nav_Course_Sel = 5150,
     Nav_Heading_Sel = 5151,
+    -- EADI
+    Display_Brighter = 5200,
+    Display_Darker = 5201,
 }
 
 --从5000开始递增点击指令

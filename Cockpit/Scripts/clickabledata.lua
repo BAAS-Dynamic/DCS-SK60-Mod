@@ -391,6 +391,10 @@ multi_tumb_click_list = {
     {"PTN_402", "Left Generator Switch", devices.ELECTRIC_SYSTEM, 402, Keys.PowerGeneratorLeft},
     {"PTN_404", "Right Generator Switch", devices.ELECTRIC_SYSTEM, 404, Keys.PowerGeneratorRight},
 
+    -- EADI
+    {"PTN_501", "Screen Display Dim-", devices.HUD_DCMS, 501, Keys.Display_Darker},
+    {"PTN_502", "Screen Display Dim+", devices.HUD_DCMS, 502, Keys.Display_Brighter},
+
     -- GNS430
     {"PTN_513", "VLOC/COM Focus Change", devices.HUD_DCMS, 513, Keys.Freq_Knob_Push},
     {"PTN_514", "COM frequency Flip-flop", devices.HUD_DCMS, 514, Keys.COM_Freq_Swap},

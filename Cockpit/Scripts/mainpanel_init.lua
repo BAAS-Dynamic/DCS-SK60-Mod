@@ -149,6 +149,10 @@ animation_list = {
     {"PTN_424", 424}, -- Nav light
     {"PTN_429", 429}, -- Anti Col light
 
+    -- EADI
+    {"PTN_501", 501},
+    {"PTN_502", 502},
+
     {"RUDDER_PADEL", 3},
     {"STICK_PITCH", 1, {-1, 1}, {1, -1}},
     {"STICK_ROLL", 2},
