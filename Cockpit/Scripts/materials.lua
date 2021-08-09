@@ -329,7 +329,7 @@ fontdescription["font_LCD"] = {
 }
 
 MPCD_size_mult_2048 = 2.66666667
-MPCD_xsize_2k = 30 * MPCD_size_mult_2048	-- 29
+MPCD_xsize_2k = 34 * MPCD_size_mult_2048	-- 29
 MPCD_ysize_2k = 64 * MPCD_size_mult_2048
 
 fontdescription["font_Pixel"] = {
