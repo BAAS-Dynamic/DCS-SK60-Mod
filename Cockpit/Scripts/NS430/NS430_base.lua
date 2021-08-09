@@ -90,3 +90,22 @@ ns430_startup_info.parent_element	            = "ns430_base_clip"
 Add(ns430_startup_info)
 
 -- Third Layer for Moving Map display
+
+-- "BS430_font_white"
+-- Texts Test
+local BS430_Font_Test             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+BS430_Font_Test.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
+BS430_Font_Test.init_pos          = {0, 0}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_Font_Test.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+BS430_Font_Test.stringdefs        = {1.2*0.004,1.2 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+BS430_Font_Test.formats           = {"Test Mode", "%s"}
+BS430_Font_Test.element_params    = {"EHSI_COURSE", "NAVU_BASE_ENABLE"} -- top left first line display
+BS430_Font_Test.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
+BS430_Font_Test.collimated        = true
+BS430_Font_Test.use_mipfilter     = true
+BS430_Font_Test.additive_alpha    = true
+BS430_Font_Test.isvisible		  = true
+BS430_Font_Test.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+BS430_Font_Test.level			  = NS430_DEFAULT_NOCLIP_LEVEL
+BS430_Font_Test.parent_element    = "ns430_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(BS430_Font_Test)
