@@ -305,6 +305,7 @@ Keys =
     -- EADI
     Display_Brighter = 5200,
     Display_Darker = 5201,
+    EALT_BARO = 5202,
 }
 
 --从5000开始递增点击指令

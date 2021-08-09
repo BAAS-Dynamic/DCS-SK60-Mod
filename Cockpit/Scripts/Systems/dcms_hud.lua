@@ -36,12 +36,12 @@ local eadi_rf1_display = get_param_handle("L_EADI_DISPLAY_TR1")
 local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
 local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 
-local ealt_enable = get_param_handle("EALT_DIS_ENABLE")
-local ealt_unit_baro = get_param_handle("ALT_BARO_UNIT_DIGTAL")
-local ealt_unit = get_param_handle("ALT_UNIT_DIGTAL")
-local ealt_baro_correct = get_param_handle("ALT_BARO_DIGTAL")
-local ealt_x1000_obj = get_param_handle("ALT_XK_DIGTAL")
-local ealt_x100_obj = get_param_handle("ALT_XH_DIGTAL")
+--local ealt_enable = get_param_handle("EALT_DIS_ENABLE")
+--local ealt_unit_baro = get_param_handle("ALT_BARO_UNIT_DIGTAL")
+--local ealt_unit = get_param_handle("ALT_UNIT_DIGTAL")
+--local ealt_baro_correct = get_param_handle("ALT_BARO_DIGTAL")
+--local ealt_x1000_obj = get_param_handle("ALT_XK_DIGTAL")
+--local ealt_x100_obj = get_param_handle("ALT_XH_DIGTAL")
 
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
@@ -158,6 +158,8 @@ function update()
     erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
 
     -- altimeter calculator
+    -- move into EFM
+    --[[
     local baro_altitude = sensor_data.getBarometricAltitude() * 3.28084
     local baro_x1k = math.modf(baro_altitude/1000)
     local baro_x100 = math.fmod(baro_altitude,1000)
@@ -175,6 +177,7 @@ function update()
         end
     end
     ealt_x1000_obj:set(baro_x1k)
+    ]]
 
     ehsi_enable:set(1)
     ehsi_full_compass_enable:set(1)

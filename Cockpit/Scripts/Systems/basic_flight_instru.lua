@@ -24,7 +24,7 @@ local mach_ind = _gauge_counter()
 local current_g_ind = _gauge_counter()
 local aoa_ind = _gauge_counter()
 local radar_alt_ind = _gauge_counter()
-local Baro_alt_x10 = _gauge_counter()
+--local Baro_alt_x10 = _gauge_counter()
 local Baro_alt_x100 = _gauge_counter()
 local Baro_alt_x1k = _gauge_counter()
 local Baro_alt_x1w = _gauge_counter()
@@ -45,7 +45,7 @@ Gauge_display_state = { -- last parameter define if it is unneed from 9 to zero
     {current_g_ind, 0, 0, get_param_handle("G_METER"), 1, 0.04},
     {aoa_ind, 0, 0, get_param_handle("AOA_IND"), 1, 0.04},
     {radar_alt_ind, 0, 0, get_param_handle("RADAR_ALT_IND"), 1, 0.04},
-    {Baro_alt_x10, 0, 0, get_param_handle("BARO_ALT"), 0, 0.04},
+    --{Baro_alt_x10, 0, 0, get_param_handle("BARO_ALT"), 0, 0.04},
     {Baro_alt_x100, 0, 0, get_param_handle("BARO_x1H"), 0, 0.04},
     {Baro_alt_x1k, 0, 0, get_param_handle("BARO_x1K"), 0, 0.005},
     {Baro_alt_x1w, 0, 0, get_param_handle("BARO_x1W"), 0, 0.005},
@@ -102,7 +102,7 @@ function Altitude_Cal()
     Gauge_display_state[Baro_alt_x1k][2] = baro_x1k_target/10
     Gauge_display_state[Baro_alt_x1w][2] = baro_x1w_target/10
     Gauge_display_state[Baro_alt_x100][2] = math.fmod(baro_altitude, 1000)/100 / 10-- baro_x100_target/10
-    Gauge_display_state[Baro_alt_x10][2] = math.fmod(baro_altitude, 1000)/100 / 10-- math.fmod(baro_altitude,100)/100
+    --Gauge_display_state[Baro_alt_x10][2] = math.fmod(baro_altitude, 1000)/100 / 10-- math.fmod(baro_altitude,100)/100
 end
 
 function update_Gyro_Display()
