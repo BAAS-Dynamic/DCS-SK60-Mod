@@ -306,6 +306,18 @@ Keys =
     Display_Brighter = 5200,
     Display_Darker = 5201,
     EALT_BARO = 5202,
+
+    -- 5500 - 5550 Engine Conrol
+    L_LP_PUMP = 5501,
+    R_LP_PUMP = 5502,
+    L_HP_PUMP = 5503,
+    R_HP_PUMP = 5504,
+    L_STARTER_PRESS = 5505,
+    R_STARTER_PRESS = 5506,
+    L_STARTER_RELEASE = 5507,
+    R_STARTER_RELEASE = 5508,
+    L_THROTTLE_IDLE = 5509,
+    R_THROTTLE_IDLE = 5510,
 }
 
 --从5000开始递增点击指令

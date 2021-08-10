@@ -376,7 +376,15 @@ elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BRE
 
 elements["PTN_118"] = default_button("Boost Pump Test", devices.FUEL_SYSTEM, Keys.BoostPumpTestUP, Keys.BoostPumpTestDOWN, 118)
 
+elements["PTN_405"] = default_button("Left Engine Motor Starter", devices.HUD_DCMS, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE, 405)
+elements["PTN_407"] = default_button("Right Engine Motor Starter", devices.HUD_DCMS, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE, 407)
+
 multi_tumb_click_list = {
+    -- Engine Control
+    {"PTN_418", "Left Low Pressure Fuel Pump", devices.HUD_DCMS, 418, Keys.L_LP_PUMP},
+    {"PTN_420", "Right Low Pressure Fuel Pump", devices.HUD_DCMS, 420, Keys.R_LP_PUMP},
+    {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, Keys.L_HP_PUMP},
+    {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, Keys.R_HP_PUMP},
 
     {"PTN_429", "Anti-Collision Light", devices.LIGHT_SYSTEM, 429, Keys.LightStrobeUP, Keys.LightStrobeDOWN},
     {"PTN_424", "Navigation Light", devices.LIGHT_SYSTEM, 424, Keys.LightNaviWingUP,Keys.LightNaviWingDOWN},

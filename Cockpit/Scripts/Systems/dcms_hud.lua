@@ -81,8 +81,8 @@ dev:listen_command(Keys.Nav_OBS)
 dev:listen_command(Keys.Nav_MSG)
 dev:listen_command(Keys.Nav_FPL)
 dev:listen_command(Keys.Nav_PROC)
-dev:listen_command(Keys.Nav_Right_Knob_L)
-dev:listen_command(Keys.Nav_Right_Knob_S)
+dev:listen_command(Keys.L_STARTER_RELEASE)
+dev:listen_command(Keys.L_STARTER_PRESS)
 dev:listen_command(Keys.Nav_Right_Knob_Push)
 
 function post_initialize()
@@ -97,6 +97,13 @@ end
 NS430_Test_Status = 0;
 
 function SetCommand(command,value)
+    --[[
+    if (command == Keys.L_STARTER_PRESS) then
+        print_message_to_user("Pressed")
+    elseif (command == Keys.L_STARTER_RELEASE) then
+        print_message_to_user("Release")
+    end
+    ]]
 end
 
 function update()
