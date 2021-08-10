@@ -15,7 +15,7 @@ EADI_DEFAULT_NOCLIP_LEVEL  = EADI_DEFAULT_LEVEL - 1
 
 DEBUG_COLOR                 = {0,255,0,200}
 
-EADI_DAY_COLOR              = {200,200,200,255}
+EADI_DAY_COLOR              = {150,150,150,255}
 
 basic_eadi_material = MakeMaterial(EADI_IND_TEX_PATH.."EADI_BASE_IND.dds", EADI_DAY_COLOR)
 

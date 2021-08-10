@@ -39,7 +39,7 @@ local hud_nav_data_3 = get_param_handle("HUD_NAV_DATA_3_DIS")
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
 
-local gps_base = get_param_handle("NS430_POWER")
+--local gps_base = get_param_handle("NS430_POWER")
 
 local hud_adi_movx = get_param_handle("HUD_ADI_MOVX")
 
@@ -51,9 +51,9 @@ local ehsi_mag_heading = get_param_handle("EHSI_HEADING")
 local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 
 --NS430 Page Test
-local ns430_logo_page = get_param_handle("NAVU_PAGE1_ENABLE")
-local ns430_info_page = get_param_handle("NAVU_PAGE2_ENABLE")
-local ns430_base_page = get_param_handle("NAVU_BASE_ENABLE")
+--local ns430_logo_page = get_param_handle("NAVU_PAGE1_ENABLE")
+--local ns430_info_page = get_param_handle("NAVU_PAGE2_ENABLE")
+--local ns430_base_page = get_param_handle("NAVU_BASE_ENABLE")
 
 
 local sensor_data = get_base_data()
@@ -91,22 +91,16 @@ function post_initialize()
     hud_adi_level_enable:set(1)
     --hud_enable:set(1)
     hud_maxg_dis:set(1)
-    gps_base:set(1)
+    --gps_base:set(1)
 end
 
 NS430_Test_Status = 0;
 
 function SetCommand(command,value)
-    if (command == Keys.Nav_Ent) then
-        NS430_Test_Status = NS430_Test_Status + 1
-        if (NS430_Test_Status > 2) then
-            NS430_Test_Status = 0
-        end 
-    end
 end
 
 function update()
-    gps_base:set(1)
+    --gps_base:set(1)
     hud_adi_rot:set(sensor_data.getRoll())
     hud_adi_pitch:set(-sensor_data.getPitch())
     hud_speed_dis:set(sensor_data.getIndicatedAirSpeed()*ias_conversion_to_kmh)
@@ -152,7 +146,6 @@ function update()
 
     --ehsi_enable:set(1)
     --ehsi_full_compass_enable:set(1)
-    ehsi_compass:set(sensor_data.getMagneticHeading() * RAD_TO_DEGREE  / 180)
     local deg_heading = sensor_data.getMagneticHeading() * RAD_TO_DEGREE
     if deg_heading < 0 then
         deg_heading = deg_heading + 360
@@ -160,9 +153,10 @@ function update()
         deg_heading = deg_heading - 360
     end
     ehsi_mag_heading:set(deg_heading)
+    ehsi_compass:set(deg_heading)
     --ehsi_course_heading:set(0 * RAD_TO_DEGREE)
     --nav_mode:set(1)
-
+    --[[
     if (NS430_Test_Status == 0) then
         ns430_logo_page:set(1)
         ns430_info_page:set(0)
@@ -176,4 +170,5 @@ function update()
         ns430_info_page:set(0)
         ns430_base_page:set(1)
     end
+    ]]
 end

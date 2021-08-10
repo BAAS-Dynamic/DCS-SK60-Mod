@@ -181,3 +181,39 @@ gyro_tex.h_clip_relation          = h_clip_relations.COMPARE
 gyro_tex.level                    = EADI_DEFAULT_LEVEL
 gyro_tex.parent_element	          = "eadi_adi_rotate"
 Add(gyro_tex)
+
+local gyro_tex 				      = CreateElement "ceTexPoly"
+gyro_tex.vertices                 = EADI_vert_gen(2206*2,6276)
+gyro_tex.indices                  = {0,1,2,2,3,0}
+gyro_tex.tex_coords               = tex_coord_gen(664,0,360,1024,1024,1024)
+gyro_tex.material                 = "SKY_BLUE"
+gyro_tex.name 			          = create_guid_string()
+gyro_tex.init_pos                 = {0, 6276/4000, 0}
+gyro_tex.init_rot		          = {0, 0, 0}
+gyro_tex.collimated	              = true
+gyro_tex.element_params           = {"GYRO_PITCH","LEADI_GYRO_ENABLE"}
+gyro_tex.controllers              = {{"move_up_down_using_parameter",0,0.075},{"opacity_using_parameter",1}}
+gyro_tex.use_mipfilter            = true
+gyro_tex.additive_alpha           = true
+gyro_tex.h_clip_relation          = h_clip_relations.COMPARE
+gyro_tex.level                    = EADI_DEFAULT_LEVEL
+gyro_tex.parent_element	          = "eadi_adi_rotate"
+Add(gyro_tex)
+
+local gyro_tex 				      = CreateElement "ceTexPoly"
+gyro_tex.vertices                 = EADI_vert_gen(2206*2,6276)
+gyro_tex.indices                  = {0,1,2,2,3,0}
+gyro_tex.tex_coords               = tex_coord_gen(664,0,360,1024,1024,1024)
+gyro_tex.material                 = "GROUND_YELLOW"
+gyro_tex.name 			          = create_guid_string()
+gyro_tex.init_pos                 = {0, -6276/4000, 0}
+gyro_tex.init_rot		          = {0, 0, 0}
+gyro_tex.collimated	              = true
+gyro_tex.element_params           = {"GYRO_PITCH","LEADI_GYRO_ENABLE"}
+gyro_tex.controllers              = {{"move_up_down_using_parameter",0,0.075},{"opacity_using_parameter",1}}
+gyro_tex.use_mipfilter            = true
+gyro_tex.additive_alpha           = true
+gyro_tex.h_clip_relation          = h_clip_relations.COMPARE
+gyro_tex.level                    = EADI_DEFAULT_LEVEL
+gyro_tex.parent_element	          = "eadi_adi_rotate"
+Add(gyro_tex)

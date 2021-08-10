@@ -16,7 +16,7 @@ NS430_DEFAULT_NOCLIP_LEVEL  = NS430_DEFAULT_LEVEL - 1
 DEBUG_COLOR                 = {0,255,0,200}
 
 GPS_DAY_COLOR              = {200,200,200,255}
-GPS_BLUE_COLOR              = {200,235,255,255}
+GPS_BLUE_COLOR              = {130,145,150,255}
 
 basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 blue_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_BLUE_COLOR)

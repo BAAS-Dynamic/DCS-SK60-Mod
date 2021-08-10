@@ -4,7 +4,7 @@ dofile(LockOn_Options.common_script_path.."Fonts/fonts_cmn.lua")
 
 -------MATERIALS-------
 materials = {}
-materials["DBG_GREY"]    = {5, 5, 5, 255}
+materials["DBG_GREY"]    = {2, 2, 2, 255}
 materials["DBG_BLACK"]   = {0, 0, 0, 255}
 materials["DBG_BLUE"]   = {0, 0, 100, 100}
 materials["DBG_GREEN"]   = {0, 80, 0, 100}
@@ -19,6 +19,10 @@ materials["TEST_COLOR"] = {50,250,0,255}
 materials["HUD_DAY_COLOR"]          = {0,200,0,200}
 materials["EALT_BG_COLOR"]	= {0,50,255,255}
 materials["EALT_BG_DARK_COLOR"]	= {0,30,120,255}
+
+-- EADI
+materials["SKY_BLUE"] = {0,170,230,255}
+materials["GROUND_YELLOW"] = {42,34,29,255}
 
 
 local IndicationFontPath = LockOn_Options.script_path.."../Textures/Fonts/"
