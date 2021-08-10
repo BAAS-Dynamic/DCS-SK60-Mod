@@ -10,7 +10,7 @@ make_default_activity(update_time_step)
 local hud_warning = get_param_handle("WARNING_FLASH")
 local hud_danger = get_param_handle("DANGER_FLASH")
 local hud_denied = get_param_handle("WARNING_FLASH")
-local hud_enable = get_param_handle("LEADI_DIS_ENABLE")
+--local hud_enable = get_param_handle("LEADI_DIS_ENABLE")
 local hud_adi_level_enable = get_param_handle("ADI_LINE_GROUP")
 local hud_adi_rot = get_param_handle("HUD_ADI_ROT")
 local hud_adi_pitch = get_param_handle("HUD_ADI_MOVY")
@@ -31,17 +31,10 @@ local hud_nav_data_1 = get_param_handle("HUD_NAV_DATA_1_DIS")
 local hud_nav_data_2 = get_param_handle("HUD_NAV_DATA_2_DIS")
 local hud_nav_data_3 = get_param_handle("HUD_NAV_DATA_3_DIS")
 
-local eadi_lf1_display = get_param_handle("L_EADI_DISPLAY_TL1")
-local eadi_rf1_display = get_param_handle("L_EADI_DISPLAY_TR1")
-local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
-local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
-
---local ealt_enable = get_param_handle("EALT_DIS_ENABLE")
---local ealt_unit_baro = get_param_handle("ALT_BARO_UNIT_DIGTAL")
---local ealt_unit = get_param_handle("ALT_UNIT_DIGTAL")
---local ealt_baro_correct = get_param_handle("ALT_BARO_DIGTAL")
---local ealt_x1000_obj = get_param_handle("ALT_XK_DIGTAL")
---local ealt_x100_obj = get_param_handle("ALT_XH_DIGTAL")
+--local eadi_lf1_display = get_param_handle("L_EADI_DISPLAY_TL1")
+--local eadi_rf1_display = get_param_handle("L_EADI_DISPLAY_TR1")
+--local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
+--local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
@@ -96,7 +89,7 @@ function post_initialize()
     hud_FD_x:set(0)
     hud_FD_y:set(0)
     hud_adi_level_enable:set(1)
-    hud_enable:set(1)
+    --hud_enable:set(1)
     hud_maxg_dis:set(1)
     gps_base:set(1)
 end
@@ -149,38 +142,16 @@ function update()
     local current_aos = sensor_data.getAngleOfSlide()
     hud_adi_movx:set(current_aos)
     hud_FD_y:set(current_aoa)
-    eadi_lf1_display:set("VERSION 2")
-    eadi_lf2_display:set("EADI OK")
-    eadi_rf1_display:set(sensor_data.getMachNumber())
-    eadi_rb1_display:set("ERECT")
+    --eadi_lf1_display:set("VERSION 2")
+    --eadi_lf2_display:set("EADI OK")
+    --eadi_rf1_display:set(sensor_data.getMachNumber())
+    --eadi_rb1_display:set("ERECT")
 
     erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
     erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
 
-    -- altimeter calculator
-    -- move into EFM
-    --[[
-    local baro_altitude = sensor_data.getBarometricAltitude() * 3.28084
-    local baro_x1k = math.modf(baro_altitude/1000)
-    local baro_x100 = math.fmod(baro_altitude,1000)
-
-    ealt_enable:set(1)
-    ealt_unit:set("FT")
-    ealt_unit_baro:set("HPA")
-    ealt_baro_correct:set(1013)
-    ealt_x100_obj:set(baro_x100)
-    if baro_x1k == 0 then
-        if baro_x100 < 0 then
-            baro_x1k = "-0"
-        else
-            baro_x1k = "0"
-        end
-    end
-    ealt_x1000_obj:set(baro_x1k)
-    ]]
-
-    ehsi_enable:set(1)
-    ehsi_full_compass_enable:set(1)
+    --ehsi_enable:set(1)
+    --ehsi_full_compass_enable:set(1)
     ehsi_compass:set(sensor_data.getMagneticHeading() * RAD_TO_DEGREE  / 180)
     local deg_heading = sensor_data.getMagneticHeading() * RAD_TO_DEGREE
     if deg_heading < 0 then
@@ -189,8 +160,8 @@ function update()
         deg_heading = deg_heading - 360
     end
     ehsi_mag_heading:set(deg_heading)
-    ehsi_course_heading:set(0 * RAD_TO_DEGREE)
-    nav_mode:set(1)
+    --ehsi_course_heading:set(0 * RAD_TO_DEGREE)
+    --nav_mode:set(1)
 
     if (NS430_Test_Status == 0) then
         ns430_logo_page:set(1)

@@ -28,6 +28,59 @@ ehsi_base_clip.controllers          = {{"opacity_using_parameter",0}}
 ehsi_base_clip.isvisible		    = SHOW_MASKS
 Add(ehsi_base_clip)
 
+-- boot up screen
+local ehsi_bootup 				       = CreateElement "ceTexPoly"
+ehsi_bootup.vertices                   = EHSI_vert_gen(4000,4000*aspect)
+ehsi_bootup.indices                    = {0,1,2,2,3,0}
+ehsi_bootup.tex_coords                 = tex_coord_gen(1024,512,512,512,2048,2048)
+ehsi_bootup.material                   = basic_ehsi_material
+ehsi_bootup.name 			           = create_guid_string()
+ehsi_bootup.init_pos                   = {0, 0, 0}
+ehsi_bootup.init_rot		           = {0, 0, 0}
+ehsi_bootup.collimated	               = true
+ehsi_bootup.element_params             = {"EHSI_BOOT_SCREEN"}              -- Initialize the main display control
+ehsi_bootup.controllers                = {{"opacity_using_parameter",0}}
+ehsi_bootup.use_mipfilter              = true
+ehsi_bootup.additive_alpha             = true
+ehsi_bootup.h_clip_relation            = h_clip_relations.COMPARE
+ehsi_bootup.level                      = EHSI_DEFAULT_NOCLIP_LEVEL
+ehsi_bootup.parent_element	           = "ehsi_base_clip"
+Add(ehsi_bootup)
+
+local ehsi_software_version             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+ehsi_software_version.material          = "EHSI_font_green"    --FONT_             --Material type (note the font material created above)
+ehsi_software_version.init_pos          = {20/default_ehsi_x , 500/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+ehsi_software_version.alignment         = "LeftDown"       --Alignment settings：Left/Right/Center; Top/Down/Center
+ehsi_software_version.stringdefs        = {1.2*0.004,1.2 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+ehsi_software_version.formats           = {"%s", "%s"}
+ehsi_software_version.element_params    = {"EHSI_VERSION", "EHSI_BOOT_SCREEN"} -- top left first line display
+ehsi_software_version.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
+ehsi_software_version.collimated        = true
+ehsi_software_version.use_mipfilter     = true
+ehsi_software_version.additive_alpha    = true
+ehsi_software_version.isvisible		   = true
+ehsi_software_version.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+ehsi_software_version.level			   = EHSI_DEFAULT_NOCLIP_LEVEL
+ehsi_software_version.parent_element    = "ehsi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(ehsi_software_version)
+
+local ehsi_software_version             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+ehsi_software_version.material          = "EHSI_font_green"    --FONT_             --Material type (note the font material created above)
+ehsi_software_version.init_pos          = {20/default_ehsi_x , 250/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+ehsi_software_version.alignment         = "LeftCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
+ehsi_software_version.stringdefs        = {1.2*0.004,1.2 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+ehsi_software_version.formats           = {"%s", "%s"}
+ehsi_software_version.element_params    = {"NAV_DATA_EXP", "EHSI_BOOT_SCREEN"} -- top left first line display
+ehsi_software_version.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
+ehsi_software_version.collimated        = true
+ehsi_software_version.use_mipfilter     = true
+ehsi_software_version.additive_alpha    = true
+ehsi_software_version.isvisible		    = true
+ehsi_software_version.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+ehsi_software_version.level			    = EHSI_DEFAULT_NOCLIP_LEVEL
+ehsi_software_version.parent_element    = "ehsi_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(ehsi_software_version)
+
 -- Full view control element
 local ehsi_compass_rot_ctrl                     = CreateElement "ceSimple"
 ehsi_compass_rot_ctrl.name                      = "ehsi_compass_rot_ctrl"
@@ -48,7 +101,22 @@ local ehsi_compass_rot_ctrl                     = CreateElement "ceSimple"
 ehsi_compass_rot_ctrl.name                      = "ehsi_course_rot_ctrl"
 ehsi_compass_rot_ctrl.init_pos                  = {0, 0, 0}
 ehsi_compass_rot_ctrl.element_params            = {"COURSE_ROLL","COMPASS_FULL_ENABLE",}
-ehsi_compass_rot_ctrl.controllers               = {{"rotate_using_parameter", 0, 0.0174532925199433 * 180},{"opacity_using_parameter",1}}
+ehsi_compass_rot_ctrl.controllers               = {{"rotate_using_parameter", 0, 0.0174532925199433},{"opacity_using_parameter",1}}
+ehsi_compass_rot_ctrl.collimated	            = true
+ehsi_compass_rot_ctrl.use_mipfilter             = true
+ehsi_compass_rot_ctrl.additive_alpha            = true
+ehsi_compass_rot_ctrl.h_clip_relation           = h_clip_relations.COMPARE
+ehsi_compass_rot_ctrl.level                     = EHSI_DEFAULT_NOCLIP_LEVEL
+ehsi_compass_rot_ctrl.parent_element	        = "ehsi_compass_rot_ctrl"
+ehsi_compass_rot_ctrl.isvisible                 = false
+Add(ehsi_compass_rot_ctrl)
+
+-- heading roll control
+local ehsi_compass_rot_ctrl                     = CreateElement "ceSimple"
+ehsi_compass_rot_ctrl.name                      = "ehsi_heading_rot_ctrl"
+ehsi_compass_rot_ctrl.init_pos                  = {0, 0, 0}
+ehsi_compass_rot_ctrl.element_params            = {"HEADING_ROLL","COMPASS_FULL_ENABLE",}
+ehsi_compass_rot_ctrl.controllers               = {{"rotate_using_parameter", 0, 0.0174532925199433},{"opacity_using_parameter",1}}
 ehsi_compass_rot_ctrl.collimated	            = true
 ehsi_compass_rot_ctrl.use_mipfilter             = true
 ehsi_compass_rot_ctrl.additive_alpha            = true
@@ -154,13 +222,33 @@ hsi_course_tail.init_rot		           = {0, 0, 0}
 hsi_course_tail.collimated	               = true
 hsi_course_tail.element_params             = {"COMPASS_FULL_ENABLE", "ACTIVE_NAV_MOD"}              -- Initialize the main display control
 -- 0: off;1: loc, 2: NAV, 
-hsi_course_tail.controllers                = {{"opacity_using_parameter",0},{"change_color_when_parameter_equal_to_number", 1, 2, 4/255,239/255,40/255},{"opacity_using_parameter",1 }}
+hsi_course_tail.controllers                = {{"opacity_using_parameter",0},{"change_color_when_parameter_equal_to_number", 1, 1, 4/255,239/255,40/255},}
 hsi_course_tail.use_mipfilter              = true
 hsi_course_tail.additive_alpha             = true
 hsi_course_tail.h_clip_relation            = h_clip_relations.COMPARE
 hsi_course_tail.level                      = EHSI_DEFAULT_NOCLIP_LEVEL
 hsi_course_tail.parent_element	           = "ehsi_course_rot_ctrl"
 Add(hsi_course_tail)
+
+-- full view compass Main Heading
+local hsi_course_arrow 				        = CreateElement "ceTexPoly" --3.422
+hsi_course_arrow.vertices                   = EHSI_vert_gen(600,300)
+hsi_course_arrow.indices                    = {0,1,2,2,3,0}
+hsi_course_arrow.tex_coords                 = tex_coord_gen(1280,128,256,128,2048,2048)
+hsi_course_arrow.material                   = basic_ehsi_material
+hsi_course_arrow.name 			            = create_guid_string()
+hsi_course_arrow.init_pos                   = {0, 1650/2000, 0}
+hsi_course_arrow.init_rot		            = {0, 0, 0}
+hsi_course_arrow.collimated	                = true
+hsi_course_arrow.element_params             = {"COMPASS_FULL_ENABLE",}              -- Initialize the main display control
+-- 0: loc, 1: NAV, 
+hsi_course_arrow.controllers                = {{"opacity_using_parameter",0},}
+hsi_course_arrow.use_mipfilter              = true
+hsi_course_arrow.additive_alpha             = true
+hsi_course_arrow.h_clip_relation            = h_clip_relations.COMPARE
+hsi_course_arrow.level                      = EHSI_DEFAULT_NOCLIP_LEVEL
+hsi_course_arrow.parent_element	            = "ehsi_heading_rot_ctrl"
+Add(hsi_course_arrow)
 
 -- TOP heading ind
 
