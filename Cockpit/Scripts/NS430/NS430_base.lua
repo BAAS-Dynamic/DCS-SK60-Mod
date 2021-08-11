@@ -71,6 +71,7 @@ Add(ns430_startup_info)
 -- only disable when some setting page take whole screen
 
 -- Base Screen background
+-- only contain the lines
 local ns430_startup_info 				        = CreateElement "ceTexPoly"
 ns430_startup_info.vertices                     = GPS_vert_gen(2000,2000*aspect)
 ns430_startup_info.indices                      = {0,1,2,2,3,0}
