@@ -72,23 +72,25 @@ Add(ns430_startup_info)
 
 -- Base Screen background
 -- only contain the lines
-local ns430_startup_info 				        = CreateElement "ceTexPoly"
-ns430_startup_info.vertices                     = GPS_vert_gen(2000,2000*aspect)
-ns430_startup_info.indices                      = {0,1,2,2,3,0}
-ns430_startup_info.tex_coords                   = tex_coord_gen(0,0,1024,512,2048,2048)
-ns430_startup_info.material                     = blue_ns430_material
-ns430_startup_info.name 			            = create_guid_string()
-ns430_startup_info.init_pos                     = {0, 0, 0}
-ns430_startup_info.init_rot		                = {0, 0, 0}
-ns430_startup_info.collimated	                = true
-ns430_startup_info.element_params               = {"NAVU_BASE_ENABLE"}              -- Initialize the main display control
-ns430_startup_info.controllers                  = {{"opacity_using_parameter",0}}
-ns430_startup_info.use_mipfilter                = true
-ns430_startup_info.additive_alpha               = true
-ns430_startup_info.h_clip_relation              = h_clip_relations.COMPARE
-ns430_startup_info.level                        = NS430_DEFAULT_NOCLIP_LEVEL
-ns430_startup_info.parent_element	            = "ns430_base_clip"
-Add(ns430_startup_info)
+local bs430_base_surround 				            = CreateElement "ceTexPoly"
+bs430_base_surround.vertices                        = GPS_vert_gen(2000,2000*aspect)
+bs430_base_surround.indices                         = {0,1,2,2,3,0}
+bs430_base_surround.tex_coords                      = tex_coord_gen(0,0,1024,512,2048,2048)
+bs430_base_surround.material                        = blue_ns430_material
+bs430_base_surround.name 			                = create_guid_string()
+bs430_base_surround.init_pos                        = {0, 0, 0}
+bs430_base_surround.init_rot		                = {0, 0, 0}
+bs430_base_surround.collimated	                    = true
+bs430_base_surround.element_params                  = {"NAVU_BASE_ENABLE"}              -- Initialize the main display control
+bs430_base_surround.controllers                     = {{"opacity_using_parameter",0}}
+bs430_base_surround.use_mipfilter                   = true
+bs430_base_surround.additive_alpha                  = true
+bs430_base_surround.h_clip_relation                 = h_clip_relations.COMPARE
+bs430_base_surround.level                           = NS430_DEFAULT_NOCLIP_LEVEL
+bs430_base_surround.parent_element	                = "ns430_base_clip"
+Add(bs430_base_surround)
+
+-- 225 * 156
 
 -- Third Layer for Moving Map display
 
