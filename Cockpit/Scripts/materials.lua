@@ -455,6 +455,8 @@ fontdescription["font_Pixel"] = {
 	fonts["EHSI_font_green"]		= {fontdescription["font_EADI"], 10, {4,239,113,255} }
 	fonts["EHSI_font_purple"]		= {fontdescription["font_EADI"], 10, {217,40,113,255} }
 	fonts["BS430_font_white"]		= {fontdescription["font_Pixel"], 10, {200,200,200,255} }
+	fonts["BS430_font_green"]		= {fontdescription["font_Pixel"], 10, {4,239,113,255} }
+	fonts["BS430_font_purple"]		= {fontdescription["font_Pixel"], 10, {217,40,113,255} }
 
 -- force preload resources to avoid freeze on start (list of texture files)
 --[[

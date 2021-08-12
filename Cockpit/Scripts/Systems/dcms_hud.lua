@@ -46,7 +46,7 @@ local hud_adi_movx = get_param_handle("HUD_ADI_MOVX")
 local ehsi_enable = get_param_handle("EHSI_DIS_ENABLE")
 local ehsi_full_compass_enable = get_param_handle("COMPASS_FULL_ENABLE")
 local ehsi_compass = get_param_handle("COMPASS_ROLL")
-local nav_mode = get_param_handle("ACTIVE_NAV_MOD")
+-- local nav_mode = get_param_handle("ACTIVE_NAV_MOD")
 local ehsi_mag_heading = get_param_handle("EHSI_HEADING")
 local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 
