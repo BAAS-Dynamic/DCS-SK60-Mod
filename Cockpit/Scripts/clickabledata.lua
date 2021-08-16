@@ -407,6 +407,9 @@ multi_tumb_click_list = {
     {"PTN_513", "VLOC/COM Focus Change", devices.HUD_DCMS, 513, Keys.Freq_Knob_Push},
     {"PTN_514", "COM frequency Flip-flop", devices.HUD_DCMS, 514, Keys.COM_Freq_Swap},
     {"PTN_515", "VLOC frequency Flip-flop", devices.HUD_DCMS, 515, Keys.VLOC_Freq_Swap},
+    {"PTN_516", "Change CDI", devices.HUD_DCMS, 516, Keys.Nav_CDI},
+    {"PTN_517", "OBS", devices.HUD_DCMS, 517, Keys.Nav_OBS},
+    {"PTN_518", "Message", devices.HUD_DCMS, 518, Keys.Nav_MSG},
     {"PTN_526", "Enter", devices.HUD_DCMS, 526, Keys.Nav_Ent},
 
     {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
