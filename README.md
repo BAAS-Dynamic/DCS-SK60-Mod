@@ -8,8 +8,8 @@ Development of the SK60 mod for Digital Combat Simulator
 + Sound System working(can be together with Switch class)
 + Differential brake for ground opertaion(rudder padel input)
 ### ~~In May~~ (DONE)
-+ ~~make most of the avionics working
-+ ~~Start converting to EFM
++ ~~make most of the avionics working~~
++ ~~Start converting to EFM~~
 ### TO-DO list
 + See in link below:
 + https://docs.google.com/spreadsheets/d/1nlrEghej1rFCXLv4O9qpI_PqkWHY3rdk3nWyn6rrHKA/edit#gid=0
