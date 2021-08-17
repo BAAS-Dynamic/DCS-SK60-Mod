@@ -1,7 +1,13 @@
 # DCS-SK60-Mod
 Development of the SK60 mod for Digital Combat Simulator
 ## Rough Planning
-### In May
+### In August
++ Make standard class for switches
++ Make navigation module BS430 working
++ Enable cold start procedure
++ Sound System working(can be together with Switch class)
++ Differential brake for ground opertaion(rudder padel input)
+### ~~In May~~ (DONE)
 + make most of the avionics working
 + Start converting to EFM
 ### TO-DO list
