@@ -41,6 +41,7 @@ SK_60 =  {
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,"Battleplanes",},--AG WSTYPE_PLACEHOLDER
 	Categories			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
 	
+	----------AI DEFS------------------------------------
 		M_empty 					=   2150, -- kg	-- kg  with pilot and nose load
 		M_nominal					=	3600,	-- kg (Empty Plus Full Internal Fuel)
 		M_max						=	4000,	-- kg (Maximum Take Off Weight)
@@ -48,8 +49,8 @@ SK_60 =  {
 		H_max						=	13500,	-- m  (Maximum Operational Ceiling)
 		average_fuel_consumption	=	0.172,
 		CAS_min						=	56,		-- Minimum CAS speed (m/s) (for AI)
-		V_opt						=	125,	-- Cruise speed (m/s) (for AI)
-		V_take_off					=	53,		-- Take off speed in m/s (for AI)
+		V_opt						=	200,	-- Cruise speed (m/s) (for AI)
+		V_take_off					=	82,		-- Take off speed in m/s (for AI)
 		V_land						=	50,		-- Land speed in m/s (for AI)
 		has_afteburner				=	false,
 		has_speedbrake				=	true,

@@ -120,7 +120,7 @@ return {
     
     -- Cockpit view
     {combos = {{key = 'L', reformers = {'LAlt'}}},				down = 3256,	cockpit_device_id = 0,	value_down = 1.0,						name = _('Flashlight'),						category = _('View Cockpit')},
-    
+    {combos = {{key = 'P', reformers = {'RShift'}}},			down = iCommandCockpitShowPilotOnOff, 											name = _('Toggle Pilot'), 					category = _('View Cockpit')},
     {combos = {{key = 'Num0'}},									down = iCommandViewTempCockpitOn,		up = iCommandViewTempCockpitOff,		name = _('Cockpit panel view in'),			category = _('View Cockpit')},
     {combos = {{key = 'Num0', reformers = {'RCtrl'}}},			down = iCommandViewTempCockpitToggle,											name = _('Cockpit panel view toggle'),		category = _('View Cockpit')},
     --// Save current cockpit camera angles for fast numpad jumps
