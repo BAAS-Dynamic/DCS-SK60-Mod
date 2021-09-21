@@ -10,7 +10,7 @@ SK_60 =  {
 	shape_table_data 	= 
 	{
 		{
-			file  	 	= 'SK_60';--AG
+			file  	 	= 'SK-60';--AG
 			life  	 	= 20; -- lifebar
 			vis   	 	= 2; -- visibility gain.
 			desrt    	= 'NCPC-7_destr'; -- Name of destroyed object file name
@@ -20,11 +20,12 @@ SK_60 =  {
 			classname   = "lLandPlane";
 			positioning = "BYNORMAL";
 		},
+		--[[
 		{
 			name  		= "NCPC-7_destr";
 			file  		= "NCPC-7_destr";
 			fire  		= { 240, 2};
-		},
+		},]]
 	},
 
 	-- apply the SK-60 for all countries currently
