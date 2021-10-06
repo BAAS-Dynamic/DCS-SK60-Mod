@@ -34,7 +34,7 @@ DEBUG_COLOR                 = {0,255,0,200}
 -- 白天模式hud的颜色
 HUD_DAY_COLOR               = {0,250,0,255}
 
--- 现在就一张hud贴图
+-- Now just a hud map
 basic_HUD_material = MakeMaterial(HUD_IND_TEX_PATH.."HUD_base_ind_tex.dds", HUD_DAY_COLOR)
 
 -- 定义hud默认长宽

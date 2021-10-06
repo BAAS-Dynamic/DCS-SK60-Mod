@@ -1,74 +1,74 @@
-dofile(LockOn_Options.common_script_path.."devices_defs.lua") --加载默认，不知道原因，没有在里面找到有效函数
-dofile(LockOn_Options.common_script_path.."ViewportHandling.lua") --大多数的非hud显示器均加载了这一个文件(似乎是视角控制函数)
+dofile(LockOn_Options.common_script_path.."devices_defs.lua") --Load the default, don’t know the reason, no valid function is found in it
+dofile(LockOn_Options.common_script_path.."ViewportHandling.lua") --Most non-hud displays load this file (it seems to be a viewing angle control function)
 
-indicator_type       = indicator_types.COLLIMATOR	--大多数hud采用COLLIMATOR，主显示器均采用COMMON，此处存疑
-purposes 	   = {render_purpose.GENERAL,render_purpose.HUD_ONLY_VIEW} --渲染模型
+indicator_type       = indicator_types.COLLIMATOR	--Most huds use COLLIMATOR, and the main display uses COMMON. There is a doubt here.
+purposes 	   = {render_purpose.GENERAL,render_purpose.HUD_ONLY_VIEW} --Rendering model
 
---子页面 id
-BASE    = 1    --这是最上层的裁剪框
---BASIC_PAGE = 2 --这是基础仪表页面
+--Subpage id
+BASE    = 1    --This is the top cropping frame
+--BASIC_PAGE = 2 --This is the basic instrument page
 
---子页面
+--Subpage
 page_subsets  = {
-	[BASE]    		= LockOn_Options.script_path.."HUD/Indicator/hud_base_page.lua",    --底页面
-	--[BASIC_PAGE]    = LockOn_Options.script_path.."MFD/Indicator/basic_page.lua",	--基础飞行数据页面
+	[BASE]    		= LockOn_Options.script_path.."HUD/Indicator/hud_base_page.lua",    --Bottom page
+	--[BASIC_PAGE]    = LockOn_Options.script_path.."MFD/Indicator/basic_page.lua",	--Basic flight data page
 }
---目前暂时无法控制页面集显示,所以只用一个页面控制
---页面集
+--It is currently not possible to control the display of the page set, so only one page is used to control
+--Page set
 pages = {
-	{ BASE, }, --只有一个页面集，多页面集情况为增加这个数组
+	{ BASE, }, --There is only one page set. In the case of multiple page sets, add this array
 }
 
--- 注：关于多个屏幕控制的问题，这里可以加载一个function来区分不同屏幕初始化，basepage要弄三个
+-- Note: Regarding the control of multiple screens, a function can be loaded here to distinguish different screen initializations, and three basepages
 
-init_pageID = 1 --TEST_NORMAL --默认加载为第一个页面集
+init_pageID = 1 --TEST_NORMAL --The first page set is loaded by default
 
 -- mat_tbl = {
--- jf17在这里有很多的材质定义，似乎是在后面直接调用这个宏定义
+-- jf17 has a lot of material definitions here, it seems to call this macro definition directly later
 -- }
 
---这是一些材质定义，暂时不理解
+--This is some material definition, I don’t understand it temporarily
 -- brightness_sensitive_materials = mat_tbl
 -- opacity_sensitive_materials    = mat_tbl
 -- color_sensitive_materials      = mat_tbl
 
---这里标记一些颜色描述，原理未知
+--Some color descriptions are marked here, the principle is unknown
 -- is_colored   = true
 -- day_color    = {0, 1.0, 0}
 -- night_color  = {0, 0.5, 0}
 
--- jf17在这里引用的material.lua也定义了一部分的显示字符
+-- The material.lua referenced by jf17 here also defines part of the display characters
 
-----在xxxx分割线以上的部分是JF-17的实现方式
--- JF-17的MFD屏蔽了默认的update_screenspace函数
--- 下面两个是获取屏幕的宽和高，似乎是在device_init.lua定义了三个helper坐标后可以获取到
+----The part above the xxxx dividing line is the implementation of JF-17
+-- The MFD of JF-17 shields the default update_screenspace function
+-- The following two are to obtain the width and height of the screen, which seems to be obtained after the three helper coordinates are defined in device_init.lua
 --local w = LockOn_Options.screen.width;
 --local h = LockOn_Options.screen.height;
 --[[
-	这部分主要转换的是这两个全局参数:[非HUD的显示屏]
-	JF-17 用了这个best_fit_rect函数来求了一个同步值
-	这个函数来自他自己的util文件，求的是视角校准（似乎）
+	This part mainly converts these two global parameters: [non-HUD display]
+JF-17 uses this best_fit_rect function to find a synchronization value
+This function comes from his own util file, and it is looking for perspective calibration (it seems)
 	local hud_only_view_position = best_fit_rect(0, h * (1 - 50/120), w/3 , h * 50/120, Viewport_Align.left, Viewport_Align.vcenter, MFCD_aspect)
 	dedicated_viewport
 	dedicated_viewport_arcade
 ]]--
 
 ----XXXXXXXXXXXXXXXXXXXXXXXXXXXXX----------
--- A4采用这个函数来重新定义视角(标注是视角移位),函数来自viewpointerhandling
--- 在common文件夹中这个函数的描述是 positioning on screen in HUD Only view
--- 函数有三个参数：第一个是屏幕比例，第二个是is_left,第三个是缩放值（A4在这里没有第三个值）
--- 不清楚这个selfwidth和hight来自何处，这个参数在所有脚本中均没有出现过
--- 目前看JF-17在这个函数的地方自己定义了一个同样的控制函数，但是这个函数没有被使用过，使用的地方全部注释掉了
+-- A4 uses this function to redefine the perspective (the label is perspective shift), and the function comes from viewerhandling
+-- The description of this function in the common folder is positioning on screen in HUD Only view
+-- The function has three parameters: the first is the screen ratio, the second is is_left, and the third is the zoom value (A4 has no third value here)
+-- I don’t know where the selfwidth and hight come from. This parameter does not appear in all scripts.
+-- At present, JF-17 defines the same control function in this function, but this function has not been used, and all the places used are commented out
 
--- 目前看下面这俩也不是必须的
+-- At present, these two are not necessary
 
 
 update_screenspace_diplacement(SelfWidth/SelfHeight,false)
 
 --[[
-	这行的操作很奇怪，上面的操作结果是重新设置两个视角，
+	The operation of this line is very strange, the result of the above operation is to reset the two perspectives，
 	dedicated_viewport 		  = {default_x,default_y,default_width,default_height}
 	dedicated_viewport_arcade = {default_x, 0	    ,default_width,default_height}
-	但是A4在最后又把arcade值重新定义为viewport值？存疑
+	But A4 redefines the arcade value to the viewport value at the end? Doubtful
 ]] 
 dedicated_viewport_arcade = dedicated_viewport
