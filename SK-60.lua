@@ -121,7 +121,7 @@ SK_60 =  {
 		EPLRS 					    = true,--can you be seen on the A-10C TAD Page?
 		TACAN_AA					= true,--I think this will not work for a client slot but AI might add a TACAN for the unit.
 
-	-- sounderName = "Aircraft/Planes/SK-60-Sound",
+	sounderName = "Aircraft/Planes/SK60_Sound",
 	
 	engines_nozzles = {
 		[1] = 
@@ -346,8 +346,8 @@ pylons_enumeration = {1, 3, 4, 2},
 			kjx			=	3.50,    -- Inertie roulis 2.70
 			kjz			=	0.00125, -- Unknown constant
 			Czbe		=	-0.013,  -- coefficient, along Z axis (perpendicular), affects yaw, negative value means force orientation in FC coordinate system
-			cx_gear		=	0.35,    -- coefficient, drag, gear
-			cx_flap		=	0.135,    -- coefficient, drag, full flaps
+			cx_gear		=	0.065,    -- coefficient, drag, gear
+			cx_flap		=	0.087,    -- coefficient, drag, full flaps
 			cy_flap		=	0.34,    -- coefficient, normal force, lift, flaps 0.28
 			cx_brk		=	0.12,    -- coefficient, drag, air breaks 
 			table_data  = 

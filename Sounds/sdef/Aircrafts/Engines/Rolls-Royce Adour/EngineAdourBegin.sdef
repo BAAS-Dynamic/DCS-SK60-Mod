@@ -1,0 +1,5 @@
+wave = "Effects/Aircrafts/Engines/Rolls-Royce Adour/EngineAdourBegin"
+inner_radius = 25
+outer_radius = 300
+gain = 1.2
+pitch = 1.4

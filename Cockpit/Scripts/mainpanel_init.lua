@@ -228,3 +228,6 @@ Fuel.controller						= controllers.base_gauge_TotalFuelWeight
 
 
 need_to_be_closed = false
+
+--SOUNDS
+dofile(LockOn_Options.common_script_path.."tools.lua")
