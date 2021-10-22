@@ -23,12 +23,14 @@ local r_main_gear_broken = 0
 
 local gear_level_init = 0 --The landing gear handle is not set by default
 
-local gear_level = get_param_handle("LandingGearLevel")
+local gear_level = get_param_handle("PTN_083")
 
 -- set indicator
 local ngear_pos_ind = get_param_handle("NoseWPOS_IND")
 local mlgear_pos_ind = get_param_handle("MainLWPOS_IND")
 local mrgear_pos_ind = get_param_handle("MainRWPOS_IND")
+
+local gear_state_share = get_param_handle("GEAR_SHARE")
 
 gear_system:listen_command(gear_switch)
 gear_system:listen_command(gear_up)
@@ -68,6 +70,8 @@ function post_initialize()
     set_aircraft_draw_argument_value(3, r_main_gear_status)
     set_aircraft_draw_argument_value(5, l_main_gear_status)
     gear_level:set(1 - nose_gear_status)
+    gear_state_share:set(1 - nose_gear_status)
+    gear_level_pos = 1 - nose_gear_status
 end
 
 function SetCommand(command,value)
@@ -93,9 +97,10 @@ function SetCommand(command,value)
     elseif (command == 120) then
         dispatch_action(nil, THROTTLEAXIS, -1)
 	end
+    gear_state_share:set(nose_gear_status)
 end
 
-local gear_level_pos = gear_level:get()
+local move_ability = 1;
 
 function update()
     local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
@@ -103,15 +108,20 @@ function update()
         --takes 7 seconds to full extended
         -- set globle time count
         local time_increse_step = 0.02 / 7
-        local move_ability = 1;
-        if (sensor_data.getWOW_LeftMainLandingGear > 1 or sensor_data.getWOW_NoseLandingGear > 1 or sensor_data.getWOW_RightMainLandingGear > 1) then
+        if (sensor_data.getWOW_LeftMainLandingGear() > 0.001 or sensor_data.getWOW_NoseLandingGear() > 0.001 or sensor_data.getWOW_RightMainLandingGear() > 0.001) then
             move_ability = 0;
+            --print_message_to_user("L:"..sensor_data.getWOW_LeftMainLandingGear());
+            --print_message_to_user("R:"..sensor_data.getWOW_RightMainLandingGear());
+        else
+            move_ability = 1;
         end
+        --print_message_to_user("N:"..sensor_data.getWOW_NoseLandingGear());
+        
         
         if (nose_gear_status == 0 and n_gear_status > 0) then
             -- in increments of time_increse_step (50x per second)
-            n_gear_status = n_gear_status - time_increse_step
-            set_aircraft_draw_argument_value(0, n_gear_status * move_ability)
+            n_gear_status = n_gear_status - time_increse_step * move_ability
+            set_aircraft_draw_argument_value(0, n_gear_status)
         elseif (nose_gear_status == 1 and n_gear_status < 1) then
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status + time_increse_step
@@ -119,14 +129,14 @@ function update()
         end
 
         if (nose_gear_status == 0 and n_gear_status <= 0) then
-            nose_gear_status = 0
+            n_gear_status = 0
         elseif (nose_gear_status == 1 and n_gear_status >= 1)then
-            nose_gear_status = 1
+            n_gear_status = 1
         end
 
         if (l_main_gear_status == 0 and l_gear_status > 0) then
-            l_gear_status = l_gear_status - time_increse_step
-            set_aircraft_draw_argument_value(5, l_gear_status * move_ability)
+            l_gear_status = l_gear_status - time_increse_step * move_ability
+            set_aircraft_draw_argument_value(5, l_gear_status)
         elseif (l_main_gear_status == 1 and l_gear_status < 1) then
             l_gear_status = l_gear_status + time_increse_step
             set_aircraft_draw_argument_value(5, l_gear_status)
@@ -134,8 +144,8 @@ function update()
 
         if (r_main_gear_status == 0 and r_gear_status > 0) then
             -- lower canopy in increments of time_increse_step (50x per second)
-            r_gear_status = r_gear_status - time_increse_step
-            set_aircraft_draw_argument_value(3, r_gear_status * move_ability)
+            r_gear_status = r_gear_status - time_increse_step * move_ability
+            set_aircraft_draw_argument_value(3, r_gear_status)
         elseif (r_main_gear_status == 1 and r_gear_status < 1) then
             -- lower canopy in increments of time_increse_step (50x per second)
             r_gear_status = r_gear_status + time_increse_step

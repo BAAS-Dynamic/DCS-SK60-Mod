@@ -208,7 +208,7 @@ Landinggearhandle					= CreateGauge("parameter")
 Landinggearhandle.arg_number		= 50
 Landinggearhandle.input				= {0, 1}
 Landinggearhandle.output			= {0, 1}
-Landinggearhandle.parameter_name	= "LandingGearLevel"
+Landinggearhandle.parameter_name	= "PTN_083"
 
 --INSTRUMENTS--
 LeftRPM								= CreateGauge ()

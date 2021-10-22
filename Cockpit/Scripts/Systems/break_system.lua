@@ -29,6 +29,8 @@ local AirbrakeOff = 148
 local iCommandPlaneWheelBrakeOn = 74 --原装的机轮刹车
 local iCommandPlaneWheelBrakeOff = 75
 
+local gear_state_share = get_param_handle("GEAR_SHARE")
+
 local parking_brake_state = 0
 local parking_brake_target = 0
 
@@ -108,13 +110,18 @@ function SetCommand(command,value)
         end
     elseif (command == 72) then
         -- this is warthunder like now
-        if set_aircraft_draw_argument_value(0) > 0.5 then
+        if get_aircraft_draw_argument_value(0) > 0.5 then
             if Flap_Target > 0.3 then
                 Flap_Target = 0
                 print_message_to_user("Flap: Retract")
             else
-                Flap_Target = 1
-                print_message_to_user("Flap: Landing")
+                if (gear_state_share:get() > 0.5) then
+                    Flap_Target = 0.5
+                    print_message_to_user("Flap: Takeoff")
+                else
+                    Flap_Target = 1
+                    print_message_to_user("Flap: Landing")
+                end
             end
         else
             if Flap_Target > 0.3 then
