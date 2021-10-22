@@ -64,6 +64,12 @@ Breaks:listen_command(72)
 Breaks:listen_command(145)
 Breaks:listen_command(146)
 
+
+-- listen to flap
+Breaks:listen_command(Keys.Flap_Pos_Up)
+Breaks:listen_command(Keys.Flap_Pos_Half)
+Breaks:listen_command(Keys.Flap_Pos_Down)
+
 Flap_Target = 0
 Flap_Current = 0
 
@@ -132,7 +138,12 @@ function SetCommand(command,value)
                 print_message_to_user("Flap: Combat")
             end
         end
-        
+    elseif (command == Keys.Flap_Pos_Up) then
+        Flap_Target = 0
+    elseif (command == Keys.Flap_Pos_Half) then
+        Flap_Target = 0.5
+    elseif (command == Keys.Flap_Pos_Down) then
+        Flap_Target = 1
     end
 end
 
