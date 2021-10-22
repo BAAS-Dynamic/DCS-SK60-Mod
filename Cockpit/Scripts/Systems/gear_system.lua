@@ -103,11 +103,15 @@ function update()
         --takes 7 seconds to full extended
         -- set globle time count
         local time_increse_step = 0.02 / 7
-
+        local move_ability = 1;
+        if (sensor_data.getWOW_LeftMainLandingGear > 1 or sensor_data.getWOW_NoseLandingGear > 1 or sensor_data.getWOW_RightMainLandingGear > 1) then
+            move_ability = 0;
+        end
+        
         if (nose_gear_status == 0 and n_gear_status > 0) then
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status - time_increse_step
-            set_aircraft_draw_argument_value(0, n_gear_status)
+            set_aircraft_draw_argument_value(0, n_gear_status * move_ability)
         elseif (nose_gear_status == 1 and n_gear_status < 1) then
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status + time_increse_step
@@ -122,7 +126,7 @@ function update()
 
         if (l_main_gear_status == 0 and l_gear_status > 0) then
             l_gear_status = l_gear_status - time_increse_step
-            set_aircraft_draw_argument_value(5, l_gear_status)
+            set_aircraft_draw_argument_value(5, l_gear_status * move_ability)
         elseif (l_main_gear_status == 1 and l_gear_status < 1) then
             l_gear_status = l_gear_status + time_increse_step
             set_aircraft_draw_argument_value(5, l_gear_status)
@@ -131,7 +135,7 @@ function update()
         if (r_main_gear_status == 0 and r_gear_status > 0) then
             -- lower canopy in increments of time_increse_step (50x per second)
             r_gear_status = r_gear_status - time_increse_step
-            set_aircraft_draw_argument_value(3, r_gear_status)
+            set_aircraft_draw_argument_value(3, r_gear_status * move_ability)
         elseif (r_main_gear_status == 1 and r_gear_status < 1) then
             -- lower canopy in increments of time_increse_step (50x per second)
             r_gear_status = r_gear_status + time_increse_step

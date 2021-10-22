@@ -14,7 +14,7 @@ local fmt = '%.2f'
 local air_brake_state
 local air_brake_pos = 0
 
-local air_brake_pos_ind = get_param_handle("AIRBREAK_IND")
+local air_brake_pos_ind = get_param_handle("AIRBRAKE_IND")
 
 local parking_brake_handle = get_param_handle("PARKINGBREAK_HANDLE")
 
@@ -95,11 +95,37 @@ function SetCommand(command,value)
             dispatch_action(nil,iCommandPlaneWheelBrakeOff)
         end
     elseif (command == 146) then
-        Flap_Target = 0
+        if (Flap_Target > 0.1 and Flap_Target <= 0.7) then
+            Flap_Target = 0
+        elseif Flap_Target >= 0.8 then
+            Flap_Target = 0.5
+        end
     elseif (command == 145) then
-        Flap_Target = 1
+        if (Flap_Target < 0.8 and Flap_Target > 0.3) then
+            Flap_Target = 1
+        elseif Flap_Target < 0.3 then
+            Flap_Target = 0.5
+        end
     elseif (command == 72) then
-        Flap_Target = 1 - Flap_Target
+        -- this is warthunder like now
+        if set_aircraft_draw_argument_value(0) > 0.5 then
+            if Flap_Target > 0.3 then
+                Flap_Target = 0
+                print_message_to_user("Flap: Retract")
+            else
+                Flap_Target = 1
+                print_message_to_user("Flap: Landing")
+            end
+        else
+            if Flap_Target > 0.3 then
+                Flap_Target = 0
+                print_message_to_user("Flap: Retract")
+            else
+                Flap_Target = 0.5
+                print_message_to_user("Flap: Combat")
+            end
+        end
+        
     end
 end
 
@@ -143,6 +169,7 @@ function update()
     set_aircraft_draw_argument_value(10,Flap_Current)
     set_aircraft_draw_argument_value(13,Flap_Current)
     set_aircraft_draw_argument_value(14,Flap_Current)
+    air_brake_pos_ind:set(get_aircraft_draw_argument_value(21))
 
 end
 

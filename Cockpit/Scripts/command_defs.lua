@@ -272,9 +272,12 @@ Keys =
     -- RightEngineOFF = __custom_counter(),
     YawDamperSwitch = 5052,
 
-    -- Weapon Part
+    -- Weapon Part till 5070
     WingPylonSmokeOn = 5053,
     NozzleSmokeOn = 5054,
+
+    -- Flight Control Key start from 5071 - 5100
+    AirbrakePauseMove = 5071,
     
     -- 5100-5500 Navigation input
     -- GNS 430

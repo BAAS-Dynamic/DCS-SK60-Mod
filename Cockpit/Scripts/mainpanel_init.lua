@@ -141,6 +141,9 @@ animation_list = {
     
     {"PTN_601", 601},
 
+    -- Airbrake Ind
+    {"AIRBRAKE_IND", 316},
+
     -- Electric power
     {"PTN_401", 401}, -- Main Power
     {"PTN_402", 402}, -- Left Gen
