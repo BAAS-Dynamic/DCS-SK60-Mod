@@ -38,6 +38,7 @@ local hud_nav_data_3 = get_param_handle("HUD_NAV_DATA_3_DIS")
 
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
+local erpm_color = get_param_handle("RPM_COLOR")
 
 --local gps_base = get_param_handle("NS430_POWER")
 
@@ -150,6 +151,7 @@ function update()
 
     erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
     erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
+    erpm_color:set(1)
 
     --ehsi_enable:set(1)
     --ehsi_full_compass_enable:set(1)

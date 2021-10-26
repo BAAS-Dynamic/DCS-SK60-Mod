@@ -29,9 +29,9 @@ Add(erpm_base_clip)
 
 local RTOP_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 RTOP_text_box.material          = "LCD_font_white" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-RTOP_text_box.init_pos          = {1 , 0}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RTOP_text_box.init_pos          = {0.8 , 0}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 RTOP_text_box.alignment         = "RightCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
-RTOP_text_box.stringdefs        = {0.8*0.0095,0.8 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+RTOP_text_box.stringdefs        = {1.3*0.0095,1.3 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 RTOP_text_box.formats           = {"%.1f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 RTOP_text_box.element_params    = {"ELEV_TRIM_DIGTAL"} -- top left first line display
 RTOP_text_box.controllers       = {{"text_using_parameter",0},}
@@ -43,3 +43,5 @@ RTOP_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-
 RTOP_text_box.level			    = EADI_DEFAULT_NOCLIP_LEVEL
 RTOP_text_box.parent_element    = "etrim_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(RTOP_text_box)
+
+-- 230 120 30{"change_color_when_parameter_equal_to_number", 2, 1, 230/255,120/255,30/255},
