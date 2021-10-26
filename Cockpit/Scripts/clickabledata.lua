@@ -386,7 +386,7 @@ multi_tumb_click_list = {
     {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, Keys.L_HP_PUMP},
     {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, Keys.R_HP_PUMP},
 
-    {"PTN_436", "Anti-Collision Light", devices.LIGHT_SYSTEM, 436, Keys.LightTaxiUP, Keys.LightTaxiDOWN},
+    {"PTN_436", "Taxi/Landing Light", devices.LIGHT_SYSTEM, 436, Keys.LightTaxiUP, Keys.LightTaxiDOWN},
     {"PTN_429", "Anti-Collision Light", devices.LIGHT_SYSTEM, 429, Keys.LightStrobeUP, Keys.LightStrobeDOWN},
     {"PTN_424", "Navigation Light", devices.LIGHT_SYSTEM, 424, Keys.LightNaviWingUP,Keys.LightNaviWingDOWN},
     

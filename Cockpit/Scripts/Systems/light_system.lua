@@ -35,7 +35,7 @@ local approach_index_switch = _switch_counter()
 
 target_status = {
     {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
-    {taxi_light_switch , SWITCH_OFF, get_param_handle("PTN_436"), "PTN_436"},
+    {taxi_light_switch , 0.5, get_param_handle("PTN_436"), "PTN_436"},
     {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_424"), "PTN_424"},
     {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
     {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
@@ -60,7 +60,7 @@ function post_initialize()
     if birth == "GROUND_HOT" then
         target_status = {
             {strobe_light_switch , SWITCH_ON, get_param_handle("PTN_429"), "PTN_429"},
-            {taxi_light_switch , SWITCH_TEST, get_param_handle("PTN_436"), "PTN_436"},
+            {taxi_light_switch , 0, get_param_handle("PTN_436"), "PTN_436"},
             {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_424"), "PTN_424"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
@@ -71,7 +71,7 @@ function post_initialize()
     elseif birth == "AIR_HOT" then
         target_status = {
             {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
-            {taxi_light_switch , SWITCH_OFF, get_param_handle("PTN_436"), "PTN_436"},
+            {taxi_light_switch , 0.5, get_param_handle("PTN_436"), "PTN_436"},
             {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_424"), "PTN_424"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
@@ -109,12 +109,13 @@ function SetCommand(command, value)
             target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] - 1
         end    
     elseif command == Keys.LightTaxiUP then
-        if target_status[taxi_light_switch][2] < 0.5 then
-            target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] + 1
+        -- print_message_to_user(target_status[taxi_light_switch][2])
+        if target_status[taxi_light_switch][2] < 0.8 then
+            target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] + 0.5
         end
     elseif command == Keys.LightTaxiDOWN then
-        if target_status[taxi_light_switch][2] > -0.5 then
-            target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] - 1
+        if target_status[taxi_light_switch][2] > 0.3 then
+            target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] - 0.5
         end
     -- fit new
     elseif command == Keys.LightNaviWingUP then
@@ -247,10 +248,12 @@ function update_externel_light_status()
         end
 
         -- taxi/landing lights
-        if target_status[taxi_light_status][2] == SWITCH_TEST then
+        if target_status[taxi_light_switch][2] == 0 then
             set_aircraft_draw_argument_value(194, 0.5)
-        elseif target_status[taxi_light_switch][2] == SWITCH_ON then
+        elseif target_status[taxi_light_switch][2] == 1 then
             set_aircraft_draw_argument_value(194, 1)
+        elseif target_status[taxi_light_switch][2] == 0.5 then
+            set_aircraft_draw_argument_value(194, 0)
         end
     end
 end
