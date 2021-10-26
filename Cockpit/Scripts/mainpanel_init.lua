@@ -154,6 +154,7 @@ animation_list = {
 
     {"PTN_424", 424}, -- Nav light
     {"PTN_429", 429}, -- Anti Col light
+    {"PTN_436", 436}, -- taxi light
 
     -- EADI
     {"PTN_501", 501},

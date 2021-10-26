@@ -139,7 +139,8 @@ Keys =
 
     LightStrobeUP = __custom_counter(),
     LightStrobeDOWN = __custom_counter(),
-    LightTaxi = __custom_counter(),
+    LightTaxiDOWN = __custom_counter(),
+    LightTaxiUP = __custom_counter(),
     LightNaviWingUP = __custom_counter(),
     LightNaviWingDOWN = __custom_counter(),
     LightNaviTailUP = __custom_counter(),
