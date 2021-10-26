@@ -46,7 +46,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EADI/
 -- ERPM
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ERPM/ERPM_init.lua",nil,{{"LN2_center","LN2_down","LN2_right"},{sx_l =  -0.0001,}}}
 -- TRIM display
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ETRIM/ETRIM_init.lua",nil,{{"LN2_center","LN2_down","LN2_right"},{sx_l =  -0.0001,}}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ETRIM/ETRIM_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}
 -- NS430 Navigation Control Unit
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430/NS430_init.lua",nil,{{"GPS_center","GPS_down","GPS_right"},{sx_l =  -0.001,}}}
 -- E Altimeter

@@ -127,6 +127,9 @@ animation_list = {
 	{"MainRWPOS_IND", 320},
 
     {"Inside_Canopy", 38, {0, 1}, {1, 0}},
+    {"RUDDER_PADDLE", 3},
+    {"BRAKE_LEFT", 4},
+    {"BRAKE_RIGHT", 5},
 
     {"PTN_109", 109},
     {"PTN_110", 110},
