@@ -266,9 +266,6 @@ Keys =
     MissileCoolingUP = __custom_counter(),
     MissileCoolingDOWN = __custom_counter(),
 
-    -- special functions
-    SpecialSence == __custom_counter(),
-
     --起落架手柄 5001// 5050 EFM - 6000 for EFM
     NoseWheelSteeringOn = 5050,
     NoseWheelSteeringOff = 5051,
@@ -279,6 +276,9 @@ Keys =
     -- Weapon Part till 5070
     WingPylonSmokeOn = 5053,
     NozzleSmokeOn = 5054,
+
+    -- special functions
+    SpecialSence = 5070,
 
     -- Flight Control Key start from 5071 - 5100
     AirbrakePauseMove = 5071,

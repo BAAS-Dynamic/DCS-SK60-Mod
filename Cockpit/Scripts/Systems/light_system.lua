@@ -196,8 +196,9 @@ function SetCommand(command, value)
             target_status[approach_index_switch][2] = 1
         end
     elseif command == Keys.SpecialSence then
-        special_display_current = 0;
-        special_display_status = 1;
+        --print_message_to_user("start")
+        special_display_current = 0
+        special_display_status = 1
     end
 end
 
@@ -285,12 +286,13 @@ end
 function updateSpecialAnimation()
     if special_display_status == 1 then
         if special_display_current < 1 then
-            special_display_current = special_display_current + update_rate / 5
+            special_display_current = special_display_current + update_rate / 4
         else
             special_display_current = 0
             special_display_status = 0
         end
         set_aircraft_draw_argument_value(999, special_display_current)
+        --print_message_to_user(special_display_current)
     end
 end
 
