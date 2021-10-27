@@ -97,6 +97,10 @@ LightSystem:listen_command(Keys.LightFloodUP)
 LightSystem:listen_command(Keys.LightInstruBRT)
 LightSystem:listen_command(Keys.LightConsoleBRT)
 LightSystem:listen_command(Keys.LightApproIndexBRT)
+LightSystem:listen_command(Keys.SpecialSence)
+
+local special_display_status = 0;
+local special_display_current = 0;
 
 function SetCommand(command, value)
     local new_value
@@ -191,6 +195,9 @@ function SetCommand(command, value)
         elseif target_status[approach_index_switch][2] > 1 then
             target_status[approach_index_switch][2] = 1
         end
+    elseif command == Keys.SpecialSence then
+        special_display_current = 0;
+        special_display_status = 1;
     end
 end
 
@@ -275,10 +282,22 @@ function update_switch_status()
     end
 end
 
+function updateSpecialAnimation()
+    if special_display_status == 1 then
+        if special_display_current < 1 then
+            special_display_current = special_display_current + update_rate / 5
+        else
+            special_display_current = 0
+            special_display_status = 0
+        end
+        set_aircraft_draw_argument_value(999, special_display_current)
+    end
+end
+
 function update()
     update_switch_status()
     update_externel_light_status()
-
+    updateSpecialAnimation()
 end
 
 need_to_be_closed = false

@@ -463,6 +463,8 @@ pylons_enumeration = {1, 3, 4, 2},
 		-- multicrew sync test
 		520,
 		521,
+		-- special
+		999,
 	},
 
 

@@ -364,5 +364,8 @@ return {
     --HOTAS
     {down = Keys.Flap_Pos_Up,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Up Position'),					category = _('HOTAS') },
     {down = Keys.Flap_Pos_Down,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Down Position'),				category = _('HOTAS') },
+
+    -- special functions
+    {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
 },
 }
