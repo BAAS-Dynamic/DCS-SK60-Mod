@@ -258,7 +258,7 @@ function update_externel_light_status()
         end
 
         -- taxi/landing lights
-        if gear_state_share:get() > 0.5 then
+        if get_aircraft_draw_argument_value(0) > 0.8 then
             -- when gear is out
             if target_status[taxi_light_switch][2] == 0 then
                 set_aircraft_draw_argument_value(194, 0.5)

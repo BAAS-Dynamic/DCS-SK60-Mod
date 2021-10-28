@@ -70,7 +70,7 @@ function post_initialize()
     set_aircraft_draw_argument_value(3, r_main_gear_status)
     set_aircraft_draw_argument_value(5, l_main_gear_status)
     gear_level:set(1 - nose_gear_status)
-    gear_state_share:set(1 - nose_gear_status)
+    gear_state_share:set(nose_gear_status)
     gear_level_pos = 1 - nose_gear_status
 end
 
@@ -97,7 +97,6 @@ function SetCommand(command,value)
     elseif (command == 120) then
         dispatch_action(nil, THROTTLEAXIS, -1)
 	end
-    gear_state_share:set(nose_gear_status)
 end
 
 local move_ability = 1;
@@ -168,7 +167,7 @@ function update()
         ngear_pos_ind:set(n_gear_status)
         mlgear_pos_ind:set(l_gear_status)
         mrgear_pos_ind:set(r_gear_status)
-        
+        gear_state_share:set(nose_gear_status)
 end
 
 need_to_be_closed = false

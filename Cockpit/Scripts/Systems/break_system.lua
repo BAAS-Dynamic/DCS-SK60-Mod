@@ -121,7 +121,7 @@ function SetCommand(command,value)
                 Flap_Target = 0
                 print_message_to_user("Flap: Retract")
             else
-                if (gear_state_share:get() > 0.5) then
+                if (sensor_data.getWOW_NoseLandingGear() > 0.0001) then
                     Flap_Target = 0.5
                     print_message_to_user("Flap: Takeoff")
                 else
