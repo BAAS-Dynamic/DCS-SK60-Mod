@@ -33,6 +33,8 @@ local instrument_light_switch = _switch_counter()
 local console_light_switch = _switch_counter()
 local approach_index_switch = _switch_counter()
 
+local gear_state_share = get_param_handle("GEAR_SHARE")
+
 target_status = {
     {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
     {taxi_light_switch , 0.5, get_param_handle("PTN_436"), "PTN_436"},
@@ -256,11 +258,17 @@ function update_externel_light_status()
         end
 
         -- taxi/landing lights
-        if target_status[taxi_light_switch][2] == 0 then
-            set_aircraft_draw_argument_value(194, 0.5)
-        elseif target_status[taxi_light_switch][2] == 1 then
-            set_aircraft_draw_argument_value(194, 1)
-        elseif target_status[taxi_light_switch][2] == 0.5 then
+        if gear_state_share:get() > 0.5 then
+            -- when gear is out
+            if target_status[taxi_light_switch][2] == 0 then
+                set_aircraft_draw_argument_value(194, 0.5)
+            elseif target_status[taxi_light_switch][2] == 1 then
+                set_aircraft_draw_argument_value(194, 1)
+            elseif target_status[taxi_light_switch][2] == 0.5 then
+                set_aircraft_draw_argument_value(194, 0)
+            end
+        else
+            -- cloase taxi/landing light
             set_aircraft_draw_argument_value(194, 0)
         end
     end
