@@ -10,7 +10,7 @@ SK_60 =  {
 	shape_table_data 	= 
 	{
 		{
-			file  	 	= 'SK_60';--AG
+			file  	 	= 'SK-60';--AG
 			life  	 	= 20; -- lifebar
 			vis   	 	= 2; -- visibility gain.
 			desrt    	= 'NCPC-7_destr'; -- Name of destroyed object file name
@@ -20,11 +20,12 @@ SK_60 =  {
 			classname   = "lLandPlane";
 			positioning = "BYNORMAL";
 		},
+		--[[
 		{
 			name  		= "NCPC-7_destr";
 			file  		= "NCPC-7_destr";
 			fire  		= { 240, 2};
-		},
+		},]]
 	},
 
 	-- apply the SK-60 for all countries currently
@@ -40,6 +41,7 @@ SK_60 =  {
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,"Battleplanes",},--AG WSTYPE_PLACEHOLDER
 	Categories			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
 	
+	----------AI DEFS------------------------------------
 		M_empty 					=   2150, -- kg	-- kg  with pilot and nose load
 		M_nominal					=	3600,	-- kg (Empty Plus Full Internal Fuel)
 		M_max						=	4000,	-- kg (Maximum Take Off Weight)
@@ -47,8 +49,8 @@ SK_60 =  {
 		H_max						=	13500,	-- m  (Maximum Operational Ceiling)
 		average_fuel_consumption	=	0.172,
 		CAS_min						=	56,		-- Minimum CAS speed (m/s) (for AI)
-		V_opt						=	125,	-- Cruise speed (m/s) (for AI)
-		V_take_off					=	53,		-- Take off speed in m/s (for AI)
+		V_opt						=	200,	-- Cruise speed (m/s) (for AI)
+		V_take_off					=	82,		-- Take off speed in m/s (for AI)
 		V_land						=	50,		-- Land speed in m/s (for AI)
 		has_afteburner				=	false,
 		has_speedbrake				=	true,
@@ -119,7 +121,7 @@ SK_60 =  {
 		EPLRS 					    = true,--can you be seen on the A-10C TAD Page?
 		TACAN_AA					= true,--I think this will not work for a client slot but AI might add a TACAN for the unit.
 
-	-- sounderName = "Aircraft/Planes/SK-60-Sound",
+	sounderName = "Aircraft/Planes/SK60_Sound",
 	
 	engines_nozzles = {
 		[1] = 
@@ -344,8 +346,8 @@ pylons_enumeration = {1, 3, 4, 2},
 			kjx			=	3.50,    -- Inertie roulis 2.70
 			kjz			=	0.00125, -- Unknown constant
 			Czbe		=	-0.013,  -- coefficient, along Z axis (perpendicular), affects yaw, negative value means force orientation in FC coordinate system
-			cx_gear		=	0.35,    -- coefficient, drag, gear
-			cx_flap		=	0.135,    -- coefficient, drag, full flaps
+			cx_gear		=	0.065,    -- coefficient, drag, gear
+			cx_flap		=	0.087,    -- coefficient, drag, full flaps
 			cy_flap		=	0.34,    -- coefficient, normal force, lift, flaps 0.28
 			cx_brk		=	0.12,    -- coefficient, drag, air breaks 
 			table_data  = 
@@ -456,11 +458,14 @@ pylons_enumeration = {1, 3, 4, 2},
 		191, 
 		192,
 		193, -- launch bar
+		194,
 		209,
 
 		-- multicrew sync test
 		520,
 		521,
+		-- special
+		999,
 	},
 
 
