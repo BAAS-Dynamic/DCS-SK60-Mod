@@ -1,0 +1,8 @@
+wave = "Effects/Aircrafts/Engines/Rolls-Royce Adour/EngineAdourFan"
+inner_radius = 50
+outer_radius = 1200
+cone_inner_angle = 30
+cone_outer_angle = 110
+cone_outer_gain = 0.2
+direction = {1, 0, 0}
+gain = 1.3

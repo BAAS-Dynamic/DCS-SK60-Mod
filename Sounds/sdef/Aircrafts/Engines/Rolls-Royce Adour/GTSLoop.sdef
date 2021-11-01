@@ -1,0 +1,4 @@
+wave = "Effects/Aircrafts/Engines/Rolls-Royce Adour/GTSLoop"
+gain = 1.6
+inner_radius = 300
+outer_radius = 1500
