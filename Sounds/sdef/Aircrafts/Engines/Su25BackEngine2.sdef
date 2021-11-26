@@ -1,0 +1,9 @@
+wave = "Effects/Aircrafts/Engines/Su25BackEngine2"
+inner_radius = 100
+outer_radius = 3500
+cone_inner_angle = 60
+cone_outer_angle = 120
+cone_outer_gain = 0.3
+direction = {-1, 0, 0}
+pitch = 3.0
+gain = 0.1

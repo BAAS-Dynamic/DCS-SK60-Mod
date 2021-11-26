@@ -9,5 +9,6 @@ livery = {
 	{"SK60_GearAndAirbrake",	ROUGHNESS_METALLIC	,	"SK60_GearAndAirbrake_roughmet", 		false};
 	{"SK60_TailFins",			DIFFUSE				,	"SK60_TailFin", 						false};
 	{"SK60_TailFins",			ROUGHNESS_METALLIC	,	"SK60_TailFin_roughmet", 				false};
+	
 }
 name = "Default"	
