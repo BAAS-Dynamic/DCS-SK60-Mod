@@ -10,5 +10,13 @@ livery = {
 	{"undersuit.001",	ROUGHNESS_METALLIC	,	"SK60_PilotOverall_roughmet", false};
 	{"undersuit.001",	NORMAL				,	"SK60_PilotOverall_normal", false};
 	{"SK60_PilotPatch",	DIFFUSE				,	"SK60_Patch", false};	
+	
+		--BORT NUMBERS---------------------------------------------------------------	
+	{"SK60_BortNumber_0", 0 ,"SK60_BortNumbers",false};
+	--{"SK60_BortNumber_0", DECAL ,"empty",false};
+	{"SK60_BortNumber_10", 0 ,"SK60_BortNumbers",false};
+	--{"SK60_BortNumber_10", DECAL ,"empty",false};
+	{"SK60_BortNumber_100", 0 ,"SK60_BortNumbers",false};
+	--{"SK60_BortNumber_100", DECAL ,"empty",false};
 }
-name = "TEAM60 #3'"	
+name = "TEAM60 #3"
