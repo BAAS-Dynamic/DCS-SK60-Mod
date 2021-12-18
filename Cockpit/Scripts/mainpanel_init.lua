@@ -152,6 +152,16 @@ animation_list = {
     {"PTN_402", 402}, -- Left Gen
     {"PTN_404", 404}, -- Right Gen
 
+    -- Engine
+    {"PTN_405", 405},
+    {"PTN_406", 406},
+    {"PTN_407", 407},
+    {"PTN_408", 408},
+    {"PTN_418", 407},
+    {"PTN_420", 408},
+    {"PTN_604", 604},
+    {"PTN_605", 605},
+
     {"PTN_424", 424}, -- Nav light
     {"PTN_429", 429}, -- Anti Col light
     {"PTN_436", 436}, -- taxi light
