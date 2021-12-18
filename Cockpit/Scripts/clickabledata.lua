@@ -385,8 +385,6 @@ multi_tumb_click_list = {
     {"PTN_420", "Right Low Pressure Fuel Pump", devices.HUD_DCMS, 420, Keys.R_LP_PUMP},
     {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, Keys.L_HP_PUMP},
     {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, Keys.R_HP_PUMP},
-    {"PTN_405", "Left Engine Starter", devices.HUD_DCMS, 405, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE},
-    {"PTN_407", "Right Engine Starter", devices.HUD_DCMS, 407, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE},
     {"PTN_604", "Left Throttle Idle", devices.HUD_DCMS, 604, Keys.L_THROTTLE_IDLE},
     {"PTN_605", "Right Throttle Idle", devices.HUD_DCMS, 605, Keys.R_THROTTLE_IDLE},
 
