@@ -399,8 +399,8 @@ multi_tumb_click_list = {
 
     -- Electric Power Switches
     {"PTN_401", "Main Power Switch", devices.ELECTRIC_SYSTEM, 401, Keys.BatteryPower},
-    {"PTN_402", "Left Generator Switch", devices.ELECTRIC_SYSTEM, 402, Keys.PowerGeneratorLeft},
-    {"PTN_404", "Right Generator Switch", devices.ELECTRIC_SYSTEM, 404, Keys.PowerGeneratorRight},
+    {"PTN_402", "Inverter 1 Switch", devices.ELECTRIC_SYSTEM, 402, Keys.PowerGeneratorLeft},
+    {"PTN_404", "Inverter 2 Switch", devices.ELECTRIC_SYSTEM, 404, Keys.PowerGeneratorRight},
 
     -- EADI
     {"PTN_501", "Screen Display Dim-", devices.HUD_DCMS, 501, Keys.Display_Darker},

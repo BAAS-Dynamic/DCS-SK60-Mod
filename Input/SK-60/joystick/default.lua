@@ -86,7 +86,9 @@ keyCommands = {
     {pressed = iCommandHUDBrightnessDown,		name = _('HUD Brightness down'),		category = _('Systems') , features = {"HUDbrightness"}},
     {down = iCommandPlaneFuelOn,	up = iCommandPlaneFuelOff,					name = _('Fuel Dump'),			category = _('Systems') , features = {"fueldump"}},
 
-
+    -- Engine Control
+    {down = Keys.LeftEngineIDLE,					name = _('Set Left Throttle IDLE/OFF'),			category = _('Engine')},
+    {down = Keys.RightEngineIDLE,					name = _('Set Right Throttle IDLE/OFF'),		category = _('Engine')},
 
     {pressed = iCommandAltimeterPressureIncrease,	up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Increase'), category = _('Systems')},
     {pressed = iCommandAltimeterPressureDecrease, up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Decrease'), category = _('Systems')},
@@ -377,6 +379,9 @@ axisCommands = {
     {action = iCommandPlanePitch,		name = _('Pitch')},
     {action = iCommandPlaneRudder,		name = _('Rudder')},
     {action = iCommandPlaneThrustCommon, name = _('Thrust')},
+
+    {action = iCommandPlaneThrustLeft, name = _('Left Throttle')},
+    {action = iCommandPlaneThrustRight, name = _('Right Throttle')},
 
     {action = iCommandPlaneMFDZoomAbs 			, name = _('MFD Range')},
     {action = iCommandPlaneBase_DistanceAbs 	, name = _('Base/Distance')},
