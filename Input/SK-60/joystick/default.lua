@@ -87,8 +87,10 @@ keyCommands = {
     {down = iCommandPlaneFuelOn,	up = iCommandPlaneFuelOff,					name = _('Fuel Dump'),			category = _('Systems') , features = {"fueldump"}},
 
     -- Engine Control
-    {down = Keys.L_THROTTLE_IDLE,					name = _('Set Left Throttle IDLE/OFF'),			category = _('Engine')},
-    {down = Keys.R_THROTTLE_IDLE,					name = _('Set Right Throttle IDLE/OFF'),		category = _('Engine')},
+    {down = Keys.L_THROTTLE_IDLE,					name = _('Toggle Left Throttle IDLE/OFF'),			category = _('Engine')},
+    {down = Keys.R_THROTTLE_IDLE,					name = _('Toggle Right Throttle IDLE/OFF'),		category = _('Engine')},
+    {down = Keys.L_THROTTLE_SETIDLE,    up = Keys.L_THROTTLE_SETOFF,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
+    {down = Keys.R_THROTTLE_SETIDLE,   up = Keys.R_THROTTLE_SETOFF,					name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
 
     {pressed = iCommandAltimeterPressureIncrease,	up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Increase'), category = _('Systems')},
     {pressed = iCommandAltimeterPressureDecrease, up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Decrease'), category = _('Systems')},
