@@ -108,20 +108,13 @@ end
 
 function SetCommand(command,value)
     -- 最基础的航电功能监听
+    local status = 0
     if command == Keys.PowerGeneratorLeft then
         target_status[left_gen_switch][2] = 1 - target_status[left_gen_switch][2]
-        if target_status[left_gen_switch][2] < 0.5 then
-            electric_system:AC_Generator_1_on(false)
-        else
-            electric_system:AC_Generator_1_on(true)
-        end
+
     elseif command == Keys.PowerGeneratorRight then
         target_status[right_gen_switch][2] = 1 - target_status[right_gen_switch][2]
-        if target_status[right_gen_switch][2] < 0.5 then
-            electric_system:AC_Generator_2_on(false)
-        else
-            electric_system:AC_Generator_2_on(true)
-        end
+
     elseif command == Keys.BatteryPower then
         target_status[main_power_switch][2] = 1 - target_status[main_power_switch][2]
         if target_status[main_power_switch][2] < 0.5 then
@@ -129,6 +122,27 @@ function SetCommand(command,value)
         else
             electric_system:DC_Battery_on(true)
         end
+    end
+    if target_status[left_gen_switch][2] < 0.5 then
+        -- electric_system:AC_Generator_1_on(false)
+        -- electric_system:AC_Generator_2_on(false)
+        status = status + 1
+    else
+        electric_system:AC_Generator_1_on(true)
+        electric_system:AC_Generator_2_on(true)
+    end
+    if target_status[right_gen_switch][2] < 0.5 then
+        -- electric_system:AC_Generator_2_on(false)
+        -- electric_system:AC_Generator_1_on(false)
+        status = status + 1
+    else
+        electric_system:AC_Generator_2_on(true)
+        electric_system:AC_Generator_1_on(true)
+    end
+    
+    if status == 2 then
+        electric_system:AC_Generator_2_on(false)
+        electric_system:AC_Generator_1_on(false)
     end
 end
 

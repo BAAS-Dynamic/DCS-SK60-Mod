@@ -333,8 +333,8 @@ return {
     {combos = {{key = '-', reformers = {'RShift'}}}, pressed = iCommandAltimeterPressureDecrease, up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Decrease'), category = _('Systems')},
 
     -- Engine Control
-    {down = Keys.LeftEngineIDLE,					name = _('Set Left Throttle IDLE/OFF'),			category = _('Engine')},
-    {down = Keys.RightEngineIDLE,					name = _('Set Right Throttle IDLE/OFF'),		category = _('Engine')},
+    {down = Keys.L_THROTTLE_IDLE,					name = _('Set Left Throttle IDLE/OFF'),			category = _('Engine')},
+    {down = Keys.R_THROTTLE_IDLE,					name = _('Set Right Throttle IDLE/OFF'),		category = _('Engine')},
 
     -- Countermeasures
     {combos = {{key = 'Q', reformers = {'LShift'}}},	down = iCommandPlaneDropSnar,			name = _('Countermeasures Continuously Dispense'),					category = _('Countermeasures') , features = {"Countermeasures"}},
