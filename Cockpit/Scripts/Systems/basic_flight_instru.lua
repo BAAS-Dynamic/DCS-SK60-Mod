@@ -64,7 +64,7 @@ Gauge_display_state = { -- last parameter define if it is unneed from 9 to zero
 function Airspeed_Gauge_AOA_G_Cal()
     local current_speed = 0
     local vertical_acc = 1
-    if (get_elec_ac_status() == true) then
+    if (get_elec_dc_status() == true) then
         current_speed = sensor_data.getIndicatedAirSpeed() * ias_conversion_to_kmh
         vertical_acc = sensor_data.getVerticalAcceleration()
     end
@@ -90,7 +90,7 @@ function Altitude_Cal()
 
     local baro_x100_target = 0
 
-    if (get_elec_ac_status() == true) then
+    if (get_elec_dc_status() == true) then
         -- print_message_to_user(radar_altitude)
         baro_altitude = sensor_data.getBarometricAltitude() * METER_TO_INCH
 
@@ -106,7 +106,7 @@ function Altitude_Cal()
 end
 
 function update_Gyro_Display()
-    if (get_elec_ac_status() == true) then
+    if (get_elec_dc_status() == true) then
         Gauge_display_state[gyro_roll][2] = sensor_data.getRoll() * RAD_TO_DEGREE / 90 / 2
         Gauge_display_state[gyro_pitch][2] = - sensor_data.getPitch() * RAD_TO_DEGREE / 90
     else
@@ -116,7 +116,7 @@ function update_Gyro_Display()
 end
 
 function calculate_Climb_Slide()
-    if (get_elec_ac_status() == true) then
+    if (get_elec_dc_status() == true) then
         local climb_rate = sensor_data.getVerticalVelocity() / 40
         local slide_rate = sensor_data.getRateOfYaw() * RAD_TO_DEGREE / 90
         Gauge_display_state[climb_rate_ind][2] = climb_rate

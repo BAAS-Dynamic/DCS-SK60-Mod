@@ -149,20 +149,24 @@ function update()
     --eadi_rf1_display:set(sensor_data.getMachNumber())
     --eadi_rb1_display:set("ERECT")
 
-    erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
-    erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
-    erpm_color:set(1)
+    if get_elec_dc_status then
+        erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
+        erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
+        erpm_color:set(1)
+    end
 
+    if get_elec_ac_status() then
+        local deg_heading = sensor_data.getMagneticHeading() * RAD_TO_DEGREE
+        if deg_heading < 0 then
+            deg_heading = deg_heading + 360
+        elseif deg_heading > 360 then
+            deg_heading = deg_heading - 360
+        end
+        ehsi_mag_heading:set(deg_heading)
+        ehsi_compass:set(deg_heading)
+    end
     --ehsi_enable:set(1)
     --ehsi_full_compass_enable:set(1)
-    local deg_heading = sensor_data.getMagneticHeading() * RAD_TO_DEGREE
-    if deg_heading < 0 then
-        deg_heading = deg_heading + 360
-    elseif deg_heading > 360 then
-        deg_heading = deg_heading - 360
-    end
-    ehsi_mag_heading:set(deg_heading)
-    ehsi_compass:set(deg_heading)
     --ehsi_course_heading:set(0 * RAD_TO_DEGREE)
     --nav_mode:set(1)
     --[[

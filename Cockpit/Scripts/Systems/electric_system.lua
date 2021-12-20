@@ -66,20 +66,47 @@ end
 function update_elec_state() --更新电力总线状态
     if (electric_system:get_AC_Bus_1_voltage() > 0 or electric_system:get_AC_Bus_2_voltage() > 0) then
         -- 主发电机状态正常（双备份）
+        elec_charging_status:set(1)
+    else
+        elec_charging_status:set(0)
+    end
+
+    if electric_system:get_DC_Bus_1_voltage() > 0 or electric_system:get_DC_Bus_2_voltage() > 0 then
+        if elec_battery_status:get() == 0 then
+            elec_dc_status:set(0)
+        else
+            elec_dc_status:set(1)
+        end
+    else
+        elec_dc_status:set(0)
+    end
+
+    if (electric_system:get_DC_Bus_1_voltage() > 0 or electric_system:get_DC_Bus_2_voltage() > 0) and (target_status[left_gen_switch][2] == 1 or target_status[right_gen_switch][2] == 1) then
         elec_ac_status:set(1)
     else
         elec_ac_status:set(0)
     end
 
-    if electric_system:get_DC_Bus_1_voltage() > 0 and target_status[main_power_switch][2] == 1 then 
-        elec_dc_status:set(1)
-    else
-        elec_dc_status:set(0)
+    if (elec_dc_status:get() == 1 and elec_charging_status:get() == 0) then    
+        if (elec_ac_status:get() == 1) then
+            elec_battery_status:set(elec_battery_status:get()-2)
+        else
+            elec_battery_status:set(elec_battery_status:get()-1)
+        end
+    elseif (elec_charging_status:get() == 1) then
+        elec_battery_status:set(elec_battery_status:get()+5)
+    end
+
+    if elec_battery_status:get() < 0 then
+        elec_battery_status:set(0)
+    elseif elec_battery_status:get() > 30000 then
+        elec_battery_status:set(30000)
     end
 end
 
 function post_initialize() --默认初始化函数
     --local dev = GetSelf()
+    elec_battery_status:set(30000)
     local birth = LockOn_Options.init_conditions.birth_place
     if birth=="GROUND_HOT" or birth=="AIR_HOT" then --"GROUND_COLD","GROUND_HOT","AIR_HOT"
         electric_system:AC_Generator_1_on(true)
@@ -92,8 +119,8 @@ function post_initialize() --默认初始化函数
         current_status[left_gen_switch][2] = SWITCH_ON
         current_status[right_gen_switch][2] = SWITCH_ON
     elseif birth=="GROUND_COLD" then
-        electric_system:AC_Generator_1_on(false) 
-        electric_system:AC_Generator_2_on(false)
+        electric_system:AC_Generator_1_on(true) 
+        electric_system:AC_Generator_2_on(true)
         electric_system:DC_Battery_on(false)
         target_status[main_power_switch][2] = SWITCH_OFF
         target_status[left_gen_switch][2] = SWITCH_OFF
@@ -123,6 +150,7 @@ function SetCommand(command,value)
             electric_system:DC_Battery_on(true)
         end
     end
+    --[[
     if target_status[left_gen_switch][2] < 0.5 then
         -- electric_system:AC_Generator_1_on(false)
         -- electric_system:AC_Generator_2_on(false)
@@ -144,6 +172,7 @@ function SetCommand(command,value)
         electric_system:AC_Generator_2_on(false)
         electric_system:AC_Generator_1_on(false)
     end
+    ]]--
 end
 
 function update() --刷新状态
