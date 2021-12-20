@@ -36,6 +36,7 @@ local hud_nav_data_3 = get_param_handle("HUD_NAV_DATA_3_DIS")
 --local eadi_lf2_display = get_param_handle("L_EADI_DISPLAY_TL2")
 --local eadi_rb1_display = get_param_handle("L_EADI_DISPLAY_BR1")
 
+local erpm_power = get_param_handle("ERPM_ENABLE")
 local erpm_ln2 = get_param_handle("LRPM_N2_DIGTAL")
 local erpm_rn2 = get_param_handle("RRPM_N2_DIGTAL")
 local erpm_color = get_param_handle("RPM_COLOR")
@@ -93,6 +94,7 @@ function post_initialize()
     --hud_enable:set(1)
     hud_maxg_dis:set(1)
     --gps_base:set(1)
+    erpm_power:set(0)
 end
 
 NS430_Test_Status = 0;
@@ -149,9 +151,15 @@ function update()
     --eadi_rf1_display:set(sensor_data.getMachNumber())
     --eadi_rb1_display:set("ERECT")
 
-    if get_elec_dc_status then
+    if get_elec_dc_status() then
+        erpm_power:set(1)
         erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
         erpm_rn2:set(sensor_data.getEngineRightRPM() * 100 / 1.2)
+        erpm_color:set(1)
+    else
+        erpm_power:set(0)
+        erpm_ln2:set(0.0)
+        erpm_rn2:set(0.0)
         erpm_color:set(1)
     end
 
