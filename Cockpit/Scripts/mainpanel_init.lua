@@ -66,14 +66,14 @@ end
 animation_list = {
     {"AOA_IND", 301},
     {"RADAR_ALT_IND", 302},
-    {"RPM_L", 303},
-    {"RPM_R", 304},
-    {"EGT_L", 305},
-    {"EGT_R", 306},
-    {"OP_L", 307},
-    {"OP_R", 308},
-    {"OT_L", 309},
-    {"OT_R", 310},
+    {"RPM_LEFT", 303},
+    {"RPM_RIGHT", 304},
+    {"EGT_LEFT", 305},
+    {"EGT_RIGHT", 306},
+    {"OP_LEFT", 307},
+    {"OP_RIGHT", 308},
+    {"OT_LEFT", 309},
+    {"OT_RIGHT", 310},
     --{"OP_L", 311},
     --{"OP_R", 312},
     {"AIRBREAK_IND", 316},
@@ -224,20 +224,7 @@ Landinggearhandle.input				= {0, 1}
 Landinggearhandle.output			= {0, 1}
 Landinggearhandle.parameter_name	= "PTN_083"
 
---INSTRUMENTS--
-LeftRPM								= CreateGauge ()
-LeftRPM.arg_number					= 303
-LeftRPM.input						= {0, 120}
-LeftRPM.output						= {0, 1}
-LeftRPM.controller					= controllers.base_gauge_EngineLeftRPM
-
-RightRPM							= CreateGauge ()
-RightRPM.arg_number					= 304
-RightRPM.input						= {0, 120}
-RightRPM.output						= {0, 1}
-RightRPM.controller					= controllers.base_gauge_EngineRightRPM
-
-Fuel									= CreateGauge ()
+Fuel								= CreateGauge ()
 Fuel.arg_number						= 354
 Fuel.input							= {0, 1134}
 Fuel.output							= {0, 1}

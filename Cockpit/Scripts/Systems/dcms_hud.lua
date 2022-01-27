@@ -56,7 +56,7 @@ local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 --local ns430_logo_page = get_param_handle("NAVU_PAGE1_ENABLE")
 --local ns430_info_page = get_param_handle("NAVU_PAGE2_ENABLE")
 --local ns430_base_page = get_param_handle("NAVU_BASE_ENABLE")
-
+local left_n1 = get_param_handle("RPM_LEFT")
 
 local sensor_data = get_base_data()
 local ias_conversion_to_knots = 1.9504132
@@ -151,6 +151,10 @@ function update()
     --eadi_rf1_display:set(sensor_data.getMachNumber())
     --eadi_rb1_display:set("ERECT")
 
+    -- debug
+    local roll_rate = sensor_data.getRateOfRoll()
+    --print_message_to_user(roll_rate * RAD_TO_DEGREE)
+
     if get_elec_dc_status() then
         erpm_power:set(1)
         erpm_ln2:set(sensor_data.getEngineLeftRPM() * 100 / 1.2)
@@ -173,6 +177,9 @@ function update()
         ehsi_mag_heading:set(deg_heading)
         ehsi_compass:set(deg_heading)
     end
+
+    --left_n1:set(sensor_data.getEngineLeftRPM())
+    --print_message_to_user(left_n1:get())
     --ehsi_enable:set(1)
     --ehsi_full_compass_enable:set(1)
     --ehsi_course_heading:set(0 * RAD_TO_DEGREE)
