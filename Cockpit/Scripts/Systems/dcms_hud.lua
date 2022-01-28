@@ -56,7 +56,7 @@ local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 --local ns430_logo_page = get_param_handle("NAVU_PAGE1_ENABLE")
 --local ns430_info_page = get_param_handle("NAVU_PAGE2_ENABLE")
 --local ns430_base_page = get_param_handle("NAVU_BASE_ENABLE")
-local left_n1 = get_param_handle("RPM_LEFT")
+local temp_dbg = get_param_handle("DBG_OUT_TMP")
 
 local sensor_data = get_base_data()
 local ias_conversion_to_knots = 1.9504132
@@ -153,7 +153,7 @@ function update()
 
     -- debug
     local roll_rate = sensor_data.getRateOfRoll()
-    --print_message_to_user(roll_rate * RAD_TO_DEGREE)
+    temp_dbg:set(roll_rate * RAD_TO_DEGREE)
 
     if get_elec_dc_status() then
         erpm_power:set(1)
