@@ -45,6 +45,7 @@ function post_initialize()
         CANOPY_COMMAND = 0
     elseif birth=="GROUND_COLD" then
         CANOPY_COMMAND = 1
+        target_status[canopy_switch][2] = SWITCH_ON
     end
     sndhost_cockpit         = create_sound_host("COCKPIT","3D",0,-1,0) 
     snd_canopy_open_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen")
