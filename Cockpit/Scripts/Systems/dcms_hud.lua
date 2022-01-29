@@ -87,6 +87,8 @@ dev:listen_command(Keys.L_STARTER_RELEASE)
 dev:listen_command(Keys.L_STARTER_PRESS)
 dev:listen_command(Keys.Nav_Right_Knob_Push)
 
+local pos_x_loc, pos_y_loc, alt, coord
+
 function post_initialize()
     hud_FD_x:set(0)
     hud_FD_y:set(0)
@@ -95,6 +97,9 @@ function post_initialize()
     hud_maxg_dis:set(1)
     --gps_base:set(1)
     erpm_power:set(0)
+    pos_x_loc, alt, pos_y_loc= sensor_data.getSelfCoordinates()
+    coord = lo_to_geo_coords(pos_x_loc, pos_y_loc)
+    temp_dbg:set(coord.lat)
 end
 
 NS430_Test_Status = 0;
@@ -153,7 +158,7 @@ function update()
 
     -- debug
     local roll_rate = sensor_data.getRateOfRoll()
-    temp_dbg:set(roll_rate * RAD_TO_DEGREE)
+    --temp_dbg:set(roll_rate * RAD_TO_DEGREE)
 
     if get_elec_dc_status() then
         erpm_power:set(1)
