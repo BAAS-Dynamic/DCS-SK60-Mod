@@ -52,6 +52,10 @@ local ehsi_compass = get_param_handle("COMPASS_ROLL")
 local ehsi_mag_heading = get_param_handle("EHSI_HEADING")
 local ehsi_course_heading = get_param_handle("EHSI_COURSE")
 
+local gps_receiver_lat = get_param_handle("GPS_REC_LAT")
+local gps_receiver_lon = get_param_handle("GPS_REC_LON")
+local gps_receiver_alt = get_param_handle("GPS_REC_ALT")
+
 --NS430 Page Test
 --local ns430_logo_page = get_param_handle("NAVU_PAGE1_ENABLE")
 --local ns430_info_page = get_param_handle("NAVU_PAGE2_ENABLE")
@@ -89,6 +93,15 @@ dev:listen_command(Keys.Nav_Right_Knob_Push)
 
 local pos_x_loc, pos_y_loc, alt, coord
 
+function updateGPS()
+    pos_x_loc, alt, pos_y_loc= sensor_data.getSelfCoordinates()
+    coord = lo_to_geo_coords(pos_x_loc, pos_y_loc)
+    temp_dbg:set(coord.lat)
+    gps_receiver_lat:set(coord.lat)
+    gps_receiver_lon:set(coord.lon)
+    gps_receiver_alt:set(alt)
+end
+
 function post_initialize()
     hud_FD_x:set(0)
     hud_FD_y:set(0)
@@ -97,9 +110,7 @@ function post_initialize()
     hud_maxg_dis:set(1)
     --gps_base:set(1)
     erpm_power:set(0)
-    pos_x_loc, alt, pos_y_loc= sensor_data.getSelfCoordinates()
-    coord = lo_to_geo_coords(pos_x_loc, pos_y_loc)
-    temp_dbg:set(coord.lat)
+    updateGPS()
 end
 
 NS430_Test_Status = 0;
@@ -183,6 +194,7 @@ function update()
         ehsi_compass:set(deg_heading)
     end
 
+    updateGPS()
     --left_n1:set(sensor_data.getEngineLeftRPM())
     --print_message_to_user(left_n1:get())
     --ehsi_enable:set(1)
