@@ -372,10 +372,10 @@ movingmap_move_center.isvisible               = false
 Add(movingmap_move_center)
 
 local aircraft_pos_icon 				   = CreateElement "ceTexPoly"
-aircraft_pos_icon.vertices                 = GPS_vert_gen(96,96)
+aircraft_pos_icon.vertices                 = GPS_vert_gen(140,140)
 aircraft_pos_icon.indices                  = {0,1,2,2,3,0}
 aircraft_pos_icon.tex_coords               = tex_coord_gen(1536,128,128,128,2048,2048)
-aircraft_pos_icon.material                 = "DBG_GREEN"--blue_ns430_material
+aircraft_pos_icon.material                 = basic_ns430_material --"DBG_GREEN"--blue_ns430_material
 aircraft_pos_icon.name 			           = create_guid_string()
 aircraft_pos_icon.init_pos                 = {0, 0, 0}
 aircraft_pos_icon.init_rot		           = {0, 0, 0}
@@ -394,10 +394,10 @@ Add(aircraft_pos_icon)
 for i = 0, 100, 1 do
     -- airport icon
     local airport_icon 				      = CreateElement "ceTexPoly"
-    airport_icon.vertices                 = GPS_vert_gen(96,96)
+    airport_icon.vertices                 = GPS_vert_gen(128, 128)
     airport_icon.indices                  = {0,1,2,2,3,0}
     airport_icon.tex_coords               = tex_coord_gen(1536,0,128,128,2048,2048)
-    airport_icon.material                 = "DBG_RED"--blue_ns430_material
+    airport_icon.material                 = basic_ns430_material --"DBG_RED"--blue_ns430_material
     airport_icon.name 			          = create_guid_string()
     airport_icon.init_pos                 = {0, 0, 0}
     airport_icon.init_rot		          = {0, 0, 0}
