@@ -328,27 +328,73 @@ Moving_Map_Clip.isvisible		        = SHOW_MASKS
 Add(Moving_Map_Clip)
 
 -- map_base
-local eadi_adi_rotate                   = CreateElement "ceSimple"
-eadi_adi_rotate.name                    = "navu_moving_map_center"
-eadi_adi_rotate.init_pos                = {0, 0, 0}
-eadi_adi_rotate.element_params          = {"MAP_CENTER_Y", "MAP_CENTER_X"}
-eadi_adi_rotate.controllers             = {{"move_up_down_using_parameter",0,map_scaler},{"move_left_right_using_parameter",1,map_scaler}}
-eadi_adi_rotate.collimated	            = true
-eadi_adi_rotate.use_mipfilter           = true
-eadi_adi_rotate.additive_alpha          = true
-eadi_adi_rotate.h_clip_relation         = h_clip_relations.COMPARE
-eadi_adi_rotate.level                   = NS430_DEFAULT_LEVEL --NS430_DEFAULT_LEVEL
-eadi_adi_rotate.parent_element	        = "moving_map_clip"
-eadi_adi_rotate.isvisible               = false
-Add(eadi_adi_rotate)
+local movingmap_offset_center                   = CreateElement "ceSimple"
+movingmap_offset_center.name                    = "navu_moving_map_center_offset"
+movingmap_offset_center.init_pos                = {0, 0, 0}
+movingmap_offset_center.element_params          = {MOV_MAP_CENTER_OFFSET}
+movingmap_offset_center.controllers             = {{"move_up_down_using_parameter",0, aspect * 0.7}}
+movingmap_offset_center.collimated	            = true
+movingmap_offset_center.use_mipfilter           = true
+movingmap_offset_center.additive_alpha          = true
+movingmap_offset_center.h_clip_relation         = h_clip_relations.COMPARE
+movingmap_offset_center.level                   = NS430_DEFAULT_LEVEL --NS430_DEFAULT_LEVEL
+movingmap_offset_center.parent_element	        = "moving_map_clip"
+movingmap_offset_center.isvisible               = false
+Add(movingmap_offset_center)
 
+
+local movingmap_rot_center                   = CreateElement "ceSimple"
+movingmap_rot_center.name                    = "navu_moving_map_center_rot"
+movingmap_rot_center.init_pos                = {0, 0, 0}
+movingmap_rot_center.element_params          = {"MAP_ROTATION"}
+movingmap_rot_center.controllers             = {{"rotate_using_parameter", 0, 0.0174532925199433},}
+movingmap_rot_center.collimated	             = true
+movingmap_rot_center.use_mipfilter           = true
+movingmap_rot_center.additive_alpha          = true
+movingmap_rot_center.h_clip_relation         = h_clip_relations.COMPARE
+movingmap_rot_center.level                   = NS430_DEFAULT_LEVEL --NS430_DEFAULT_LEVEL
+movingmap_rot_center.parent_element	         = "navu_moving_map_center_offset"
+movingmap_rot_center.isvisible               = false
+Add(movingmap_rot_center)
+
+local movingmap_move_center                   = CreateElement "ceSimple"
+movingmap_move_center.name                    = "navu_moving_map_center"
+movingmap_move_center.init_pos                = {0, 0, 0}
+movingmap_move_center.element_params          = {"MAP_CENTER_Y", "MAP_CENTER_X"}
+movingmap_move_center.controllers             = {{"move_up_down_using_parameter",0,map_scaler},{"move_left_right_using_parameter",1,map_scaler}}
+movingmap_move_center.collimated	          = true
+movingmap_move_center.use_mipfilter           = true
+movingmap_move_center.additive_alpha          = true
+movingmap_move_center.h_clip_relation         = h_clip_relations.COMPARE
+movingmap_move_center.level                   = NS430_DEFAULT_LEVEL --NS430_DEFAULT_LEVEL
+movingmap_move_center.parent_element	      = "navu_moving_map_center_rot"
+movingmap_move_center.isvisible               = false
+Add(movingmap_move_center)
+
+local aircraft_pos_icon 				   = CreateElement "ceTexPoly"
+aircraft_pos_icon.vertices                 = GPS_vert_gen(96,96)
+aircraft_pos_icon.indices                  = {0,1,2,2,3,0}
+aircraft_pos_icon.tex_coords               = tex_coord_gen(1536,128,128,128,2048,2048)
+aircraft_pos_icon.material                 = "DBG_GREEN"--blue_ns430_material
+aircraft_pos_icon.name 			           = create_guid_string()
+aircraft_pos_icon.init_pos                 = {0, 0, 0}
+aircraft_pos_icon.init_rot		           = {0, 0, 0}
+aircraft_pos_icon.collimated	           = true
+aircraft_pos_icon.element_params           = {"NS430_MAP_DISPLAY", "NAVU_BASE_ENABLE", "POS_SYMBOL_ENABLE", "MAP_CRAFT_SYMB_ROT"}
+aircraft_pos_icon.controllers              = {{"opacity_using_parameter",0},{"opacity_using_parameter",1},{"opacity_using_parameter",2},{"rotate_using_parameter", 3, 0.0174532925199433},}
+aircraft_pos_icon.use_mipfilter            = true
+aircraft_pos_icon.additive_alpha           = true
+aircraft_pos_icon.h_clip_relation          = h_clip_relations.COMPARE
+aircraft_pos_icon.level                    = NS430_DEFAULT_LEVEL
+aircraft_pos_icon.parent_element	       = "navu_moving_map_center_offset"
+Add(aircraft_pos_icon)
 
 -- Moving map airport display, max 100 airports
 -- 310 * 310 in display -> equal to 1900 * 1900  360 * 1024 
 for i = 0, 100, 1 do
     -- airport icon
     local airport_icon 				      = CreateElement "ceTexPoly"
-    airport_icon.vertices                 = GPS_vert_gen(128,128)
+    airport_icon.vertices                 = GPS_vert_gen(96,96)
     airport_icon.indices                  = {0,1,2,2,3,0}
     airport_icon.tex_coords               = tex_coord_gen(1536,0,128,128,2048,2048)
     airport_icon.material                 = "DBG_RED"--blue_ns430_material
@@ -368,9 +414,9 @@ for i = 0, 100, 1 do
     -- text for airport name
     local airport_name             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
     airport_name.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
-    airport_name.init_pos          = {0, -64 / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    airport_name.init_pos          = {0, -68 / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     airport_name.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-    airport_name.stringdefs        = {0.85 *0.002, 1 * 0.002, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+    airport_name.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     airport_name.formats           = {"%s", "%s"}
     airport_name.element_params    = {"NS430_MAP_DISPLAY", "NAVU_BASE_ENABLE", "AIRPORT_ENABLE_"..i, "AIRPORT_LON_"..i, "AIRPORT_LAT_"..i, "AIRPORT_NAME_"..i} -- top left first line display
     airport_name.controllers       = {{"opacity_using_parameter",0},{"opacity_using_parameter",1},{"opacity_using_parameter",2},{"move_up_down_using_parameter",4,map_scaler},{"move_left_right_using_parameter",3,map_scaler},{"text_using_parameter",5}}
