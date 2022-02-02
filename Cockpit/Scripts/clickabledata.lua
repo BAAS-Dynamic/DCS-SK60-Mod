@@ -413,7 +413,15 @@ multi_tumb_click_list = {
     {"PTN_516", "Change CDI", devices.HUD_DCMS, 516, Keys.Nav_CDI},
     {"PTN_517", "OBS", devices.HUD_DCMS, 517, Keys.Nav_OBS},
     {"PTN_518", "Message", devices.HUD_DCMS, 518, Keys.Nav_MSG},
+    {"PTN_519", "Flight Plan", devices.HUD_DCMS, 519, Keys.Nav_FPL},
+    {"PTN_520", "Process", devices.HUD_DCMS, 520, Keys.Nav_PROC},
+    {"PTN_521", "Range decrease", device.HUD_DCMS, 521, Keys.Nav_Map_range_decrease},
+    {"PTN_522", "Range increase", device.HUD_DCMS, 522, Keys.Nav_Map_range_increse},
+    {"PTN_523", "Direct To", device.HUD_DCMS, 523, Keys.Nav_Direct_to},
+    {"PTN_524", "Menu", device.HUD_DCMS, 524, Keys.Nav_Menu},
+    {"PTN_525", "Clear", device.HUD_DCMS, 525, Keys.Nav_Clear},
     {"PTN_526", "Enter", devices.HUD_DCMS, 526, Keys.Nav_Ent},
+    {"PTN_529", "Select Input", devices.HUD_DCMS, 529, Keys.Nav_Right_Knob_Push},
 
     {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
 }
