@@ -19,8 +19,8 @@ function declear_smoke_pod(_name, _color, _red, _green, _blue, _alpha, uuid)
 		shape_table_data = 
 		{
 			{
-				name 	= "TEAM60-SMOKE-POD",
-				file	= "TEAM60-SMOKE-POD";
+				name 	= "SK60_145_psrak",
+				file	= "SK60_145_psrak";
 				life	= 1;
 				fire	= {0, 1};
 				username= "{"..uuid.."}";
@@ -31,7 +31,7 @@ function declear_smoke_pod(_name, _color, _red, _green, _blue, _alpha, uuid)
 		Count 			= 1,
 		Cx_pil			= 0.0005,
 		Elements		={{
-							ShapeName	=	"TEAM60-SMOKE-POD", 
+							ShapeName	=	"SK60_145_psrak", 
 							Position	=	{0, 0, 0},
 						}}
 	}
