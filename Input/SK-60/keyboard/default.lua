@@ -358,6 +358,7 @@ return {
     {down = Keys.YawDamperSwitch, name = _('Yaw Damper Engage'), category = _('Flight Control')},
     {down = Keys.WingPylonSmokeOn,	name = _('Smoke Pod On/Off'),		category = _('Weapons')},
     {down = Keys.NozzleSmokeOn,	name = _('Nozzle Smoke On/Off'),		category = _('Weapons')},
+    {down = Keys.FireTriggerPress, up = Keys.FireTriggerRelease,	name = _('Weapon Fire Trigger'),		category = _('Weapons')},
 
     -- debug
     --{down = 5005,	name = _('DEBUG RECORD'),		category = _('Debugs')},

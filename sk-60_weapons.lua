@@ -135,7 +135,7 @@ local M56_ARAK135HE = {
             boost_tail  = 1.5,
             work_tail   = 1.5,
 			-- black smoke
-            smoke_color = {0.7, 0.7, 0.7},
+            smoke_color = {0.15, 0.15, 0.15},
 			smoke_transparency = 0.6,--0.8,
         },
 
@@ -307,6 +307,7 @@ function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _
 end
 
 declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd11}", "2x 13,5cm HE rocket", "", 2, 1350, "SK60_135_srak", 0.025, 0.135, 0.38))
+declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd13}", "1x 14,5cm HEAT rocket", "", 1, 1350, "SK60_135_srak", 0.025, 0.135, 0.38))
 declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd12}", "1x 14,5cm HEAT rocket", "", 1, 1450, "SK60_145_psrak", 0.025, 0.145, 0.43))
 declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd10}", "2x 14,5cm HEAT rocket", "", 2, 1450, "SK60_145_psrak", 0.025, 0.145, 0.43))
 
