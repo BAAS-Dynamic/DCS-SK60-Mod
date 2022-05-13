@@ -212,8 +212,8 @@ local M49_PSRAK145HEAT = {
             boost_tail  = 1.5,
             work_tail   = 1.5,
 
-            smoke_color = {0.7, 0.7, 0.7},
-			smoke_transparency = 0.6,--0.8,
+            smoke_color = {0.1, 0.1, 0.1},
+			smoke_transparency = 0.8,--0.8,
         },
 
 	warhead	=
@@ -302,7 +302,7 @@ function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _
 			},
 		}
 	end
-
+	return data
 end
 
 declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd10}", "2x 14,5cm HEAT rocket", "", 2, 1450, "SK60_145_psrak"))
