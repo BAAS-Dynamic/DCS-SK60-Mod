@@ -276,8 +276,8 @@ Keys =
     -- Weapon Part till 5070
     WingPylonSmokeOn = 5053,
     NozzleSmokeOn = 5054,
-    FireTriggerPress = 5055,
-    FireTriggerRelease = 5056,
+    WeaponFireOn = 5055,
+    WeaponFireOff = 5056,
 
     -- special functions
     SpecialSence = 5070,

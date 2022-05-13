@@ -37,6 +37,8 @@ local ir_missile_des_el_param = get_param_handle("WS_IR_MISSILE_SEEKER_DESIRED_E
 
 WeaponSystem:listen_command(Keys.WingPylonSmokeOn)
 WeaponSystem:listen_command(Keys.NozzleSmokeOn)
+WeaponSystem:listen_command(Keys.WeaponFireOn)
+WeaponSystem:listen_command(Keys.WeaponFireOff)
 
 local pod_smoke_light = get_param_handle("POD_SMOKE")
 local nozzle_smoke_light = get_param_handle("NOZZLE_SMOKE")
@@ -100,16 +102,16 @@ function launch_rockets(launch_mode)
             if loading_list[i] == 5 then
                 -- launch lower part first
                 if launch_mode == 1 then
-                    WeaponSystem.launch_station(i-1)
+                    WeaponSystem:launch_station(i-1)
                 else
-                    WeaponSystem.launch_station(i-1)
-                    WeaponSystem.launch_station(6-i)
+                    WeaponSystem:launch_station(i-1)
+                    WeaponSystem:launch_station(6-i)
                 end
                 launch_signal = 1
                 break
             elseif loading_list[7-i] == 5 then
                 -- check the opposite side
-                WeaponSystem.launch_station(6-i)
+                WeaponSystem:launch_station(6-i)
                 launch_signal = 1
                 break
             end
@@ -117,7 +119,7 @@ function launch_rockets(launch_mode)
         if launch_signal == 0 then
             -- check upper layer
             normal_serial = {3, 2, 1}
-            spec_serial = {2, 3, 1}
+            spec_serial = {2, 1, 3}
             for j = 1, 3, 1 do
                 -- check if have 2-1-1 serial
                 if WeaponSystem:get_station_info(1).CLSID == WeaponSystem:get_station_info(3).CLSID then
@@ -130,16 +132,16 @@ function launch_rockets(launch_mode)
                 if loading_list[i] == 4 then
                     -- launch lower part first
                     if launch_mode == 1 then
-                        WeaponSystem.launch_station(i-1)
+                        WeaponSystem:launch_station(i-1)
                     else
-                        WeaponSystem.launch_station(i-1)
-                        WeaponSystem.launch_station(6-i)
+                        WeaponSystem:launch_station(i-1)
+                        WeaponSystem:launch_station(6-i)
                     end
                     launch_signal = 1
                     break
                 elseif loading_list[7-i] == 4 then
                     -- check the opposite side
-                    WeaponSystem.launch_station(6-i)
+                    WeaponSystem:launch_station(6-i)
                     launch_signal = 1
                     break
                 end
@@ -171,7 +173,7 @@ function SetCommand(command,value)
             smokepodstatus = 0
         end
     elseif (command == Keys.NozzleSmokeOn) then
-        if (loading_list[3] == 1 or loading_list[4] == 1) then
+        if (loading_list[7] == 1 or loading_list[8] == 1) then
             WeaponSystem:launch_station(6)
             WeaponSystem:launch_station(7)
             nozzlesmokestatus = 1 - nozzlesmokestatus
@@ -184,14 +186,15 @@ function SetCommand(command,value)
             nozzlesmokestatus = 0
             print_message_to_user("Nozzle Smoke Not Loaded")
         end
-    elseif (command == Keys.FireTriggerPress) then
+    elseif (command == Keys.WeaponFireOn) then
         if weapon_system_mode == 2 then
             -- rocket
-            launch_rockets(1)
+            temp_mode = 1
+            launch_rockets(temp_mode)
         else
             fire_trigger_status = 1
         end
-    elseif (command == Keys.FireTriggerRelease) then
+    elseif (command == Keys.WeaponFireOff) then
         fire_trigger_status = 0
     end
 end
@@ -203,8 +206,8 @@ function update()
     if fire_trigger_status == 1 then
         for i = 1, 3, 1 do
             if loading_list[i] == 3 then
-                WeaponSystem.launch_station(i-1)
-                WeaponSystem.launch_station(6-i)
+                WeaponSystem:launch_station(i-1)
+                WeaponSystem:launch_station(6-i)
             end
         end
     end

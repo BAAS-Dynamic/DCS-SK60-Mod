@@ -87,7 +87,7 @@ SK_60 =  {
 		
 
 		AOA_take_off				=	0.16,	-- AoA in take off (for AI)
-		stores_number				=	2,
+		stores_number				=	8,
 		bank_angle_max				=	60,		-- Max bank angle (for AI)
 		Ny_min						=	-2.5,		-- Min G (for AI)
 		Ny_max						=	8,		-- Max G (for AI)
@@ -252,6 +252,8 @@ ECM 			= "AN/ALQ-135"--F15
 
 --pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 8, 5, 7, 6},
 --pylons_enumeration = {2, 1, 3, 4, 5, 6, 7, 8, 9, 11, 10},  --test for new setup
+--pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
+pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 	
 	Pylons =     {
         pylon(1, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
@@ -393,8 +395,6 @@ ECM 			= "AN/ALQ-135"--F15
 			}
 		),
 	},
-
-	pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 	
 	Tasks = {
         aircraft_task(CAP),
