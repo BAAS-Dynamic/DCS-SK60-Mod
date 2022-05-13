@@ -47,16 +47,32 @@ end
 local smokepodstatus = 0
 local nozzlesmokestatus = 0
 
--- 0,1,2,3 position
-local loading_list = {0,0,0,0}
+-- fireing mode, 1 is single, 2 is in pairs, 3 is fire all
+local rockets_fire_mode = 1
+local has_smoke_pod = 0
+local has_nozzle_smoke = 0
+-- 0 is nothing, 1 is gunpod, 2 is rockets
+local weapon_system_mode = 0
+
+-- 1,2,3,4,5,6,7,8 position
+-- 2, 4, 5, 7 can be loaded with smoke system, gun pod, and rockets
+-- 1, 3, 6, 8 can only be loaded with rockets
+-- 0 is nothing mounted, 1 is smoke pod, 2 is nozzle smoke, 3 is gunpod, 
+-- 4 is rockets * 1, 5 is rockets * 2,
+--#region             1,2,3,4,5,6,7,8
+local loading_list = {0,0,0,0,0,0,0,0}
 
 function check_load_status()
-    for i = 1,4,1 do
+    for i = 1,8,1 do
         local station = WeaponSystem:get_station_info(i-1)
         if (string.sub(station.CLSID,1,36) == "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c") then
+            -- smokepod
             loading_list[i] = 1
+            has_smoke_pod = 1
         elseif (string.sub(station.CLSID,1,36) == "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d") then
-            loading_list[i] = 1
+            -- nozzle smoke
+            loading_list[i] = 2
+            has_nozzle_smoke = 1
         else
             loading_list[i] = 0
         end

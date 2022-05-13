@@ -94,3 +94,159 @@ declear_smoke_nozzle('YELLOW', '0xffc408ff', 255, 196, 8, 200, '3d7bfa20-fefe-46
 declear_smoke_nozzle('ORANGE', '0xffb11bff', 255, 177, 27, 200, '3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4')
 declear_smoke_nozzle('GREEN', '0x1b813eff', 27, 130, 62, 200, '3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5')
 declear_smoke_nozzle('BLUE', '0x2ea9dfff', 46, 169, 233, 200, '3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6')
+
+-- rockets and rocket pods 
+
+-- 135mm M/56 ARAK Rockets (HE)
+local M56_ARAK135HE = {
+	category			= CAT_ROCKETS,
+	CLSID				= "{3c4b6e88-49ed-4a7c-8131-4abb48b1e02a}",
+	name				= "M56ARAK135HE",
+	user_name			= _("M/56 13,5cm ARAK(HE)"),
+	wsTypeOfWeapon		= {wsType_Weapon,wsType_NURS,wsType_Rocket, 145},
+	scheme 				= "nurs-standard",
+	model 				= "SK60_135_srak",
+		-- coped from 70mm rockets
+        fm = 
+        {
+            mass        = 45,   -- start weight, kg
+            caliber     = 0.135, -- Caliber, meters 
+            cx_coeff    = {1,0.889005,0.67,0.3173064,2.08},  -- Cx
+            L           = 2.105, --Length, meters
+            I           = 39.00209, -- moment of inertia
+            Ix          = 6, -- not used???
+            Ma          = 0.50851, -- dependence moment coefficient of  by  AoA
+            Mw          = 3.28844, --  dependence moment coefficient by angular speed
+            shapeName   = "",
+            
+            wind_time   = 1.5, -- dispersion coefficient
+            wind_sigma  = 4, -- dispersion coefficient
+        },
+
+        engine =
+        {
+            fuel_mass   = 16.5, -- Fuel mass, kg
+            impulse     = 250, -- Specific impulse, sec
+            boost_time  = 0, -- Time of booster action
+            work_time   = 3.2, -- Time of mid-flight engine action
+            boost_factor= 1, -- Booster to cruise trust ratio
+            nozzle_position =  {{-0.858, 0, 0}}, -- meters
+            tail_width  = 0.180, -- contrail thickness 
+            boost_tail  = 1.5,
+            work_tail   = 1.5,
+			-- black smoke
+            smoke_color = {0.7, 0.7, 0.7},
+			smoke_transparency = 0.6,--0.8,
+        },
+
+	warhead	=
+	{
+		mass				= 4.2,
+		-- 3.7kg TNT
+		expl_mass 			= 3.7,
+		other_factors 		= { 2.0, 2.5, 2.5},--{ 1.0, 0.5, 0.5},
+		concrete_factors 	= { 0.8, 0.8, 0.8},--{ 1.0, 0.5, 0.1},
+		concrete_obj_factor = 0.8,
+		obj_factors 		= { 1.5, 1.5},--{ 1.0, 1.0},
+		cumulative_factor	= 2.0,
+		cumulative_thickness = 0.6,
+		piercing_mass		= 20.0,
+	},
+
+	shape_table_data =
+	{
+		{
+			file		= "SK60_135_srak",
+			life		= 1,
+			fire		= {0, 1},
+			username 	= "SK60_135_srak",
+			index 		= WSTYPE_PLACEHOLDER,
+			position	= {0, 0.3, 0},
+		},
+	},
+
+	properties =
+	{
+		dist_min = 500,
+		dist_max = 7000,
+	}
+}
+
+declare_weapon(M56_ARAK135HE)
+
+-- 145mm M/49 PSRAK Rockets (HEAT)
+local M49_PSRAK145HEAT = {
+	category			= CAT_ROCKETS,
+	CLSID				= "{d261ef35-faeb-4d7d-9c5f-45eb150c553a}",
+	name				= "M49PSRAK145HEAT",
+	user_name			= _("M/49 14,5cm PSRAK(HEAT)"),
+	wsTypeOfWeapon		= {wsType_Weapon,wsType_NURS,wsType_Rocket, 145},
+	scheme 				= "nurs-standard",
+	model 				= "SK60_145_psrak",
+		-- coped from 70mm rockets
+        fm = 
+        {
+            mass        = 45,   -- start weight, kg
+            caliber     = 0.135, -- Caliber, meters 
+            cx_coeff    = {1,0.889005,0.67,0.3173064,2.08},  -- Cx
+            L           = 2.105, --Length, meters
+            I           = 39.00209, -- moment of inertia
+            Ix          = 6, -- not used???
+            Ma          = 0.50851, -- dependence moment coefficient of  by  AoA
+            Mw          = 3.28844, --  dependence moment coefficient by angular speed
+            shapeName   = "",
+            
+            wind_time   = 1.5, -- dispersion coefficient
+            wind_sigma  = 4, -- dispersion coefficient
+        },
+
+        engine =
+        {
+            fuel_mass   = 17.5, -- Fuel mass, kg
+            impulse     = 220, -- Specific impulse, sec
+            boost_time  = 0, -- Time of booster action
+            work_time   = 3.2, -- Time of mid-flight engine action
+            boost_factor= 1, -- Booster to cruise trust ratio
+            nozzle_position =  {{-0.875, 0, 0}}, -- meters
+            tail_width  = 0.150, -- contrail thickness 
+            boost_tail  = 1.5,
+            work_tail   = 1.5,
+
+            smoke_color = {0.7, 0.7, 0.7},
+			smoke_transparency = 0.6,--0.8,
+        },
+
+	warhead	=
+	{
+		mass				= 4.2,
+		-- 3.7kg TNT
+		expl_mass 			= 3.7,
+		other_factors 		= { 2.0, 2.5, 2.5},--{ 1.0, 0.5, 0.5},
+		concrete_factors 	= { 0.8, 0.8, 0.8},--{ 1.0, 0.5, 0.1},
+		concrete_obj_factor = 0.8,
+		obj_factors 		= { 1.5, 1.5},--{ 1.0, 1.0},
+		cumulative_factor	= 2.0,
+		cumulative_thickness = 0.6,
+		piercing_mass		= 20.0,
+	},
+
+	shape_table_data =
+	{
+		{
+			file		= "SK60_135_srak",
+			life		= 1,
+			fire		= {0, 1},
+			username 	= "SK60_135_srak",
+			index 		= WSTYPE_PLACEHOLDER,
+			position	= {0, 0.3, 0},
+		},
+	},
+
+	properties =
+	{
+		dist_min = 500,
+		dist_max = 7000,
+	}
+}
+
+declare_weapon(M49_PSRAK145HEAT)
