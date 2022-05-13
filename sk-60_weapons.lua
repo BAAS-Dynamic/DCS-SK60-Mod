@@ -19,19 +19,19 @@ function declear_smoke_pod(_name, _color, _red, _green, _blue, _alpha, uuid)
 		shape_table_data = 
 		{
 			{
-				name 	= "SK60_145_psrak",
-				file	= "SK60_145_psrak";
+				name 	= "TEAM60-SMOKE-POD",
+				file	= "TEAM60-SMOKE-POD";
 				life	= 1;
 				fire	= {0, 1};
 				username= "{"..uuid.."}";
 				index	= WSTYPE_PLACEHOLDER;
 			},
 		},
-		Weight			= 155,
+		Weight			= 15.5,
 		Count 			= 1,
 		Cx_pil			= 0.0005,
 		Elements		={{
-							ShapeName	=	"SK60_145_psrak", 
+							ShapeName	=	"TEAM60-SMOKE-POD", 
 							Position	=	{0, 0, 0},
 						}}
 	}
@@ -103,7 +103,7 @@ local M56_ARAK135HE = {
 	CLSID				= "{3c4b6e88-49ed-4a7c-8131-4abb48b1e02a}",
 	name				= "M56ARAK135HE",
 	user_name			= _("M/56 13,5cm ARAK(HE)"),
-	wsTypeOfWeapon		= {wsType_Weapon,wsType_NURS,wsType_Rocket, 145},
+	wsTypeOfWeapon		= {wsType_Weapon,wsType_NURS,wsType_Rocket, 1350},
 	scheme 				= "nurs-standard",
 	model 				= "SK60_135_srak",
 		-- coped from 70mm rockets
@@ -180,7 +180,7 @@ local M49_PSRAK145HEAT = {
 	CLSID				= "{d261ef35-faeb-4d7d-9c5f-45eb150c553a}",
 	name				= "M49PSRAK145HEAT",
 	user_name			= _("M/49 14,5cm PSRAK(HEAT)"),
-	wsTypeOfWeapon		= {wsType_Weapon,wsType_NURS,wsType_Rocket, 145},
+	wsTypeOfWeapon		= {wsType_Weapon,wsType_NURS,wsType_Rocket, 1450},
 	scheme 				= "nurs-standard",
 	model 				= "SK60_145_psrak",
 		-- coped from 70mm rockets
@@ -233,10 +233,10 @@ local M49_PSRAK145HEAT = {
 	shape_table_data =
 	{
 		{
-			file		= "SK60_135_srak",
+			file		= "SK60_145_psrak",
 			life		= 1,
 			fire		= {0, 1},
-			username 	= "SK60_135_srak",
+			username 	= "SK60_145_psrak",
 			index 		= WSTYPE_PLACEHOLDER,
 			position	= {0, 0.3, 0},
 		},
@@ -250,3 +250,60 @@ local M49_PSRAK145HEAT = {
 }
 
 declare_weapon(M49_PSRAK145HEAT)
+
+--loadout declear function
+function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _rocket_id, _rocket_shape)
+	local data = {
+		category 		= CAT_ROCKETS,
+		CLSID 			= _uuid,
+		attribute 		= {wsType_Weapon,wsType_NURS,wsType_Container, 145},
+		--attribute 	= {wsType_Weapon,wsType_NURS,wsType_Container,WSTYPE_PLACEHOLDER},
+		wsTypeOfWeapon	= {wsType_Weapon,wsType_NURS,wsType_Rocket, _rocket_id},	
+		Picture 		= _display_icon,
+		displayName		= _(_display_name),
+		Weight 			= 45 * _rocket_num + 5, -- weight * num + pylon
+		Count			= _rocket_num,
+		Cx_pil			= 0.0001,
+		kind_of_shipping = 1,
+
+		Elements = {},
+	}
+
+	if _rocket_num > 1 then
+		data.Elements = {
+			{
+				ShapeName = "", -- pod name
+				IsAdapter = true,
+			},
+		
+			{
+				Position	= {0, -0.14, 0}, --1
+				ShapeName	= _rocket_shape,
+				Rotation 	= {0,0,0},
+			},
+		}
+	else
+		data.Elements = {
+			{
+				ShapeName = "", -- pod name
+				IsAdapter = true,
+			},
+		
+			{
+				Position	= {0, -0.14, 0}, --2
+				ShapeName	= _rocket_shape,
+				Rotation 	= {0,0,0},
+			},
+
+			{
+				Position	= {0, -0.25, 0}, --1
+				ShapeName	= _rocket_shape,
+				Rotation 	= {0,0,0},
+			},
+		}
+	end
+
+end
+
+declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd10}", "2x 14,5cm HEAT rocket", "", 2, 1450, "SK60_145_psrak"))
+declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd11}", "2x 13,5cm HE rocket", "", 2, 1350, "SK60_135_srak"))

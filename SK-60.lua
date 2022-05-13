@@ -260,8 +260,8 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				use_full_connector_position = true, connector = "pylon_left_1", arg = 992, arg_value = 0,
             },
             {
-				{CLSID = "{3c4b6e88-49ed-4a7c-8131-4abb48b1e02a}", arg_value = 1}, -- 135 rocket * 1
-				{CLSID = "{d261ef35-faeb-4d7d-9c5f-45eb150c553a}", arg_value = 1}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1}, -- 135 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1}, -- 145 rocket * 1
             }
         ),
 

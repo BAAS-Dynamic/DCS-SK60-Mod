@@ -81,6 +81,9 @@ end
 
 function SetCommand(command,value)
     if (command == Keys.WingPylonSmokeOn) then
+        -- test only
+        WeaponSystem:launch_station(0)
+        --[[
         if (loading_list[1] == 1 or loading_list[2] == 1) then
             WeaponSystem:launch_station(0)
             WeaponSystem:launch_station(1)
@@ -94,6 +97,7 @@ function SetCommand(command,value)
             print_message_to_user("No Smoke Pod on Pylon")
             smokepodstatus = 0
         end
+        ]]--
     elseif (command == Keys.NozzleSmokeOn) then
         if (loading_list[3] == 1 or loading_list[4] == 1) then
             WeaponSystem:launch_station(2)
