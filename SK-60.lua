@@ -252,7 +252,6 @@ ECM 			= "AN/ALQ-135"--F15
 
 --pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 8, 5, 7, 6},
 --pylons_enumeration = {2, 1, 3, 4, 5, 6, 7, 8, 9, 11, 10},  --test for new setup
-pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 	
 	Pylons =     {
         pylon(1, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
@@ -260,8 +259,9 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				use_full_connector_position = true, connector = "pylon_left_1", arg = 992, arg_value = 0,
             },
             {
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1}, -- 135 rocket * 1
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 1
             }
         ),
 
@@ -285,6 +285,10 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
 				{CLSID = "{LYSBOMB}"}, -- Illumination bomb
 				{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
+
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 1
             }
         ),
 
@@ -293,7 +297,9 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				use_full_connector_position = true, connector = "pylon_left_3", arg = 996, arg_value = 0,
 			},
 			{
-			
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.01, 0.0}}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.01, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.01, 0.0}}, -- 145 rocket * 1
 			}
 		),
 
@@ -302,7 +308,9 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				use_full_connector_position = true, connector = "pylon_right_3", arg = 995, arg_value = 0,
 			},
 			{
-			
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 1
 			}
 		),
 
@@ -326,6 +334,9 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
 				{CLSID = "{LYSBOMB}"}, -- Illumination bomb
 				{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 1
             }
         ),
 
@@ -334,7 +345,9 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 				use_full_connector_position = true, connector = "pylon_right_1", arg = 991, arg_value = 0,
 			},
 			{
-			
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 1
 			}
 		),
 
@@ -368,6 +381,8 @@ pylons_enumeration = {1, 2, 3, 7, 8, 4, 5, 6},
 			}
 		),
 	},
+
+	pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 	
 	Tasks = {
         aircraft_task(CAP),

@@ -161,7 +161,7 @@ local M56_ARAK135HE = {
 			fire		= {0, 1},
 			username 	= "SK60_135_srak",
 			index 		= WSTYPE_PLACEHOLDER,
-			position	= {0, 0.3, 0},
+			position	= {0, 0, 0},
 		},
 	},
 
@@ -238,7 +238,7 @@ local M49_PSRAK145HEAT = {
 			fire		= {0, 1},
 			username 	= "SK60_145_psrak",
 			index 		= WSTYPE_PLACEHOLDER,
-			position	= {0, 0.3, 0},
+			position	= {0, 0, 0},
 		},
 	},
 
@@ -252,7 +252,7 @@ local M49_PSRAK145HEAT = {
 declare_weapon(M49_PSRAK145HEAT)
 
 --loadout declear function
-function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _rocket_id, _rocket_shape)
+function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _rocket_id, _rocket_shape, _distance, _diameter, _forwarding)
 	local data = {
 		category 		= CAT_ROCKETS,
 		CLSID 			= _uuid,
@@ -269,7 +269,7 @@ function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _
 		Elements = {},
 	}
 
-	if _rocket_num > 1 then
+	if _rocket_num < 1 then
 		data.Elements = {
 			{
 				ShapeName = "", -- pod name
@@ -277,33 +277,36 @@ function declear_rocket_pods(_uuid, _display_name, _display_icon, _rocket_num, _
 			},
 		
 			{
-				Position	= {0, -0.14, 0}, --1
+				Position	= {_forwarding + 0.01, - 0.065 - _diameter/2 * 3 - _distance, 0}, --2 0.25
 				ShapeName	= _rocket_shape,
-				Rotation 	= {0,0,0},
+				Rotation 	= {0,0,-1.5},
 			},
 		}
 	else
 		data.Elements = {
 			{
-				ShapeName = "", -- pod name
+				ShapeName = "placeholder", -- pod name
+				position = {0, 0, 0},
 				IsAdapter = true,
-			},
-		
-			{
-				Position	= {0, -0.14, 0}, --2
-				ShapeName	= _rocket_shape,
-				Rotation 	= {0,0,0},
 			},
 
 			{
-				Position	= {0, -0.25, 0}, --1
+				Position	= {_forwarding, - 0.065 - _diameter/2, 0}, --1 
 				ShapeName	= _rocket_shape,
-				Rotation 	= {0,0,0},
+				Rotation 	= {0,0,-1.5},
+			},
+		
+			{
+				Position	= {_forwarding + 0.01, - 0.065 - _diameter/2 * 3 - _distance, 0}, --2 0.25
+				ShapeName	= _rocket_shape,
+				Rotation 	= {0,0,-1.5},
 			},
 		}
 	end
 	return data
 end
 
-declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd10}", "2x 14,5cm HEAT rocket", "", 2, 1450, "SK60_145_psrak"))
-declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd11}", "2x 13,5cm HE rocket", "", 2, 1350, "SK60_135_srak"))
+declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd11}", "2x 13,5cm HE rocket", "", 2, 1350, "SK60_135_srak", 0.025, 0.135, 0.38))
+declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd12}", "1x 14,5cm HEAT rocket", "", 1, 1450, "SK60_145_psrak", 0.025, 0.145, 0.43))
+declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd10}", "2x 14,5cm HEAT rocket", "", 2, 1450, "SK60_145_psrak", 0.025, 0.145, 0.43))
+
