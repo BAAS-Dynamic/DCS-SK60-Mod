@@ -106,6 +106,11 @@ end
 
 function post_initialize() --默认初始化函数
     --local dev = GetSelf()
+    -- initial the elec system pointer for the radio
+    str_ptr = string.sub(tostring(electric_system.link),10)
+    local set_elec_pointer = get_param_handle("ELEC_POINTER")
+    set_elec_pointer:set(str_ptr)
+    -- end of block
     elec_battery_status:set(30000)
     local birth = LockOn_Options.init_conditions.birth_place
     if birth=="GROUND_HOT" or birth=="AIR_HOT" then --"GROUND_COLD","GROUND_HOT","AIR_HOT"
