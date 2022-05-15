@@ -36,6 +36,8 @@ GUI = {
 -- end of block
 
 function post_initialize()
+	local wake_radio = get_param_handle("RADIO_SYSTEM_AVAIL")
+	wake_radio:set(0.0)
 	dev:set_frequency(256E6) -- Sochi
   	dev:set_modulation(MODULATION_AM)
   	local intercom = GetDevice(devices.INTERCOM)
@@ -46,6 +48,9 @@ function post_initialize()
   	str_ptr = string.sub(tostring(dev.link),10)
   	local set_radio_pointer = get_param_handle("RADIO_POINTER")
 	set_radio_pointer:set(str_ptr)
+	local radio_power = get_param_handle("RADIO_POWER")
+	wake_radio:set(1.0)
+	radio_power:set(1.0)
 end
 
 
@@ -53,10 +58,7 @@ function SetCommand(command,value)
 end
 
 function update()
-	local wake_radio = get_param_handle("RADIO_SYSTEM_AVAIL")
-	local radio_power = get_param_handle("RADIO_POWER")
-	wake_radio:set(1)
-	radio_power:set(1)
+
 end
 
 
