@@ -1,4 +1,5 @@
 local LightSystem = GetSelf()
+dofile(LockOn_Options.script_path.."debug_util.lua")
 
 --初始化加载要用lua文件
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
@@ -182,8 +183,8 @@ function SetCommand(command, value)
         elseif target_status[console_light_switch][2] > 1 then
             target_status[console_light_switch][2] = 1
         end
-        print_message_to_user(value)
-        print_message_to_user(target_status[console_light_switch][2])
+        dprintf(value)
+        dprintf(target_status[console_light_switch][2])
     elseif command == Keys.LightApproIndexBRT then
         if value < 0.5 then
             new_value = - 0.1

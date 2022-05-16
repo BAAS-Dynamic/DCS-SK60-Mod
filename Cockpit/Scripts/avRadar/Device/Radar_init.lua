@@ -1,3 +1,5 @@
+dofile(LockOn_Options.script_path.."debug_util.lua")
+
 range_scale 		  	= 60000.0
 TDC_range_carret_size 	= 5000
 render_debug_info 		= false--true
@@ -86,7 +88,7 @@ Radar = 	{
 
 function post_initialize()
 
-	print_message_to_user("Radar - INIT")
+	dprintf("Radar - INIT")
 		
 		RadarSystem:listen_command(100)
 		
@@ -117,7 +119,7 @@ function post_initialize()
 end
 
 function SetCommand(command,value)
-	--print_message_to_user(string.format("Radar SetCom: C %i   V%.8f",command,value))
+	--dprintf(string.format("Radar SetCom: C %i   V%.8f",command,value))
 	
 ---------------------------------------------------------------------
 	

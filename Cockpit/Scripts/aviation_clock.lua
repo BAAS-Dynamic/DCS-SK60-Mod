@@ -20,7 +20,7 @@ end
 
 
 function update()
-    -- print_message_to_user(get_absolute_model_time())
+    -- dprintf(get_absolute_model_time())
     local current_time_in_second = get_absolute_model_time()
     local current_hour = current_time_in_second / 3600
     local current_minute = math.fmod(current_time_in_second , 3600) / 60

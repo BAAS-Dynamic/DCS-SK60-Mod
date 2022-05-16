@@ -1,4 +1,5 @@
 local WeaponSystem     = GetSelf()
+dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 --dofile(LockOn_Options.script_path.."Systems/stores_config.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
@@ -39,6 +40,9 @@ WeaponSystem:listen_command(Keys.WingPylonSmokeOn)
 WeaponSystem:listen_command(Keys.NozzleSmokeOn)
 WeaponSystem:listen_command(Keys.WeaponFireOn)
 WeaponSystem:listen_command(Keys.WeaponFireOff)
+WeaponSystem:listen_command(Keys.WeaponConfigSingle)
+WeaponSystem:listen_command(Keys.WeaponConfigPairs)
+WeaponSystem:listen_command(Keys.WeaponConfigAll)
 
 local pod_smoke_light = get_param_handle("POD_SMOKE")
 local nozzle_smoke_light = get_param_handle("NOZZLE_SMOKE")
@@ -164,12 +168,12 @@ function SetCommand(command,value)
             end
             smokepodstatus = 1 - smokepodstatus
             if smokepodstatus == 1 then
-                print_message_to_user("Smoke pod is ON")
+                dprintf("Smoke pod is ON")
             else
-                print_message_to_user("Smoke pod is OFF")
+                dprintf("Smoke pod is OFF")
             end
         else
-            print_message_to_user("No Smoke Pod on Pylon")
+            dprintf("No Smoke Pod on Pylon")
             smokepodstatus = 0
         end
     elseif (command == Keys.NozzleSmokeOn) then
@@ -178,24 +182,32 @@ function SetCommand(command,value)
             WeaponSystem:launch_station(7)
             nozzlesmokestatus = 1 - nozzlesmokestatus
             if nozzlesmokestatus == 1 then
-                print_message_to_user("Nozzle smoke is ON")
+                dprintf("Nozzle smoke is ON")
             else
-                print_message_to_user("Nozzle smoke is OFF")
+                dprintf("Nozzle smoke is OFF")
             end
         else
             nozzlesmokestatus = 0
-            print_message_to_user("Nozzle Smoke Not Loaded")
+            dprintf("Nozzle Smoke Not Loaded")
         end
     elseif (command == Keys.WeaponFireOn) then
         if weapon_system_mode == 2 then
             -- rocket
-            temp_mode = 1
-            launch_rockets(temp_mode)
+            launch_rockets(rockets_fire_mode)
         else
             fire_trigger_status = 1
         end
     elseif (command == Keys.WeaponFireOff) then
         fire_trigger_status = 0
+    elseif (command == Keys.WeaponConfigAll) then
+        rockets_fire_mode = 3
+        dprintf("rocket fire mode All")
+    elseif (command == Keys.WeaponConfigSingle) then
+        rockets_fire_mode = 1
+        dprintf("rocket fire mode Single")
+    elseif (command == Keys.WeaponConfigPairs) then
+        rockets_fire_mode = 2
+        dprintf("rocket fire mode Pairs")
     end
 end
 

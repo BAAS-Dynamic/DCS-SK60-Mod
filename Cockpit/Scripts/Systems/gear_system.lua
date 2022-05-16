@@ -1,5 +1,6 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
+dofile(LockOn_Options.script_path.."debug_util.lua")
 
 local gear_system = GetSelf()
 
@@ -82,9 +83,9 @@ function SetCommand(command,value)
         l_main_gear_status = 1 - l_main_gear_status
         r_main_gear_status = 1 - r_main_gear_status
         if (nose_gear_status == 1) then
-            print_message_to_user("Gear Down")
+            dprintf("Gear Down")
         else
-            print_message_to_user("Gear Up")
+            dprintf("Gear Up")
         end
     elseif (command == gear_down) then
         nose_gear_status = 1
@@ -109,12 +110,12 @@ function update()
         local time_increse_step = 0.02 / 7
         if (sensor_data.getWOW_LeftMainLandingGear() > 0.001 or sensor_data.getWOW_NoseLandingGear() > 0.001 or sensor_data.getWOW_RightMainLandingGear() > 0.001) then
             move_ability = 0;
-            --print_message_to_user("L:"..sensor_data.getWOW_LeftMainLandingGear());
-            --print_message_to_user("R:"..sensor_data.getWOW_RightMainLandingGear());
+            --dprintf("L:"..sensor_data.getWOW_LeftMainLandingGear());
+            --dprintf("R:"..sensor_data.getWOW_RightMainLandingGear());
         else
             move_ability = 1;
         end
-        --print_message_to_user("N:"..sensor_data.getWOW_NoseLandingGear());
+        --dprintf("N:"..sensor_data.getWOW_NoseLandingGear());
         
         
         if (nose_gear_status == 0 and n_gear_status > 0) then

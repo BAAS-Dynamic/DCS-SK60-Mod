@@ -379,6 +379,8 @@ elements["PTN_118"] = default_button("Boost Pump Test", devices.FUEL_SYSTEM, Key
 elements["PTN_405"] = default_button("Left Engine Motor Starter", devices.HUD_DCMS, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE, 405)
 elements["PTN_407"] = default_button("Right Engine Motor Starter", devices.HUD_DCMS, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE, 407)
 
+elements["PTN_557"] = default_button("UHF Radio TAKE Press", devices.UHF_RADIO, Keys.UHF_TAKE_Button_Press, Keys.UHF_TAKE_Button_Release, 557)
+
 multi_tumb_click_list = {
     -- Engine Control
     {"PTN_418", "Left Low Pressure Fuel Pump", devices.HUD_DCMS, 418, Keys.L_LP_PUMP},
@@ -423,6 +425,24 @@ multi_tumb_click_list = {
     {"PTN_526", "Enter", devices.HUD_DCMS, 526, Keys.Nav_Ent},
     {"PTN_529", "Select Input", devices.HUD_DCMS, 529, Keys.Nav_Right_Knob_Push},
 
+    -- R&S GB6500
+    -- {"PTN_554", "UHF Volume Change", devices.UHF_RADIO, 554, Keys.UHF_Vol_Up, Keys.UHF_Vol_Down},
+    {"PTN_555", "UHF SQL ON/OFF, Acknology", devices.UHF_RADIO, 555, Keys.UHF_Vol_Up, Keys.UHF_Vol_Down},
+    {"PTN_556", "UHF Mode Selection", devices.UHF_RADIO, 556, Keys.UHF_Mode_Left, Keys.UHF_Mode_Right},
+    -- keyboard
+    {"PTN_542", "UHF Key 1 (TONE)", devices.UHF_RADIO, 542, Keys.UHF_Key_1},
+    {"PTN_543", "UHF Key 2 (-)", devices.UHF_RADIO, 543, Keys.UHF_Key_2},
+    {"PTN_544", "UHF Key 3 (+)", devices.UHF_RADIO, 544, Keys.UHF_Key_3},
+    {"PTN_545", "UHF Key 4 (H)", devices.UHF_RADIO, 545, Keys.UHF_Key_4},
+    {"PTN_546", "UHF Key 5 (A)", devices.UHF_RADIO, 546, Keys.UHF_Key_5},
+    {"PTN_547", "UHF Key 6 (M)", devices.UHF_RADIO, 547, Keys.UHF_Key_6},
+    {"PTN_548", "UHF Key 7 (P)", devices.UHF_RADIO, 548, Keys.UHF_Key_7},
+    {"PTN_549", "UHF Key 8 (C)", devices.UHF_RADIO, 549, Keys.UHF_Key_8},
+    {"PTN_550", "UHF Key 9 (T)", devices.UHF_RADIO, 550, Keys.UHF_Key_9},
+    {"PTN_551", "UHF Key < (Manual)", devices.UHF_RADIO, 551, Keys.UHF_Key_MAN},
+    {"PTN_552", "UHF Key 0 (Preset)", devices.UHF_RADIO, 552, Keys.UHF_Key_0},
+    {"PTN_553", "UHF Key > (Enter)", devices.UHF_RADIO, 553, Keys.UHF_Key_ENT},
+
     {"PTN_601", "Canopy Handle", devices.CANOPY, 601, 71}, -- iCommandPlaneCanopy
 }
 
@@ -448,16 +468,6 @@ elements["PTN_184"] = default_axis("TACAN Mode Selection", devices.RADIO_SYSTEM,
 elements["PTN_185"] = default_axis("TACAN Channel x10", devices.RADIO_SYSTEM, Keys.TACANChanA, 1134, 0, 0.1)
 elements["PTN_186"] = default_axis("TACAN Channel x1", devices.RADIO_SYSTEM, Keys.TACANChanB, 1134, 0, 0.1)
 
--- Weapon 550-557
-elements["PTN_550"] = default_axis("Interval x100", devices.WEAPON_SYSTEM, Keys.IntervalTumbWheel100, 1134, 0, 0.1)
-elements["PTN_551"] = default_axis("Interval x10", devices.WEAPON_SYSTEM, Keys.IntervalTumbWheel10, 1134, 0, 0.1)
-elements["PTN_552"] = default_axis("Interval x1", devices.WEAPON_SYSTEM, Keys.IntervalTumbWheel, 1134, 0, 0.1)
-elements["PTN_553"] = default_axis("Quantity x10", devices.WEAPON_SYSTEM, Keys.QuantityTumbWheel10, 1134, 0, 0.1)
-elements["PTN_554"] = default_axis("Quantity x1", devices.WEAPON_SYSTEM, Keys.QuantityTumbWheel, 1134, 0, 0.1)
-elements["PTN_555"] = default_axis("Time x100", devices.WEAPON_SYSTEM, Keys.TimeTumbWheel100, 1134, 0, 0.1)
-elements["PTN_556"] = default_axis("Time x10", devices.WEAPON_SYSTEM, Keys.TimeTumbWheel10, 1134, 0, 0.1)
-elements["PTN_557"] = default_axis("Time x1", devices.WEAPON_SYSTEM, Keys.TimeTumbWheel, 1134, 0, 0.1)
-
 -- EHSI SANDEL SN3500
 elements["PTN_534"] = default_axis("Course Selection Knob", devices.HUD_DCMS, Keys.Nav_Course_Sel, 1134, 0, 0.1)
 elements["PTN_541"] = default_axis("Heading Selection Knob", devices.HUD_DCMS, Keys.Nav_Heading_Sel, 1134, 0, 0.1)
@@ -469,6 +479,9 @@ elements["PTN_511"] = default_axis("Freqency MHz Knob", devices.HUD_DCMS, Keys.F
 elements["PTN_512"] = default_axis("Freqency kHz Knob", devices.HUD_DCMS, Keys.Freq_Degi, 1134, 0, 0.1)
 elements["PTN_527"] = default_axis("Right Large Knob", devices.HUD_DCMS, Keys.Nav_Right_Knob_L, 1134, 0, 0.1)
 elements["PTN_528"] = default_axis("Right Small Knob", devices.HUD_DCMS, Keys.Nav_Right_Knob_S, 1134, 0, 0.1)
+
+-- UHF R&S GB6500
+elements["PTN_554"] = default_axis("UHF Volume", devices.UHF_RADIO, Keys.UHF_Vol, 1134, 0, 0.1)
 
 -- Baro
 elements["ALT_down"] = default_axis("Baro Setting", devices.HUD_DCMS, Keys.EALT_BARO, 1134, 0, 0.1)

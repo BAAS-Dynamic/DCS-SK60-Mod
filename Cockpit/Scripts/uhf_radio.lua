@@ -1,4 +1,5 @@
 dofile(LockOn_Options.common_script_path..'Radio.lua')
+dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.common_script_path.."mission_prepare.lua")
 
 dofile(LockOn_Options.script_path.."devices.lua")
@@ -35,7 +36,31 @@ GUI = {
 }
 -- end of block
 
+local current_freq = 256E6
+
+function check_frequency_change()
+	-- check if override by efm radio system
+	local freq_efm_signal = get_param_handle("RADIO_EFM_CHANGED")
+	local freq_uplink_signal = get_param_handle("RADIO_2EFM_CHANGED")
+	local freqency_EFM_exchange = get_param_handle("RADIO_UHF_FREQ_EXC")
+	-- check if override by simple radio system
+	if (dev:get_frequency() ~= current_freq) then
+		-- send to efm, change display
+		current_freq = dev:get_frequency()
+		-- this direction has higher prioity
+		freq_efm_signal:set(0)
+		freqency_EFM_exchange:set(current_freq)
+		freq_uplink_signal:set(1)
+	elseif freq_efm_signal:get() > 0 then
+		current_freq = freqency_EFM_exchange:get()
+		dev:set_frequency(current_freq)
+		freq_uplink_signal:set(0)
+		freq_efm_signal:set(0)
+	end
+end
+
 function post_initialize()
+	-- initialize the radio system
 	local wake_radio = get_param_handle("RADIO_SYSTEM_AVAIL")
 	wake_radio:set(0.0)
 	dev:set_frequency(256E6) -- Sochi
@@ -51,6 +76,11 @@ function post_initialize()
 	local radio_power = get_param_handle("RADIO_POWER")
 	wake_radio:set(1.0)
 	radio_power:set(1.0)
+
+	local freq_efm_signal = get_param_handle("RADIO_EFM_CHANGED")
+	local freq_uplink_signal = get_param_handle("RADIO_2EFM_CHANGED")
+	freq_efm_signal:set(0)
+	freq_uplink_signal:set(0)
 end
 
 
@@ -58,7 +88,7 @@ function SetCommand(command,value)
 end
 
 function update()
-
+	check_frequency_change()
 end
 
 

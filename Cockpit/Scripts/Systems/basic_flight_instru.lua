@@ -1,5 +1,6 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
+dofile(LockOn_Options.script_path.."debug_util.lua")
 
 local dev = GetSelf()
 
@@ -91,7 +92,7 @@ function Altitude_Cal()
     local baro_x100_target = 0
 
     if (get_elec_dc_status() == true) then
-        -- print_message_to_user(radar_altitude)
+        -- dprintf(radar_altitude)
         baro_altitude = sensor_data.getBarometricAltitude() * METER_TO_INCH
 
         baro_x1w_target = math.modf(baro_altitude/10000)
