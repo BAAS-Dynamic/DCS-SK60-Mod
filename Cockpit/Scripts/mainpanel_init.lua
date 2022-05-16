@@ -162,6 +162,12 @@ animation_list = {
     {"PTN_604", 604},
     {"PTN_605", 605},
 
+    -- Weapon panel
+    {"PTN_413", 413},
+    {"PTN_414", 414},
+    -- gun sight
+    {"GUN_SIGHT", 915},
+
     {"PTN_424", 424}, -- Nav light
     {"PTN_429", 429}, -- Anti Col light
     {"PTN_436", 436}, -- taxi light

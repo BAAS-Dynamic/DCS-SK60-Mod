@@ -49,10 +49,10 @@ function check_frequency_change()
 		current_freq = dev:get_frequency()
 		-- this direction has higher prioity
 		freq_efm_signal:set(0)
-		freqency_EFM_exchange:set(current_freq)
+		freqency_EFM_exchange:set(current_freq/1e3)
 		freq_uplink_signal:set(1)
 	elseif freq_efm_signal:get() > 0 then
-		current_freq = freqency_EFM_exchange:get()
+		current_freq = freqency_EFM_exchange:get() * 1e3
 		dev:set_frequency(current_freq)
 		freq_uplink_signal:set(0)
 		freq_efm_signal:set(0)

@@ -281,6 +281,10 @@ Keys =
     WeaponConfigAll = 5057,
     WeaponConfigSingle = 5058,
     WeaponConfigPairs = 5059,
+    WeaponMasterSwitch = 5060,
+    WeaponAirGroundChange = 5061,
+    GunSightInstall = 5062,
+    GunSightUninstall = 5063,
 
     -- special functions
     SpecialSence = 5070,
