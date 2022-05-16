@@ -404,6 +404,9 @@ multi_tumb_click_list = {
     {"PTN_402", "Inverter 1 Switch", devices.ELECTRIC_SYSTEM, 402, Keys.PowerGeneratorLeft},
     {"PTN_404", "Inverter 2 Switch", devices.ELECTRIC_SYSTEM, 404, Keys.PowerGeneratorRight},
 
+    {"PTN_413", "Master Arm", devices.WEAPON_SYSTEM, 413, Keys.WeaponMasterSwitch},
+    {"PTN_414", "A/G mode", devices.WEAPON_SYSTEM, 414, Keys.WeaponAirGroundChange},
+
     -- EADI
     {"PTN_501", "Screen Display Dim-", devices.HUD_DCMS, 501, Keys.Display_Darker},
     {"PTN_502", "Screen Display Dim+", devices.HUD_DCMS, 502, Keys.Display_Brighter},

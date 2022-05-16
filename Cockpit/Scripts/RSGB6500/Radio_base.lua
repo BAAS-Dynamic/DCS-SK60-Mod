@@ -48,7 +48,7 @@ Add(RTOP_text_box)
 
 local RTOP_text_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 RTOP_text_box.material          = "BS430_font_green" --"EADI_font"    --FONT_             --Material type (note the font material created above)
-RTOP_text_box.init_pos          = {0 , 0}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+RTOP_text_box.init_pos          = {0.8 , -0.4}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 RTOP_text_box.alignment         = "RightCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
 RTOP_text_box.stringdefs        = {0.9*0.0095,0.9 * 0.0095, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 RTOP_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type

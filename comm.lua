@@ -1,3 +1,5 @@
+local menus = data.menus
+
 local parameters = {
 	fighter = true,
 	radar = true,

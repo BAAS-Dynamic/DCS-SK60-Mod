@@ -12,6 +12,7 @@ local dev 	    = GetSelf()
 
 local update_time_step = 0.05 --update will be called once per second
 device_timer_dt = update_time_step
+-- make_default_activity(update_time_step)
 
 -- the following are some functions for the radio to work
 -- this part currently use parameters from A4E-C
@@ -38,20 +39,25 @@ GUI = {
 
 local current_freq = 256E6
 
+dev:listen_command(Keys.RadioUpdate)
+
 function check_frequency_change()
 	-- check if override by efm radio system
 	local freq_efm_signal = get_param_handle("RADIO_EFM_CHANGED")
 	local freq_uplink_signal = get_param_handle("RADIO_2EFM_CHANGED")
 	local freqency_EFM_exchange = get_param_handle("RADIO_UHF_FREQ_EXC")
+	-- dprintf(sprintf("current Freq: %d", dev:get_frequency()))
 	-- check if override by simple radio system
 	if (dev:get_frequency() ~= current_freq) then
 		-- send to efm, change display
+		dprintf("lua radio freq changed")
 		current_freq = dev:get_frequency()
 		-- this direction has higher prioity
 		freq_efm_signal:set(0)
 		freqency_EFM_exchange:set(current_freq/1e3)
 		freq_uplink_signal:set(1)
 	elseif freq_efm_signal:get() > 0 then
+		dprintf("EFM freq changed")
 		current_freq = freqency_EFM_exchange:get() * 1e3
 		dev:set_frequency(current_freq)
 		freq_uplink_signal:set(0)
@@ -85,10 +91,11 @@ end
 
 
 function SetCommand(command,value)
+	check_frequency_change()
 end
 
 function update()
-	check_frequency_change()
+	
 end
 
 

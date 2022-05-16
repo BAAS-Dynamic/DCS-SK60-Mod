@@ -54,7 +54,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EALT/
 -- SANDEL SN3500 EHSI
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EHSI/EHSI_init.lua",nil,{{"EHSI_center","EHSI_down","EHSI_right"}}}
 -- Radio display
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."RSGB6500/Radio_init.lua",nil,{{"COM1_center","COM1_down","COM1_right"},{sx_l =  -0.0001,}}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."RSGB6500/Radio_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}--{{"COM1_center","COM1_down","COM1_right"}}
 -- HUD USE for AUTH display now
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
 -- RADAR RAW DISPLAY

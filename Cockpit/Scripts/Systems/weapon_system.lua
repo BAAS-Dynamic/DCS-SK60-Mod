@@ -1,6 +1,7 @@
 local WeaponSystem     = GetSelf()
 dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
+dofile(LockOn_Options.script_path.."devices.lua")
 --dofile(LockOn_Options.script_path.."Systems/stores_config.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
@@ -125,6 +126,35 @@ function check_load_status()
     end
 end
 
+local current_freq = 256E6
+
+function check_frequency_change()
+    local dev=GetDevice(devices.UHF_RADIO)
+    if dev then
+        -- check if override by efm radio system
+        local freq_efm_signal = get_param_handle("RADIO_EFM_CHANGED")
+        local freq_uplink_signal = get_param_handle("RADIO_2EFM_CHANGED")
+        local freqency_EFM_exchange = get_param_handle("RADIO_UHF_FREQ_EXC")
+        -- dprintf(sprintf("current Freq: %d", dev:get_frequency()))
+        -- check if override by simple radio system
+        if (dev:get_frequency() ~= current_freq) then
+            -- send to efm, change display
+            dprintf("lua radio freq changed")
+            current_freq = dev:get_frequency()
+            -- this direction has higher prioity
+            freq_efm_signal:set(0)
+            freqency_EFM_exchange:set(current_freq/1e3)
+            freq_uplink_signal:set(1)
+        elseif freq_efm_signal:get() > 0 then
+            dprintf("EFM freq changed")
+            current_freq = freqency_EFM_exchange:get() * 1e3
+            dev:set_frequency(current_freq)
+            freq_uplink_signal:set(0)
+            freq_efm_signal:set(0)
+        end
+    end
+end
+
 -- launch_mode: = 0, serial ; 1, in pairs; 2, all
 function launch_rockets(launch_mode)
     local launch_signal = 0
@@ -232,7 +262,8 @@ function SetCommand(command,value)
         elseif (command == Keys.WeaponFireOff) then
             fire_trigger_status = 0
         end
-    elseif (command == Keys.WeaponConfigAll) then
+    end
+    if (command == Keys.WeaponConfigAll) then
         rockets_fire_mode = 3
         dprintf("rocket fire mode All")
     elseif (command == Keys.WeaponConfigSingle) then
@@ -283,6 +314,7 @@ function update()
             end
         end
     end
+    check_frequency_change()
 end
 
 need_to_be_closed = false
