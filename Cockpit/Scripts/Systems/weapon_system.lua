@@ -70,6 +70,8 @@ local weapon_system_mode = 0
 local fire_trigger_status = 0
 local gun_sight_is_installed = 0
 
+local gun_sight_display = get_param_handle("GUNSIGHT_ENABLE")
+
 -- PYLON_INFO_LIST[pylonSelection + 1] = {station_data.weapon.level2, station_data.weapon.level3, station_data.count}
 
 local SWITCH_OFF = 0
@@ -306,6 +308,11 @@ function update()
     pod_smoke_light:set(smokepodstatus)
     nozzle_smoke_light:set(nozzlesmokestatus)
     update_switch_status()
+    if (get_elec_dc_status() and current_status[master_switch][2] == SWITCH_ON ) then
+        gun_sight_display:set(1)
+    else
+        gun_sight_display:set(0)
+    end
     if fire_trigger_status == 1 then
         for i = 1, 3, 1 do
             if loading_list[i] == 3 then
