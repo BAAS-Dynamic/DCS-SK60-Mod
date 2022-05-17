@@ -21,7 +21,7 @@ GUNSIGHT_DEFAULT_NOCLIP_LEVEL  = GUNSIGHT_DEFAULT_LEVEL - 1 -- 一次裁剪显�
 -- 排错颜色（大雾）
 DEBUG_COLOR                 = {0,255,0,200}
 -- 白天模式hud的颜色
-HUD_DAY_COLOR               = {0,255,0,255}
+HUD_DAY_COLOR               = {233,139,42,255}
 
 -- this hud texture model is belong to another mod i made
 basic_HUD_material = MakeMaterial(HUD_IND_TEX_PATH.."HUD_base_ind_tex.dds", HUD_DAY_COLOR)
@@ -31,8 +31,8 @@ default_hud_x = 2000
 default_hud_y = 2000 
 
 -- 定义默认HUD旋转角度和hud显示深度
-default_hud_z_offset = 3
-default_hud_y_offset = - 0.5 * default_hud_z_offset
+default_hud_z_offset = 4
+default_hud_y_offset = - 0.839 * default_hud_z_offset - 0.2
 default_hud_rot_offset = 40
 
 function hud_vert_gen(width, height)

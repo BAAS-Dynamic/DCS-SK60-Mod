@@ -1,6 +1,6 @@
 dofile(LockOn_Options.script_path.."GunSight/gunsight_def.lua")
 
-SHOW_MASKS = true
+SHOW_MASKS = false
 
 -- 这个操作可以将新建的裁剪块对齐到三个标记
 local half_width   = GetScale()
@@ -12,7 +12,7 @@ local aspect       = GetAspect()
 HUD_base_clip 			 	    = CreateElement "ceMeshPoly" --这是裁剪层
 HUD_base_clip.name 			    = "hud_base_data_clip"
 HUD_base_clip.primitivetype   	= "triangles"
-HUD_base_clip.vertices 		    = { {1, 0.5 * aspect}, { 1,-aspect}, { -1,-aspect}, {-1,aspect*0.5}, {-0.5,aspect}, {0.5,aspect}}
+HUD_base_clip.vertices 		    = { {1, 0.5 * aspect}, { 1,-aspect}, { -1,-aspect}, {-1,aspect*0.5}, {-0.76,aspect}, {0.76,aspect}}
 HUD_base_clip.indices 		    = {0,1,2,0,2,3,0,3,4,0,4,5}
 HUD_base_clip.init_pos		    = {0, 0, 0}
 HUD_base_clip.init_rot		    = {0, 0, 0}
@@ -29,9 +29,9 @@ Add(HUD_base_clip)
 -- virtual projection plane of the hud display
 local gunsight_proj_clip 			    = CreateElement "ceMeshPoly" --create second clip
 gunsight_proj_clip.name 			    = "gunsight_projection_clip"
-gunsight_proj_clip.vertices 		    = create_circle_pos(61, 0, 0, 6000)
+gunsight_proj_clip.vertices 		    = create_circle_pos(61, 0, 0, 3000)
 gunsight_proj_clip.indices 		        = create_circle_index(61)
-gunsight_proj_clip.init_pos		        = {0, default_hud_y_offset - 0.1, default_hud_z_offset}
+gunsight_proj_clip.init_pos		        = {0, default_hud_y_offset, default_hud_z_offset}
 gunsight_proj_clip.init_rot		        = {0, 0, default_hud_rot_offset}
 gunsight_proj_clip.material		        = "DBG_GREEN"
 gunsight_proj_clip.h_clip_relation      = h_clip_relations.INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
@@ -44,7 +44,7 @@ Add(gunsight_proj_clip)
 
 -- gunsight
 local flight_dire_ind 				     = CreateElement "ceTexPoly"
-flight_dire_ind.vertices                 = hud_vert_gen(415,280)
+flight_dire_ind.vertices                 = hud_vert_gen(539.5,364)
 flight_dire_ind.indices                  = {0,1,2,2,3,0}
 flight_dire_ind.tex_coords               = tex_coord_gen(385,680,415,280,2000,2000)
 flight_dire_ind.material                 = basic_HUD_material
