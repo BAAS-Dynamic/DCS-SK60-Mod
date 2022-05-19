@@ -73,7 +73,9 @@ function update_elec_state() --更新电力总线状态
 
     if electric_system:get_DC_Bus_1_voltage() > 0 or electric_system:get_DC_Bus_2_voltage() > 0 then
         if elec_battery_status:get() == 0 then
-            elec_dc_status:set(0)
+            -- elec_dc_status:set(0)
+            -- problem here, when bus has power, dc electric should be on
+            elec_dc_status:set(1)
         else
             elec_dc_status:set(1)
         end

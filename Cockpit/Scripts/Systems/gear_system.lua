@@ -165,9 +165,16 @@ function update()
             gear_handle_click_ref:update()
         end
 
-        ngear_pos_ind:set(n_gear_status)
-        mlgear_pos_ind:set(l_gear_status)
-        mrgear_pos_ind:set(r_gear_status)
+        -- the gear indication system  wont work without the dc power
+        if get_elec_dc_status() then
+            ngear_pos_ind:set(n_gear_status)
+            mlgear_pos_ind:set(l_gear_status)
+            mrgear_pos_ind:set(r_gear_status)
+        else
+            ngear_pos_ind:set(0)
+            mlgear_pos_ind:set(0)
+            mrgear_pos_ind:set(0)
+        end
         gear_state_share:set(nose_gear_status)
 end
 
