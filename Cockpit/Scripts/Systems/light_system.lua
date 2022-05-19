@@ -39,7 +39,7 @@ local gear_state_share = get_param_handle("GEAR_SHARE")
 target_status = {
     {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
     {taxi_light_switch , 0.5, get_param_handle("PTN_436"), "PTN_436"},
-    {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_424"), "PTN_424"},
+    {wing_navi_switch , SWITCH_TEST, get_param_handle("PTN_424"), "PTN_424"},
     {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
     {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
     {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
@@ -50,7 +50,7 @@ target_status = {
 current_status = {
     {strobe_light_switch , SWITCH_OFF, SWITCH_OFF},
     {taxi_light_switch, SWITCH_OFF, SWITCH_OFF},
-    {wing_navi_switch, SWITCH_OFF, SWITCH_OFF},
+    {wing_navi_switch, SWITCH_TEST, SWITCH_TEST},
     {formation_switch, SWITCH_OFF, SWITCH_OFF},
     {flood_light_switch, SWITCH_OFF, SWITCH_OFF},
     {instrument_light_switch, SWITCH_OFF, SWITCH_OFF},
@@ -222,8 +222,8 @@ function update_externel_light_status()
             end
             set_aircraft_draw_argument_value(192, anticolmulti)
             STROBE_ROTATION = STROBE_ROTATION + 0.004
-            if (STROBE_ROTATION > 1) then
-                STROBE_ROTATION = STROBE_ROTATION - 1
+            if (STROBE_ROTATION > 0.5) then
+                STROBE_ROTATION = STROBE_ROTATION - 0.5
             end
             set_aircraft_draw_argument_value(193, STROBE_ROTATION)
         else

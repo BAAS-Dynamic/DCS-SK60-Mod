@@ -118,8 +118,8 @@ Add(RBOT_text_box)
 
 local eadi_adi_clip 			    = CreateElement "ceMeshPoly" --create second clip
 eadi_adi_clip.name 			        = "eadi_adi_clip"
-eadi_adi_clip.vertices 		        = create_EADI_circle_pos(61, 0, 0, 1800)
-eadi_adi_clip.indices 		        = create_EADI_circle_index(61)
+eadi_adi_clip.vertices 		        = create_EADI_circle_pos(120, 0, 0, 1800)
+eadi_adi_clip.indices 		        = create_EADI_circle_index(120)
 eadi_adi_clip.init_pos		        = {0, 0, 0}
 eadi_adi_clip.init_rot		        = {0, 0, 0}
 eadi_adi_clip.material		        = "DBG_GREY"

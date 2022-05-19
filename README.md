@@ -18,3 +18,7 @@ A Saab SK60 mod for Digital Combat Simulator
 ### Some Unkown License Things
 + font on EADI: http://aircraft-in-focus.com/ath_aircraft_fonts/
 + Radio System (enabling the in-game radio funtion): Community A4E-C
+
+### Model update requirement
++ seperate/change the 131 and 132 animation
++ add the switch for baro setting

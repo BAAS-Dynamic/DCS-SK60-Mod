@@ -76,8 +76,8 @@ function create_EADI_circle_pos(total_dots, center_X, center_y, radius)
     local temp_x = 0
     local temp_y = 0
     for i = 1, total_dots, 1 do
-        temp_x = math.sin(temp_deg) * radius + center_X
-        temp_y = math.cos(temp_deg) * radius + center_y
+        temp_x = math.sin(math.rad(temp_deg)) * radius + center_X
+        temp_y = math.cos(math.rad(temp_deg)) * radius + center_y
         return_group[i] = {temp_x/ default_eadi_x, temp_y/ default_eadi_y}
         temp_deg = temp_deg + 360 / total_dots
     end
