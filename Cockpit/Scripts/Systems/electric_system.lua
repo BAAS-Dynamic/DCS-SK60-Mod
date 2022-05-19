@@ -99,8 +99,8 @@ function update_elec_state() --更新电力总线状态
 
     if elec_battery_status:get() < 0 then
         elec_battery_status:set(0)
-    elseif elec_battery_status:get() > 30000 then
-        elec_battery_status:set(30000)
+    elseif elec_battery_status:get() > 3000000 then
+        elec_battery_status:set(3000000)
     end
 end
 

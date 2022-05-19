@@ -31,9 +31,10 @@ default_hud_x = 2000
 default_hud_y = 2000 
 
 -- 定义默认HUD旋转角度和hud显示深度
-default_hud_z_offset = 4
-default_hud_y_offset = - 0.839 * default_hud_z_offset - 0.2
+default_hud_z_offset = 30
+default_hud_y_offset = - 0.889 * default_hud_z_offset -- - 0.839 * X - 0.2
 default_hud_rot_offset = 40
+default_hud_size_scaler = 7
 
 function hud_vert_gen(width, height)
     return {{(0 - width) / 2 / default_hud_x , (0 + height) / 2 / default_hud_y},
@@ -89,8 +90,8 @@ function create_circle_pos(total_dots, center_X, center_y, radius)
     local temp_x = 0
     local temp_y = 0
     for i = 1, total_dots, 1 do
-        temp_x = math.sin(temp_deg) * radius + center_X
-        temp_y = math.cos(temp_deg) * radius + center_y
+        temp_x = math.sin(math.rad(temp_deg)) * radius + center_X
+        temp_y = math.cos(math.rad(temp_deg)) * radius + center_y
         return_group[i] = {temp_x/ default_hud_x, temp_y/ default_hud_y}
         temp_deg = temp_deg + 360 / total_dots
     end

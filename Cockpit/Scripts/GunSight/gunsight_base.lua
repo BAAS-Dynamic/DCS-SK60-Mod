@@ -29,8 +29,8 @@ Add(HUD_base_clip)
 -- virtual projection plane of the hud display
 local gunsight_proj_clip 			    = CreateElement "ceMeshPoly" --create second clip
 gunsight_proj_clip.name 			    = "gunsight_projection_clip"
-gunsight_proj_clip.vertices 		    = create_circle_pos(61, 0, 0, 3000)
-gunsight_proj_clip.indices 		        = create_circle_index(61)
+gunsight_proj_clip.vertices 		    = create_circle_pos(120, 0, 0, 3000 * default_hud_size_scaler)
+gunsight_proj_clip.indices 		        = create_circle_index(120)
 gunsight_proj_clip.init_pos		        = {0, default_hud_y_offset, default_hud_z_offset}
 gunsight_proj_clip.init_rot		        = {0, 0, default_hud_rot_offset}
 gunsight_proj_clip.material		        = "DBG_GREEN"
@@ -44,7 +44,7 @@ Add(gunsight_proj_clip)
 
 -- gunsight
 local flight_dire_ind 				     = CreateElement "ceTexPoly"
-flight_dire_ind.vertices                 = hud_vert_gen(539.5,364)
+flight_dire_ind.vertices                 = hud_vert_gen(539.5*default_hud_size_scaler,364*default_hud_size_scaler) -- hud_vert_gen(539.5,364)
 flight_dire_ind.indices                  = {0,1,2,2,3,0}
 flight_dire_ind.tex_coords               = tex_coord_gen(385,680,415,280,2000,2000)
 flight_dire_ind.material                 = basic_HUD_material
