@@ -1,0 +1,5 @@
+wave = "Effects/Aircrafts/SK-60/SK60_Switch.ogg"
+inner_radius = 1
+outer_radius = 4
+detached = true
+-- gain = 1

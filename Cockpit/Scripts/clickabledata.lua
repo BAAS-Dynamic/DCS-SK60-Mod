@@ -1,5 +1,6 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."devices.lua")
+dofile(LockOn_Options.script_path.."sounds.lua")
 
 local gettext = require("i_18n")
 _ = gettext.translate
@@ -376,23 +377,23 @@ elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BRE
 
 elements["PTN_118"] = default_button("Boost Pump Test", devices.FUEL_SYSTEM, Keys.BoostPumpTestUP, Keys.BoostPumpTestDOWN, 118)
 
-elements["PTN_405"] = default_button("Left Engine Motor Starter", devices.HUD_DCMS, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE, 405, DEFAULT_2_WAY_SWITCH)
-elements["PTN_407"] = default_button("Right Engine Motor Starter", devices.HUD_DCMS, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE, 407, DEFAULT_2_WAY_SWITCH)
+elements["PTN_405"] = default_button("Left Engine Motor Starter", devices.HUD_DCMS, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE, 405, SOUND_DEFAULT_2_WAY_SWITCH )
+elements["PTN_407"] = default_button("Right Engine Motor Starter", devices.HUD_DCMS, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE, 407, SOUND_DEFAULT_2_WAY_SWITCH )
 
 elements["PTN_557"] = default_button("UHF Radio TAKE Press", devices.UHF_RADIO, Keys.UHF_TAKE_Button_Press, Keys.UHF_TAKE_Button_Release, 557)
 
 multi_tumb_click_list = {
     -- Engine Control
-    {"PTN_418", "Left Low Pressure Fuel Pump", devices.HUD_DCMS, 418, DEFAULT_2_WAY_SWITCH, Keys.L_LP_PUMP},
-    {"PTN_420", "Right Low Pressure Fuel Pump", devices.HUD_DCMS, 420, DEFAULT_2_WAY_SWITCH, Keys.R_LP_PUMP},
-    {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, DEFAULT_2_WAY_SWITCH, Keys.L_HP_PUMP},
-    {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, DEFAULT_2_WAY_SWITCH, Keys.R_HP_PUMP},
+    {"PTN_418", "Left Low Pressure Fuel Pump", devices.HUD_DCMS, 418, SOUND_DEFAULT_2_WAY_SWITCH , Keys.L_LP_PUMP},
+    {"PTN_420", "Right Low Pressure Fuel Pump", devices.HUD_DCMS, 420, SOUND_DEFAULT_2_WAY_SWITCH , Keys.R_LP_PUMP},
+    {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, SOUND_DEFAULT_2_WAY_SWITCH , Keys.L_HP_PUMP},
+    {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, SOUND_DEFAULT_2_WAY_SWITCH , Keys.R_HP_PUMP},
     {"PTN_604", "Left Throttle Idle", devices.HUD_DCMS, 604, nil, Keys.L_THROTTLE_IDLE},
     {"PTN_605", "Right Throttle Idle", devices.HUD_DCMS, 605, nil, Keys.R_THROTTLE_IDLE},
 
-    {"PTN_436", "Taxi/Landing Light", devices.LIGHT_SYSTEM, 436, DEFAULT_2_WAY_SWITCH, Keys.LightTaxiUP, Keys.LightTaxiDOWN},
-    {"PTN_429", "Anti-Collision Light", devices.LIGHT_SYSTEM, 429, DEFAULT_2_WAY_SWITCH, Keys.LightStrobeUP, Keys.LightStrobeDOWN},
-    {"PTN_424", "Navigation Light", devices.LIGHT_SYSTEM, 424, DEFAULT_2_WAY_SWITCH, Keys.LightNaviWingUP,Keys.LightNaviWingDOWN},
+    {"PTN_436", "Taxi/Landing Light", devices.LIGHT_SYSTEM, 436, SOUND_DEFAULT_2_WAY_SWITCH , Keys.LightTaxiUP, Keys.LightTaxiDOWN},
+    {"PTN_429", "Anti-Collision Light", devices.LIGHT_SYSTEM, 429, SOUND_DEFAULT_2_WAY_SWITCH , Keys.LightStrobeUP, Keys.LightStrobeDOWN},
+    {"PTN_424", "Navigation Light", devices.LIGHT_SYSTEM, 424, SOUND_DEFAULT_2_WAY_SWITCH , Keys.LightNaviWingUP,Keys.LightNaviWingDOWN},
     
     {"PTN_125", "Taxi/Probe Light", devices.LIGHT_SYSTEM, 125, nil, Keys.LightTaxi},
     {"PTN_128", "Tail Navigation Light", devices.LIGHT_SYSTEM, 128, nil, Keys.LightNaviTailUP, Keys.LightNaviTailDOWN},
@@ -400,12 +401,12 @@ multi_tumb_click_list = {
     {"PTN_133", "Flood Light", devices.LIGHT_SYSTEM, 133, nil, Keys.LightFloodUP, Keys.LightFloodDOWN},
 
     -- Electric Power Switches
-    {"PTN_401", "Main Power Switch", devices.ELECTRIC_SYSTEM, 401, DEFAULT_2_WAY_SWITCH, Keys.BatteryPower},
-    {"PTN_402", "Inverter 1 Switch", devices.ELECTRIC_SYSTEM, 402, DEFAULT_2_WAY_SWITCH, Keys.PowerGeneratorLeft},
-    {"PTN_404", "Inverter 2 Switch", devices.ELECTRIC_SYSTEM, 404, DEFAULT_2_WAY_SWITCH, Keys.PowerGeneratorRight},
+    {"PTN_401", "Main Power Switch", devices.ELECTRIC_SYSTEM, 401, SOUND_DEFAULT_2_WAY_SWITCH , Keys.BatteryPower},
+    {"PTN_402", "Inverter 1 Switch", devices.ELECTRIC_SYSTEM, 402, SOUND_DEFAULT_2_WAY_SWITCH , Keys.PowerGeneratorLeft},
+    {"PTN_404", "Inverter 2 Switch", devices.ELECTRIC_SYSTEM, 404, SOUND_DEFAULT_2_WAY_SWITCH , Keys.PowerGeneratorRight},
 
-    {"PTN_413", "Master Arm", devices.WEAPON_SYSTEM, 413, DEFAULT_2_WAY_SWITCH, Keys.WeaponMasterSwitch},
-    {"PTN_414", "A/G mode", devices.WEAPON_SYSTEM, 414, DEFAULT_2_WAY_SWITCH, Keys.WeaponAirGroundChange},
+    {"PTN_413", "Master Arm", devices.WEAPON_SYSTEM, 413, SOUND_DEFAULT_2_WAY_SWITCH , Keys.WeaponMasterSwitch},
+    {"PTN_414", "A/G mode", devices.WEAPON_SYSTEM, 414, SOUND_DEFAULT_2_WAY_SWITCH , Keys.WeaponAirGroundChange},
 
     -- EADI
     {"PTN_501", "Screen Display Dim-", devices.HUD_DCMS, 501, nil, Keys.Display_Darker},
@@ -430,7 +431,7 @@ multi_tumb_click_list = {
 
     -- R&S GB6500
     -- {"PTN_554", "UHF Volume Change", devices.UHF_RADIO, 554, Keys.UHF_Vol_Up, Keys.UHF_Vol_Down},
-    {"PTN_555", "UHF SQL ON/OFF, Acknology", devices.UHF_RADIO, 555, DEFAULT_2_WAY_SWITCH, Keys.UHF_Vol_Up, Keys.UHF_Vol_Down},
+    {"PTN_555", "UHF SQL ON/OFF, Acknology", devices.UHF_RADIO, 555, SOUND_DEFAULT_2_WAY_SWITCH , Keys.UHF_Vol_Up, Keys.UHF_Vol_Down},
     {"PTN_556", "UHF Mode Selection", devices.UHF_RADIO, 556, nil, Keys.UHF_Mode_Left, Keys.UHF_Mode_Right},
     -- keyboard
     {"PTN_542", "UHF Key 1 (TONE)", devices.UHF_RADIO, 542, nil, Keys.UHF_Key_1},
@@ -452,8 +453,10 @@ multi_tumb_click_list = {
 for k,v in pairs(multi_tumb_click_list) do
     if multi_tumb_click_list[k][7] == nil then
         elements[multi_tumb_click_list[k][1]] = default_2_position_tumb( multi_tumb_click_list[k][2],multi_tumb_click_list[k][3],multi_tumb_click_list[k][6],multi_tumb_click_list[k][4], multi_tumb_click_list[k][5])
+        elements[multi_tumb_click_list[k][1]].sound	= {{multi_tumb_click_list[k][5], multi_tumb_click_list[k][5]}}
     else
         elements[multi_tumb_click_list[k][1]] = default_multi_position_tumb( multi_tumb_click_list[k][2],multi_tumb_click_list[k][3],multi_tumb_click_list[k][6],multi_tumb_click_list[k][7],multi_tumb_click_list[k][4],multi_tumb_click_list[k][5])
+        elements[multi_tumb_click_list[k][1]].sound	= {{multi_tumb_click_list[k][5], multi_tumb_click_list[k][5]}}
     end
 end
 
