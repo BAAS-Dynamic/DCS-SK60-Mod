@@ -74,7 +74,7 @@ if FM_dll then
 		-- the moment_of_inertia is following the data from nasa
 		-- reverse the axis of y and z
 		-- switched to a new estimation, which should be closer to real
-		moment_of_inertia = {4101.63245, 6354.650, 3878.804, -83.4},
+		moment_of_inertia = {4101.63245, 6354.650, 3878.804, 183.4},
 		suspension = suspension_data,
 	}
 else
