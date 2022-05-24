@@ -6,6 +6,6 @@ cockpit_sound =
 }
 
 snd_device = GetDevice(devices.SOUND_SYSTEM)
--- dofile(LockOn_Options.script_path.."sounds_defs.lua")
+-- dofile(LockOn_Options.script_path.."sounds_def.lua")
 -- snd_device:performClickableAction(command,value,false)
 -- dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)

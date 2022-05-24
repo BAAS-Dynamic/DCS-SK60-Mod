@@ -1,6 +1,6 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
-dofile(LockOn_Options.script_path.."sounds_defs.lua")
+dofile(LockOn_Options.script_path.."sounds_def.lua")
 -- snd_device:performClickableAction(command,value,false)
  
 

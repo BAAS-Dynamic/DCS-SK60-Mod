@@ -5,7 +5,7 @@ dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
-dofile(LockOn_Options.script_path.."sounds_defs.lua")
+dofile(LockOn_Options.script_path.."sounds_def.lua")
 -- dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
 
 --设置循环次数

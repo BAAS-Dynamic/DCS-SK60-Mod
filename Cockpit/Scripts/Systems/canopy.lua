@@ -48,7 +48,7 @@ function post_initialize()
         CANOPY_COMMAND = 1
         target_status[canopy_switch][2] = SWITCH_ON
     end
-    sndhost_cockpit         = create_sound_host("COCKPIT","3D",0,-1,0) 
+    sndhost_cockpit         = create_sound_host("COCKPIT_BACK","3D", -1, 0, 0) 
     snd_canopy_open_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen")
     -- use same for open and close
     snd_canopy_close_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen") -- sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyClose")

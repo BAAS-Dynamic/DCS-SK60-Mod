@@ -6,7 +6,7 @@ dofile(LockOn_Options.script_path.."devices.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.common_script_path.."../../../Database/wsTypes.lua")
-dofile(LockOn_Options.script_path.."sounds_defs.lua")
+dofile(LockOn_Options.script_path.."sounds_def.lua")
 -- snd_device:performClickableAction(Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch, false)
 
 local update_time_step = 0.02  --每秒50次刷新
