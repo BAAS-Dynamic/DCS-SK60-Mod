@@ -15,6 +15,15 @@ local sensor_data = get_base_data()
 
 function post_initialize()
     local birth = LockOn_Options.init_conditions.birth_place
+
+    if birth == "GROUND_HOT" then
+
+    elseif birth == "GROUND_COLD" then
+
+    elseif birth == "AIR_HOT" then
+        
+    end
+
     -- initial the sound
     -- center panel
     sndhost_cockpit_left            = create_sound_host("COCKPIT_LDP","3D",0.3,-0.3,-0.3) 
@@ -25,13 +34,6 @@ function post_initialize()
     -- center panel
     sndhost_cockpit_right           = create_sound_host("COCKPIT_RDP","3D",0.3,-0.3,0.9) 
     snd_right_panel_switch          = sndhost_cockpit_right:create_sound("Aircrafts/SK-60/SK60_Switch")
-    if birth == "GROUND_HOT" then
-
-    elseif birth == "GROUND_COLD" then
-
-    elseif birth == "AIR_HOT" then
-        
-    end
 end
 
 SoundSystem:listen_command(Keys.SND_LEFT_PANEL)

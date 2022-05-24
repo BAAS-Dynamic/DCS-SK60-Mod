@@ -282,6 +282,13 @@ function update_externel_light_status()
             -- cloase taxi/landing light
             set_aircraft_draw_argument_value(194, 0)
         end
+    else
+        set_aircraft_draw_argument_value(51, 0) -- taxi light 51
+        set_aircraft_draw_argument_value(190, 0)
+        set_aircraft_draw_argument_value(191, 0)
+        set_aircraft_draw_argument_value(192, 0)
+        set_aircraft_draw_argument_value(193, 0)
+        set_aircraft_draw_argument_value(194, 0)
     end
 end
 
