@@ -5,6 +5,8 @@ dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
+dofile(LockOn_Options.script_path.."sounds_defs.lua")
+-- dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
 
 --设置循环次数
 local update_rate = 0.01 -- 50次每秒
@@ -110,32 +112,40 @@ function SetCommand(command, value)
     if command == Keys.LightStrobeUP then
         if target_status[strobe_light_switch][2] < 0.5 then
             target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] + 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     elseif command == Keys.LightStrobeDOWN then
         if target_status[strobe_light_switch][2] > - 0.5 then
             target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] - 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end    
     elseif command == Keys.LightTaxiUP then
         -- print_message_to_user(target_status[taxi_light_switch][2])
         if target_status[taxi_light_switch][2] < 0.8 then
             target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] + 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     elseif command == Keys.LightTaxiDOWN then
         if target_status[taxi_light_switch][2] > 0.3 then
             target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] - 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     -- fit new
     elseif command == Keys.LightNaviWingUP then
         if target_status[wing_navi_switch][2] < 0.8 and target_status[wing_navi_switch][2] > -0.5 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] + 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         elseif target_status[wing_navi_switch][2] < 0.1 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] + 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     elseif command == Keys.LightNaviWingDOWN then
         if target_status[wing_navi_switch][2] > 0.1 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] - 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         elseif target_status[wing_navi_switch][2] > -0.5 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] - 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
 
     elseif command == Keys.LightFormationUP then

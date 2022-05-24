@@ -6,6 +6,8 @@ dofile(LockOn_Options.script_path.."devices.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.common_script_path.."../../../Database/wsTypes.lua")
+dofile(LockOn_Options.script_path.."sounds_defs.lua")
+-- snd_device:performClickableAction(Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch, false)
 
 local update_time_step = 0.02  --每秒50次刷新
 make_default_activity(update_time_step)
@@ -276,6 +278,7 @@ function SetCommand(command,value)
         dprintf("rocket fire mode Pairs")
     elseif (command == Keys.WeaponMasterSwitch) then
         target_status[master_switch][2] = 1 - target_status[master_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
         check_load_status()
     elseif (command == Keys.GunSightInstall) then
         gun_sight_is_installed = 1

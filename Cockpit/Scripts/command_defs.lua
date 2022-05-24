@@ -365,6 +365,11 @@ Keys =
     UHF_Key_MAN = 5620,
     UHF_Key_ENT = 5621,
     RadioUpdate = 5622,
+
+    -- 6000 - 6100 for sound trigger
+    SND_LEFT_PANEL = 6001,
+    SND_CENTER_PANEL = 6002,
+    SND_RIGHT_PANEL = 6003,
 }
 
 --从5000开始递增点击指令

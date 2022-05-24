@@ -31,9 +31,9 @@ creators[devices.CLOCK]           ={"avLuaDevice"           ,LockOn_Options.scri
 --
 creators[devices.GEAR_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gear_system.lua"}
 
-creators[devices.LIGHT_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/light_system.lua"}
+creators[devices.LIGHT_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/light_system.lua"}
 
-creators[devices.SOUND_SYSTEM]      = {"avLuaDevice",   LockOn_Options.script_path.."Systems/Sound_System.lua"} 
+creators[devices.SOUND_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/sound_system.lua"} 
 -- 定义显示器
 -- Indicators
 indicators = {}

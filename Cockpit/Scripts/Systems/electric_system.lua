@@ -1,5 +1,7 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
+dofile(LockOn_Options.script_path.."sounds_defs.lua")
+-- snd_device:performClickableAction(command,value,false)
  
 
 local electric_system = GetSelf()
@@ -145,12 +147,13 @@ function SetCommand(command,value)
     local status = 0
     if command == Keys.PowerGeneratorLeft then
         target_status[left_gen_switch][2] = 1 - target_status[left_gen_switch][2]
-
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
     elseif command == Keys.PowerGeneratorRight then
         target_status[right_gen_switch][2] = 1 - target_status[right_gen_switch][2]
-
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
     elseif command == Keys.BatteryPower then
         target_status[main_power_switch][2] = 1 - target_status[main_power_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
         if target_status[main_power_switch][2] < 0.5 then
             electric_system:DC_Battery_on(false)
         else
