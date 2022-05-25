@@ -370,6 +370,9 @@ Keys =
     SND_LEFT_PANEL = 6001,
     SND_CENTER_PANEL = 6002,
     SND_RIGHT_PANEL = 6003,
+    SND_ELECTRIC = 6004,
+    SND_GEAR   = 6005,
+    SND_BEACON_ROT = 6006,
 }
 
 --从5000开始递增点击指令

@@ -8,7 +8,7 @@ dofile(LockOn_Options.script_path.."sounds_def.lua")
 local SoundSystem = GetSelf()
 --设置循环次数
 local update_rate = 0.05 -- 20次每秒
-make_default_activity(update_rate)
+-- make_default_activity(update_rate)
 
 --初始化DCS读取API
 local sensor_data = get_base_data()
@@ -34,13 +34,19 @@ function post_initialize()
     -- center panel
     sndhost_cockpit_right           = create_sound_host("COCKPIT_RDP","3D",0.3,-0.3,0.9) 
     snd_right_panel_switch          = sndhost_cockpit_right:create_sound("Aircrafts/SK-60/SK60_Switch")
+    -- electrical power
+    sndhost_electrical              = create_sound_host("ELECTRIC_UNIT", "3D", -0.5, 0, 0)
+    snd_main_electric_invert        = sndhost_electrical:create_sound("Aircrafts/SK-60/SK60_Main_Elec")
+    snd_gear_action                 = sndhost_electrical:create_sound("Aircrafts/SK-60/SK60_Gear_Down")
 end
 
 SoundSystem:listen_command(Keys.SND_LEFT_PANEL)
 SoundSystem:listen_command(Keys.SND_CENTER_PANEL)
 SoundSystem:listen_command(Keys.SND_RIGHT_PANEL)
+SoundSystem:listen_command(Keys.SND_ELECTRIC)
+SoundSystem:listen_command(Keys.SND_GEAR)
 
-snd_play = 0
+local snd_main_elec_play = 0
 
 function SetCommand(command, value)
     dprintf("get command, value compare is"..value)
@@ -56,6 +62,14 @@ function SetCommand(command, value)
         if value == cockpit_sound.basic_switch then
             snd_right_panel_switch:play_once()
         end
+    elseif command == Keys.SND_ELECTRIC then
+        if (value == 1 and not snd_main_electric_invert:is_playing()) then
+            snd_main_electric_invert:play_continue()
+        elseif value == 0 then
+            snd_main_electric_invert:stop()
+        end
+    elseif command == Keys.SND_GEAR then
+        snd_gear_action:play_once()
     end
 end
 

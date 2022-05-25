@@ -1,6 +1,7 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.script_path.."debug_util.lua")
+dofile(LockOn_Options.script_path.."devices.lua")
 
 local gear_system = GetSelf()
 
@@ -75,6 +76,7 @@ function post_initialize()
     gear_level_pos = 1 - nose_gear_status
 end
 
+local move_ability = 1;
 function SetCommand(command,value)
     if (command == click_cmd.GearLevel) then
         dispatch_action(nil, 68) --Reset command to default landing gear command
@@ -100,7 +102,7 @@ function SetCommand(command,value)
 	end
 end
 
-local move_ability = 1;
+local moving_starts = 0
 
 function update()
     local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
@@ -122,10 +124,20 @@ function update()
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status - time_increse_step * move_ability
             set_aircraft_draw_argument_value(0, n_gear_status)
+            if moving_starts == 0 and move_ability == 1 then
+                dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
+                moving_starts = 1
+            end
         elseif (nose_gear_status == 1 and n_gear_status < 1) then
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status + time_increse_step
             set_aircraft_draw_argument_value(0, n_gear_status)
+            if moving_starts == 0 and move_ability == 1 then
+                dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
+                moving_starts = 1
+            end
+        else
+            moving_starts = 0
         end
 
         if (nose_gear_status == 0 and n_gear_status <= 0) then

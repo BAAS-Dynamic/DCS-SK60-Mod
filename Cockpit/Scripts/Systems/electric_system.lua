@@ -65,6 +65,8 @@ function update_switch_status()
     end
 end
 
+local inverter_statue = -1
+
 function update_elec_state() --更新电力总线状态
     if (electric_system:get_AC_Bus_1_voltage() > 0 or electric_system:get_AC_Bus_2_voltage() > 0) then
         -- 主发电机状态正常（双备份）
@@ -105,6 +107,11 @@ function update_elec_state() --更新电力总线状态
         elec_battery_status:set(0)
     elseif elec_battery_status:get() > 3000000 then
         elec_battery_status:set(3000000)
+    end
+
+    if (inverter_statue == -1 or inverter_statue ~= elec_dc_status:get()) then
+        inverter_statue = elec_dc_status:get()
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_ELECTRIC, inverter_statue)
     end
 end
 
