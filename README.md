@@ -13,7 +13,10 @@ A Saab SK60 mod for Digital Combat Simulator
 + Radio System working, try implement the R&S GB6500 UHF radio
 + Add more elements and function to Navigation part
 + Change some clickable stuff to the keyboard/joystick input
-+ Gunsight display
++ ~~Gunsight display~~
++ Sound System
++ intercom system
++ Volume change validation
 
 ### Some Unkown License Things
 + font on EADI: http://aircraft-in-focus.com/ath_aircraft_fonts/
@@ -22,3 +25,6 @@ A Saab SK60 mod for Digital Combat Simulator
 ### Model update requirement
 + seperate/change the 131 and 132 animation
 + add the switch for baro setting
++ cover animation of the low pressure pump (two switch at left and right of warning panel)
++ the box and animation of circuit breaker (in front of the right seat)
++ right inverter's animation, when switch on, it stops at middle
