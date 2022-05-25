@@ -45,9 +45,9 @@ snd_play = 0
 function SetCommand(command, value)
     dprintf("get command, value compare is"..value)
     if command == Keys.SND_LEFT_PANEL then
-         --if value == cockpit_sound.basic_switch then
+         if value == cockpit_sound.basic_switch then
             snd_left_panel_switch:play_once()
-         --end
+         end
     elseif command == Keys.SND_CENTER_PANEL then
         if value == cockpit_sound.basic_switch then
             snd_center_panel_switch:play_once()
