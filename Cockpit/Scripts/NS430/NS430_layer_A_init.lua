@@ -8,7 +8,7 @@ BASE    = 1
 
 -- cant apply multi page
 page_subsets  = {
-	[BASE]    		= LockOn_Options.script_path.."NS430/NS430_base.lua",
+	[BASE]    		= LockOn_Options.script_path.."NS430/IndicatorA/NS430_base_page.lua",
 }
 
 pages = {

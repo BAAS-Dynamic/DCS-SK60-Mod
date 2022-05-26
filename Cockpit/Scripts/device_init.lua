@@ -32,7 +32,7 @@ creators[devices.CLOCK]           ={"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.GEAR_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gear_system.lua"}
 
 creators[devices.LIGHT_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/light_system.lua"}
-
+-- this is 14, dont move this position for now XD, the command from EFM is constant send to lua device 14 
 creators[devices.SOUND_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/sound_system.lua"} 
 -- 定义显示器
 -- Indicators

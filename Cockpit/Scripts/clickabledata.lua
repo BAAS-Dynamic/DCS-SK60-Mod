@@ -407,6 +407,10 @@ multi_tumb_click_list = {
     {"PTN_413", "Master Arm", devices.WEAPON_SYSTEM, 413, SOUND_DEFAULT_2_WAY_SWITCH , Keys.WeaponMasterSwitch},
     {"PTN_414", "A/G mode", devices.WEAPON_SYSTEM, 414, SOUND_DEFAULT_2_WAY_SWITCH , Keys.WeaponAirGroundChange},
 
+    -- ElecPowerDCGen = __custom_counter(),
+    {"PTN_415", "Left Generator Switch", devices.ELECTRIC_SYSTEM, 415, SOUND_DEFAULT_2_WAY_SWITCH , Keys.ElecPowerDCGenL},
+    {"PTN_422", "Right Generator Switch", devices.ELECTRIC_SYSTEM, 422, SOUND_DEFAULT_2_WAY_SWITCH , Keys.ElecPowerDCGenR},
+
     -- EADI
     {"PTN_501", "Screen Display Dim-", devices.HUD_DCMS, 501, nil, Keys.Display_Darker},
     {"PTN_502", "Screen Display Dim+", devices.HUD_DCMS, 502, nil, Keys.Display_Brighter},

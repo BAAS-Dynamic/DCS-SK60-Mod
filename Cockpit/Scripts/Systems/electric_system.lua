@@ -19,6 +19,8 @@ local batteryStatus = 0
 electric_system:listen_command(Keys.PowerGeneratorLeft)
 electric_system:listen_command(Keys.PowerGeneratorRight)
 electric_system:listen_command(Keys.BatteryPower)
+electric_system:listen_command(Keys.ElecPowerDCGenL)
+electric_system:listen_command(Keys.ElecPowerDCGenR)
 
 electric_system:DC_Battery_on(true)
 
@@ -35,17 +37,23 @@ end
 local main_power_switch = _switch_counter()
 local left_gen_switch = _switch_counter()
 local right_gen_switch = _switch_counter()
+local left_real_gen_switch = _switch_counter()
+local right_real_gen_switch = _switch_counter()
 
 target_status = {
     {main_power_switch , SWITCH_OFF, get_param_handle("PTN_401"), "PTN_401"},
     {left_gen_switch , SWITCH_OFF, get_param_handle("PTN_402"), "PTN_402"},
     {right_gen_switch , SWITCH_OFF, get_param_handle("PTN_404"), "PTN_404"},
+    {left_real_gen_switch , SWITCH_ON, get_param_handle("PTN_415"), "PTN_415"},
+    {right_real_gen_switch , SWITCH_ON, get_param_handle("PTN_422"), "PTN_422"},
 }
 
 current_status = {
     {main_power_switch , SWITCH_OFF, SWITCH_OFF},
     {left_gen_switch , SWITCH_OFF, SWITCH_OFF},
     {right_gen_switch , SWITCH_OFF, SWITCH_OFF},
+    {left_real_gen_switch , SWITCH_ON, SWITCH_ON},
+    {right_real_gen_switch , SWITCH_ON, SWITCH_ON},
 }
 
 function update_switch_status()
@@ -145,6 +153,10 @@ function post_initialize() --默认初始化函数
         current_status[left_gen_switch][2] = SWITCH_OFF
         current_status[right_gen_switch][2] = SWITCH_OFF
     end
+    target_status[left_real_gen_switch][2] = SWITCH_ON
+    target_status[right_real_gen_switch][2] = SWITCH_ON
+    current_status[left_real_gen_switch][2] = SWITCH_ON
+    current_status[right_real_gen_switch][2] = SWITCH_ON
     update_switch_status()
     update_elec_state()
 end
@@ -165,6 +177,22 @@ function SetCommand(command,value)
             electric_system:DC_Battery_on(false)
         else
             electric_system:DC_Battery_on(true)
+        end
+    elseif command == Keys.ElecPowerDCGenL then
+        target_status[left_real_gen_switch][2] = 1 - target_status[left_real_gen_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_RIGHT_PANEL, cockpit_sound.basic_switch)
+        if target_status[left_real_gen_switch][2] < 0.5 then
+            electric_system:AC_Generator_1_on(false)
+        else
+            electric_system:AC_Generator_1_on(true)
+        end
+    elseif command == Keys.ElecPowerDCGenR then
+        target_status[right_real_gen_switch][2] = 1 - target_status[right_real_gen_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_RIGHT_PANEL, cockpit_sound.basic_switch)
+        if target_status[right_real_gen_switch][2] < 0.5 then
+            electric_system:AC_Generator_2_on(false)
+        else
+            electric_system:AC_Generator_2_on(true)
         end
     end
     --[[

@@ -165,6 +165,11 @@ animation_list = {
     -- Weapon panel
     {"PTN_413", 413},
     {"PTN_414", 414},
+
+    -- generator
+    {"PTN_415", 415},
+    {"PTN_422", 422},
+
     -- gun sight
     {"GUN_SIGHT", 915},
 
