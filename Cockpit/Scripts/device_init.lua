@@ -48,7 +48,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ERPM/
 -- TRIM display
 --indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ETRIM/ETRIM_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}
 -- NS430 Navigation Control Unit
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430/NS430_init.lua",nil,{{"GPS_center","GPS_down","GPS_right"},{sx_l =  -0.001,}}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430/NS430_layer_A_init.lua",nil,{{"GPS_center","GPS_down","GPS_right"},{sx_l =  -0.001,}}}
 -- E Altimeter
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EALT/EALT_init.lua",nil,{{"ALT_center","ALT_down","ALT_right"}}}
 -- SANDEL SN3500 EHSI
