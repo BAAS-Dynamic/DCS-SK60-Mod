@@ -208,6 +208,9 @@ animation_list = {
     {"PTN_522", 522},
     {"PTN_523", 523},
     {"PTN_524", 524},
+
+    -- ipad model shown
+    {"IPAD_SHOWN", 950},
 }
 
 --[[
