@@ -87,7 +87,7 @@ SK_60 =  {
 		
 
 		AOA_take_off				=	0.16,	-- AoA in take off (for AI)
-		stores_number				=	2,
+		stores_number				=	8,
 		bank_angle_max				=	60,		-- Max bank angle (for AI)
 		Ny_min						=	-2.5,		-- Min G (for AI)
 		Ny_max						=	8,		-- Max G (for AI)
@@ -252,55 +252,120 @@ ECM 			= "AN/ALQ-135"--F15
 
 --pylons_enumeration = {1, 11, 10, 2, 3, 9, 4, 8, 5, 7, 6},
 --pylons_enumeration = {2, 1, 3, 4, 5, 6, 7, 8, 9, 11, 10},  --test for new setup
-pylons_enumeration = {1, 3, 4, 2},
+--pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
+pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 	
 	Pylons =     {
+        pylon(1, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
+            {
+				use_full_connector_position = true, connector = "pylon_left_1", arg = 992, arg_value = 0,
+				DisplayName 	= "8",
+            },
+            {
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 1
+            }
+        ),
 
-        pylon(1, 0, 0, 0.1, -2.2, --Left Wing pylon
+        pylon(2, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
             {
-				use_full_connector_position = true,
+				use_full_connector_position = true, connector = "pylon_left_2", arg = 994, arg_value = 0,
+				DisplayName 	= "7",
             },
             {
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder red
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder green
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder blue
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder white
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder yellow
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder orange
-				{ CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3 },
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 1, arg_increment = 0.1},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 1, arg_increment = 0.1},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 1, arg_increment = 0.1},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 1, arg_increment = 0.1},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 1, arg_increment = 0.1},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = 0.1},-- Smokewinder orange
+				{CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3},
 				{CLSID = "{Robot74}"},
-				{CLSID	=	"{AKAN}"}, -- AKAN gun pod
-				{CLSID	=	"{ARAKM70BHE}"}, -- ARAK M70HE pod
-				{CLSID	=	"{ARAKM70BAP}"}, -- ARAK M70AP pod
-				{CLSID  =   "{M71BOMB}" }, -- HE bomb
-				{CLSID  =   "{M71BOMBD}" }, -- HE bomb w chute
-				{CLSID  =	"{LYSBOMB}" }, -- Illumination bomb
-				{ CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5 }, -- Mk-82 * 2 -- 暂无双联挂架
-            }
+				{CLSID = "{AKAN}"}, -- AKAN gun pod
+				{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
+				{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
+				{CLSID = "{M71BOMB}"}, -- HE bomb
+				{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
+				{CLSID = "{LYSBOMB}"}, -- Illumination bomb
+				{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
+
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 135 rocket * 1
+			}
         ),
-        pylon(2, 1, 0, 0.1, 2.2, --Right Wing Pylon
+
+		pylon(3, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
+			{
+				use_full_connector_position = true, connector = "pylon_left_3", arg = 996, arg_value = 0,
+				DisplayName 	= "6",
+			},
+			{
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 1
+			}
+		),
+
+		pylon(4, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
+			{
+				use_full_connector_position = true, connector = "pylon_right_3", arg = 995, arg_value = 0,
+				DisplayName 	= "3",
+			},
+			{
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 1
+			}
+		),
+
+        pylon(5, 1, 0, 0, 0, 	--0, 0.1, 2.2, --Right Wing Pylon 2
             {
-				use_full_connector_position = true,
+				use_full_connector_position = true, connector = "pylon_right_2", arg = 993, arg_value = 0,
+				DisplayName 	= "2",
             },
             {
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder red
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder green
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder blue
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder white
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder yellow
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 0.15,arg_increment = -0.1},-- Smokewinder orange
-				{ CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3 },
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 1, arg_increment = -0.1},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 1, arg_increment = -0.1},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 1, arg_increment = -0.1},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 1, arg_increment = -0.1},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 1, arg_increment = -0.1},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = -0.1},-- Smokewinder orange
+				{CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3},
 				{CLSID = "{Robot74}"},
-				{CLSID	=	"{AKAN}"}, -- AKAN gun pod
-				{CLSID	=	"{ARAKM70BHE}"}, -- ARAK M70HE pod
-				{CLSID	=	"{ARAKM70BAP}"}, -- ARAK M70AP pod
-				{CLSID  =   "{M71BOMB}" }, -- HE bomb
-				{CLSID  =   "{M71BOMBD}" }, -- HE bomb w chute
-				{CLSID  =	"{LYSBOMB}" }, -- Illumination bomb
-				{ CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5 }, -- Mk-82 * 2 -- 暂无双联挂架
-            }
+				{CLSID = "{AKAN}"}, -- AKAN gun pod
+				{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
+				{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
+				{CLSID = "{M71BOMB}"}, -- HE bomb
+				{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
+				{CLSID = "{LYSBOMB}"}, -- Illumination bomb
+				{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 135 rocket * 1
+			}
         ),
-		pylon(3, 2, - 2.5, 0, -0.7668,
+
+		pylon(6, 0, 0, 0, 0,	-- 0, 0.1, -2.2, --Left Wing pylon 2
+			{
+				use_full_connector_position = true, connector = "pylon_right_1", arg = 991, arg_value = 0,
+				DisplayName 	= "1",
+			},
+			{
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 1
+			}
+		),
+
+		pylon(7, 2, - 2.5, 0, -0.7668,
             {
 				use_full_connector_position=true,
 				DisplayName 	= "Left Nozzle Smoke",
@@ -314,7 +379,8 @@ pylons_enumeration = {1, 3, 4, 2},
 				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
             }
         ),
-		pylon(4, 2, - 2.5, 0, 0.7668,
+
+		pylon(8, 2, - 2.5, 0, 0.7668,
 			{
 				use_full_connector_position=true,
 				DisplayName 	= "Right Nozzle Smoke",

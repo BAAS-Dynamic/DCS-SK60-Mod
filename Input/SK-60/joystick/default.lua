@@ -354,6 +354,7 @@ keyCommands = {
 
     {down = Keys.WingPylonSmokeOn,	name = _('Smoke Pod On/Off'),		category = _('Weapons')},
     {down = Keys.NozzleSmokeOn,	name = _('Nozzle Smoke On/Off'),		category = _('Weapons')},
+    {down = Keys.WeaponFireOn, up = Keys.WeaponFireOff,	name = _('Weapon Fire Trigger'),		category = _('Weapons')},
 
     --HOTAS
     {down = Keys.Flap_Pos_Up,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Up Position'),					category = _('HOTAS') },

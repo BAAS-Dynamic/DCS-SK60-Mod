@@ -1,5 +1,7 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
+dofile(LockOn_Options.script_path.."debug_util.lua")
+dofile(LockOn_Options.script_path.."devices.lua")
 
 local gear_system = GetSelf()
 
@@ -74,6 +76,7 @@ function post_initialize()
     gear_level_pos = 1 - nose_gear_status
 end
 
+local move_ability = 1;
 function SetCommand(command,value)
     if (command == click_cmd.GearLevel) then
         dispatch_action(nil, 68) --Reset command to default landing gear command
@@ -82,9 +85,9 @@ function SetCommand(command,value)
         l_main_gear_status = 1 - l_main_gear_status
         r_main_gear_status = 1 - r_main_gear_status
         if (nose_gear_status == 1) then
-            print_message_to_user("Gear Down")
+            dprintf("Gear Down")
         else
-            print_message_to_user("Gear Up")
+            dprintf("Gear Up")
         end
     elseif (command == gear_down) then
         nose_gear_status = 1
@@ -99,7 +102,7 @@ function SetCommand(command,value)
 	end
 end
 
-local move_ability = 1;
+local moving_starts = 0
 
 function update()
     local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
@@ -109,22 +112,32 @@ function update()
         local time_increse_step = 0.02 / 7
         if (sensor_data.getWOW_LeftMainLandingGear() > 0.001 or sensor_data.getWOW_NoseLandingGear() > 0.001 or sensor_data.getWOW_RightMainLandingGear() > 0.001) then
             move_ability = 0;
-            --print_message_to_user("L:"..sensor_data.getWOW_LeftMainLandingGear());
-            --print_message_to_user("R:"..sensor_data.getWOW_RightMainLandingGear());
+            --dprintf("L:"..sensor_data.getWOW_LeftMainLandingGear());
+            --dprintf("R:"..sensor_data.getWOW_RightMainLandingGear());
         else
             move_ability = 1;
         end
-        --print_message_to_user("N:"..sensor_data.getWOW_NoseLandingGear());
+        --dprintf("N:"..sensor_data.getWOW_NoseLandingGear());
         
         
         if (nose_gear_status == 0 and n_gear_status > 0) then
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status - time_increse_step * move_ability
             set_aircraft_draw_argument_value(0, n_gear_status)
+            if moving_starts == 0 and move_ability == 1 then
+                dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
+                moving_starts = 1
+            end
         elseif (nose_gear_status == 1 and n_gear_status < 1) then
             -- in increments of time_increse_step (50x per second)
             n_gear_status = n_gear_status + time_increse_step
             set_aircraft_draw_argument_value(0, n_gear_status)
+            if moving_starts == 0 and move_ability == 1 then
+                dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
+                moving_starts = 1
+            end
+        else
+            moving_starts = 0
         end
 
         if (nose_gear_status == 0 and n_gear_status <= 0) then
@@ -164,9 +177,16 @@ function update()
             gear_handle_click_ref:update()
         end
 
-        ngear_pos_ind:set(n_gear_status)
-        mlgear_pos_ind:set(l_gear_status)
-        mrgear_pos_ind:set(r_gear_status)
+        -- the gear indication system  wont work without the dc power
+        if get_elec_dc_status() then
+            ngear_pos_ind:set(n_gear_status)
+            mlgear_pos_ind:set(l_gear_status)
+            mrgear_pos_ind:set(r_gear_status)
+        else
+            ngear_pos_ind:set(0)
+            mlgear_pos_ind:set(0)
+            mrgear_pos_ind:set(0)
+        end
         gear_state_share:set(nose_gear_status)
 end
 

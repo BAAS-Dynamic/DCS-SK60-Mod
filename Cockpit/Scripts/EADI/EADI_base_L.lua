@@ -68,8 +68,8 @@ RTOP_text_box.material          = "EADI_font"    --FONT_             --Material 
 RTOP_text_box.init_pos          = {1950/2000, 2050/2000}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 RTOP_text_box.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
 RTOP_text_box.stringdefs        = {0.8*0.006,0.8 * 0.006, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
-RTOP_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
-RTOP_text_box.element_params    = {"DBG_OUT_TMP","LEADI_DIS_ENABLE"}--{"L_EADI_DISPLAY_TR1"} -- top left first line display
+RTOP_text_box.formats           = {"%.1f","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
+RTOP_text_box.element_params    = {"ELEV_TRIM_DIGTAL","LEADI_DIS_ENABLE"}--{"L_EADI_DISPLAY_TR1"} -- top left first line display
 RTOP_text_box.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
 RTOP_text_box.collimated        = true
 RTOP_text_box.use_mipfilter     = true
@@ -118,8 +118,8 @@ Add(RBOT_text_box)
 
 local eadi_adi_clip 			    = CreateElement "ceMeshPoly" --create second clip
 eadi_adi_clip.name 			        = "eadi_adi_clip"
-eadi_adi_clip.vertices 		        = create_EADI_circle_pos(61, 0, 0, 1800)
-eadi_adi_clip.indices 		        = create_EADI_circle_index(61)
+eadi_adi_clip.vertices 		        = create_EADI_circle_pos(120, 0, 0, 1800)
+eadi_adi_clip.indices 		        = create_EADI_circle_index(120)
 eadi_adi_clip.init_pos		        = {0, 0, 0}
 eadi_adi_clip.init_rot		        = {0, 0, 0}
 eadi_adi_clip.material		        = "DBG_GREY"

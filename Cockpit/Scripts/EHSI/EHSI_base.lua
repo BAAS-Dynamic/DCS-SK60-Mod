@@ -14,8 +14,8 @@ default_ehsi_y = 2000 * aspect
 local ehsi_base_clip 			 	= CreateElement "ceMeshPoly" --This is the clipping layer
 ehsi_base_clip.name 			    = "ehsi_base_clip"
 ehsi_base_clip.primitivetype   	    = "triangles"
-ehsi_base_clip.vertices 		    = { {1, aspect}, { 1,-aspect}, { -1,-aspect}, {-1,aspect},} --四个边角
-ehsi_base_clip.indices 		        = {0,1,2,0,2,3}
+ehsi_base_clip.vertices 		    = { {1, 0.75 * aspect}, { 1,-aspect}, { -1,-aspect}, {-1, 0.75 * aspect}, {-0.8, aspect}, {0.8, aspect}} --四个边角
+ehsi_base_clip.indices 		        = {0,1,2,0,2,3,0,3,4,0,4,5}
 ehsi_base_clip.init_pos		        = {0, 0, 0}
 ehsi_base_clip.init_rot		        = {0, 0, 0}
 ehsi_base_clip.material		        = "DBG_GREY"
@@ -114,7 +114,7 @@ Add(ehsi_compass_rot_ctrl)
 -- heading roll control
 local ehsi_compass_rot_ctrl                     = CreateElement "ceSimple"
 ehsi_compass_rot_ctrl.name                      = "ehsi_heading_rot_ctrl"
-ehsi_compass_rot_ctrl.init_pos                  = {0, 0, 0}
+ehsi_compass_rot_ctrl.init_pos                  = {0, -50/default_ehsi_y, 0}
 ehsi_compass_rot_ctrl.element_params            = {"HEADING_ROLL","COMPASS_FULL_ENABLE",}
 ehsi_compass_rot_ctrl.controllers               = {{"rotate_using_parameter", 0, -0.0174532925199433},{"opacity_using_parameter",1}}
 ehsi_compass_rot_ctrl.collimated	            = true
@@ -166,16 +166,17 @@ Add(hsi_compass_pattern)
 
 HEADING = {"N","E","S","W"}
 
+-- 1300 ; 0.004
 for i = 0, 330, 30 do
     local compass_mark             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
     compass_mark.material          = "EHSI_font_white"    --FONT_             --Material type (note the font material created above)
-    compass_mark.init_pos          = {(math.cos((- math.rad(i-90))) * 1300)/default_ehsi_x, (math.sin((- math.rad(i-90))) * 1300)/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    compass_mark.init_pos          = {(math.cos((- math.rad(i-90))) * 1200)/default_ehsi_x, (math.sin((- math.rad(i-90))) * 1200)/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     compass_mark.alignment         = "CenterCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
-    compass_mark.stringdefs        = {1.1*0.004,1.1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+    compass_mark.stringdefs        = {1.1*0.0055,1.1 * 0.0055, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     if (math.fmod(i, 90) == 0) then
         compass_mark.formats           = {HEADING[i/90+1], "%s"}
     else
-        compass_mark.formats           = {tostring(i), "%s"}
+        compass_mark.formats           = {tostring(i/10), "%s"}
     end
     -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
     compass_mark.element_params    = {"EHSI_COMPASS", "COMPASS_FULL_ENABLE", "COMPASS_ROLL"} -- top left first line display
@@ -256,7 +257,7 @@ local compass_mark             = CreateElement "ceStringPoly" --Create a charact
 compass_mark.material          = "EHSI_font_white"    --FONT_             --Material type (note the font material created above)
 compass_mark.init_pos          = {0 , 1800/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 compass_mark.alignment         = "CenterDown"       --Alignment settings：Left/Right/Center; Top/Down/Center
-compass_mark.stringdefs        = {1*0.004,1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+compass_mark.stringdefs        = {1*0.0055,1 * 0.0055, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 compass_mark.formats           = {"%03.0f;", "%s"}
 compass_mark.element_params    = {"EHSI_HEADING", "COMPASS_FULL_ENABLE"} -- top left first line display
 compass_mark.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
@@ -273,7 +274,7 @@ local compass_mark             = CreateElement "ceStringPoly" --Create a charact
 compass_mark.material          = "EHSI_font_white"    --FONT_             --Material type (note the font material created above)
 compass_mark.init_pos          = {1750/default_ehsi_y , 1750/default_ehsi_y}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 compass_mark.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-compass_mark.stringdefs        = {1.2*0.004,1.2 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+compass_mark.stringdefs        = {1.2*0.0055,1.2 * 0.0055, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 compass_mark.formats           = {"%03.0f;", "%s"}
 compass_mark.element_params    = {"EHSI_SEL_HDG", "COMPASS_FULL_ENABLE"} -- top left first line display
 compass_mark.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}

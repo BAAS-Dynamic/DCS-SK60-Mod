@@ -1,5 +1,7 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
+dofile(LockOn_Options.script_path.."sounds_def.lua")
+-- snd_device:performClickableAction(command,value,false)
  
 
 local electric_system = GetSelf()
@@ -17,6 +19,8 @@ local batteryStatus = 0
 electric_system:listen_command(Keys.PowerGeneratorLeft)
 electric_system:listen_command(Keys.PowerGeneratorRight)
 electric_system:listen_command(Keys.BatteryPower)
+electric_system:listen_command(Keys.ElecPowerDCGenL)
+electric_system:listen_command(Keys.ElecPowerDCGenR)
 
 electric_system:DC_Battery_on(true)
 
@@ -33,17 +37,23 @@ end
 local main_power_switch = _switch_counter()
 local left_gen_switch = _switch_counter()
 local right_gen_switch = _switch_counter()
+local left_real_gen_switch = _switch_counter()
+local right_real_gen_switch = _switch_counter()
 
 target_status = {
     {main_power_switch , SWITCH_OFF, get_param_handle("PTN_401"), "PTN_401"},
     {left_gen_switch , SWITCH_OFF, get_param_handle("PTN_402"), "PTN_402"},
     {right_gen_switch , SWITCH_OFF, get_param_handle("PTN_404"), "PTN_404"},
+    {left_real_gen_switch , SWITCH_ON, get_param_handle("PTN_415"), "PTN_415"},
+    {right_real_gen_switch , SWITCH_ON, get_param_handle("PTN_422"), "PTN_422"},
 }
 
 current_status = {
     {main_power_switch , SWITCH_OFF, SWITCH_OFF},
     {left_gen_switch , SWITCH_OFF, SWITCH_OFF},
     {right_gen_switch , SWITCH_OFF, SWITCH_OFF},
+    {left_real_gen_switch , SWITCH_ON, SWITCH_ON},
+    {right_real_gen_switch , SWITCH_ON, SWITCH_ON},
 }
 
 function update_switch_status()
@@ -63,6 +73,8 @@ function update_switch_status()
     end
 end
 
+local inverter_statue = -1
+
 function update_elec_state() --更新电力总线状态
     if (electric_system:get_AC_Bus_1_voltage() > 0 or electric_system:get_AC_Bus_2_voltage() > 0) then
         -- 主发电机状态正常（双备份）
@@ -73,7 +85,9 @@ function update_elec_state() --更新电力总线状态
 
     if electric_system:get_DC_Bus_1_voltage() > 0 or electric_system:get_DC_Bus_2_voltage() > 0 then
         if elec_battery_status:get() == 0 then
-            elec_dc_status:set(0)
+            -- elec_dc_status:set(0)
+            -- problem here, when bus has power, dc electric should be on
+            elec_dc_status:set(1)
         else
             elec_dc_status:set(1)
         end
@@ -99,14 +113,24 @@ function update_elec_state() --更新电力总线状态
 
     if elec_battery_status:get() < 0 then
         elec_battery_status:set(0)
-    elseif elec_battery_status:get() > 30000 then
-        elec_battery_status:set(30000)
+    elseif elec_battery_status:get() > 3000000 then
+        elec_battery_status:set(3000000)
+    end
+
+    if (inverter_statue == -1 or inverter_statue ~= elec_dc_status:get()) then
+        inverter_statue = elec_dc_status:get()
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_ELECTRIC, inverter_statue)
     end
 end
 
 function post_initialize() --默认初始化函数
     --local dev = GetSelf()
-    elec_battery_status:set(30000)
+    -- initial the elec system pointer for the radio
+    str_ptr = string.sub(tostring(electric_system.link),10)
+    local set_elec_pointer = get_param_handle("ELEC_POINTER")
+    set_elec_pointer:set(str_ptr)
+    -- end of block
+    elec_battery_status:set(3000000)
     local birth = LockOn_Options.init_conditions.birth_place
     if birth=="GROUND_HOT" or birth=="AIR_HOT" then --"GROUND_COLD","GROUND_HOT","AIR_HOT"
         electric_system:AC_Generator_1_on(true)
@@ -129,6 +153,10 @@ function post_initialize() --默认初始化函数
         current_status[left_gen_switch][2] = SWITCH_OFF
         current_status[right_gen_switch][2] = SWITCH_OFF
     end
+    target_status[left_real_gen_switch][2] = SWITCH_ON
+    target_status[right_real_gen_switch][2] = SWITCH_ON
+    current_status[left_real_gen_switch][2] = SWITCH_ON
+    current_status[right_real_gen_switch][2] = SWITCH_ON
     update_switch_status()
     update_elec_state()
 end
@@ -138,16 +166,33 @@ function SetCommand(command,value)
     local status = 0
     if command == Keys.PowerGeneratorLeft then
         target_status[left_gen_switch][2] = 1 - target_status[left_gen_switch][2]
-
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
     elseif command == Keys.PowerGeneratorRight then
         target_status[right_gen_switch][2] = 1 - target_status[right_gen_switch][2]
-
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
     elseif command == Keys.BatteryPower then
         target_status[main_power_switch][2] = 1 - target_status[main_power_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_LEFT_PANEL, cockpit_sound.basic_switch)
         if target_status[main_power_switch][2] < 0.5 then
             electric_system:DC_Battery_on(false)
         else
             electric_system:DC_Battery_on(true)
+        end
+    elseif command == Keys.ElecPowerDCGenL then
+        target_status[left_real_gen_switch][2] = 1 - target_status[left_real_gen_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_RIGHT_PANEL, cockpit_sound.basic_switch)
+        if target_status[left_real_gen_switch][2] < 0.5 then
+            electric_system:AC_Generator_1_on(false)
+        else
+            electric_system:AC_Generator_1_on(true)
+        end
+    elseif command == Keys.ElecPowerDCGenR then
+        target_status[right_real_gen_switch][2] = 1 - target_status[right_real_gen_switch][2]
+        dispatch_action(devices.SOUND_SYSTEM, Keys.SND_RIGHT_PANEL, cockpit_sound.basic_switch)
+        if target_status[right_real_gen_switch][2] < 0.5 then
+            electric_system:AC_Generator_2_on(false)
+        else
+            electric_system:AC_Generator_2_on(true)
         end
     end
     --[[

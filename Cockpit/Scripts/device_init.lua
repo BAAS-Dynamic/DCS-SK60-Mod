@@ -31,9 +31,9 @@ creators[devices.CLOCK]           ={"avLuaDevice"           ,LockOn_Options.scri
 --
 creators[devices.GEAR_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gear_system.lua"}
 
-creators[devices.LIGHT_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/light_system.lua"}
-
-creators[devices.SOUND_SYSTEM]      = {"avLuaDevice",   LockOn_Options.script_path.."Systems/Sound_System.lua"} 
+creators[devices.LIGHT_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/light_system.lua"}
+-- this is 14, dont move this position for now XD, the command from EFM is constant send to lua device 14 
+creators[devices.SOUND_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/sound_system.lua"} 
 -- 定义显示器
 -- Indicators
 indicators = {}
@@ -46,15 +46,19 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EADI/
 -- ERPM
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ERPM/ERPM_init.lua",nil,{{"LN2_center","LN2_down","LN2_right"},{sx_l =  -0.0001,}}}
 -- TRIM display
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ETRIM/ETRIM_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}
+--indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."ETRIM/ETRIM_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}
 -- NS430 Navigation Control Unit
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430/NS430_init.lua",nil,{{"GPS_center","GPS_down","GPS_right"},{sx_l =  -0.001,}}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."NS430/NS430_layer_A_init.lua",nil,{{"GPS_center","GPS_down","GPS_right"},{sx_l =  -0.001,}}}
 -- E Altimeter
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EALT/EALT_init.lua",nil,{{"ALT_center","ALT_down","ALT_right"}}}
 -- SANDEL SN3500 EHSI
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EHSI/EHSI_init.lua",nil,{{"EHSI_center","EHSI_down","EHSI_right"}}}
+-- Radio display
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."RSGB6500/Radio_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}--{{"COM1_center","COM1_down","COM1_right"}}
 -- HUD USE for AUTH display now
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
+-- Gunsight display
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."GunSight/gunsight_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
 -- RADAR RAW DISPLAY
 -- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."avRadar/indicator/init.lua",nil,{{},{sz_l = 0.0,sx_l = -0.50, sy_l = -0.1},1}}		
 --RADAROFF indicators[#indicators + 1] = {"ccIndicator",LockOn_Options.script_path.."RADAR/Indicator/init.lua",--init script

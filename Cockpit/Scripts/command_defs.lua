@@ -266,6 +266,10 @@ Keys =
     MissileCoolingUP = __custom_counter(),
     MissileCoolingDOWN = __custom_counter(),
 
+    -- power system
+    ElecPowerDCGenL = __custom_counter(),
+    ElecPowerDCGenR = __custom_counter(),
+
     --起落架手柄 5001// 5050 EFM - 6000 for EFM
     NoseWheelSteeringOn = 5050,
     NoseWheelSteeringOff = 5051,
@@ -276,6 +280,15 @@ Keys =
     -- Weapon Part till 5070
     WingPylonSmokeOn = 5053,
     NozzleSmokeOn = 5054,
+    WeaponFireOn = 5055,
+    WeaponFireOff = 5056,
+    WeaponConfigAll = 5057,
+    WeaponConfigSingle = 5058,
+    WeaponConfigPairs = 5059,
+    WeaponMasterSwitch = 5060,
+    WeaponAirGroundChange = 5061,
+    GunSightInstall = 5062,
+    GunSightUninstall = 5063,
 
     -- special functions
     SpecialSence = 5070,
@@ -332,6 +345,38 @@ Keys =
     L_THROTTLE_SETOFF = 5512,
     R_THROTTLE_SETIDLE = 5513,
     R_THROTTLE_SETOFF = 5514,
+
+    -- 5601 - 5700 for UHF radio
+    UHF_Vol_Up = 5601,
+    UHF_Vol_Down = 5602,
+    UHF_SQLACK_Up = 5603,
+    UHF_SQLACK_Down = 5604,
+    UHF_Mode_Left = 5605,
+    UHF_Mode_Right = 5606,
+    UHF_TAKE_Button_Press = 5607,
+    UHF_TAKE_Button_Release = 5608,
+    UHF_Vol = 5609,
+    UHF_Key_0 = 5610,
+    UHF_Key_1 = 5611,
+    UHF_Key_2 = 5612,
+    UHF_Key_3 = 5613,
+    UHF_Key_4 = 5614,
+    UHF_Key_5 = 5615,
+    UHF_Key_6 = 5616,
+    UHF_Key_7 = 5617,
+    UHF_Key_8 = 5618,
+    UHF_Key_9 = 5619,
+    UHF_Key_MAN = 5620,
+    UHF_Key_ENT = 5621,
+    RadioUpdate = 5622,
+
+    -- 6000 - 6100 for sound trigger
+    SND_LEFT_PANEL = 6001,
+    SND_CENTER_PANEL = 6002,
+    SND_RIGHT_PANEL = 6003,
+    SND_ELECTRIC = 6004,
+    SND_GEAR   = 6005,
+    SND_BEACON_ROT = 6006,
 }
 
 --从5000开始递增点击指令

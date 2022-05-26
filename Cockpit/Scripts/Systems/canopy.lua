@@ -1,4 +1,5 @@
 dofile(LockOn_Options.script_path.."command_defs.lua")
+dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 
 local update_time_step = 0.02  --每秒50次刷新
@@ -47,7 +48,7 @@ function post_initialize()
         CANOPY_COMMAND = 1
         target_status[canopy_switch][2] = SWITCH_ON
     end
-    sndhost_cockpit         = create_sound_host("COCKPIT","3D",0,-1,0) 
+    sndhost_cockpit         = create_sound_host("COCKPIT_BACK","3D", -1, 0, 0) 
     snd_canopy_open_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen")
     -- use same for open and close
     snd_canopy_close_sound   = sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyOpen") -- sndhost_cockpit:create_sound("Aircrafts/SK-60/CanopyClose")
@@ -68,14 +69,14 @@ function SetCommand(command,value)
         if not snd_canopy_close_sound:is_playing() and not snd_canopy_open_sound:is_playing() then
             CANOPY_COMMAND = 1 - CANOPY_COMMAND
             if (CANOPY_COMMAND == 1) then
-                print_message_to_user("Opening Canopy") -- 这是游戏内的调试输出，会显示在左上角，遇到奇怪的问题就用这个打印参数
+                dprintf("Opening Canopy") -- 这是游戏内的调试输出，会显示在左上角，遇到奇怪的问题就用这个打印参数
             else
-                print_message_to_user("Closing Canopy")
+                dprintf("Closing Canopy")
             end
             LOCK_TIME_COUNT = 0
             target_status[canopy_switch][2] = CANOPY_COMMAND
         else
-            print_message_to_user("Canopy Acuactor is Moving")
+            dprintf("Canopy Acuactor is Moving")
         end
 	end
 end
@@ -97,7 +98,7 @@ function update_switch_status()
                 current_status[k][2] = SWITCH_OFF
             end
         end
-        -- print_message_to_user(k)
+        -- dprintf(k)
     end
 end
 

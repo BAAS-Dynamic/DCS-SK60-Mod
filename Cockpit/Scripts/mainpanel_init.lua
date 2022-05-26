@@ -82,8 +82,8 @@ animation_list = {
     {"MainRWPOS_IND", 320},
     {"MACH_IND", 322},
     {"G_METER", 323},
-    {"GYRO_ROLL", 324},
-    {"GYRO_PITCH", 325},
+    {"GYRO_ROLL", 331},
+    {"GYRO_PITCH", 332},
 
     -- new clock
     {"CLOCK_H", 343},
@@ -139,8 +139,8 @@ animation_list = {
     {"PTN_115", 115},
     {"PTN_116", 116},
     {"PTN_117", 117},
-	{"PTN_131", 131},
-    {"PTN_132", 132},
+	{"PTN_131", 131}, --{0, 1}, {0.12, 0.19}},
+    {"PTN_132", 132}, --{0, 1}, {0.7, 1}},
     
     {"PTN_601", 601},
 
@@ -161,6 +161,17 @@ animation_list = {
     {"PTN_420", 420},
     {"PTN_604", 604},
     {"PTN_605", 605},
+
+    -- Weapon panel
+    {"PTN_413", 413},
+    {"PTN_414", 414},
+
+    -- generator
+    {"PTN_415", 415},
+    {"PTN_422", 422},
+
+    -- gun sight
+    {"GUN_SIGHT", 915},
 
     {"PTN_424", 424}, -- Nav light
     {"PTN_429", 429}, -- Anti Col light

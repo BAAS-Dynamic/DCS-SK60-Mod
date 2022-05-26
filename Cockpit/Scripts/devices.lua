@@ -18,4 +18,4 @@ devices["BASIC_FLIGHT_INS"]			= counter()
 devices["CLOCK"]					= counter()
 devices["GEAR_SYSTEM"]				= counter()
 devices["LIGHT_SYSTEM"]				= counter()
-devices["SOUND_SYSTEM"]     = counter()	--14
+devices["SOUND_SYSTEM"]     		= counter()	--14

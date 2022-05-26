@@ -1,9 +1,12 @@
 local LightSystem = GetSelf()
+dofile(LockOn_Options.script_path.."debug_util.lua")
 
 --初始化加载要用lua文件
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
+dofile(LockOn_Options.script_path.."sounds_def.lua")
+-- dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
 
 --设置循环次数
 local update_rate = 0.01 -- 50次每秒
@@ -38,7 +41,7 @@ local gear_state_share = get_param_handle("GEAR_SHARE")
 target_status = {
     {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_429"), "PTN_429"},
     {taxi_light_switch , 0.5, get_param_handle("PTN_436"), "PTN_436"},
-    {wing_navi_switch , SWITCH_OFF, get_param_handle("PTN_424"), "PTN_424"},
+    {wing_navi_switch , SWITCH_TEST, get_param_handle("PTN_424"), "PTN_424"},
     {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
     {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
     {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
@@ -49,7 +52,7 @@ target_status = {
 current_status = {
     {strobe_light_switch , SWITCH_OFF, SWITCH_OFF},
     {taxi_light_switch, SWITCH_OFF, SWITCH_OFF},
-    {wing_navi_switch, SWITCH_OFF, SWITCH_OFF},
+    {wing_navi_switch, SWITCH_TEST, SWITCH_TEST},
     {formation_switch, SWITCH_OFF, SWITCH_OFF},
     {flood_light_switch, SWITCH_OFF, SWITCH_OFF},
     {instrument_light_switch, SWITCH_OFF, SWITCH_OFF},
@@ -109,32 +112,40 @@ function SetCommand(command, value)
     if command == Keys.LightStrobeUP then
         if target_status[strobe_light_switch][2] < 0.5 then
             target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] + 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     elseif command == Keys.LightStrobeDOWN then
         if target_status[strobe_light_switch][2] > - 0.5 then
             target_status[strobe_light_switch][2] = target_status[strobe_light_switch][2] - 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end    
     elseif command == Keys.LightTaxiUP then
         -- print_message_to_user(target_status[taxi_light_switch][2])
         if target_status[taxi_light_switch][2] < 0.8 then
             target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] + 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     elseif command == Keys.LightTaxiDOWN then
         if target_status[taxi_light_switch][2] > 0.3 then
             target_status[taxi_light_switch][2] = target_status[taxi_light_switch][2] - 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     -- fit new
     elseif command == Keys.LightNaviWingUP then
         if target_status[wing_navi_switch][2] < 0.8 and target_status[wing_navi_switch][2] > -0.5 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] + 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         elseif target_status[wing_navi_switch][2] < 0.1 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] + 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
     elseif command == Keys.LightNaviWingDOWN then
         if target_status[wing_navi_switch][2] > 0.1 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] - 0.5
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         elseif target_status[wing_navi_switch][2] > -0.5 then
             target_status[wing_navi_switch][2] = target_status[wing_navi_switch][2] - 1
+            dispatch_action(devices.SOUND_SYSTEM, Keys.SND_CENTER_PANEL, cockpit_sound.basic_switch)
         end
 
     elseif command == Keys.LightFormationUP then
@@ -182,8 +193,8 @@ function SetCommand(command, value)
         elseif target_status[console_light_switch][2] > 1 then
             target_status[console_light_switch][2] = 1
         end
-        print_message_to_user(value)
-        print_message_to_user(target_status[console_light_switch][2])
+        dprintf(value)
+        dprintf(target_status[console_light_switch][2])
     elseif command == Keys.LightApproIndexBRT then
         if value < 0.5 then
             new_value = - 0.1
@@ -221,8 +232,8 @@ function update_externel_light_status()
             end
             set_aircraft_draw_argument_value(192, anticolmulti)
             STROBE_ROTATION = STROBE_ROTATION + 0.004
-            if (STROBE_ROTATION > 1) then
-                STROBE_ROTATION = STROBE_ROTATION - 1
+            if (STROBE_ROTATION > 0.5) then
+                STROBE_ROTATION = STROBE_ROTATION - 0.5
             end
             set_aircraft_draw_argument_value(193, STROBE_ROTATION)
         else
@@ -271,6 +282,13 @@ function update_externel_light_status()
             -- cloase taxi/landing light
             set_aircraft_draw_argument_value(194, 0)
         end
+    else
+        set_aircraft_draw_argument_value(51, 0) -- taxi light 51
+        set_aircraft_draw_argument_value(190, 0)
+        set_aircraft_draw_argument_value(191, 0)
+        set_aircraft_draw_argument_value(192, 0)
+        set_aircraft_draw_argument_value(193, 0)
+        set_aircraft_draw_argument_value(194, 0)
     end
 end
 

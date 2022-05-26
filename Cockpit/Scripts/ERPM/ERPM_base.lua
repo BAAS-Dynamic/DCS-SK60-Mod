@@ -1,6 +1,6 @@
 dofile(LockOn_Options.script_path.."ERPM/ERPM_def.lua")
 
-SHOW_MASKS = true -- enable debug
+SHOW_MASKS = false -- enable debug
 
 -- This operation can align the newly created cropping block to the three connectors
 -- Must use FOV mode
