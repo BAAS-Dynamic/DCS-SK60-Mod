@@ -1,7 +1,7 @@
 --初始化加载要用lua文件
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
-dofile(LockOn_Options.script_path.."utils.lua")
+dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 
 --设置循环次数
