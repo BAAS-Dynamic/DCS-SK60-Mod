@@ -91,7 +91,7 @@ animation_list = {
     {"CLOCK_S", 344},
 
     {"OXY_QUAN", 329},
-    {"BARO_ALT", 330},
+    {"ALT_XH_DIGTAL", 330, {0, 1000}, {0, 1}},
     {"BARO_x1H", 331},
     {"BARO_x1K", 332},
     {"BARO_x1W", 333},
