@@ -73,12 +73,12 @@ suspension_data =
 		allowable_hard_contact_length			= 0.37,
 
 		amortizer_min_length					= 0.0,
-		amortizer_max_length					= 0.35,
-		amortizer_basic_length					= 0.35,
+		amortizer_max_length					= 0.45,
+		amortizer_basic_length					= 0.45,
 		amortizer_spring_force_factor			= multiplier_suspen,
 		amortizer_spring_force_factor_rate		= multi2,
 		amortizer_static_force					= 2897,
-		amortizer_reduce_length					= 0.07,
+		amortizer_reduce_length					= 0.14,
 		amortizer_direct_damper_force_factor 	= 14000,
 		amortizer_back_damper_force_factor 		= 14000,
 
@@ -132,12 +132,12 @@ suspension_data =
 		allowable_hard_contact_length			= 0.37,
 
 		amortizer_min_length					= 0.0,
-		amortizer_max_length					= 0.35,
-		amortizer_basic_length					= 0.35,
+		amortizer_max_length					= 0.45,
+		amortizer_basic_length					= 0.45,
 		amortizer_spring_force_factor			= multiplier_suspen,
 		amortizer_spring_force_factor_rate		= multi2,
 		amortizer_static_force					= 2897,
-		amortizer_reduce_length					= 0.07,
+		amortizer_reduce_length					= 0.14,
 		amortizer_direct_damper_force_factor 	= 14000,
 		amortizer_back_damper_force_factor 		= 14000,
 
