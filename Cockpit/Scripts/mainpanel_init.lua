@@ -82,8 +82,8 @@ animation_list = {
     {"MainRWPOS_IND", 320},
     {"MACH_IND", 322},
     {"G_METER", 323},
-    {"GYRO_ROLL", 331},
-    {"GYRO_PITCH", 332},
+    {"GYRO_ROLL", 335},
+    {"GYRO_PITCH", 334},
 
     -- new clock
     {"CLOCK_H", 343},
