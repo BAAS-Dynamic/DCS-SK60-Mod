@@ -91,6 +91,11 @@ dev:listen_command(Keys.L_STARTER_RELEASE)
 dev:listen_command(Keys.L_STARTER_PRESS)
 dev:listen_command(Keys.Nav_Right_Knob_Push)
 
+dev:listen_command(iCommandCockpitCursorHorizontal)-- 2036
+dev:listen_command(iCommandCockpitCursorVertical)-- 2037
+dev:listen_command(iServiceInformAboutUserHAngle)--	2142
+dev:listen_command(iServiceInformAboutUserVAngle)-- 2143
+
 local pos_x_loc, pos_y_loc, alt, coord
 
 function updateGPS()
@@ -115,15 +120,25 @@ end
 
 NS430_Test_Status = 0;
 
+cursor_v = 0
+cursor_h = 0
+viewang_v = 0
+viewang_h = 0
+
 function SetCommand(command,value)
-    --[[
-    if (command == Keys.L_STARTER_PRESS) then
-        print_message_to_user("Pressed")
-    elseif (command == Keys.L_STARTER_RELEASE) then
-        print_message_to_user("Release")
+    if (command == iCommandCockpitCursorHorizontal) then
+        cursor_h = value
+    elseif (command == iCommandCockpitCursorVertical) then
+        cursor_v = value
+    elseif (command == iServiceInformAboutUserHAngle) then
+        viewang_h = value
+    elseif (command == iServiceInformAboutUserVAngle) then
+        viewang_v = value
     end
-    ]]
 end
+
+local debug_line1 = get_param_handle("DEBUG_LINE1")
+local debug_line2 = get_param_handle("DEBUG_LINE2")
 
 function update()
     --gps_base:set(1)
@@ -221,4 +236,9 @@ function update()
         ns430_base_page:set(1)
     end
     ]]
+
+    debug_line1:set("Hori Heading: " ..viewang_h.. "; Hori Cursor: "..cursor_h)
+    debug_line2:set("Vert Heading: " ..viewang_v.. "; Vert Cursor: "..cursor_v)
 end
+
+need_to_be_closed = false

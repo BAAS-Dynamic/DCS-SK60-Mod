@@ -68,7 +68,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EWarn
 -- debug ipad
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."DBGiPad/ipad_init.lua",nil,{{"IPAD_center","IPAD_down","IPAD_right"}}}
 -- test menu indicator
--- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."CustomMenu/menu_init.lua",nil,{{}, {sh = 0.5, sw = 0.5}, 4}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."CustomMenu/menu_init.lua",nil,{{}, {sh = 0.5, sw = 0.5}, 4}}
 
 
 -- Enable KneeBoard for Test
