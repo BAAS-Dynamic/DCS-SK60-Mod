@@ -111,11 +111,11 @@ function update()
         -- set globle time count
         local time_increse_step = 0.02 / 7
         if (sensor_data.getWOW_LeftMainLandingGear() > 0.001 or sensor_data.getWOW_NoseLandingGear() > 0.001 or sensor_data.getWOW_RightMainLandingGear() > 0.001) then
-            move_ability = 0;
+            move_ability = 0
             --dprintf("L:"..sensor_data.getWOW_LeftMainLandingGear());
             --dprintf("R:"..sensor_data.getWOW_RightMainLandingGear());
         else
-            move_ability = 1;
+            move_ability = 1
         end
         --dprintf("N:"..sensor_data.getWOW_NoseLandingGear());
         

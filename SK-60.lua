@@ -551,6 +551,10 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 		["CREW_1"]              = {critical_damage = 1, args = {-1}, construction = {durability = 2.00, skin = "Fabric"},},
 		["CREW_2"]              = {critical_damage = 1, args = {-1}, construction = {durability = 2.00, skin = "Fabric"},},
 		["MAIN"]  				= {critical_damage = 10, args = {-1}, construction = {durability = 7.69, skin = "Aluminum"},},
+		["TAIL_BOTTOM"]  		= {critical_damage = 10, args = {-1}, },
+		["FUSELAGE_BOTTOM"]  	= {critical_damage = 10, args = {-1}, },
+		["ENGINE_1"]			= {args = {160},	critical_damage = 2},
+		["ENGINE_2"]			= {args = {160},	critical_damage = 2},
 	}),
 	
 	DamageParts = 
