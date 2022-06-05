@@ -43,10 +43,10 @@ Add(ns430_startup_icon)
 
 -- Left engine N2 speed display
 local LN2_dis_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-LN2_dis_box.material          = "hud_font_base"    --FONT_             --Material type (note the font material created above)
+LN2_dis_box.material          = "BS430_font_purple"    --FONT_             --Material type (note the font material created above)
 LN2_dis_box.init_pos          = {0, 0}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 LN2_dis_box.alignment         = "CenterCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
-LN2_dis_box.stringdefs        = {100/screen_width/2, 50/screen_width/2}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LN2_dis_box.stringdefs        = {100/screen_width/2, 50/screen_width/2, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 LN2_dis_box.formats           = {"CURRENT VERSON IS "..general_version, "%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 --LN2_dis_box.element_params    = {"UNAUTHOPAC"}
 LN2_dis_box.element_params    = {"HUD_LN2_DIS", "UNAUTHOPAC"}
@@ -62,10 +62,10 @@ Add(LN2_dis_box)
 
 -- Left engine N2 speed display
 local LN2_dis_box             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-LN2_dis_box.material          = "hud_font_base"    --FONT_             --Material type (note the font material created above)
-LN2_dis_box.init_pos          = {0, -100/screen_width/2}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+LN2_dis_box.material          = "BS430_font_purple"    --FONT_             --Material type (note the font material created above)
+LN2_dis_box.init_pos          = {0, -150/screen_width/2}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 LN2_dis_box.alignment         = "CenterCenter"       --Alignment settings：Left/Right/Center; Top/Down/Center
-LN2_dis_box.stringdefs        = {100/screen_width/2, 50/screen_width/2}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+LN2_dis_box.stringdefs        = {100/screen_width/2, 50/screen_width/2, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 LN2_dis_box.formats           = {"INSIDE DEV LICENSE MISSING OR WRONG","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 --LN2_dis_box.element_params    = {"UNAUTHOPAC"}
 LN2_dis_box.element_params    = {"HUD_LN2_DIS", "UNAUTHOPAC"}
