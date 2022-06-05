@@ -91,10 +91,10 @@ dev:listen_command(Keys.L_STARTER_RELEASE)
 dev:listen_command(Keys.L_STARTER_PRESS)
 dev:listen_command(Keys.Nav_Right_Knob_Push)
 
-dev:listen_command(iCommandCockpitCursorHorizontal)-- 2036
-dev:listen_command(iCommandCockpitCursorVertical)-- 2037
-dev:listen_command(iServiceInformAboutUserHAngle)--	2142
-dev:listen_command(iServiceInformAboutUserVAngle)-- 2143
+dev:listen_command(2036)-- 2036
+dev:listen_command(2037)-- 2037
+dev:listen_command(2142)--	2142
+dev:listen_command(2143)-- 2143
 
 local pos_x_loc, pos_y_loc, alt, coord
 
@@ -126,13 +126,13 @@ viewang_v = 0
 viewang_h = 0
 
 function SetCommand(command,value)
-    if (command == iCommandCockpitCursorHorizontal) then
+    if (command == 2036) then
         cursor_h = value
-    elseif (command == iCommandCockpitCursorVertical) then
+    elseif (command == 2037) then
         cursor_v = value
-    elseif (command == iServiceInformAboutUserHAngle) then
+    elseif (command == 2142) then
         viewang_h = value
-    elseif (command == iServiceInformAboutUserVAngle) then
+    elseif (command == 2143) then
         viewang_v = value
     end
 end
@@ -237,8 +237,8 @@ function update()
     end
     ]]
 
-    debug_line1:set("Hori Heading: " ..viewang_h.. "; Hori Cursor: "..cursor_h)
-    debug_line2:set("Vert Heading: " ..viewang_v.. "; Vert Cursor: "..cursor_v)
+    debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; HORI CURSOR: "..string.format("%.2f", cursor_h))
+    debug_line2:set("VERT HEAD: " ..string.format("%.2f", viewang_v).. "; VERT CURSOR: "..string.format("%.2f", cursor_v))
 end
 
 need_to_be_closed = false

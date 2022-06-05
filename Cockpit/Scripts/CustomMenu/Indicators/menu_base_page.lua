@@ -57,7 +57,7 @@ local Debug_text_box             = CreateElement "ceStringPoly" --Create a chara
 Debug_text_box.material          = "EADI_font"    --FONT_             --Material type (note the font material created above)
 Debug_text_box.init_pos          = {0, 0}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 Debug_text_box.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-Debug_text_box.stringdefs        = {20/screen_width/2, 20/screen_height/2, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+Debug_text_box.stringdefs        = {40/screen_width/2, 20/screen_width/2, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 Debug_text_box.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 Debug_text_box.element_params    = {"DEBUG_LINE1","IPAD_DIS_ENABLE"} -- top left first line display
 Debug_text_box.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
@@ -66,7 +66,7 @@ Debug_text_box.use_mipfilter     = true
 Debug_text_box.additive_alpha    = true
 Debug_text_box.isvisible		 = true
 Debug_text_box.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
-Debug_text_box.level			 = EADI_DEFAULT_NOCLIP_LEVEL
+Debug_text_box.level			 = MENU_DEFAULT_NOCLIP_LEVEL
 Debug_text_box.parent_element    = "base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(Debug_text_box)
 
@@ -74,7 +74,7 @@ local Debug_text_box_1             = CreateElement "ceStringPoly" --Create a cha
 Debug_text_box_1.material          = "EADI_font"    --FONT_             --Material type (note the font material created above)
 Debug_text_box_1.init_pos          = {0, -30/screen_height/2}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 Debug_text_box_1.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
-Debug_text_box_1.stringdefs        = {20/screen_width/2, 20/screen_height/2, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+Debug_text_box_1.stringdefs        = {40/screen_width/2, 20/screen_width/2, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 Debug_text_box_1.formats           = {"%s","%s"} -- The output is set here, similar to the printf model of C.% is the output type at the beginning, and the following %s is the input type
 Debug_text_box_1.element_params    = {"DEBUG_LINE2","IPAD_DIS_ENABLE"} -- top left first line display
 Debug_text_box_1.controllers       = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
@@ -83,6 +83,6 @@ Debug_text_box_1.use_mipfilter     = true
 Debug_text_box_1.additive_alpha    = true
 Debug_text_box_1.isvisible		   = true
 Debug_text_box_1.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
-Debug_text_box_1.level			   = EADI_DEFAULT_NOCLIP_LEVEL
+Debug_text_box_1.level			   = MENU_DEFAULT_NOCLIP_LEVEL
 Debug_text_box_1.parent_element    = "base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(Debug_text_box_1)
