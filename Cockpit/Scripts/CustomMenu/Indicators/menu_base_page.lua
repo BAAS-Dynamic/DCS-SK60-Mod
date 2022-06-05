@@ -86,3 +86,5 @@ Debug_text_box_1.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEV
 Debug_text_box_1.level			   = MENU_DEFAULT_NOCLIP_LEVEL
 Debug_text_box_1.parent_element    = "base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(Debug_text_box_1)
+
+dofile(LockOn_Options.script_path.."CustomMenu/Indicators/autho_page.lua")

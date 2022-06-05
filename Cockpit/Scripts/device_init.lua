@@ -60,14 +60,15 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EHSI/
 -- Radio display
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."RSGB6500/Radio_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}--{{"COM1_center","COM1_down","COM1_right"}}
 -- HUD USE for AUTH display now
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
+-- combined to the custom menu now
+-- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
 -- Gunsight display
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."GunSight/gunsight_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
 -- warning panel
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EWarningPanel/warning_init.lua",nil,{{"WarningPanel_center","WarningPanel_down","WarningPanel_right"}}}
 -- debug ipad
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."DBGiPad/ipad_init.lua",nil,{{"IPAD_center","IPAD_down","IPAD_right"}}}
--- test menu indicator
+-- custom menu indicator
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."CustomMenu/menu_init.lua",nil,{{}, {sh = 0.5, sw = 0.5}, 4}}
 
 
