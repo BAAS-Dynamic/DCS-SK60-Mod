@@ -144,8 +144,11 @@ function SetCommand(command,value)
     elseif (command == Keys.Custom_Menu) then
         -- ask the click mode to off
         print_message_to_user("menu triggered")
-        -- force click off
+        -- enter the transpose first
+        dispatch_action(nil, 361)
+        -- trigger click mode on
         -- dispatch_action(nil, 363)
+        -- close click mode [should be in transpose mode now]
         -- force close transpose mode
         -- dispatch_action(nil, 1594)
         -- dispatch_action(nil, iCommandMouseViewOn, 1)
