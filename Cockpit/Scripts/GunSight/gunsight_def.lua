@@ -31,10 +31,10 @@ default_hud_x = 2000
 default_hud_y = 2000 
 
 -- 定义默认HUD旋转角度和hud显示深度
-default_hud_z_offset = 30
+default_hud_z_offset = 750
 default_hud_y_offset = - 0.889 * default_hud_z_offset -- - 0.839 * X - 0.2
 default_hud_rot_offset = 40
-default_hud_size_scaler = 7
+default_hud_size_scaler = 150
 
 function hud_vert_gen(width, height)
     return {{(0 - width) / 2 / default_hud_x , (0 + height) / 2 / default_hud_y},
