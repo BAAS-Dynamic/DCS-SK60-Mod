@@ -298,7 +298,10 @@ Keys =
     Flap_Pos_Up = 5072,
     Flap_Pos_Half = 5073,
     Flap_Pos_Down = 5074,
-    
+
+    -- CustomMenu Trigger
+    Custom_Menu = 5090,
+
     -- 5100-5500 Navigation input
     -- GNS 430
     COM_Freq_Swap = 5100,

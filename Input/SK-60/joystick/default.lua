@@ -361,6 +361,7 @@ keyCommands = {
     {down = Keys.Flap_Pos_Down,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Down Position'),				category = _('HOTAS') },
 
     {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
+    {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
 },
 
 -- joystick axes 
