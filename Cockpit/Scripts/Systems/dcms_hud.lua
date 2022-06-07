@@ -130,6 +130,8 @@ cursor_h = 0
 viewang_v = 0
 viewang_h = 0
 
+local cursor_mode = get_param_handle("DEBUG_LINE3")
+
 function SetCommand(command,value)
     if (command == 9100) then
         cursor_h = value
@@ -144,13 +146,13 @@ function SetCommand(command,value)
     elseif (command == Keys.Custom_Menu) then
         -- ask the click mode to off
         print_message_to_user("menu triggered")
-        -- enter the transpose first
-        dispatch_action(nil, 361)
-        -- trigger click mode on
-        -- dispatch_action(nil, 363)
+        if (debug_line3:get() < 1) then
+            -- cursor mode is clickable
+            dispatch_action(nil, 363)
+        end
         -- close click mode [should be in transpose mode now]
         -- force close transpose mode
-        -- dispatch_action(nil, 1594)
+        dispatch_action(nil, 1594)
         -- dispatch_action(nil, iCommandMouseViewOn, 1)
     end
     -- print_message_to_user(command)
@@ -256,8 +258,8 @@ function update()
     end
     ]]
 
-    debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; HORI CURSOR: "..string.format("%.2f", cursor_h))
-    debug_line2:set("VERT HEAD: " ..string.format("%.2f", viewang_v).. "; VERT CURSOR: "..string.format("%.2f", cursor_v))
+    --debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; HORI CURSOR: "..string.format("%.2f", cursor_h))
+    --debug_line2:set("VERT HEAD: " ..string.format("%.2f", viewang_v).. "; VERT CURSOR: "..string.format("%.2f", cursor_v))
 end
 
 need_to_be_closed = false
