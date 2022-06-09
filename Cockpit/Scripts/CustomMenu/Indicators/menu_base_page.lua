@@ -105,3 +105,4 @@ Debug_text_box_1.parent_element    = "base_clip"  --Parent node name - can bind 
 Add(Debug_text_box_1)
 
 dofile(LockOn_Options.script_path.."CustomMenu/Indicators/autho_page.lua")
+dofile(LockOn_Options.script_path.."CustomMenu/Indicators/menu_page.lua")

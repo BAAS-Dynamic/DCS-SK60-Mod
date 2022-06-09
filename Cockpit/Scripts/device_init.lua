@@ -38,6 +38,8 @@ creators[devices.SOUND_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.WARNING_SYSTEM]  ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/warning_system.lua"} 
 -- ipad controller
 creators[devices.IPAD_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/ipad_ctrl.lua"} 
+-- menu controller
+creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/menu_ctrl_system.lua"}
 -- 定义显示器
 -- Indicators
 indicators = {}

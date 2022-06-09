@@ -21,3 +21,4 @@ devices["LIGHT_SYSTEM"]				= counter()
 devices["SOUND_SYSTEM"]     		= counter()	--14
 devices["WARNING_SYSTEM"]			= counter()
 devices["IPAD_SYSTEM"]				= counter()
+devices["MENU_SYSTEM"]				= counter()
