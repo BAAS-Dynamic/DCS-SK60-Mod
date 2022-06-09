@@ -73,7 +73,7 @@ for i, v in ipairs(submenu_id) do
     menu_center_icon.vertices                     = mesh_vert_gen(0.4 * screen_width, 0.4 * screen_height)
     menu_center_icon.indices                      = {0,1,2,2,3,0}
     menu_center_icon.tex_coords                   = tex_coord_gen(texture_offset_x,texture_offset_y,1,1,8,8)
-    menu_center_icon.material                     = basic_ns430_material
+    menu_center_icon.material                     = basic_menu_material
     menu_center_icon.name 			              = create_guid_string()
     menu_center_icon.init_pos                     = {0, 0.05, 0}
     menu_center_icon.init_rot		              = {0, 0, 0}
@@ -115,7 +115,7 @@ for i, page_index in ipairs(submenu_id) do
             menu_section_icon.vertices                     = mesh_vert_gen(1500,750)
             menu_section_icon.indices                      = {0,1,2,2,3,0}
             menu_section_icon.tex_coords                   = tex_coord_gen(texture_offset_x,texture_offset_y,1,1,8,8)
-            menu_section_icon.material                     = basic_ns430_material
+            menu_section_icon.material                     = basic_menu_material
             menu_section_icon.name 			               = create_guid_string()
             menu_section_icon.init_pos                     = {0, 0, 0}
             menu_section_icon.init_rot		               = {0, 0, 0}

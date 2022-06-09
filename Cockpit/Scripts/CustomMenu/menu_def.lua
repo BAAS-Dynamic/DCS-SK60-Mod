@@ -1,6 +1,7 @@
 dofile(LockOn_Options.common_script_path.."elements_defs.lua")
 
-GPS_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/NAVU/" 
+GPS_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/NAVU/"
+MENU_IND_TEX_PATH       = LockOn_Options.script_path .. "../Textures/MENU/"
 
 -- set fov here to make sure always same
 SetScale(FOV)
@@ -32,6 +33,7 @@ GPS_BLUE_COLOR             = {70,165,180,255} -- {130,145,150,255}
 
 basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 blue_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_BLUE_COLOR)
+basic_menu_material = MakeMaterial(GPS_IND_TEX_PATH.."MENU_IND.dds", GPS_DAY_COLOR)
 
 
 default__z_offset = 0
