@@ -133,6 +133,7 @@ viewang_h = 0
 local cursor_mode = get_param_handle("DEBUG_LINE3")
 
 function SetCommand(command,value)
+    --[[
     if (command == 9100) then
         cursor_h = value
         print_message_to_user("9100")
@@ -156,6 +157,7 @@ function SetCommand(command,value)
         -- dispatch_action(nil, iCommandMouseViewOn, 1)
     end
     -- print_message_to_user(command)
+    ]]--
 end
 
 local debug_line1 = get_param_handle("DEBUG_LINE1")
@@ -258,8 +260,8 @@ function update()
     end
     ]]
 
-    --debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; HORI CURSOR: "..string.format("%.2f", cursor_h))
-    --debug_line2:set("VERT HEAD: " ..string.format("%.2f", viewang_v).. "; VERT CURSOR: "..string.format("%.2f", cursor_v))
+    debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; HORI CURSOR: "..string.format("%.2f", cursor_h))
+    debug_line2:set("VERT HEAD: " ..string.format("%.2f", viewang_v).. "; VERT CURSOR: "..string.format("%.2f", cursor_v))
 end
 
 need_to_be_closed = false

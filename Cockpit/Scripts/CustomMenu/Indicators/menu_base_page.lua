@@ -1,6 +1,6 @@
 dofile(LockOn_Options.script_path.."CustomMenu/menu_def.lua")
 
-SHOW_MASKS = false -- enable debug
+SHOW_MASKS = true -- enable debug
 
 -- This operation can align the newly created cropping block to the three connectors
 -- Must use FOV mode
@@ -26,9 +26,9 @@ base_clip.h_clip_relation       = h_clip_relations.REWRITE_LEVEL --INCREASE_IF_L
 base_clip.level			        = MENU_DEFAULT_NOCLIP_LEVEL 
 base_clip.isdraw		        = true
 base_clip.change_opacity        = false
-base_clip.element_params        = {"IPAD_DIS_ENABLE"}              -- Initialize the main display control
+base_clip.element_params        = {"MENU_DISP_ENABLE"}              -- Initialize the main display control
 base_clip.controllers           = {{"opacity_using_parameter",0}}
-base_clip.isvisible		        = SHOW_MASKS
+base_clip.isvisible		        = false
 Add(base_clip)
 
 -- dofile(LockOn_Options.script_path.."DBGiPad/Indicators/ipad_mp3_page.lua")
@@ -104,5 +104,5 @@ Debug_text_box_1.level			   = MENU_DEFAULT_NOCLIP_LEVEL
 Debug_text_box_1.parent_element    = "base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(Debug_text_box_1)
 
-dofile(LockOn_Options.script_path.."CustomMenu/Indicators/autho_page.lua")
 dofile(LockOn_Options.script_path.."CustomMenu/Indicators/menu_page.lua")
+dofile(LockOn_Options.script_path.."CustomMenu/Indicators/autho_page.lua")
