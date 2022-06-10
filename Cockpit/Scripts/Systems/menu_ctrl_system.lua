@@ -28,6 +28,9 @@ local cursor_disp = get_param_handle("MENU_CURSOR")
 local cursor_disp_x = get_param_handle("MENU_CURSOR_X")
 local cursor_disp_y = get_param_handle("MENU_CURSOR_Y")
 
+local user_view_h_efm = get_param_handle("USER_HEAD_ANG_H")
+local user_view_v_efm = get_param_handle("USER_HEAD_ANG_V")
+
 viewang_v = 0
 viewang_h = 0
 -- record the view angle when start trigger menu
@@ -291,6 +294,7 @@ end
 function update()
     debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; VERT HEAD: "..string.format("%.2f", viewang_v))
     -- debug_line1:set("")
+    -- debug_line2:set("HORI HEAD: " ..string.format("%.2f", user_view_h_efm:get()).. "; VERT HEAD: "..string.format("%.2f", user_view_v_efm:get()))
     debug_line2:set("")
     menu_disp_ctrl()
     check_input_target()
