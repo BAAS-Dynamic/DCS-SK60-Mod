@@ -177,6 +177,11 @@ function menu_disp_ctrl()
                 temp_param_handle = get_param_handle("MENU_SUB_"..current_submenu_index.."_SEC_"..i)
                 temp_param_handle:set(0)
             end 
+            for i = 1:8:1 do
+                temp_str = "MENU_ON_SEL_"..i
+                temp_handle = get_param_handle(temp_str)
+                temp_handle:set(0)
+            end
             temp_param_handle = get_param_handle("MENU_SEC_RETURN")
             temp_param_handle:set(0)
             temp_str = "MENU_ON_SEL_"
@@ -284,8 +289,8 @@ function activate_selection()
 end
 
 function update()
-    debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; VERT HEAD: "..string.format("%.2f", viewang_v))
-    -- debug_line1:set("")
+    -- debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; VERT HEAD: "..string.format("%.2f", viewang_v))
+    debug_line1:set("")
     debug_line2:set("")
     menu_disp_ctrl()
     check_input_target()
