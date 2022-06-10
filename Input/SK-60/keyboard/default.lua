@@ -374,5 +374,6 @@ return {
     -- special functions
     {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
     {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
+    {down = Keys.Custom_Menu_Enter,			name = _('Menu Enter'),				category = _('Special Function') },
 },
 }

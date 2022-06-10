@@ -301,6 +301,7 @@ Keys =
 
     -- CustomMenu Trigger
     Custom_Menu = 5090,
+    Custom_Menu_Enter = 5091,
 
     -- 5100-5500 Navigation input
     -- GNS 430

@@ -93,10 +93,8 @@ dev:listen_command(Keys.Nav_Right_Knob_Push)
 
 -- iCommandPlaneViewVertical 2008
 -- iCommandPlaneViewHorizontal 2007
-dev:listen_command(2036)
-dev:listen_command(2037)
-dev:listen_command(2142)-- iService
-dev:listen_command(2143)-- 2143
+dev:listen_command(2143)-- iService
+dev:listen_command(2142)-- 2143
 -- iCommandCockpitClickModeOnOff	363
 dev:listen_command(Keys.Custom_Menu)
 dev:listen_command(363)-- 2143
@@ -133,6 +131,7 @@ viewang_h = 0
 local cursor_mode = get_param_handle("DEBUG_LINE3")
 
 function SetCommand(command,value)
+    -- print_message_to_user(command)
     --[[
     if (command == 9100) then
         cursor_h = value
@@ -144,6 +143,7 @@ function SetCommand(command,value)
         viewang_h = value
     elseif (command == 2143) then
         viewang_v = value
+    end
     elseif (command == Keys.Custom_Menu) then
         -- ask the click mode to off
         print_message_to_user("menu triggered")
@@ -156,12 +156,9 @@ function SetCommand(command,value)
         dispatch_action(nil, 1594)
         -- dispatch_action(nil, iCommandMouseViewOn, 1)
     end
-    -- print_message_to_user(command)
+    -- 
     ]]--
 end
-
-local debug_line1 = get_param_handle("DEBUG_LINE1")
-local debug_line2 = get_param_handle("DEBUG_LINE2")
 
 function update()
     --gps_base:set(1)
@@ -259,9 +256,6 @@ function update()
         ns430_base_page:set(1)
     end
     ]]
-
-    debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; HORI CURSOR: "..string.format("%.2f", cursor_h))
-    debug_line2:set("VERT HEAD: " ..string.format("%.2f", viewang_v).. "; VERT CURSOR: "..string.format("%.2f", cursor_v))
 end
 
 need_to_be_closed = false

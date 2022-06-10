@@ -29,11 +29,13 @@ default_size_y = LockOn_Options.screen.height
 -- Test use only
 GPS_DAY_COLOR              = {200,200,200,255}
 GPS_BLUE_COLOR             = {70,165,180,255} -- {130,145,150,255}
+ON_SEL_COLOR               = {30, 30, 30, 150}
 
 
 basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 blue_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_BLUE_COLOR)
 basic_menu_material = MakeMaterial(MENU_IND_TEX_PATH.."MENU_IND.dds", GPS_DAY_COLOR)
+empty_menu_material = MakeMaterial(nil, ON_SEL_COLOR)
 
 
 default__z_offset = 0

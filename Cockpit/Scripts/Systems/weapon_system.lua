@@ -110,6 +110,8 @@ local loading_list = {0,0,0,0,0,0,0,0}
 
 function check_load_status()
     weapon_system_mode = 0
+    has_smoke_pod = 0
+    has_nozzle_smoke = 0
     for i = 1,8,1 do
         local station = WeaponSystem:get_station_info(i-1)
         if (string.sub(station.CLSID,1,36) == "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c") then
@@ -170,7 +172,7 @@ function launch_rockets(launch_mode)
             -- following sequence inner -> outer
             if loading_list[i] == 5 then
                 -- launch lower part first
-                if launch_mode == 1 then
+                if launch_mode == 0 then
                     WeaponSystem:launch_station(i-1)
                 else
                     WeaponSystem:launch_station(i-1)
@@ -200,7 +202,7 @@ function launch_rockets(launch_mode)
                 -- following sequence inner -> outer
                 if loading_list[i] == 4 then
                     -- launch lower part first
-                    if launch_mode == 1 then
+                    if launch_mode == 0 then
                         WeaponSystem:launch_station(i-1)
                     else
                         WeaponSystem:launch_station(i-1)
@@ -217,49 +219,20 @@ function launch_rockets(launch_mode)
             end
         end
     elseif launch_mode == 2 then
+        for i = 1, 6, 1 do
+            WeaponSystem:launch_station(i-1)
+            WeaponSystem:launch_station(i-1)
+        end
     end
 end
 
 function SetCommand(command,value)
     if (get_elec_dc_status() and current_status[master_switch][2] == SWITCH_ON ) then
         check_load_status()
-        if (command == Keys.WingPylonSmokeOn) then
-            -- test only
-            if (loading_list[2] == 1 or loading_list[5] == 1) then
-                if loading_list[2] == 1 then
-                    WeaponSystem:launch_station(1)
-                end
-                if loading_list[5] == 1 then
-                    WeaponSystem:launch_station(4)
-                end
-                smokepodstatus = 1 - smokepodstatus
-                if smokepodstatus == 1 then
-                    dprintf("Smoke pod is ON")
-                else
-                    dprintf("Smoke pod is OFF")
-                end
-            else
-                dprintf("No Smoke Pod on Pylon")
-                smokepodstatus = 0
-            end
-        elseif (command == Keys.NozzleSmokeOn) then
-            if (loading_list[7] == 1 or loading_list[8] == 1) then
-                WeaponSystem:launch_station(6)
-                WeaponSystem:launch_station(7)
-                nozzlesmokestatus = 1 - nozzlesmokestatus
-                if nozzlesmokestatus == 1 then
-                    dprintf("Nozzle smoke is ON")
-                else
-                    dprintf("Nozzle smoke is OFF")
-                end
-            else
-                nozzlesmokestatus = 0
-                dprintf("Nozzle Smoke Not Loaded")
-            end
-        elseif (command == Keys.WeaponFireOn) then
+        if (command == Keys.WeaponFireOn) then
             if weapon_system_mode == 2 then
                 -- rocket
-                launch_rockets(rockets_fire_mode)
+                launch_rockets(rockets_fire_mode-1)
             else
                 fire_trigger_status = 1
             end
@@ -286,6 +259,40 @@ function SetCommand(command,value)
     elseif (command == Keys.GunSightUninstall) then
         gun_sight_is_installed = 0
         gun_sight_animation:set(1 - gun_sight_is_installed)
+    elseif (command == Keys.WingPylonSmokeOn) then
+        check_load_status()
+        if (loading_list[2] == 1 or loading_list[5] == 1) then
+            if loading_list[2] == 1 then
+                WeaponSystem:launch_station(1)
+            end
+            if loading_list[5] == 1 then
+                WeaponSystem:launch_station(4)
+            end
+            smokepodstatus = 1 - smokepodstatus
+            if smokepodstatus == 1 then
+                dprintf("Smoke pod is ON")
+            else
+                dprintf("Smoke pod is OFF")
+            end
+        else
+            dprintf("No Smoke Pod on Pylon")
+            smokepodstatus = 0
+        end
+    elseif (command == Keys.NozzleSmokeOn) then
+        check_load_status()
+        if (has_nozzle_smoke == 1) then
+            WeaponSystem:launch_station(6)
+            WeaponSystem:launch_station(7)
+            nozzlesmokestatus = 1 - nozzlesmokestatus
+            if nozzlesmokestatus == 1 then
+                dprintf("Nozzle smoke is ON")
+            else
+                dprintf("Nozzle smoke is OFF")
+            end
+        else
+            nozzlesmokestatus = 0
+            dprintf("Nozzle Smoke Not Loaded")
+        end
     end
 end
 
