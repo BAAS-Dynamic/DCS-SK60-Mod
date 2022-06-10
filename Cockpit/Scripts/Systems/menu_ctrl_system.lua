@@ -129,6 +129,7 @@ function menu_disp_ctrl()
         if on_close == 0 then
             cursor_disp:set(1)
             menu_disp_enable:set(1)
+            current_menu_hint:set(submenu[current_submenu_index][0][1])
             temp_param_handle = get_param_handle("MENU_CENTER_"..last_submenu_index.."_ICON")
             temp_param_handle:set(0)
             temp_param_handle = get_param_handle("MENU_CENTER_"..current_submenu_index.."_ICON")
@@ -203,9 +204,9 @@ function check_input_target()
         -- locate the position when is enabled
         angle_v = viewang_v - viewangle_offset_v
         angle_h = viewang_h - viewangle_offset_h
+        local temp_current_sel = locate_input_target
         if (math.abs(angle_v) > 2 or math.abs(angle_h) > 2) then
             -- out of dead zone
-            local temp_current_sel = locate_input_target
             local target_deg = math.deg(math.atan2(angle_h, angle_v)) + 90
             -- debug_line2:set("X: "..angle_h..", Y: "..angle_v.."; ANG: "..target_deg)
             if target_deg < -180 then
@@ -249,6 +250,9 @@ function check_input_target()
             -- print_message_to_user("current target is "..tostring(locate_input_target))
         else
             locate_input_target = -1
+            temp_str = "MENU_ON_SEL_"
+            temp_handle = get_param_handle(temp_str..tostring(temp_current_sel))
+            temp_handle:set(0)
         end
     end
 end
