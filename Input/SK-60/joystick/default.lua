@@ -363,6 +363,16 @@ keyCommands = {
     {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
     {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
     {down = Keys.Custom_Menu_Enter,			name = _('Menu Enter'),				category = _('Special Function') },
+
+    -- Music Player
+    {down = Keys.MusicPauseOrPlay,			name = _('Music Pause/Play'),				category = _('Music Player')},
+    {down = Keys.MusicVolUp,			    name = _('Music Volume Up'),				category = _('Music Player')},
+    {down = Keys.MusicVolDown,			    name = _('Music Volume Down'),				category = _('Music Player')},
+    {down = Keys.MusicNext,			        name = _('Music Play Next'),				category = _('Music Player')},
+    {down = Keys.MusicLast,			        name = _('Music Play Last'),				category = _('Music Player')},
+    {down = Keys.MusicFastForward,			name = _('Music Play Fast Forward'),		category = _('Music Player')},
+    {down = Keys.MusicFastBack,			    name = _('Music Play Fast Backward'),		category = _('Music Player')},
+    {down = Keys.MusicLrcViewTrigger,		name = _('Music Display Lyrics'),			category = _('Music Player')},
 },
 
 -- joystick axes 
@@ -397,7 +407,7 @@ axisCommands = {
 
     -- trim
     {action = iCommandPlaneTrimPitch,	name = _('Elevator Trim')},
-    },
+},
 
 }
 

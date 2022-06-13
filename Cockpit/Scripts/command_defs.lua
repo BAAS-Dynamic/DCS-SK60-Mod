@@ -270,6 +270,16 @@ Keys =
     ElecPowerDCGenL = __custom_counter(),
     ElecPowerDCGenR = __custom_counter(),
 
+    -- this part is fpr music player
+    MusicPauseOrPlay = __custom_counter(),
+    MusicNext = __custom_counter(),
+    MusicLast = __custom_counter(),
+    MusicFastForward = __custom_counter(),
+    MusicFastBack = __custom_counter(),
+    MusicLrcViewTrigger = __custom_counter(),
+    MusicVolUp = __custom_counter(),
+    MusicVolDown = __custom_counter(),
+
     --起落架手柄 5001// 5050 EFM - 6000 for EFM
     NoseWheelSteeringOn = 5050,
     NoseWheelSteeringOff = 5051,

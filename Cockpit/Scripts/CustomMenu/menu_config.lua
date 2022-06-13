@@ -41,6 +41,8 @@ submenu[submenu_id.GROUND_CREW][0] = {"Ground Crew", 35, submenu_id.MAIN_MENU}
 submenu[submenu_id.GROUND_CREW][#submenu[submenu_id.GROUND_CREW]+1] = {"Ladder",    11,   -5,  EXIT_AFTER_ACT, nil}
 submenu[submenu_id.GROUND_CREW][#submenu[submenu_id.GROUND_CREW]+1] = {"iPad",    12,   -5,  EXIT_AFTER_ACT, nil}
 submenu[submenu_id.GROUND_CREW][#submenu[submenu_id.GROUND_CREW]+1] = {"SunGlass",    12,   -5,  EXIT_AFTER_ACT, nil}
+submenu[submenu_id.GROUND_CREW][#submenu[submenu_id.GROUND_CREW]+1] = {"Install Gunsight",    37,   Keys.GunSightInstall,  EXIT_AFTER_ACT, nil}
+submenu[submenu_id.GROUND_CREW][#submenu[submenu_id.GROUND_CREW]+1] = {"Unmount Gunsight",    36,   Keys.GunSightUninstall,  EXIT_AFTER_ACT, nil}
 
 submenu[submenu_id.CONFIGURATION] = {}
 submenu[submenu_id.CONFIGURATION][0] = {"Configuration", 10, submenu_id.MAIN_MENU}
