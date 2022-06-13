@@ -26,6 +26,7 @@ materials["GROUND_YELLOW"] = {42,34,29,255}
 
 -- MENU
 materials["MENU_GREY"]    = {30, 30, 30, 150}
+materials["DBG_WHITE"] = {200,200,200,255}
 
 
 local IndicationFontPath = LockOn_Options.script_path.."../Textures/Fonts/"

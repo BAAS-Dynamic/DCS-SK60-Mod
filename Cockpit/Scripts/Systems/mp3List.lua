@@ -23,4 +23,4 @@ local function addMusic(path,name,length,img,img_w,img_h)
 	
 end
 local ImgBasePath = LockOn_Options.script_path.."../Textures/Mp3Img/"
-addMusic("Mp3Player/out","out.ogg",192)
+addMusic("Mp3Player/out","Ce Frumoasa E Iubirea",192)

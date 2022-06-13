@@ -1,6 +1,6 @@
 dofile(LockOn_Options.script_path.."DBGiPad/ipad_def.lua")
 
-SHOW_MASKS = true -- enable debug
+SHOW_MASKS = true-- enable debug
 
 -- This operation can align the newly created cropping block to the three connectors
 -- Must use FOV mode

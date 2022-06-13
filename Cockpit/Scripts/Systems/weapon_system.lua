@@ -318,6 +318,7 @@ function update()
     pod_smoke_light:set(smokepodstatus)
     nozzle_smoke_light:set(nozzlesmokestatus)
     update_switch_status()
+    gun_sight_animation:set(1 - gun_sight_is_installed)
     if (get_elec_dc_status() and current_status[master_switch][2] == SWITCH_ON and gun_sight_is_installed == 1) then
         gun_sight_display:set(1)
     else

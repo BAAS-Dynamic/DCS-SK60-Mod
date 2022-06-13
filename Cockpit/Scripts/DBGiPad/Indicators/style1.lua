@@ -8,7 +8,7 @@ local GREEN_COLOR                = {0,252,0,255}
 --local FONT_                     = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},DEBUG_COLOR,50,"test_font") --创建字体(这个字体似乎只支持英文（虽然是unicode)
 
 local MFD_IND_TEX_PATH        	= LockOn_Options.script_path .. "../Textures/IPAD/"  --定义屏幕贴图路径
-local mp3_symbol_white_material = MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbol.dds", {255,255,255,255})
+local mp3_symbol_white_material = MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbols.dds", {255,255,255,255})
 local green_material			= MakeMaterial(nil,GREEN_COLOR)
 local darkGray_material			= MakeMaterial(nil,{30,30,30,255})
 
@@ -40,8 +40,8 @@ mp3_screen_ctrl.collimated	        = true
 mp3_screen_ctrl.use_mipfilter        = true
 mp3_screen_ctrl.additive_alpha       = true
 mp3_screen_ctrl.h_clip_relation      = h_clip_relations.COMPARE
-mp3_screen_ctrl.level                = IPAD_DEFAULT_LEVEL
-mp3_screen_ctrl.parent_element	    = "base_clip" --父对象为主屏幕裁剪层
+mp3_screen_ctrl.level                = IPAD_DEFAULT_NOCLIP_LEVEL
+-- mp3_screen_ctrl.parent_element	    = "base_clip" --父对象为主屏幕裁剪层
 mp3_screen_ctrl.isvisible            = false
 Add(mp3_screen_ctrl)
 
@@ -56,7 +56,7 @@ mp3_play_controller_clip.init_rot		        = {0, 0, 0}
 mp3_play_controller_clip.material		        = "DBG_GREEN"
 mp3_play_controller_clip.h_clip_relation      = h_clip_relations.COMPARE--COMPARE --REWRITE_LEVEL
 mp3_play_controller_clip.level			    = IPAD_DEFAULT_NOCLIP_LEVEL
---main_screen_1.isdraw		        = true
+mp3_play_controller_clip.isdraw		        	= true
 mp3_play_controller_clip.change_opacity       = false
 --main_screen_1.element_params      = {"D_ENABLE"}
 --main_screen_1.controllers         = {{"opacity_using_parameter",0}}

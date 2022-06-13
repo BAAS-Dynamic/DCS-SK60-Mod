@@ -8,7 +8,7 @@ function fillLrc(pos,lrcText)
 	lrc.data[i].lrcText=lrcText
 	lrc['lrcNo']=i
 end
-lrc['ti']='Ce Frumoasa E Iubirea (《源计划CG》游戏背景音乐)'
+lrc['ti']='Ce Frumoasa E Iubirea'
 lrc['ar']='Giulia'
 lrc['al']='Primul Pas'
 lrc['by']=''

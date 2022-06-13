@@ -1,18 +1,11 @@
--- 在这里加你的mp3东西
-IPAD_DEFAULT_LEVEL = 4                             
-IPAD_DEFAULT_NOCLIP_LEVEL  = IPAD_DEFAULT_LEVEL - 1 
--- 基础材质初始化
---local DEBUG_COLOR               = {0,255,0,200}
---local WHITE_COLOR               = {255,255,255,200}
-local GREEN_COLOR                = {0,252,0,255}
---local FONT_                     = MakeFont({used_DXUnicodeFontData = "font_cockpit_usa"},DEBUG_COLOR,50,"test_font") --创建字体(这个字体似乎只支持英文（虽然是unicode)
+dofile(LockOn_Options.script_path.."DBGiPad/ipad_def.lua")
 
 local MFD_IND_TEX_PATH        	= LockOn_Options.script_path .. "../Textures/IPAD/"  --定义屏幕贴图路径
-local mp3_symbol_material     	= MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbol.dds", {152,195,100,255})
-local mp3_symbol_white_material = MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbol.dds", {255,255,255,255})
-local green_material			= MakeMaterial(nil,GREEN_COLOR)
+local mp3_symbol_material     	= MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbols.dds", {152,195,100,255})
+local mp3_symbol_white_material = MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbols.dds", {255,255,255,255})
+local green_material			= MakeMaterial(MFD_IND_TEX_PATH.."mp3_symbols.dds", {255,255,255,255})
 local darkGray_material			= MakeMaterial(nil,{30,30,30,255})
-
+SHOW_MASKS = true
 --
 local mp3_screen_x_offset = 0 --设置这个来确定中心偏移
 local mp3_screen_z_offset = 1  --用来设置屏幕效果，显示层与上层流出空间
@@ -41,77 +34,77 @@ mp3_screen_ctrl.collimated	        = true
 mp3_screen_ctrl.use_mipfilter        = true
 mp3_screen_ctrl.additive_alpha       = true
 mp3_screen_ctrl.h_clip_relation      = h_clip_relations.COMPARE
-mp3_screen_ctrl.level                = IPAD_DEFAULT_LEVEL
-mp3_screen_ctrl.parent_element	    = "base_clip" --父对象为主屏幕裁剪层
+mp3_screen_ctrl.level                = IPAD_DEFAULT_NOCLIP_LEVEL
+-- mp3_screen_ctrl.parent_element	    = "base_clip" --父对象为主屏幕裁剪层
 mp3_screen_ctrl.isvisible            = false
 Add(mp3_screen_ctrl)
 
 local scale=0.1
 -- MP3播放控制按钮div
 mp3_play_controller_clip 			            = CreateElement "ceMeshPoly" --这是创建一个平面
-mp3_play_controller_clip.name 			    = "mp3_play_controller_clip"
-mp3_play_controller_clip.vertices 		    = {{-height*scale,height*scale},{height*scale,height*scale},{height*scale,-height*scale},{-height*scale,-height*scale}}
+mp3_play_controller_clip.name 			    	= "mp3_play_controller_clip"
+mp3_play_controller_clip.vertices 		    	= {{-height*scale,height*scale},{height*scale,height*scale},{height*scale,-height*scale},{-height*scale,-height*scale}}
 mp3_play_controller_clip.indices 		        = {0,1,2,2,3,0}
 mp3_play_controller_clip.init_pos		        = {0, -height*0.85}
 mp3_play_controller_clip.init_rot		        = {0, 0, 0}
 mp3_play_controller_clip.material		        = "DBG_GREEN"
-mp3_play_controller_clip.h_clip_relation      = h_clip_relations.COMPARE--COMPARE --REWRITE_LEVEL
-mp3_play_controller_clip.level			    = IPAD_DEFAULT_NOCLIP_LEVEL
+mp3_play_controller_clip.h_clip_relation        = h_clip_relations.INCREASE_IF_LEVEL --COMPARE --REWRITE_LEVEL
+mp3_play_controller_clip.level			    	= IPAD_DEFAULT_LEVEL - 1
 --main_screen_1.isdraw		        = true
-mp3_play_controller_clip.change_opacity       = false
+mp3_play_controller_clip.change_opacity       	= false
 --main_screen_1.element_params      = {"D_ENABLE"}
 --main_screen_1.controllers         = {{"opacity_using_parameter",0}}
-mp3_play_controller_clip.isvisible		    = false
-mp3_play_controller_clip.parent_element	= "mp3_screen_ctrl" --使用它作为父对象，便于位置控制这里不能用父对象
+mp3_play_controller_clip.isvisible		    	= SHOW_MASKS
+-- mp3_play_controller_clip.parent_element			= "mp3_screen_ctrl" --使用它作为父对象，便于位置控制这里不能用父对象
 Add(mp3_play_controller_clip)
 
 -- 播放符号
-mp3_play_border 			           = CreateElement "ceMeshPoly" --这是创建一个平面
-mp3_play_border.name 			    = create_guid_string()
-mp3_play_border.vertices 		    = {
-										{-height*scale*0.5,height*scale*0.6},
-										{-height*scale*0.2,height*scale*0.6},
-										{-height*scale*0.2,-height*scale*0.6},
-										{-height*scale*0.5,-height*scale*0.6},
+mp3_play_border 			           	= CreateElement "ceTexPoly" --这是创建一个平面
+mp3_play_border.name 			   		= create_guid_string()
+mp3_play_border.vertices 		    	= {
+											{-height*scale*0.5,height*scale*0.6},
+											{-height*scale*0.2,height*scale*0.6},
+											{-height*scale*0.2,-height*scale*0.6},
+											{-height*scale*0.5,-height*scale*0.6},
 										
-										{height*scale*0.2,height*scale*0.6},
-										{height*scale*0.5,height*scale*0.6},
-										{height*scale*0.5,-height*scale*0.6},
-										{height*scale*0.2,-height*scale*0.6}
-									}
+											{height*scale*0.2,height*scale*0.6},
+											{height*scale*0.5,height*scale*0.6},
+											{height*scale*0.5,-height*scale*0.6},
+											{height*scale*0.2,-height*scale*0.6}
+										}
 mp3_play_border.indices 		        = {0,1,2,2,3,0,4,5,6,6,7,4}
 mp3_play_border.init_pos		        = {0, 0}
 mp3_play_border.init_rot		        = {0, 0, 0}
-mp3_play_border.material		        = green_material
-mp3_play_border.element_params            = {"MP3_PLAY_ENABLE"} --, "D_GUNSIGHT_VISIBLE"
-mp3_play_border.controllers               = {{"opacity_using_parameter",0},}
-mp3_play_border.h_clip_relation      = h_clip_relations.COMPARE--COMPARE --REWRITE_LEVEL
-mp3_play_border.level			    = IPAD_DEFAULT_NOCLIP_LEVEL
-mp3_play_border.change_opacity       = false
-mp3_play_border.isvisible		    = true
-mp3_play_border.parent_element	= "mp3_play_controller_clip" --使用它作为父对象，便于位置控制这里不能用父对象
+mp3_play_border.material		        = "DBG_WHITE"
+mp3_play_border.element_params          = {"MP3_PLAY_ENABLE"} --, "D_GUNSIGHT_VISIBLE"
+mp3_play_border.controllers             = {{"opacity_using_parameter",0},}
+mp3_play_border.h_clip_relation      	= h_clip_relations.COMPARE--COMPARE --REWRITE_LEVEL
+mp3_play_border.level			    	= IPAD_DEFAULT_LEVEL
+mp3_play_border.change_opacity       	= false
+mp3_play_border.isvisible		    	= true
+mp3_play_border.parent_element			= "mp3_play_controller_clip" --使用它作为父对象，便于位置控制这里不能用父对象
 Add(mp3_play_border)
 
 -- 暂停符号
 
 mp3_pause_border 			           = CreateElement "ceMeshPoly" --这是创建一个平面
-mp3_pause_border.name 			    = create_guid_string()
-mp3_pause_border.vertices 		    = {
-										{-height*scale*0.4,height*scale*0.8},
-										{-height*scale*0.4,-height*scale*0.8},
-										{height*scale*0.8,-height*scale*0}
-									}
+mp3_pause_border.name 			    	= create_guid_string()
+mp3_pause_border.vertices 		    	= {
+											{-height*scale*0.4,height*scale*0.8},
+											{-height*scale*0.4,-height*scale*0.8},
+											{height*scale*0.8,-height*scale*0}
+										}
 mp3_pause_border.indices 		        = {0,1,2}
 mp3_pause_border.init_pos		        = {0, 0}
 mp3_pause_border.init_rot		        = {0, 0, 0}
-mp3_pause_border.material		        = green_material
-mp3_pause_border.element_params            = {"MP3_PAUSE_ENABLE"} --, "D_GUNSIGHT_VISIBLE"
-mp3_pause_border.controllers               = {{"opacity_using_parameter",0},}
-mp3_pause_border.h_clip_relation      = h_clip_relations.COMPARE--COMPARE --REWRITE_LEVEL
-mp3_pause_border.level			    = IPAD_DEFAULT_NOCLIP_LEVEL
-mp3_pause_border.change_opacity       = false
-mp3_pause_border.isvisible		    = true
-mp3_pause_border.parent_element	= "mp3_play_controller_clip" --使用它作为父对象，便于位置控制这里不能用父对象
+mp3_pause_border.material		        = "DBG_WHITE"
+mp3_pause_border.element_params         = {"MP3_PAUSE_ENABLE"} --, "D_GUNSIGHT_VISIBLE"
+mp3_pause_border.controllers            = {{"opacity_using_parameter",0},}
+mp3_pause_border.h_clip_relation      	= h_clip_relations.COMPARE--COMPARE --REWRITE_LEVEL
+mp3_pause_border.level			    	= IPAD_DEFAULT_LEVEL
+mp3_pause_border.change_opacity       	= false
+mp3_pause_border.isvisible		    	= true
+mp3_pause_border.parent_element			= "mp3_play_controller_clip" --使用它作为父对象，便于位置控制这里不能用父对象
 Add(mp3_pause_border)
 
 -- 下一首符号

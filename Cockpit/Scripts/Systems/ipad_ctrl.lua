@@ -7,8 +7,8 @@ dofile(LockOn_Options.script_path.."Systems/mp3List.lua")
 local modPath=LockOn_Options.script_path.."../../"
 
 --设置循环次数
-local update_rate = 0.01 -- 20次每秒
-make_default_activity(update_rate)
+local update_time_step = 0.01 -- 20次每秒
+make_default_activity(update_time_step)
 
 local ipad = GetSelf()
 
@@ -42,6 +42,7 @@ ipad_handle = get_param_handle("IPAD_SHOWN")
 ipad_display = get_param_handle("IPAD_DIS_ENABLE")
 
 --local iCommandPlaneGear
+--[[
 local pauseOrPlay = MP3Keys.mp3Player_pauseOrPlay  --暂停/播放
 local _next = MP3Keys.mp3Player_next --下一首
 local last = MP3Keys.mp3Player_last --上一首
@@ -50,6 +51,7 @@ local fastBack = MP3Keys.mp3Player_fastBack --快退
 local lrc_view_toggle=MP3Keys.show_lrc
 local volUp = MP3Keys.Vol_Up
 local volDown = MP3Keys.Vol_Down
+]]--
 
 local playbackPro = 0 --歌曲进度,秒为单位
 local view_mode = 0 --0光盘，1歌词
@@ -271,7 +273,6 @@ local function showMusicList()
         name3=mp3List[currentIndex+3].name;
     end
     mp3_name_last_text:set(string.format( "%s\r\n%s\r\n%s",name_1,name_2,name_3))
-    mp3_name_text:set(mp3List[currentIndex].name)
     mp3_name_next_text:set(string.format( "%s\r\n%s\r\n%s",name1,name2,name3))
 end
 
@@ -337,7 +338,7 @@ local function showMusicLrc()
                 last_lrc=last_lrc..'\r\n'.._lrc.data[lrcLineIndex-1].lrcText
             end
             cur_lrc=_lrc.data[lrcLineIndex].lrcText
-            ---[[
+            
             if lrcLineIndex+1<=_lrc.lrcNo then
                 next_lrc=next_lrc..'\r\n'.._lrc.data[lrcLineIndex+1].lrcText
             end
@@ -369,6 +370,7 @@ function update_mp3()
     local second=playbackPro % 60
     mp3_playback_pro_text:set(string.format( "%02d:%02d",min,second))
     mp3_music_length_text:set(string.format( "%02d:%02d",mp3List[currentIndex].length/60,mp3List[currentIndex].length%60))
+    mp3_name_text:set(mp3List[currentIndex].name)
     if playbackPro > mp3List[currentIndex].length then
         if loopMode==1 then
             -- 歌单循环
@@ -384,7 +386,7 @@ function update_mp3()
             playStatus=0
         end
     end
-    showMusicList()
+    -- showMusicList()
     mp3_music_list_enable:set(0)-- 隐藏歌单
     showMusicLrc()
     mp3_playback_pro_bar:set((playbackPro/mp3List[currentIndex].length))
@@ -488,9 +490,8 @@ function update_switch_status()
 end
 
 function update()
-    if (ipad_shown == 1) then
-        ipad_handle:set(1)
-    end
+    ipad_handle:set(-ipad_shown)
+    mp3_screen_enable:set(ipad_shown)
     update_mp3()
 end
 

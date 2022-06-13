@@ -69,7 +69,7 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."GunSi
 -- warning panel
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EWarningPanel/warning_init.lua",nil,{{"WarningPanel_center","WarningPanel_down","WarningPanel_right"}}}
 -- debug ipad
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."DBGiPad/ipad_init.lua",nil,{{"IPAD_center","IPAD_down","IPAD_right"}}}
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."DBGiPad/ipad_init.lua",nil,{{"IPAD_center","IPAD_down","IPAD_right"},{sx_l =  -0.001,}}}
 -- custom menu indicator
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."CustomMenu/menu_init.lua",nil,{{}, {sh = 0.5, sw = 0.5}, 4}}
 
