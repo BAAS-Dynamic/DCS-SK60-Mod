@@ -110,7 +110,7 @@ function post_initialize()
         ipad_handle:set(1)
         ipad_display:set(1)
     end
-    sndhost = create_sound_host("COCKPIT", "2D", 0, 0, 0)
+    sndhost = create_sound_host("COCKPIT", "HEADPHONES", 0, 0, 0)
     function initSnd(_i, _v)
 		table.insert( mp3DiskImgEnable, _i, get_param_handle("MP3_DISK_IMG_ENABLE_".._i))
         table.insert( sndSourceList, _i, sndhost:create_sound(_v.path))
@@ -472,20 +472,45 @@ function update_mp3()
 	mp3_mag_head_rot:set(mp3_mag_head_rot_val)
 end
 
--- handle for Apple Music Style
+-- code for Apple Music Style
 local mp3_half_density_elem = get_param_handle("MP3_HALF_OPC_ENABLE")
 local mp3_low_density_elem = get_param_handle("MP3_LOW_OPC_ENABLE")
 local mp3_current_title = get_param_handle("MP3_CURR_MUSIC_NAME")
 local mp3_current_artist = get_param_handle("MP3_CURR_ARTIST_NAME")
 local mp3_play_pause_status = get_param_handle("MP3_PLAY_PAUSE_SWITCH")
+local mp3_cover_scale_status = get_param_handle("MP3_COVER_SWITCH")
+
+local current_cover_status = 0
+local cover_animation_frame = 59
+local cover_animation_step_length = cover_animation_frame / (0.2 * 1/update_time_step)
+
+function avionic_limit(value, min, max)
+    if (value > max) then
+        value = max
+    elseif (value < min) then
+        value = min
+    end
+    return value
+end
 
 function updateAMstyle()
     mp3_current_title:set(mp3List[currentIndex].name)
     mp3_current_artist:set(mp3List[currentIndex].artist)
-    mp3_play_pause_status:set(mp3_play_pause_status)
+    mp3_play_pause_status:set(playStatus)
     mp3_half_density_elem:set(mp3_screen_enable:get()*0.5)
     mp3_low_density_elem:set(mp3_screen_enable:get()*0.25)
+    if (math.abs(current_cover_status - playStatus*(cover_animation_frame-1)) < cover_animation_step_length) then
+        current_cover_status = playStatus*(cover_animation_frame-1)
+    elseif (current_cover_status < playStatus*(cover_animation_frame-1)) then
+        current_cover_status = current_cover_status + cover_animation_step_length
+        animation = math.floor(current_cover_status)
+    elseif (current_cover_status > playStatus*(cover_animation_frame-1)) then
+        current_cover_status = current_cover_status - cover_animation_step_length
+        animation = math.ceil(current_cover_status)
+    end
+    mp3_cover_scale_status:set(avionic_limit(animation, 0, 59))
 end
+-- end of code
 
 function update_switch_status()
     local switch_moving_step = 0.25

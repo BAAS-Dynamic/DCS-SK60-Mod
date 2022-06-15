@@ -160,6 +160,9 @@ function SetCommand(command,value)
     ]]--
 end
 
+local testParam = get_param_handle("TEST_TEXTURE_STATE")
+local counter_test = 0
+
 function update()
     --gps_base:set(1)
     hud_adi_rot:set(sensor_data.getRoll())
@@ -256,6 +259,12 @@ function update()
         ns430_base_page:set(1)
     end
     ]]
+    if counter_test < (3/update_time_step) then
+        counter_test = counter_test + 1
+        testParam:set(math.floor(counter_test/5))
+    else
+        counter_test = 0
+    end
 end
 
 need_to_be_closed = false

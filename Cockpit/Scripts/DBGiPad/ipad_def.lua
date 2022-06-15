@@ -21,8 +21,8 @@ EADI_DAY_COLOR              = {150,150,150,255}
 
 -- basic_eadi_material = MakeMaterial(EADI_IND_TEX_PATH.."EADI_BASE_IND.dds", EADI_DAY_COLOR)
 
-default_size_x = 2388
-default_size_y = 2388
+default_size_x = 1194
+default_size_y = 1194
 
 default__z_offset = 0
 default_rot_offset = 0

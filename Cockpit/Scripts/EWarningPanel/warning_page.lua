@@ -26,5 +26,3 @@ base_clip.element_params        = {"WARNING_DIS_ENABLE"}              -- Initial
 base_clip.controllers           = {{"opacity_using_parameter",0}}
 base_clip.isvisible		        = SHOW_MASKS
 Add(base_clip)
-
-dofile(LockOn_Options.script_path.."DBGiPad/Indicators/ipad_mp3_page.lua")
