@@ -56,7 +56,7 @@ local volDown = MP3Keys.Vol_Down
 local playbackPro = 0 --歌曲进度,秒为单位
 local view_mode = 0 --0光盘，1歌词
 local lrcLineIndex=1--歌词进度，歌词当前行数
-local loopMode = 2 --循环模式，0单曲，1，歌单循环，2单曲放完就结束
+local loopMode = 1 --循环模式，0单曲，1，歌单循环，2单曲放完就结束
 local playStatus = 0 -- 播放状态 0暂停 1播放
 local currentIndex = 1 --当前播放曲目索引
 local fastStatus = 0 --快退/快进状态 0正常 1快进 -1快退
@@ -479,10 +479,23 @@ local mp3_current_title = get_param_handle("MP3_CURR_MUSIC_NAME")
 local mp3_current_artist = get_param_handle("MP3_CURR_ARTIST_NAME")
 local mp3_play_pause_status = get_param_handle("MP3_PLAY_PAUSE_SWITCH")
 local mp3_cover_scale_status = get_param_handle("MP3_COVER_SWITCH")
+local mp3_play_prog_status = get_param_handle("MP3_PLAY_PROG_STATUS")
+local mp3_volume_status = get_param_handle("MP3_VOL_STATUS")
+local mp3_loop_status = get_param_handle("MP3_LOOP_SWITCH")
+local mp3_shuffle_status = get_param_handle("MP3_SHUFFLE_SWITCH")
+local mp3_curren_play_time = get_param_handle("MP3_CURR_PLAY_TIME")
+local mp3_rest_play_time = get_param_handle("MP3_REST_PLAY_TIME")
+local mp3_main_ui_mov = get_param_handle("MP3_MIN_SEC_MOV_X")
+
+local mp3_airplay_status = get_param_handle("MP3_AIRPLAY_SWITCH")
+local mp3_lyric_status = get_param_handle("MP3_LYRIC_SWITCH")
+local mp3_playlist_status = get_param_handle("MP3_PLAYLIST_SWITCH")
 
 local current_cover_status = 0
 local cover_animation_frame = 59
 local cover_animation_step_length = cover_animation_frame / (0.2 * 1/update_time_step)
+local current_min_ui_pos = 0
+local ui_move_animation_step_length = (0.2 * 1/update_time_step)
 
 function avionic_limit(value, min, max)
     if (value > max) then
@@ -493,22 +506,59 @@ function avionic_limit(value, min, max)
     return value
 end
 
+function animation_move(current_animation, target_value, limit_min, limit_max, step_len)
+    local return_value
+    if (math.abs(current_animation - target_value) < step_len) then
+        return_value = target_value
+    elseif (current_animation < target_value) then
+        return_value = current_animation + step_len
+    elseif (current_animation > target_value) then
+        return_value = current_animation - step_len
+    end
+    return_value = avionic_limit(return_value, limit_min, limit_max)
+    return return_value
+end
+--current_cover_status
+
 function updateAMstyle()
     mp3_current_title:set(mp3List[currentIndex].name)
     mp3_current_artist:set(mp3List[currentIndex].artist)
     mp3_play_pause_status:set(playStatus)
     mp3_half_density_elem:set(mp3_screen_enable:get()*0.5)
     mp3_low_density_elem:set(mp3_screen_enable:get()*0.25)
-    if (math.abs(current_cover_status - playStatus*(cover_animation_frame-1)) < cover_animation_step_length) then
-        current_cover_status = playStatus*(cover_animation_frame-1)
-    elseif (current_cover_status < playStatus*(cover_animation_frame-1)) then
-        current_cover_status = current_cover_status + cover_animation_step_length
-        animation = math.floor(current_cover_status)
-    elseif (current_cover_status > playStatus*(cover_animation_frame-1)) then
-        current_cover_status = current_cover_status - cover_animation_step_length
-        animation = math.ceil(current_cover_status)
+    -- set the play status of cover animation
+    local target_animation_pos = playStatus*(cover_animation_frame-1)
+    current_cover_status = animation_move(current_cover_status, target_animation_pos, 0, cover_animation_frame, cover_animation_step_length)
+    if (current_cover_status < target_animation_pos) then
+        mp3_cover_scale_status:set(math.ceil(current_cover_status))
+    elseif (current_cover_status < target_animation_pos) then
+        mp3_cover_scale_status:set(math.floor(current_cover_status))
+    else
+        mp3_cover_scale_status:set(target_animation_pos)
     end
-    mp3_cover_scale_status:set(avionic_limit(animation, 0, 59))
+
+    mp3_play_prog_status:set((playbackPro/mp3List[currentIndex].length))
+    mp3_loop_status:set(2-loopMode)
+    mp3_volume_status:set(Volume)
+    local rest_time = mp3List[currentIndex].length - playbackPro
+    mp3_curren_play_time:set(string.format( "%02d:%02d",playbackPro/60,playbackPro%60))
+    mp3_rest_play_time:set(string.format( "%02d:%02d",rest_time/60,rest_time%60))
+    -- set the position animation of the minimal play UI
+    if view_mode == 0 then
+        current_min_ui_pos = animation_move(current_min_ui_pos, 0, 0, 1, ui_move_animation_step_length)
+        mp3_playlist_status:set(0)
+        mp3_lyric_status:set(0)
+    else
+        current_min_ui_pos = animation_move(current_min_ui_pos, 1, 0, 1, ui_move_animation_step_length)
+        if view_mode == 1 then
+            mp3_lyric_status:set(1)
+            mp3_playlist_status:set(0)
+        else
+            mp3_lyric_status:set(0)
+            mp3_playlist_status:set(1)
+        end
+    end
+    mp3_main_ui_mov:set(-current_min_ui_pos)
 end
 -- end of code
 
