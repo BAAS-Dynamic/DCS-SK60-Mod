@@ -472,6 +472,21 @@ function update_mp3()
 	mp3_mag_head_rot:set(mp3_mag_head_rot_val)
 end
 
+-- handle for Apple Music Style
+local mp3_half_density_elem = get_param_handle("MP3_HALF_OPC_ENABLE")
+local mp3_low_density_elem = get_param_handle("MP3_LOW_OPC_ENABLE")
+local mp3_current_title = get_param_handle("MP3_CURR_MUSIC_NAME")
+local mp3_current_artist = get_param_handle("MP3_CURR_ARTIST_NAME")
+local mp3_play_pause_status = get_param_handle("MP3_PLAY_PAUSE_SWITCH")
+
+function updateAMstyle()
+    mp3_current_title:set(mp3List[currentIndex].name)
+    mp3_current_artist:set(mp3List[currentIndex].artist)
+    mp3_play_pause_status:set(mp3_play_pause_status)
+    mp3_half_density_elem:set(mp3_screen_enable:get()*0.5)
+    mp3_low_density_elem:set(mp3_screen_enable:get()*0.25)
+end
+
 function update_switch_status()
     local switch_moving_step = 0.25
     for k,v in pairs(target_status) do
@@ -493,6 +508,7 @@ function update()
     ipad_handle:set(-ipad_shown)
     mp3_screen_enable:set(ipad_shown)
     update_mp3()
+    updateAMstyle()
 end
 
 need_to_be_closed = false

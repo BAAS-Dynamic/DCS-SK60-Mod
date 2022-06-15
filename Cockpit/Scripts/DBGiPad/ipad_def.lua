@@ -2,6 +2,8 @@ dofile(LockOn_Options.common_script_path.."elements_defs.lua")
 
 -- EADI_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/EADI/" 
 
+IPAD_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/IPAD/" 
+
 -- set fov here to make sure always same
 SetScale(FOV)
 
@@ -19,8 +21,8 @@ EADI_DAY_COLOR              = {150,150,150,255}
 
 -- basic_eadi_material = MakeMaterial(EADI_IND_TEX_PATH.."EADI_BASE_IND.dds", EADI_DAY_COLOR)
 
-default_size_x = 2000
-default_size_y = 2000
+default_size_x = 2388
+default_size_y = 2388
 
 default__z_offset = 0
 default_rot_offset = 0
@@ -57,6 +59,24 @@ function mirror_tex_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)
 			{x_dis / size_X , y_dis / size_Y},
 			{x_dis / size_X , (y_dis + height) / size_Y},
 			{(x_dis + width) / size_X , (y_dis + height) / size_Y},}
+end
+
+function tex_center_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)
+    return {{(x_dis - width/2) / size_X , (y_dis - height/2) / size_Y},
+            {(x_dis + width/2) / size_X , (y_dis - height/2) / size_Y},
+            {(x_dis + width/2) / size_X , (y_dis + height/2) / size_Y},
+            {(x_dis - width/2) / size_X , (y_dis + height/2) / size_Y},}
+end
+
+function tex_scaler_gen(x_cen,y_cen,width,height,size_X,size_Y,scale_end, frame)
+    tex_state = {}
+    scale_step = (scale_end - 1)/frame
+    current_scale = 1
+    for i = 1,frame,1 do
+        tex_state[#tex_state+1] = tex_center_coord_gen(x_cen,y_cen,width*current_scale,height*current_scale,size_X,size_Y)
+        current_scale = current_scale + scale_step
+    end
+    return tex_state
 end
 
 function create_circle_index(total_dots)
