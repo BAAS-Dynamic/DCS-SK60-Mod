@@ -296,8 +296,8 @@ function activate_selection()
 end
 
 function update()
-    debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; VERT HEAD: "..string.format("%.2f", viewang_v))
-    -- debug_line1:set("")
+    -- debug_line1:set("HORI HEAD: " ..string.format("%.2f", viewang_h).. "; VERT HEAD: "..string.format("%.2f", viewang_v))
+    debug_line1:set("")
     -- debug_line2:set("HORI HEAD: " ..string.format("%.2f", user_view_h_efm:get()).. "; VERT HEAD: "..string.format("%.2f", user_view_v_efm:get()))
     debug_line2:set("")
     menu_disp_ctrl()

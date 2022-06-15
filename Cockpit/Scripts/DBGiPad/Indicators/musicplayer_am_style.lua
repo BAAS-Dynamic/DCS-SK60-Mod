@@ -18,10 +18,10 @@ function symb_coord_gen(pos_x,pos_line,width,height)
     return tex_coord_gen((pos_x-1)*128,(pos_line-1)*128, width*128, height*128, 1024, 1024)
 end
 
-function symb_coord_scale_gen(pos_x,pos_line,width,height,scale_start,scale_end,frame)
+function symb_coord_scale_gen(pos_x,pos_line,width,height,scale_end,scale_start,frame)
     tex_state = {}
-    scale_step = (scale_end - scale_start)/frame
-    current_scale = scale_start
+    scale_step = (scale_start - scale_end)/frame
+    current_scale = scale_end
     for i = 1,frame,1 do
         tex_state[#tex_state+1] = tex_center_coord_gen((pos_x-1)*128+width*64,(pos_line-1)*128+height*64,width*128*current_scale,height*128*current_scale,1024,1024)
         current_scale = current_scale - scale_step
@@ -62,15 +62,15 @@ minimal_mp3_pos_ctrl.use_mipfilter          = true
 minimal_mp3_pos_ctrl.additive_alpha         = true
 minimal_mp3_pos_ctrl.h_clip_relation        = h_clip_relations.COMPARE
 minimal_mp3_pos_ctrl.level                  = IPAD_DEFAULT_NOCLIP_LEVEL
--- minimal_mp3_pos_ctrl.parent_element	        = "base_clip"       --父对象为主屏幕裁剪层
+minimal_mp3_pos_ctrl.parent_element	        = "base_clip"       --父对象为主屏幕裁剪层
 minimal_mp3_pos_ctrl.isvisible              = false
 Add(minimal_mp3_pos_ctrl)
 
 -- Cover photo size: 328*2(small) 425*2(large) ^2; 268 vertical up
 local mp3_play_cover_pic 				    = CreateElement "ceTexPoly"
-mp3_play_cover_pic.vertices                 = mesh_vert_gen(850, 850)
+mp3_play_cover_pic.vertices                 = mesh_vert_gen(950, 950)
 mp3_play_cover_pic.indices                  = {0,1,2,2,3,0}
-mp3_play_cover_pic.state_tex_coords         = symb_coord_scale_gen(1,6,2,2,1.15,1.3,60)
+mp3_play_cover_pic.state_tex_coords         = symb_coord_scale_gen(1,6,2,2,0.95,1.2,60)
 mp3_play_cover_pic.material                 = basic_am_symbol_material
 mp3_play_cover_pic.name 			        = create_guid_string()
 mp3_play_cover_pic.init_pos                 = {0, 0.3217*aspect}
@@ -153,7 +153,7 @@ mp3_play_prog_icon.init_pos                 = {-0.36851, -0.4322*aspect}
 mp3_play_prog_icon.init_rot		            = {0, 0, 0}
 mp3_play_prog_icon.collimated	            = true
 mp3_play_prog_icon.element_params           = {"MP3_HALF_OPC_ENABLE", "MP3_PLAY_PROG_STATUS"} --, "D_GUNSIGHT_VISIBLE"
-mp3_play_prog_icon.controllers              = {{"opacity_using_parameter",0}, {"move_left_right_using_parameter",0,0.737}}
+mp3_play_prog_icon.controllers              = {{"opacity_using_parameter",0}, {"move_left_right_using_parameter",1,0.737}}
 mp3_play_prog_icon.use_mipfilter            = true
 mp3_play_prog_icon.additive_alpha           = true
 mp3_play_prog_icon.h_clip_relation          = h_clip_relations.COMPARE
@@ -354,7 +354,7 @@ Add(mp3_volume_max_icon)
 
 -- the playing progress dot (start at 0 point)
 local mp3_play_prog_icon 				    = CreateElement "ceTexPoly"
-mp3_play_prog_icon.vertices                 = mesh_vert_gen(120, 120)
+mp3_play_prog_icon.vertices                 = mesh_vert_gen(140, 140)
 mp3_play_prog_icon.indices                  = {0,1,2,2,3,0}
 mp3_play_prog_icon.tex_coords               = symb_coord_gen(1,5,1,1)
 mp3_play_prog_icon.material                 = basic_am_symbol_material
@@ -362,8 +362,8 @@ mp3_play_prog_icon.name 			        = create_guid_string()
 mp3_play_prog_icon.init_pos                 = {-0.31407, -0.7731*aspect}
 mp3_play_prog_icon.init_rot		            = {0, 0, 0}
 mp3_play_prog_icon.collimated	            = true
-mp3_play_prog_icon.element_params           = {"MP3_SRC_ENABLE", "MP3_VOL_STATUS"} --, "D_GUNSIGHT_VISIBLE"
-mp3_play_prog_icon.controllers              = {{"opacity_using_parameter",0}, {"move_left_right_using_parameter",0,0.62814}}
+mp3_play_prog_icon.element_params           = {"MP3_SCR_ENABLE", "MP3_VOL_STATUS"} --, "D_GUNSIGHT_VISIBLE"
+mp3_play_prog_icon.controllers              = {{"opacity_using_parameter",0}, {"move_left_right_using_parameter",1,0.62814}}
 mp3_play_prog_icon.use_mipfilter            = true
 mp3_play_prog_icon.additive_alpha           = true
 mp3_play_prog_icon.h_clip_relation          = h_clip_relations.COMPARE

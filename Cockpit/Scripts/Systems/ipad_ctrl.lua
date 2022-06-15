@@ -377,8 +377,10 @@ function update_mp3()
             if currentIndex==length then
                 -- 最后一首，播放第一首
                 currentIndex=1
+                playbackPro=0--进度清零
             else
                 currentIndex=currentIndex+1
+                playbackPro=0--进度清零
             end
             sndSourceList[currentIndex]:play_once()
         elseif loopMode==2 then
@@ -495,7 +497,7 @@ local current_cover_status = 0
 local cover_animation_frame = 59
 local cover_animation_step_length = cover_animation_frame / (0.2 * 1/update_time_step)
 local current_min_ui_pos = 0
-local ui_move_animation_step_length = (0.2 * 1/update_time_step)
+local ui_move_animation_step_length = 1 / (0.2 * 1/update_time_step)
 
 function avionic_limit(value, min, max)
     if (value > max) then
@@ -537,9 +539,9 @@ function updateAMstyle()
         mp3_cover_scale_status:set(target_animation_pos)
     end
 
-    mp3_play_prog_status:set((playbackPro/mp3List[currentIndex].length))
+    mp3_play_prog_status:set((playbackPro/mp3List[currentIndex].length)*0.078)
     mp3_loop_status:set(2-loopMode)
-    mp3_volume_status:set(Volume)
+    mp3_volume_status:set(Volume*0.078)
     local rest_time = mp3List[currentIndex].length - playbackPro
     mp3_curren_play_time:set(string.format( "%02d:%02d",playbackPro/60,playbackPro%60))
     mp3_rest_play_time:set(string.format( "%02d:%02d",rest_time/60,rest_time%60))
@@ -558,7 +560,7 @@ function updateAMstyle()
             mp3_playlist_status:set(1)
         end
     end
-    mp3_main_ui_mov:set(-current_min_ui_pos)
+    mp3_main_ui_mov:set(-current_min_ui_pos*0.078)
 end
 -- end of code
 
