@@ -2,7 +2,9 @@
 [![release](https://img.shields.io/github/v/release/corsaircat/DCS-sk60-mod?include_prereleases)](RELEASE)
 ![platform](https://img.shields.io/badge/platform-windows-lightgrey)
 ![EFM](https://img.shields.io/badge/Flightmodel-EFM-green)
+<br>
 A Saab SK60 mod for Digital Combat Simulator World.
+<br>
 ![team](Theme/ME/MainMenulogo.png)
 
 
