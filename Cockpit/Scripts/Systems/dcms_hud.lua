@@ -101,17 +101,6 @@ dev:listen_command(363)-- 2143
 
 local pos_x_loc, pos_y_loc, alt, coord
 
-function updateGPS()
-    pos_x_loc, alt, pos_y_loc= sensor_data.getSelfCoordinates()
-    coord = lo_to_geo_coords(pos_x_loc, pos_y_loc)
-    -- temp_dbg:set(coord.lat)
-    gps_receiver_lat:set(coord.lat)
-    gps_receiver_lon:set(coord.lon)
-    gps_receiver_alt:set(alt)
-end
-
-local waypoints = {}
-
 function post_initialize()
     hud_FD_x:set(0)
     hud_FD_y:set(0)
@@ -120,9 +109,7 @@ function post_initialize()
     hud_maxg_dis:set(1)
     --gps_base:set(1)
     erpm_power:set(0)
-    updateGPS()
 
-    waypoints = get_mission_route()
 end
 
 NS430_Test_Status = 0;
@@ -243,7 +230,6 @@ function update()
     --print_message_to_user(temp_dbg:get())
     --print_message_to_user("maxI:"..temp_dbg1:get())
     --print_message_to_user("minI:"..temp_dbg2:get())
-    updateGPS()
     --left_n1:set(sensor_data.getEngineLeftRPM())
     --print_message_to_user(left_n1:get())
     --ehsi_enable:set(1)
@@ -265,27 +251,7 @@ function update()
         ns430_base_page:set(1)
     end
     ]]
-    if counter_test < (3/update_time_step) then
-        counter_test = counter_test + 1
-        testParam:set(math.floor(counter_test/5))
-    else
-        counter_test = 0
-    end
 
-    if is_get_mission_route == 0 then
-        
-        print_message_to_user("Way point size is "..#waypoints)
-        for i,v in pairs(waypoints) do
-            for j,value in pairs(v) do 
-                if type(value) ~= "table" then
-                    print_message_to_user("Waypoint "..i.." value "..j.." is "..tostring(value))
-                end
-            end
-            coord_waypoint = lo_to_geo_coords(waypoints[i].x, waypoints[i].y)
-            print_message_to_user("Waypoint 1 Target position is lat: "..coord_waypoint.lat.."; lon: "..coord_waypoint.lon)
-        end
-        is_get_mission_route = 1
-    end
 end
 
 need_to_be_closed = false
