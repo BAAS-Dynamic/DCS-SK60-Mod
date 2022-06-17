@@ -156,6 +156,14 @@ local counter_test = 0
 
 local is_get_mission_route = 0
 
+
+local line1_lon = get_param_handle("AIRPORT_LON_DIFF0")
+local line1_lat = get_param_handle("AIRPORT_LAT_DIFF0")
+local point1_lon = get_param_handle("AIRPORT_LON_0")
+local point1_lat = get_param_handle("AIRPORT_LAT_0")
+local point2_lon = get_param_handle("AIRPORT_LON_1")
+local point2_lat = get_param_handle("AIRPORT_LAT_1")
+
 function update()
     --gps_base:set(1)
     hud_adi_rot:set(sensor_data.getRoll())
@@ -251,6 +259,10 @@ function update()
         ns430_base_page:set(1)
     end
     ]]
+    line1_lat:set(-1)
+    line1_lon:set(0)
+    -- print_message_to_user(line1_lat:get())
+    -- print_message_to_user(line1_lon:get())
 
 end
 
