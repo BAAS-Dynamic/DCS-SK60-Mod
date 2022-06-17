@@ -40,6 +40,8 @@ creators[devices.WARNING_SYSTEM]  ={"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.IPAD_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/ipad_ctrl.lua"} 
 -- menu controller
 creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/menu_ctrl_system.lua"}
+-- gps_receiver & the uplink databus to EFM
+creators[devices.UP_LINK]         ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gps_receiver.lua"}
 -- 定义显示器
 -- Indicators
 indicators = {}
