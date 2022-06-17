@@ -110,6 +110,8 @@ function updateGPS()
     gps_receiver_alt:set(alt)
 end
 
+local waypoints = {}
+
 function post_initialize()
     hud_FD_x:set(0)
     hud_FD_y:set(0)
@@ -119,6 +121,8 @@ function post_initialize()
     --gps_base:set(1)
     erpm_power:set(0)
     updateGPS()
+
+    waypoints = get_mission_route()
 end
 
 NS430_Test_Status = 0;
@@ -162,6 +166,8 @@ end
 
 local testParam = get_param_handle("TEST_TEXTURE_STATE")
 local counter_test = 0
+
+local is_get_mission_route = 0
 
 function update()
     --gps_base:set(1)
@@ -264,6 +270,21 @@ function update()
         testParam:set(math.floor(counter_test/5))
     else
         counter_test = 0
+    end
+
+    if is_get_mission_route == 0 then
+        
+        print_message_to_user("Way point size is "..#waypoints)
+        for i,v in pairs(waypoints) do
+            for j,value in pairs(v) do 
+                if type(value) ~= "table" then
+                    print_message_to_user("Waypoint "..i.." value "..j.." is "..tostring(value))
+                end
+            end
+            coord_waypoint = lo_to_geo_coords(waypoints[i].x, waypoints[i].y)
+            print_message_to_user("Waypoint 1 Target position is lat: "..coord_waypoint.lat.."; lon: "..coord_waypoint.lon)
+        end
+        is_get_mission_route = 1
     end
 end
 
