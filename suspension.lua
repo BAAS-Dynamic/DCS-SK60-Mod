@@ -96,7 +96,7 @@ suspension_data =
 		wheel_damage_speed			  = 180.0,
 		wheel_moment_of_inertia   = 3.6, --wheel moi as rotation body
 
-		wheel_brake_moment_max = 5000.0, -- maximum value of braking moment  , N*m 
+		wheel_brake_moment_max = 4000.0, -- maximum value of braking moment  , N*m 
 
 		wheel_kz_factor					= 0.25,
 		noise_k							= 0.4,
@@ -155,7 +155,7 @@ suspension_data =
 		wheel_damage_speed			  = 180.0,
 		wheel_moment_of_inertia   = 3.6, --wheel moi as rotation body
 
-		wheel_brake_moment_max = 5000.0, -- maximum value of braking moment  , N*m 
+		wheel_brake_moment_max = 4000.0, -- maximum value of braking moment  , N*m 
 
 		wheel_kz_factor					= 0.25,
 		noise_k							= 0.4,
