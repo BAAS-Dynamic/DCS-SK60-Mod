@@ -344,6 +344,9 @@ BS430_NAV_MODE.level			 = NS430_DEFAULT_NOCLIP_LEVEL
 BS430_NAV_MODE.parent_element    = "ns430_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(BS430_NAV_MODE)
 
+-- load of the over layer
+-- dofile(LockOn_Options.script_path.."NS430/IndicatorA/NS430_overlayer.lua")
+
 -- Here start the load of the nav group
 -- Load of the NAV - Movingmap
 dofile(LockOn_Options.script_path.."NS430/IndicatorA/NS430_nav_map_page.lua")
