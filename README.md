@@ -11,6 +11,7 @@ A Saab SK60 mod for Digital Combat Simulator World.
 ## Table of Contents
 - [Background](#background)
 - [Aircraft Info](#(Aircraft))
+- [Progress](#Progress)
 - [TO-DO List](#TO-DO)
 - [Install](#install)
 - [Usage](#usage)
@@ -29,15 +30,30 @@ Creating of the 3D model is based on the Blender.
 + Sandel SN3500 [ehsi]
 + R&S®GB6500 Remote control unit [radio] 
 
+## Progress
+### Fully Functional
++ Externel Flight Model
++ Basic Instruments
++ Basic Avionics
++ Basic Radio Link to Game
++ Basic Moving Map and Routes
++ Basic Weapon System
++ On Screen Menu
++ EADI
++ E Altimeter
+### Partial Functional
++ EHSI
++ Navigation Unit
++ Radio Unit
+
 ## TO-DO
 ### Functions
-+ See in link below:
-+ https://docs.google.com/spreadsheets/d/1nlrEghej1rFCXLv4O9qpI_PqkWHY3rdk3nWyn6rrHKA/edit#gid=0
++ See in link below: https://docs.google.com/spreadsheets/d/1nlrEghej1rFCXLv4O9qpI_PqkWHY3rdk3nWyn6rrHKA/edit#gid=0
 + Radio System working, try implement the R&S GB6500 UHF radio
 + Add more elements and function to Navigation part
 + Change some clickable stuff to the keyboard/joystick input
 + ~~Gunsight display~~
-+ Sound System
++ ~~Sound System~~
 + intercom system
 + Volume change validation
 
@@ -49,6 +65,7 @@ Creating of the 3D model is based on the Blender.
 + right inverter's animation, when switch on, it stops at middle
 
 ## Contributing
+### Contributors
 <div>
     <table>
     <tr>
