@@ -45,15 +45,15 @@ function uploadRouteToEFM()
         local uplink_handle
         for i, point_item in pairs(waypoints) do
             route_coord = lo_to_geo_coords(point_item.x, point_item.y)
-            uplink_handle = get_param_handle("MISSION_WP_"..i.."_LAT")
+            uplink_handle = get_param_handle("MISSION_WP_"..tostring(i-1).."_LAT")
             uplink_handle:set(route_coord.lat)
-            uplink_handle = get_param_handle("MISSION_WP_"..i.."_LON")
+            uplink_handle = get_param_handle("MISSION_WP_"..tostring(i-1).."_LON")
             uplink_handle:set(route_coord.lon)
-            uplink_handle = get_param_handle("MISSION_WP_"..i.."_ALT")
+            uplink_handle = get_param_handle("MISSION_WP_"..tostring(i-1).."_ALT")
             uplink_handle:set(point_item.alt)
-            uplink_handle = get_param_handle("MISSION_WP_"..i.."_ES")
+            uplink_handle = get_param_handle("MISSION_WP_"..tostring(i-1).."_ES")
             uplink_handle:set(point_item.speed)
-            uplink_handle = get_param_handle("MISSION_WP_"..i.."_COMMENT")
+            uplink_handle = get_param_handle("MISSION_WP_"..tostring(i-1).."_COMMENT")
             uplink_handle:set("Mission Act: "..point_item.action)
         end
     else
