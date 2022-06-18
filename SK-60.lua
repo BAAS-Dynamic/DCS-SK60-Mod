@@ -178,19 +178,19 @@ SK_60 =  {
 		is_tanker	=	false,
 		air_refuel_receptacle_pos = 	{8.319,	0.803,	1.148},
 		
-		fires_pos = 
+		fires_pos =
 		{
-			[1] = 	{ 0.931,	0.811,	 0}, -- Body center ?
-			[2] = 	{-0.132,	0.390, 	 2.576}, --Left wing fire? {-2.0,		0.8, 	 3.4},
-			[3] = 	{-0.132,	0.390,	-2.576}, --Right wing fire?
-			[4] = 	{-0.82,	    0.265,	 2.774},
-			[5] = 	{-0.82,	    0.265,	-2.774},
-			[6] = 	{-0.82,	    0.255,	 4.274},
-			[7] = 	{-0.82,	    0.255,	-4.274},
-			[8] = 	{-4.593,	0.242,	 0.639}, --engine fire L
-			[9] = 	{-4.593,	0.242,	-0.639}, --engine fire R
-			[10] = 	{-0.515,	0.807,	 0.7},
-			[11] = 	{-0.515,	0.807,	-0.7},
+			[1] =     	{-1,    	0.5,    	0		},		-- fuselage
+			[2] =     	{-0,    	0.2,    	0.9		},		-- wing inner right: WING_R_IN
+			[3] =     	{-0,    	0.2,    	-0.9	},		-- wing inner left: WING_L_IN
+			[4] =     	{-0.5,    	0,	    	0.9		},		-- ? unknow, maybe wing center R?
+			[5] =     	{-0.5,    	0,	    	-0.9	},		-- ? unknow, maybe wing center L?
+			[6] =     	{-0.5,    	0,	    	3.0		},  	-- wing outer right: WING_R_OUT
+			[7] =     	{-0.5,    	0,			-3.0	}, 		-- wing outer left: WING_L_OUT
+			[8] =     	{-1.5,    	0,	    	1.0		},		-- left engine
+			[9] =     	{-1.5,    	0,  	  	-1.0	},    	-- right engine
+			[10] = 		{-0.515,	0.807,		0.7		},		-- unknow but they are reverse to xy plane
+			[11] = 		{-0.515,	0.807,		-0.7	},
 		}, -- end of fires_pos
 		
 		chaff_flare_dispenser = 
@@ -538,50 +538,24 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 
 
 	--damage , index meaning see in  Scripts\Aircrafts\_Common\Damage.lua
-	Damage = {
-	[0]  = {critical_damage = 5,  args = {146}},
-	[1]  = {critical_damage = 3,  args = {296}},
-	[2]  = {critical_damage = 3,  args = {297}},
-	[3]  = {critical_damage = 8, args = {65}},
-	[4]  = {critical_damage = 2,  args = {298}},
-	[5]  = {critical_damage = 2,  args = {301}},
-	[7]  = {critical_damage = 2,  args = {249}},
-	[8]  = {critical_damage = 3,  args = {265}},
-	[9]  = {critical_damage = 3,  args = {154}},
-	[10] = {critical_damage = 3,  args = {153}},
-	[11] = {critical_damage = 1,  args = {167}},
-	[12] = {critical_damage = 1,  args = {161}},
-	[13] = {critical_damage = 2,  args = {169}},
-	[14] = {critical_damage = 2,  args = {163}},
-	[15] = {critical_damage = 2,  args = {267}},
-	[16] = {critical_damage = 2,  args = {266}},
-	[17] = {critical_damage = 2,  args = {168}},
-	[18] = {critical_damage = 2,  args = {162}},
-	[20] = {critical_damage = 2,  args = {183}},
-	[23] = {critical_damage = 5, args = {223}},
-	[24] = {critical_damage = 5, args = {213}},
-	[25] = {critical_damage = 2,  args = {226}},
-	[26] = {critical_damage = 2,  args = {216}},
-	[29] = {critical_damage = 5, args = {224}, deps_cells = {23, 25}},
-	[30] = {critical_damage = 5, args = {214}, deps_cells = {24, 26}},
-	[35] = {critical_damage = 6, args = {225}, deps_cells = {23, 29, 25, 37}},
-	[36] = {critical_damage = 6, args = {215}, deps_cells = {24, 30, 26, 38}}, 
-	[37] = {critical_damage = 2,  args = {228}},
-	[38] = {critical_damage = 2,  args = {218}},
-	[39] = {critical_damage = 2,  args = {244}, deps_cells = {53}}, 
-	[40] = {critical_damage = 2,  args = {241}, deps_cells = {54}}, 
-	[43] = {critical_damage = 2,  args = {243}, deps_cells = {39, 53}},
-	[44] = {critical_damage = 2,  args = {242}, deps_cells = {40, 54}}, 
-	[51] = {critical_damage = 2,  args = {240}}, 
-	[52] = {critical_damage = 2,  args = {238}},
-	[53] = {critical_damage = 2,  args = {248}},
-	[54] = {critical_damage = 2,  args = {247}},
-	[56] = {critical_damage = 2,  args = {158}},
-	[57] = {critical_damage = 2,  args = {157}},
-	[59] = {critical_damage = 3,  args = {148}},
-	[61] = {critical_damage = 2,  args = {147}},
-	[82] = {critical_damage = 2,  args = {152}},
-	},
+	Damage = verbose_to_dmg_properties(
+	{
+		["AILERON_L"]          	= {critical_damage = 1.8, args = {-1}, construction = {durability = 0.65, skin = "Aluminum"},},
+		["AILERON_R"]          	= {critical_damage = 1.8, args = {-1}, construction = {durability = 0.65, skin = "Aluminum"},},
+		["FLAP_L"]          	= {critical_damage = 6.4, args = {-1}, construction = {durability = 1.05, skin = "Aluminum"},},
+		["FLAP_R"]          	= {critical_damage = 6.4, args = {-1}, construction = {durability = 1.05, skin = "Aluminum"},},
+		["WING_L_OUT"]          = {critical_damage = 3, args = {200}, construction = {durability = 2.00, skin = "Aluminum"}, deps_cells = {"AILERON_L"},},
+		["WING_R_OUT"]          = {critical_damage = 3, args = {202}, construction = {durability = 2.00, skin = "Aluminum"}, deps_cells = {"AILERON_R"},},
+		["WING_L_IN"]           = {critical_damage = 10, args = {201}, construction = {durability = 3.00, skin = "Aluminum"},deps_cells = {"FLAP_L","WING_L_OUT"},},
+		["WING_R_IN"]           = {critical_damage = 10, args = {203}, construction = {durability = 3.00, skin = "Aluminum"},deps_cells = {"FLAP_R","WING_R_OUT"},},
+		["CREW_1"]              = {critical_damage = 1, args = {-1}, construction = {durability = 2.00, skin = "Fabric"},},
+		["CREW_2"]              = {critical_damage = 1, args = {-1}, construction = {durability = 2.00, skin = "Fabric"},},
+		["MAIN"]  				= {critical_damage = 10, args = {-1}, construction = {durability = 7.69, skin = "Aluminum"},},
+		["TAIL_BOTTOM"]  		= {critical_damage = 10, args = {-1}, },
+		["FUSELAGE_BOTTOM"]  	= {critical_damage = 10, args = {-1}, },
+		["ENGINE_1"]			= {args = {160},	critical_damage = 2},
+		["ENGINE_2"]			= {args = {160},	critical_damage = 2},
+	}),
 	
 	DamageParts = 
 	{  
@@ -592,7 +566,7 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 		[5] = "", -- tail L
 	},
 
-		lights_data = { typename = "collection", lights = {
+	lights_data = { typename = "collection", lights = {
 	
     [1] = { typename = "collection", -- WOLALIGHT_STROBES
 					lights = {	

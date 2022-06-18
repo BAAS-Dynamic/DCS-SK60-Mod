@@ -5,3 +5,7 @@
 function dprintf(debug_str)
     -- print_message_to_user(debug_str)
 end
+
+function print_table(table)
+
+end

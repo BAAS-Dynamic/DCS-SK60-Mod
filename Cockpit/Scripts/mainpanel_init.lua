@@ -82,8 +82,8 @@ animation_list = {
     {"MainRWPOS_IND", 320},
     {"MACH_IND", 322},
     {"G_METER", 323},
-    {"GYRO_ROLL", 331},
-    {"GYRO_PITCH", 332},
+    {"GYRO_ROLL", 335},
+    {"GYRO_PITCH", 334},
 
     -- new clock
     {"CLOCK_H", 343},
@@ -91,7 +91,7 @@ animation_list = {
     {"CLOCK_S", 344},
 
     {"OXY_QUAN", 329},
-    {"BARO_ALT", 330},
+    {"ALT_XH_DIGTAL", 330, {0, 1000}, {0, 1}},
     {"BARO_x1H", 331},
     {"BARO_x1K", 332},
     {"BARO_x1W", 333},
@@ -208,6 +208,9 @@ animation_list = {
     {"PTN_522", 522},
     {"PTN_523", 523},
     {"PTN_524", 524},
+
+    -- ipad model shown
+    {"IPAD_SHOWN", 950},
 }
 
 --[[

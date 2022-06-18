@@ -24,6 +24,13 @@ materials["EALT_BG_DARK_COLOR"]	= {0,30,120,255}
 materials["SKY_BLUE"] = {0,170,230,255}
 materials["GROUND_YELLOW"] = {42,34,29,255}
 
+-- MENU
+materials["MENU_GREY"]    = {30, 30, 30, 150}
+materials["DBG_WHITE"] = {200,200,200,255}
+
+-- BS430
+materials["BS430_PURPLE"] 	= {217,40,113,255}
+
 
 local IndicationFontPath = LockOn_Options.script_path.."../Textures/Fonts/"
 
@@ -443,6 +450,9 @@ fontdescription["font_Pixel"] = {
 	}
 }
 
+dofile(LockOn_Options.script_path.."fontUnicode.lua")
+fontdescription["unicodeCN"]	=	font_unicode(IndicationFontPath.."Font_UTF.dds")
+
     fonts = {}
     fonts["font_kneeboard"]			= {fontdescription_cmn["font_general_loc"], 10, {0,0,0,255}}
     fonts["font_kneeboard_hint"]	= {fontdescription_cmn["font_general_loc"], 10, {255,0,0,255}}
@@ -457,6 +467,9 @@ fontdescription["font_Pixel"] = {
 	fonts["BS430_font_white"]		= {fontdescription["font_Pixel"], 10, {200,200,200,255} }
 	fonts["BS430_font_green"]		= {fontdescription["font_Pixel"], 10, {4,239,113,255} }
 	fonts["BS430_font_purple"]		= {fontdescription["font_Pixel"], 10, {217,40,113,255} }
+	-- this is the chinese unicode font
+	fonts["unicode_cn"]				= {fontdescription["unicodeCN"], 10, materials["TEST_COLOR"] }
+	fonts["unicode_cn_white"]		= {fontdescription["unicodeCN"], 10, {255,255,255,255} }
 
 -- force preload resources to avoid freeze on start (list of texture files)
 --[[

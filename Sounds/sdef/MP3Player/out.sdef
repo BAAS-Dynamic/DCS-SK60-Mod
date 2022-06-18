@@ -1,0 +1,5 @@
+wave = "Effects/Mp3Player/out"
+inner_radius = 100
+outer_radius = 1000
+position = {0.0, 0.0, -0.5}
+gain = 1

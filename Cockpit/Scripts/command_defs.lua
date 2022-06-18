@@ -270,6 +270,16 @@ Keys =
     ElecPowerDCGenL = __custom_counter(),
     ElecPowerDCGenR = __custom_counter(),
 
+    -- this part is fpr music player
+    MusicPauseOrPlay = __custom_counter(),
+    MusicNext = __custom_counter(),
+    MusicLast = __custom_counter(),
+    MusicFastForward = __custom_counter(),
+    MusicFastBack = __custom_counter(),
+    MusicLrcViewTrigger = __custom_counter(),
+    MusicVolUp = __custom_counter(),
+    MusicVolDown = __custom_counter(),
+
     --起落架手柄 5001// 5050 EFM - 6000 for EFM
     NoseWheelSteeringOn = 5050,
     NoseWheelSteeringOff = 5051,
@@ -298,7 +308,11 @@ Keys =
     Flap_Pos_Up = 5072,
     Flap_Pos_Half = 5073,
     Flap_Pos_Down = 5074,
-    
+
+    -- CustomMenu Trigger
+    Custom_Menu = 5090,
+    Custom_Menu_Enter = 5091,
+
     -- 5100-5500 Navigation input
     -- GNS 430
     COM_Freq_Swap = 5100,

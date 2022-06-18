@@ -34,6 +34,14 @@ creators[devices.GEAR_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.LIGHT_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/light_system.lua"}
 -- this is 14, dont move this position for now XD, the command from EFM is constant send to lua device 14 
 creators[devices.SOUND_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/sound_system.lua"} 
+-- warning panel controller 
+creators[devices.WARNING_SYSTEM]  ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/warning_system.lua"} 
+-- ipad controller
+creators[devices.IPAD_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/ipad_ctrl.lua"} 
+-- menu controller
+creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/menu_ctrl_system.lua"}
+-- gps_receiver & the uplink databus to EFM
+creators[devices.UP_LINK]         ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gps_receiver.lua"}
 -- 定义显示器
 -- Indicators
 indicators = {}
@@ -56,25 +64,16 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EHSI/
 -- Radio display
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."RSGB6500/Radio_init.lua",nil,{{"T60DISPLAY_center","T60DISPLAY_down","T60DISPLAY_right"},{sx_l =  -0.0001,}}}--{{"COM1_center","COM1_down","COM1_right"}}
 -- HUD USE for AUTH display now
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
+-- combined to the custom menu now
+-- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
 -- Gunsight display
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."GunSight/gunsight_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
--- RADAR RAW DISPLAY
--- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."avRadar/indicator/init.lua",nil,{{},{sz_l = 0.0,sx_l = -0.50, sy_l = -0.1},1}}		
---RADAROFF indicators[#indicators + 1] = {"ccIndicator",LockOn_Options.script_path.."RADAR/Indicator/init.lua",--init script
---RADAROFF   nil,--id of parent device
---RADAROFF   {
---RADAROFF 	{}, -- initial geometry anchor , triple of connector names 
---RADAROFF 	{sx_l =  0,  -- center position correction in meters (forward , backward)1
---RADAROFF 	 sy_l =  0,  -- center position correction in meters (up , down)
---RADAROFF 	 sz_l =  0.3,  -- center position correction in meters (left , right)
---RADAROFF 	 sh   =  0,  -- half height correction
---RADAROFF 	 sw   =  0,  -- half width correction
---RADAROFF 	 rz_l =  0,  -- rotation corrections
---RADAROFF 	 rx_l =  0,
---RADAROFF 	 ry_l =  0}
---RADAROFF   }
---RADAROFF }
+-- warning panel
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EWarningPanel/warning_init.lua",nil,{{"WarningPanel_center","WarningPanel_down","WarningPanel_right"}}}
+-- debug ipad
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."DBGiPad/ipad_init.lua",nil,{{"IPAD_center","IPAD_down","IPAD_right"},{sx_l =  -0.001,}}}
+-- custom menu indicator
+indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."CustomMenu/menu_init.lua",nil,{{}, {sh = 0.5, sw = 0.5}, 4}}
 
 
 -- Enable KneeBoard for Test

@@ -91,16 +91,15 @@ dev:listen_command(Keys.L_STARTER_RELEASE)
 dev:listen_command(Keys.L_STARTER_PRESS)
 dev:listen_command(Keys.Nav_Right_Knob_Push)
 
-local pos_x_loc, pos_y_loc, alt, coord
+-- iCommandPlaneViewVertical 2008
+-- iCommandPlaneViewHorizontal 2007
+dev:listen_command(2143)-- iService
+dev:listen_command(2142)-- 2143
+-- iCommandCockpitClickModeOnOff	363
+dev:listen_command(Keys.Custom_Menu)
+dev:listen_command(363)-- 2143
 
-function updateGPS()
-    pos_x_loc, alt, pos_y_loc= sensor_data.getSelfCoordinates()
-    coord = lo_to_geo_coords(pos_x_loc, pos_y_loc)
-    -- temp_dbg:set(coord.lat)
-    gps_receiver_lat:set(coord.lat)
-    gps_receiver_lon:set(coord.lon)
-    gps_receiver_alt:set(alt)
-end
+local pos_x_loc, pos_y_loc, alt, coord
 
 function post_initialize()
     hud_FD_x:set(0)
@@ -110,20 +109,52 @@ function post_initialize()
     hud_maxg_dis:set(1)
     --gps_base:set(1)
     erpm_power:set(0)
-    updateGPS()
+
 end
 
 NS430_Test_Status = 0;
 
+cursor_v = 0
+cursor_h = 0
+viewang_v = 0
+viewang_h = 0
+
+local cursor_mode = get_param_handle("DEBUG_LINE3")
+
 function SetCommand(command,value)
+    -- print_message_to_user(command)
     --[[
-    if (command == Keys.L_STARTER_PRESS) then
-        print_message_to_user("Pressed")
-    elseif (command == Keys.L_STARTER_RELEASE) then
-        print_message_to_user("Release")
+    if (command == 9100) then
+        cursor_h = value
+        print_message_to_user("9100")
+    elseif (command == 2037) then
+        cursor_v = value
+        print_message_to_user("received")
+    elseif (command == 2142) then
+        viewang_h = value
+    elseif (command == 2143) then
+        viewang_v = value
     end
-    ]]
+    elseif (command == Keys.Custom_Menu) then
+        -- ask the click mode to off
+        print_message_to_user("menu triggered")
+        if (debug_line3:get() < 1) then
+            -- cursor mode is clickable
+            dispatch_action(nil, 363)
+        end
+        -- close click mode [should be in transpose mode now]
+        -- force close transpose mode
+        dispatch_action(nil, 1594)
+        -- dispatch_action(nil, iCommandMouseViewOn, 1)
+    end
+    -- 
+    ]]--
 end
+
+local testParam = get_param_handle("TEST_TEXTURE_STATE")
+local counter_test = 0
+
+local is_get_mission_route = 0
 
 function update()
     --gps_base:set(1)
@@ -199,7 +230,6 @@ function update()
     --print_message_to_user(temp_dbg:get())
     --print_message_to_user("maxI:"..temp_dbg1:get())
     --print_message_to_user("minI:"..temp_dbg2:get())
-    updateGPS()
     --left_n1:set(sensor_data.getEngineLeftRPM())
     --print_message_to_user(left_n1:get())
     --ehsi_enable:set(1)
@@ -221,4 +251,9 @@ function update()
         ns430_base_page:set(1)
     end
     ]]
+    -- print_message_to_user(line1_lat:get())
+    -- print_message_to_user(line1_lon:get())
+
 end
+
+need_to_be_closed = false

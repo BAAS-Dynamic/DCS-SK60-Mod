@@ -1,9 +1,12 @@
 -- SAAB_SK60_FM
 -- local FM_dll=nil
 -- Test Collision only
-local FM_dll= "SAAB_SK60_FM.dll" -- "A-6E_Intruder_FM" --
+-- load the version data here
+dofile(current_mod_path.."/Cockpit/Scripts/version.lua")
 
 self_ID = "SK-60"
+local FM_dll= "SAAB_SK60_FM.dll" 
+
 declare_plugin(self_ID,
 {
 image     	 = "FC3.bmp",
@@ -13,9 +16,9 @@ displayName  = _("SK-60B"),
 
 fileMenuName = _("SK-60"),
 update_id    = "SK-60",
-version		 = "V1.5.3-alpha1",
+version		 = general_version, -- "2.0.1-alpha1", --
 state		 = "installed",
-developerName	= _("BAAS Group"),
+developerName= _("BAAS Group"),
 info		 = _("SK-60 or Saab-105 is a swedish twin seat high performance training jet."),
 encyclopedia_path = current_mod_path..'/Encyclopedia',
 binaries   =
@@ -74,7 +77,7 @@ if FM_dll then
 		-- the moment_of_inertia is following the data from nasa
 		-- reverse the axis of y and z
 		-- switched to a new estimation, which should be closer to real
-		moment_of_inertia = {4101.63245, 6354.650, 3878.804, 183.4},
+		moment_of_inertia = {4101.63245, 5354.650, 4878.804, 183.4},
 		suspension = suspension_data,
 	}
 else
