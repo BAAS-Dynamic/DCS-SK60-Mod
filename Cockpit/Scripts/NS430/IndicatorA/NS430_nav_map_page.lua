@@ -120,22 +120,24 @@ for i = 0, 100, 1 do
     Add(airport_name)
 end
 
--- test line of the flight path 
-local test_line                     = CreateElement "ceSimpleLineObject"
-test_line.material                  = "DBG_WHITE"
-test_line.name 			            = create_guid_string()
-test_line.primitivetype             = "lines"
-test_line.width                     = 2
-test_line.vertices                  = {{0,0}, {0,1}}
--- test_line.tex_coords             = tex_coord_gen(1536,0,128,128,2048,2048)
-test_line.init_pos                  = {0, 0, 0}
-test_line.init_rot		            = {0, 0, 0}
-test_line.collimated	            = true
-test_line.element_params            = {"AIRPORT_ENABLE_0", "AIRPORT_LON_0", "AIRPORT_LAT_0", "AIRPORT_LON_1", "AIRPORT_LAT_1"}
-test_line.controllers               = {{"opacity_using_parameter",0},{"line_object_set_point_using_parameters", 0, 1, 2, map_scaler, map_scaler},{"line_object_set_point_using_parameters", 1, 3, 4, map_scaler, map_scaler}}
-test_line.use_mipfilter             = true
-test_line.additive_alpha            = true
-test_line.h_clip_relation           = h_clip_relations.COMPARE
-test_line.level                     = NS430_DEFAULT_LEVEL
-test_line.parent_element	        = "navu_moving_map_center"
-Add(test_line)
+for i = 0, 99, 1 do
+-- "BS430_WP_LON_" "BS430_WP_ENABLE_"
+    local test_line                     = CreateElement "ceSimpleLineObject"
+    test_line.material                  = "BS430_PURPLE"
+    test_line.name 			            = create_guid_string()
+    test_line.primitivetype             = "lines"
+    test_line.width                     = 2
+    test_line.vertices                  = {{0,0}, {0,1}}
+    -- test_line.tex_coords             = tex_coord_gen(1536,0,128,128,2048,2048)
+    test_line.init_pos                  = {0, 0, 0}
+    test_line.init_rot		            = {0, 0, 0}
+    test_line.collimated	            = true
+    test_line.element_params            = {"BS430_WP_ENABLE_"..tostring(i+1), "BS430_WP_LON_"..tostring(i), "BS430_WP_LAT_"..tostring(i), "BS430_WP_LON_"..tostring(i+1), "BS430_WP_LAT_"..tostring(i+1)}
+    test_line.controllers               = {{"opacity_using_parameter",0},{"line_object_set_point_using_parameters", 0, 1, 2, map_scaler, map_scaler},{"line_object_set_point_using_parameters", 1, 3, 4, map_scaler, map_scaler}}
+    test_line.use_mipfilter             = true
+    test_line.additive_alpha            = true
+    test_line.h_clip_relation           = h_clip_relations.COMPARE
+    test_line.level                     = NS430_DEFAULT_LEVEL
+    test_line.parent_element	        = "navu_moving_map_center"
+    Add(test_line)
+end
