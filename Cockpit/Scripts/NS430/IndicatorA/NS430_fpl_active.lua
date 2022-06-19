@@ -105,14 +105,14 @@ Flight_Plan_Clip.element_params             = {"NS430_FPL_ACT_DISPLAY"}         
 Flight_Plan_Clip.controllers                = {{"opacity_using_parameter",0}}
 Flight_Plan_Clip.parent_element	            = "flight_plan_clip"
 Flight_Plan_Clip.isvisible		            = SHOW_MASKS
-Add(Flight_Plan_Clip)
+-- Add(Flight_Plan_Clip)
 
 -- line field
-for i=0,3,0 do
+for i=0,3,1 do
     -- waypoint mark
     local BS430_FPL_TITLE_WPT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-    BS430_FPL_TITLE_WPT.material          = "BS430_font_blue"    --FONT_             --Material type (note the font material created above)
-    BS430_FPL_TITLE_WPT.init_pos          = {-260*2/default_gps_x, (440 - 110*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    BS430_FPL_TITLE_WPT.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
+    BS430_FPL_TITLE_WPT.init_pos          = {-260*2/default_gps_x, (440 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     BS430_FPL_TITLE_WPT.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
     BS430_FPL_TITLE_WPT.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     BS430_FPL_TITLE_WPT.formats           = {"%s", "%s"}
@@ -129,8 +129,8 @@ for i=0,3,0 do
 
     -- dtk mark
     local BS430_FPL_TITLE_DTK             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-    BS430_FPL_TITLE_DTK.material          = "BS430_font_blue"    --FONT_             --Material type (note the font material created above)
-    BS430_FPL_TITLE_DTK.init_pos          = {23.35*2/default_gps_x, (440 - 110*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    BS430_FPL_TITLE_DTK.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
+    BS430_FPL_TITLE_DTK.init_pos          = {23.35*2/default_gps_x, (440 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     BS430_FPL_TITLE_DTK.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
     BS430_FPL_TITLE_DTK.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     BS430_FPL_TITLE_DTK.formats           = {"%s", "%s"}
@@ -147,8 +147,8 @@ for i=0,3,0 do
 
     -- dis mark
     local BS430_FPL_TITLE_DIS             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
-    BS430_FPL_TITLE_DIS.material          = "BS430_font_blue"    --FONT_             --Material type (note the font material created above)
-    BS430_FPL_TITLE_DIS.init_pos          = {259.25*2/default_gps_x, (440 - 110*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    BS430_FPL_TITLE_DIS.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
+    BS430_FPL_TITLE_DIS.init_pos          = {259.25*2/default_gps_x, (440 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     BS430_FPL_TITLE_DIS.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
     BS430_FPL_TITLE_DIS.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     BS430_FPL_TITLE_DIS.formats           = {"%s", "%s"}

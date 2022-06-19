@@ -253,7 +253,9 @@ function update()
     ]]
     -- print_message_to_user(line1_lat:get())
     -- print_message_to_user(line1_lon:get())
-
+    -- local temp_dbg2 = get_param_handle("NS430_FPL_ACT_DISPLAY")
+    -- temp_dbg2:set(1)
+    -- print_message_to_user(temp_dbg2:get())
 end
 
 need_to_be_closed = false

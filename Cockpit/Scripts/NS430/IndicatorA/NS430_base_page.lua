@@ -50,7 +50,7 @@ Add(ns430_startup_icon)
 
 -- StartUp acknology
 local ns430_startup_info 				        = CreateElement "ceTexPoly"
-ns430_startup_info.vertices                     = GPS_vert_gen(2000,2000*aspect)
+ns430_startup_info.vertices                     = GPS_vert_gen(2048,2048*aspect)
 ns430_startup_info.indices                      = {0,1,2,2,3,0}
 ns430_startup_info.tex_coords                   = tex_coord_gen(1024,256,512,256,2048,2048)
 ns430_startup_info.material                     = basic_ns430_material
@@ -74,7 +74,7 @@ Add(ns430_startup_info)
 -- Base Screen background
 -- only contain the lines
 local bs430_base_surround 				            = CreateElement "ceTexPoly"
-bs430_base_surround.vertices                        = GPS_vert_gen(2000,2000*aspect)
+bs430_base_surround.vertices                        = GPS_vert_gen(2048,2048*aspect)
 bs430_base_surround.indices                         = {0,1,2,2,3,0}
 bs430_base_surround.tex_coords                      = tex_coord_gen(0,0,1024,512,2048,2048)
 bs430_base_surround.material                        = blue_ns430_material
@@ -100,7 +100,7 @@ bs430_base_surround.indices                         = {0,1,2,2,3,0}
 bs430_base_surround.tex_coords                      = tex_coord_gen(0,0,1024,512,2048,2048)
 bs430_base_surround.material                        = "EALT_BG_COLOR" -- blue_ns430_material
 bs430_base_surround.name 			                = create_guid_string()
-bs430_base_surround.init_pos                        = {-1 + 231.72/default_gps_x, 1*aspect - 218.7525*aspect/default_gps_x, 0}
+bs430_base_surround.init_pos                        = {-1 + 237.28/default_gps_x, 1*aspect - 224.0025*aspect/default_gps_x, 0}
 bs430_base_surround.init_rot		                = {0, 0, 0}
 bs430_base_surround.collimated	                    = true
 bs430_base_surround.element_params                  = {"NAVU_BASE_ENABLE"}              -- Initialize the main display control
@@ -118,7 +118,7 @@ bs430_base_surround.indices                         = {0,1,2,2,3,0}
 bs430_base_surround.tex_coords                      = tex_coord_gen(0,0,1024,512,2048,2048)
 bs430_base_surround.material                        = "EALT_BG_COLOR" -- blue_ns430_material
 bs430_base_surround.name 			                = create_guid_string()
-bs430_base_surround.init_pos                        = {-1 + 231.72/default_gps_x, 1*aspect - 520*aspect/default_gps_x, 0}
+bs430_base_surround.init_pos                        = {-1 + 237.28/default_gps_x, 1*aspect - 532.48*aspect/default_gps_x, 0}
 bs430_base_surround.init_rot		                = {0, 0, 0}
 bs430_base_surround.collimated	                    = true
 bs430_base_surround.element_params                  = {"NAVU_BASE_ENABLE", "FREQ_FOCUS_COM"}              -- Initialize the main display control {0,50,255,255}
@@ -208,7 +208,7 @@ bs430_base_surround.indices                         = {0,1,2,2,3,0}
 bs430_base_surround.tex_coords                      = tex_coord_gen(0,0,1024,512,2048,2048)
 bs430_base_surround.material                        = "EALT_BG_COLOR" -- blue_ns430_material
 bs430_base_surround.name 			                = create_guid_string()
-bs430_base_surround.init_pos                        = {-1 + 231.72/default_gps_x, 1*aspect - 218.7525*aspect/default_gps_x - temp_move_y, 0}
+bs430_base_surround.init_pos                        = {-1 + 237.28/default_gps_x, 1*aspect - 224.0025*aspect/default_gps_x - temp_move_y, 0}
 bs430_base_surround.init_rot		                = {0, 0, 0}
 bs430_base_surround.collimated	                    = true
 bs430_base_surround.element_params                  = {"NAVU_BASE_ENABLE"}              -- Initialize the main display control
@@ -226,7 +226,7 @@ bs430_base_surround.indices                         = {0,1,2,2,3,0}
 bs430_base_surround.tex_coords                      = tex_coord_gen(0,0,1024,512,2048,2048)
 bs430_base_surround.material                        = "EALT_BG_COLOR" -- blue_ns430_material
 bs430_base_surround.name 			                = create_guid_string()
-bs430_base_surround.init_pos                        = {-1 + 231.72/default_gps_x, 1*aspect - 520*aspect/default_gps_x - temp_move_y, 0}
+bs430_base_surround.init_pos                        = {-1 + 237.28/default_gps_x, 1*aspect - 532.48*aspect/default_gps_x - temp_move_y, 0}
 bs430_base_surround.init_rot		                = {0, 0, 0}
 bs430_base_surround.collimated	                    = true
 bs430_base_surround.element_params                  = {"NAVU_BASE_ENABLE", "FREQ_FOCUS_LOC"}              -- Initialize the main display control {0,50,255,255}
