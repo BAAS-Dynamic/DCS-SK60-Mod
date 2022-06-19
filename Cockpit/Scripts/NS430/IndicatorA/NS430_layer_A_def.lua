@@ -22,8 +22,8 @@ GPS_BLUE_COLOR             = {70,165,180,255} -- {130,145,150,255}
 basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 blue_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_BLUE_COLOR)
 
-default_gps_x = 1000
-default_gps_y = 1000
+default_gps_x = 1024
+default_gps_y = 1024
 
 default_gps_z_offset = 0
 default_gps_rot_offset = 0

@@ -350,3 +350,4 @@ Add(BS430_NAV_MODE)
 -- Here start the load of the nav group
 -- Load of the NAV - Movingmap
 dofile(LockOn_Options.script_path.."NS430/IndicatorA/NS430_nav_map_page.lua")
+dofile(LockOn_Options.script_path.."NS430/IndicatorA/NS430_fpl_active.lua")

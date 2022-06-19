@@ -2,7 +2,7 @@
 -- 790 * 475 // 1024 * 512
 local Moving_Map_Clip                   = CreateElement "ceMeshPoly" --This is the clipping layer
 Moving_Map_Clip.name 			        = "moving_map_clip"
-Moving_Map_Clip.vertices 		        = { {0.7715-0.29297*2, aspect * 0.92773}, {0.7715-0.29297*2,-aspect * 0.92773}, {-0.7715,-aspect * 0.92773}, {-0.7715,aspect * 0.92773},} --四个边角
+Moving_Map_Clip.vertices 		        = { {0.7715, aspect * 0.92773}, {0.7715,-aspect * 0.92773}, {-0.7715,-aspect * 0.92773}, {-0.7715,aspect * 0.92773},} --四个边角
 Moving_Map_Clip.indices 		        = {0,1,2,0,2,3}
 Moving_Map_Clip.init_pos		        = {0.2285, 0.0722344, 0}
 Moving_Map_Clip.init_rot		        = {0, 0, 0}
@@ -17,6 +17,7 @@ Moving_Map_Clip.parent_element	        = "base_clip"
 Moving_Map_Clip.isvisible		        = SHOW_MASKS
 Add(Moving_Map_Clip)
 
+--[[
 -- second clip
 local Moving_Map_Clip                   = CreateElement "ceMeshPoly" --This is the clipping layer
 Moving_Map_Clip.name 			        = "overlayer_clip"
@@ -34,6 +35,7 @@ Moving_Map_Clip.controllers             = {{"opacity_using_parameter",0}, {"move
 Moving_Map_Clip.parent_element	        = "moving_map_clip"
 Moving_Map_Clip.isvisible		        = SHOW_MASKS
 Add(Moving_Map_Clip)
+]]--
 
 -- map_base
 local movingmap_offset_center                   = CreateElement "ceSimple"
