@@ -13,7 +13,7 @@ Moving_Map_Clip.isdraw		            = true
 Moving_Map_Clip.change_opacity          = false
 Moving_Map_Clip.element_params          = {"NS430_MAP_DISPLAY"}              -- Initialize the main display control
 Moving_Map_Clip.controllers             = {{"opacity_using_parameter",0}}
-Moving_Map_Clip.parent_element	        = "base_clip"
+Moving_Map_Clip.parent_element	        = "ns430_base_clip"
 Moving_Map_Clip.isvisible		        = SHOW_MASKS
 Add(Moving_Map_Clip)
 
