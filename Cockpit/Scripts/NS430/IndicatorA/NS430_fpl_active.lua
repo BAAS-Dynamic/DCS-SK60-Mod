@@ -7,14 +7,32 @@ Flight_Plan_Clip.indices 		            = {0,1,2,0,2,3}
 Flight_Plan_Clip.init_pos		            = {0.2285, 0.0722344, 0}
 Flight_Plan_Clip.init_rot		            = {0, 0, 0}
 Flight_Plan_Clip.material		            = "DBG_BLUE" -- "EALT_BG_COLOR"
-Flight_Plan_Clip.h_clip_relation            = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
+Flight_Plan_Clip.h_clip_relation            = h_clip_relations.INCREASE_IF_LEVEL --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
 Flight_Plan_Clip.level			            = NS430_DEFAULT_LEVEL - 1
 Flight_Plan_Clip.isdraw		                = true
 Flight_Plan_Clip.change_opacity             = false
 Flight_Plan_Clip.element_params             = {"NS430_FPL_ACT_DISPLAY"}              -- Initialize the main display control
 Flight_Plan_Clip.controllers                = {{"opacity_using_parameter",0}}
-Flight_Plan_Clip.parent_element	            = "ns430_base_clip"
+Flight_Plan_Clip.parent_element	            = "base_disp_clip"
 Flight_Plan_Clip.isvisible		            = SHOW_MASKS
+Add(Flight_Plan_Clip)
+
+-- background color
+local Flight_Plan_Clip                      = CreateElement "ceTexPoly" --This is the clipping layer
+Flight_Plan_Clip.name 			            = "flight_plan_bg_tex"
+Flight_Plan_Clip.vertices 		            = { {0.7715, aspect * 0.92773}, {0.7715,-aspect * 0.92773}, {-0.7715,-aspect * 0.92773}, {-0.7715,aspect * 0.92773},} --四个边角
+Flight_Plan_Clip.indices 		            = {0,1,2,0,2,3}
+Flight_Plan_Clip.init_pos		            = {0, 0, 0}  --{0.2285, 0.0722344, 0}
+Flight_Plan_Clip.init_rot		            = {0, 0, 0}
+Flight_Plan_Clip.material		            = "EALT_BG_COLOR"
+Flight_Plan_Clip.h_clip_relation            = h_clip_relations.COMPARE --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
+Flight_Plan_Clip.level			            = NS430_DEFAULT_LEVEL
+Flight_Plan_Clip.isdraw		                = true
+Flight_Plan_Clip.change_opacity             = false
+Flight_Plan_Clip.element_params             = {"NS430_FPL_ACT_DISPLAY"}              -- Initialize the main display control
+Flight_Plan_Clip.controllers                = {{"opacity_using_parameter",0}}
+Flight_Plan_Clip.parent_element	            = "flight_plan_clip"
+Flight_Plan_Clip.isvisible		            = true
 Add(Flight_Plan_Clip)
 
 -- line height 110 px, distance 20px
@@ -39,7 +57,7 @@ Add(BS430_FPL_TITLE)
 -- waypoint mark
 local BS430_FPL_TITLE_WPT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 BS430_FPL_TITLE_WPT.material          = "BS430_font_blue"    --FONT_             --Material type (note the font material created above)
-BS430_FPL_TITLE_WPT.init_pos          = {-260*2/default_gps_x, 550 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_FPL_TITLE_WPT.init_pos          = {-260*2/default_gps_x, 330 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 BS430_FPL_TITLE_WPT.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
 BS430_FPL_TITLE_WPT.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 BS430_FPL_TITLE_WPT.formats           = {"WAYPOINT", "%s"}
@@ -57,7 +75,7 @@ Add(BS430_FPL_TITLE_WPT)
 -- dtk mark
 local BS430_FPL_TITLE_DTK             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 BS430_FPL_TITLE_DTK.material          = "BS430_font_blue"    --FONT_             --Material type (note the font material created above)
-BS430_FPL_TITLE_DTK.init_pos          = {23.35*2/default_gps_x, 550 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_FPL_TITLE_DTK.init_pos          = {23.35*2/default_gps_x, 330 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 BS430_FPL_TITLE_DTK.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
 BS430_FPL_TITLE_DTK.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 BS430_FPL_TITLE_DTK.formats           = {"DTK", "%s"}
@@ -75,7 +93,7 @@ Add(BS430_FPL_TITLE_DTK)
 -- dis mark
 local BS430_FPL_TITLE_DIS             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 BS430_FPL_TITLE_DIS.material          = "BS430_font_blue"    --FONT_             --Material type (note the font material created above)
-BS430_FPL_TITLE_DIS.init_pos          = {259.25*2/default_gps_x, 550 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_FPL_TITLE_DIS.init_pos          = {259.25*2/default_gps_x, 330 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
 BS430_FPL_TITLE_DIS.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
 BS430_FPL_TITLE_DIS.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 BS430_FPL_TITLE_DIS.formats           = {"DIS", "%s"}
@@ -90,29 +108,29 @@ BS430_FPL_TITLE_DIS.level			  = NS430_DEFAULT_LEVEL
 BS430_FPL_TITLE_DIS.parent_element    = "flight_plan_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(BS430_FPL_TITLE_DIS)
 
-local Flight_Plan_Clip                      = CreateElement "ceMeshPoly" --This is the clipping layer
+local Flight_Plan_Clip                      = CreateElement "ceTexPoly" --This is the clipping layer
 Flight_Plan_Clip.name 			            = "flight_plan_clip_black"
 Flight_Plan_Clip.vertices 		            = GPS_vert_gen(748*2, 2*620.6*aspect)
 Flight_Plan_Clip.indices 		            = {0,1,2,0,2,3}
 Flight_Plan_Clip.init_pos		            = {0, - 108.6*aspect/default_gps_x - 0.0722344, 0}
 Flight_Plan_Clip.init_rot		            = {0, 0, 0}
 Flight_Plan_Clip.material		            = "DBG_GREY"
-Flight_Plan_Clip.h_clip_relation            = h_clip_relations.INCREASE_IF_LEVEL --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
-Flight_Plan_Clip.level			            = NS430_DEFAULT_LEVEL - 1
+Flight_Plan_Clip.h_clip_relation            = h_clip_relations.COMPARE --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
+Flight_Plan_Clip.level			            = NS430_DEFAULT_LEVEL
 Flight_Plan_Clip.isdraw		                = true
 Flight_Plan_Clip.change_opacity             = false
 Flight_Plan_Clip.element_params             = {"NS430_FPL_ACT_DISPLAY"}              -- Initialize the main display control
 Flight_Plan_Clip.controllers                = {{"opacity_using_parameter",0}}
 Flight_Plan_Clip.parent_element	            = "flight_plan_clip"
-Flight_Plan_Clip.isvisible		            = SHOW_MASKS
--- Add(Flight_Plan_Clip)
+Flight_Plan_Clip.isvisible		            = true
+Add(Flight_Plan_Clip)
 
 -- line field
 for i=0,3,1 do
     -- waypoint mark
     local BS430_FPL_TITLE_WPT             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
     BS430_FPL_TITLE_WPT.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
-    BS430_FPL_TITLE_WPT.init_pos          = {-260*2/default_gps_x, (330 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    BS430_FPL_TITLE_WPT.init_pos          = {-260*2/default_gps_x, (110 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     BS430_FPL_TITLE_WPT.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
     BS430_FPL_TITLE_WPT.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     BS430_FPL_TITLE_WPT.formats           = {"%s", "%s"}
@@ -130,7 +148,7 @@ for i=0,3,1 do
     -- dtk mark
     local BS430_FPL_TITLE_DTK             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
     BS430_FPL_TITLE_DTK.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
-    BS430_FPL_TITLE_DTK.init_pos          = {23.35*2/default_gps_x, (330 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    BS430_FPL_TITLE_DTK.init_pos          = {23.35*2/default_gps_x, (110 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     BS430_FPL_TITLE_DTK.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
     BS430_FPL_TITLE_DTK.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     BS430_FPL_TITLE_DTK.formats           = {"%s", "%s"}
@@ -148,7 +166,7 @@ for i=0,3,1 do
     -- dis mark
     local BS430_FPL_TITLE_DIS             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
     BS430_FPL_TITLE_DIS.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
-    BS430_FPL_TITLE_DIS.init_pos          = {259.25*2/default_gps_x, (330 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+    BS430_FPL_TITLE_DIS.init_pos          = {259.25*2/default_gps_x, (110 - 220*i) * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
     BS430_FPL_TITLE_DIS.alignment         = "CenterTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
     BS430_FPL_TITLE_DIS.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
     BS430_FPL_TITLE_DIS.formats           = {"%s", "%s"}

@@ -13,7 +13,7 @@ Moving_Map_Clip.isdraw		            = true
 Moving_Map_Clip.change_opacity          = false
 Moving_Map_Clip.element_params          = {"NS430_MAP_DISPLAY"}              -- Initialize the main display control
 Moving_Map_Clip.controllers             = {{"opacity_using_parameter",0}}
-Moving_Map_Clip.parent_element	        = "ns430_base_clip"
+Moving_Map_Clip.parent_element	        = "base_disp_clip"
 Moving_Map_Clip.isvisible		        = SHOW_MASKS
 Add(Moving_Map_Clip)
 
@@ -160,4 +160,23 @@ for i = 0, 99, 1 do
     test_line.level                     = NS430_DEFAULT_LEVEL
     test_line.parent_element	        = "navu_moving_map_center"
     Add(test_line)
+
+    -- airport icon
+    local waypoint_icon 				    = CreateElement "ceTexPoly"
+    waypoint_icon.vertices                  = create_GPS_circle_pos(8, 0, 0, 15)
+    waypoint_icon.indices                   = create_GPS_circle_index(8)
+    -- waypoint_icon.tex_coords                = tex_coord_gen(1536,0,128,128,2048,2048)
+    waypoint_icon.material                  = "DBG_WHITE"--basic_ns430_material --"DBG_RED"--blue_ns430_material
+    waypoint_icon.name 			            = create_guid_string()
+    waypoint_icon.init_pos                  = {0, 0, 0}
+    waypoint_icon.init_rot		            = {0, 0, 0}
+    waypoint_icon.collimated	            = true
+    waypoint_icon.element_params            = {"BS430_WP_ENABLE_"..tostring(i), "BS430_WP_LON_"..tostring(i), "BS430_WP_LAT_"..tostring(i)}
+    waypoint_icon.controllers               = {{"opacity_using_parameter",0},{"move_up_down_using_parameter",2,map_scaler},{"move_left_right_using_parameter",1,map_scaler}}
+    waypoint_icon.use_mipfilter             = true
+    waypoint_icon.additive_alpha            = true
+    waypoint_icon.h_clip_relation           = h_clip_relations.COMPARE
+    waypoint_icon.level                     = NS430_DEFAULT_LEVEL
+    waypoint_icon.parent_element	        = "navu_moving_map_center"
+    Add(waypoint_icon)    
 end
