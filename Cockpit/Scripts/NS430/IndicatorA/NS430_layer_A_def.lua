@@ -22,6 +22,7 @@ GPS_BLUE_COLOR             = {70,165,180,255} -- {130,145,150,255}
 basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 blue_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_BLUE_COLOR)
 blue_bg_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", {0,50,255,255})
+water_ns430_caucasus_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_IND_WATER_Caucasus.dds", {0,50,255,255})
 
 default_gps_x = 1024
 default_gps_y = 1024
@@ -54,6 +55,15 @@ function tex_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)
 			{(x_dis + width) / size_X , y_dis / size_Y},
 			{(x_dis + width) / size_X , (y_dis + height) / size_Y},
 			{x_dis / size_X , (y_dis + height) / size_Y},}
+end
+
+function cen_tex_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)
+    wid_half = 0.5 * width
+    hei_half = 0.5 * height
+    return {{(x_dis - wid_half) / size_X , (y_dis - hei_half) / size_Y},
+    {(x_dis + wid_half) / size_X , (y_dis - hei_half) / size_Y},
+    {(x_dis + wid_half) / size_X , (y_dis + hei_half) / size_Y},
+    {(x_dis - wid_half) / size_X , (y_dis + hei_half) / size_Y},}
 end
 
 function mirror_tex_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)

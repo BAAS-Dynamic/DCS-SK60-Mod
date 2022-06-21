@@ -180,3 +180,32 @@ for i = 0, 99, 1 do
     waypoint_icon.parent_element	        = "navu_moving_map_center"
     Add(waypoint_icon)    
 end
+
+-- here start the textures for maps
+-- 
+local Map_Scaler_Preset = {0.5, 1, 2, 3.2, 8, 16, 32, 80};
+function state_map_scale_coord_gen()
+    temp = {}
+    for i = 1, 8, 1 do
+        temp[i] = cen_tex_coord_gen(1024,1024,1024*80/Map_Scaler_Preset[i],1024*80/Map_Scaler_Preset[i],2048,2048);
+    end
+    return temp
+end
+-- Longitude_Scaler = cos(temp_map_center.y * DEG_2_RAD);
+local water_map_caucasus 				    = CreateElement "ceTexPoly"
+water_map_caucasus.vertices                 = GPS_vert_gen(80*1400*math.cos(math.rad(44)),80*1400)
+water_map_caucasus.indices                  = {0,1,2,2,3,0}
+water_map_caucasus.state_tex_coords         = state_map_scale_coord_gen()
+water_map_caucasus.material                 = water_ns430_caucasus_material --"DBG_GREEN"--blue_ns430_material
+water_map_caucasus.name 			        = create_guid_string()
+water_map_caucasus.init_pos                 = {0, 0, 0}
+water_map_caucasus.init_rot		            = {0, 0, 0}
+water_map_caucasus.collimated	            = true
+water_map_caucasus.element_params           = {"WATER_MAP_Caucasus", "MAP_SCALE_FACTOR"}
+water_map_caucasus.controllers              = {{"opacity_using_parameter",0},{"change_texture_state_using_parameter",1}}
+water_map_caucasus.use_mipfilter            = true
+water_map_caucasus.additive_alpha           = true
+water_map_caucasus.h_clip_relation          = h_clip_relations.COMPARE
+water_map_caucasus.level                    = NS430_DEFAULT_LEVEL
+water_map_caucasus.parent_element	        = "navu_moving_map_center_offset"
+Add(water_map_caucasus)

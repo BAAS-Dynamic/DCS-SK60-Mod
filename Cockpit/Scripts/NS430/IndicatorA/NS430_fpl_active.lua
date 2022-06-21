@@ -110,9 +110,9 @@ Add(BS430_FPL_TITLE_DIS)
 
 local Flight_Plan_Clip                      = CreateElement "ceTexPoly" --This is the clipping layer
 Flight_Plan_Clip.name 			            = "flight_plan_clip_black"
-Flight_Plan_Clip.vertices 		            = GPS_vert_gen(748*2, 2*620.6*aspect)
+Flight_Plan_Clip.vertices 		            = GPS_vert_gen(748*2, 2*517.16*aspect)
 Flight_Plan_Clip.indices 		            = {0,1,2,0,2,3}
-Flight_Plan_Clip.init_pos		            = {0, - 108.6*aspect/default_gps_x - 0.0722344, 0}
+Flight_Plan_Clip.init_pos		            = {0, - 2*108.6*aspect/default_gps_x - 0.0722344, 0}
 Flight_Plan_Clip.init_rot		            = {0, 0, 0}
 Flight_Plan_Clip.material		            = "DBG_GREY"
 Flight_Plan_Clip.h_clip_relation            = h_clip_relations.COMPARE --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
