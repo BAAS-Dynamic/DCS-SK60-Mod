@@ -312,8 +312,8 @@ Add(BS430_COM_FREQ)
 -- Texts Test
 local BS430_MSG             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 BS430_MSG.material          = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
-BS430_MSG.init_pos          = {0, -1020 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
-BS430_MSG.alignment         = "RightDown"       --Alignment settings：Left/Right/Center; Top/Down/Center
+BS430_MSG.init_pos          = {0, -920.304 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_MSG.alignment         = "RightTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
 BS430_MSG.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 BS430_MSG.formats           = {"MSG", "%s"}
 BS430_MSG.element_params    = {"MSG_SIGN", "NAVU_BASE_ENABLE","MSG_MODE"} -- top left first line display
@@ -329,8 +329,8 @@ Add(BS430_MSG)
 
 local BS430_NAV_MODE             = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
 BS430_NAV_MODE.material          = "BS430_font_purple"    --FONT_             --Material type (note the font material created above)
-BS430_NAV_MODE.init_pos          = {-1 + 30.72/default_gps_x , -1020 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
-BS430_NAV_MODE.alignment         = "LeftDown"       --Alignment settings：Left/Right/Center; Top/Down/Center
+BS430_NAV_MODE.init_pos          = {-1 + 30.72/default_gps_x , -920.304 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_NAV_MODE.alignment         = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
 BS430_NAV_MODE.stringdefs        = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
 BS430_NAV_MODE.formats           = {"%s", "%s"}
 BS430_NAV_MODE.element_params    = {"NAV_MODE_NAME", "NAVU_BASE_ENABLE","ACTIVE_NAV_MOD"} -- top left first line display
@@ -343,6 +343,24 @@ BS430_NAV_MODE.h_clip_relation   = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL
 BS430_NAV_MODE.level			 = NS430_DEFAULT_NOCLIP_LEVEL
 BS430_NAV_MODE.parent_element    = "ns430_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
 Add(BS430_NAV_MODE)
+
+-- page group
+local BS430_PAGE_GROUP              = CreateElement "ceStringPoly" --Create a character output element "ceTexPoly" means to create a texture model
+BS430_PAGE_GROUP.material           = "BS430_font_white"    --FONT_             --Material type (note the font material created above)
+BS430_PAGE_GROUP.init_pos           = {219.9195/default_gps_x , -920.304 * aspect / default_gps_x}         -- This is the coordinates of the alignment point [this is the maximum limit of the current model (do not exceed when aligning the corners)]
+BS430_PAGE_GROUP.alignment          = "LeftTop"       --Alignment settings：Left/Right/Center; Top/Down/Center
+BS430_PAGE_GROUP.stringdefs         = {0.85 *0.004, 1 * 0.004, 0, 0}    --{ecrase vertical si inf a 0.01,ecrase lateral * streccth, 0, 0} The first value controls the width, the second value controls the height
+BS430_PAGE_GROUP.formats            = {"%s", "%s"}
+BS430_PAGE_GROUP.element_params     = {"NAV_PAGE_GROUP", "NAVU_BASE_ENABLE"} -- top left first line display
+BS430_PAGE_GROUP.controllers        = {{"text_using_parameter",0},{"opacity_using_parameter",1}}
+BS430_PAGE_GROUP.collimated         = true
+BS430_PAGE_GROUP.use_mipfilter      = true
+BS430_PAGE_GROUP.additive_alpha     = true
+BS430_PAGE_GROUP.isvisible		    = true
+BS430_PAGE_GROUP.h_clip_relation    = h_clip_relations.COMPARE -- INCREASE_IF_LEVEL-- --REWRITE_LEVEL
+BS430_PAGE_GROUP.level			    = NS430_DEFAULT_NOCLIP_LEVEL
+BS430_PAGE_GROUP.parent_element     = "ns430_base_clip"  --Parent node name - can bind parent nodes that are not on the same layer
+Add(BS430_PAGE_GROUP)
 
 -- load of the over layer
 -- dofile(LockOn_Options.script_path.."NS430/IndicatorA/NS430_overlayer.lua")
