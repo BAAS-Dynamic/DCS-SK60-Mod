@@ -22,7 +22,7 @@ GPS_BLUE_COLOR             = {70,165,180,255} -- {130,145,150,255}
 basic_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_DAY_COLOR)
 blue_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", GPS_BLUE_COLOR)
 blue_bg_ns430_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_BASE_IND.dds", {0,50,255,255})
-water_ns430_caucasus_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_IND_WATER_Caucasus.dds", {0,50,255,255})
+water_ns430_caucasus_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_IND_WATER_Caucasus.dds", {0,50,150,255})
 
 default_gps_x = 1024
 default_gps_y = 1024

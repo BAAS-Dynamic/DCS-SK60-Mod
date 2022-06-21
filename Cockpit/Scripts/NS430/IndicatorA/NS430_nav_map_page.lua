@@ -14,7 +14,7 @@ Moving_Map_Clip.change_opacity          = false
 Moving_Map_Clip.element_params          = {"NS430_MAP_DISPLAY"}              -- Initialize the main display control
 Moving_Map_Clip.controllers             = {{"opacity_using_parameter",0}}
 Moving_Map_Clip.parent_element	        = "base_disp_clip"
-Moving_Map_Clip.isvisible		        = SHOW_MASKS
+Moving_Map_Clip.isvisible		        = false--SHOW_MASKS
 Add(Moving_Map_Clip)
 
 --[[
@@ -191,9 +191,10 @@ function state_map_scale_coord_gen()
     end
     return temp
 end
+local temp_map_size = 2700;
 -- Longitude_Scaler = cos(temp_map_center.y * DEG_2_RAD);
 local water_map_caucasus 				    = CreateElement "ceTexPoly"
-water_map_caucasus.vertices                 = GPS_vert_gen(80*1400*math.cos(math.rad(44)),80*1400)
+water_map_caucasus.vertices                 = GPS_vert_gen(2*80*temp_map_size*math.cos(math.rad(44)),80*temp_map_size)
 water_map_caucasus.indices                  = {0,1,2,2,3,0}
 water_map_caucasus.state_tex_coords         = state_map_scale_coord_gen()
 water_map_caucasus.material                 = water_ns430_caucasus_material --"DBG_GREEN"--blue_ns430_material
@@ -207,5 +208,5 @@ water_map_caucasus.use_mipfilter            = true
 water_map_caucasus.additive_alpha           = true
 water_map_caucasus.h_clip_relation          = h_clip_relations.COMPARE
 water_map_caucasus.level                    = NS430_DEFAULT_LEVEL
-water_map_caucasus.parent_element	        = "navu_moving_map_center_offset"
+water_map_caucasus.parent_element	        = "navu_moving_map_center"
 Add(water_map_caucasus)
