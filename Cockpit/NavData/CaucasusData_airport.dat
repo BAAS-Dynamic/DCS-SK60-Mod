@@ -36,7 +36,7 @@ RU-0286,RU-0286,Temryuk Airport,2,45.302121,37.321115,0,1
 RU-0287,RU-0287,Korenovsk Air Base,2,45.447,39.424,172,1
 RU-0288,RU-0288,Kushchyovskaya Air Base,2,46.537,39.548,0,1
 RU-0309,RU-0309,Kholodnogorskiy Airfield,2,44.983,42.118,0,1
-RU-0310,RU-0310,Sal'sk Airfield,3,46.416,41.519,0,1
+RU-0310,RU-0310,Sal sk Airfield,3,46.416,41.519,0,1
 RU-0313,RU-0313,Zernograd Air Base,2,46.835,40.38,0,1
 RU-0370,RU-0370,Kochubeyevskoye Airport,2,44.685864,41.74937725,0,1
 RU-0374,RU-0374,Svetlograd Airfield,3,45.42333515,42.6808548,0,1
@@ -68,11 +68,11 @@ RU-0524,RU-0524,Southern Sky Airfield,2,44.937911,38.929186,0,1
 RU-0579,RU-0579,Gostagayevskaya Airport,2,44.999984,37.482398,295,1
 RU-0580,RU-0580,Borodinskaya Airstrip,2,46.0928,38.2347,0,1
 RU-0581,RU-0581,Yasenskaya Airstrip,2,46.3927,38.2848,0,1
-RU-0582,RU-0582,Oktyabr'skiy Airstrip,2,46.4636,38.2878,0,1
+RU-0582,RU-0582,Oktyabr skiy Airstrip,2,46.4636,38.2878,0,1
 RU-0583,RU-0583,Zarya Airstrip,2,46.4812,38.1347,0,1
 RU-0584,RU-0584,Kamyshevatskaya Airstrip,2,46.4665,37.9568,0,1
 RU-0585,RU-0585,Komsomolets Airstrip,2,46.5809,38.2255,0,1
-RU-0672,RU-0672,Armavir / Krasnaya Polyana Airfield,2,45.053223,41.088352,0,1
+RU-0672,RU-0672,ArmavirKrasnaya Polyana Airfield,2,45.053223,41.088352,0,1
 TR-0036,TR-0036,nye Airport,3,41.141201,37.209202,0,1
 TR-0042,TR-0042,Rizexxrtvin Airport,1,41.179625,40.850796,5,1
 TR-0080,TR-0080,Engiz Airport,2,41.5129,36.1203,0,1
@@ -82,7 +82,7 @@ UA-0019,UA-0019,Bagerovo Air Base,3,45.407001,36.244999,0,1
 UA-0020,UA-0020,Melitopol Air Base,1,46.880001,35.305,0,1
 UA-0023,UA-0023,Chkalovskiy Airfield,3,45.073002,35.202999,0,1
 UA-0129,UA-0129,Koktebel Gliding Center,2,45.020896,35.206845,801,1
-UA-0171,UA-0171,Prymors'k Airport,2,46.7441,36.32766,89,1
+UA-0171,UA-0171,Prymors k Airport,2,46.7441,36.32766,89,1
 UA-0172,UA-0172,Korsak Airport,2,46.7513,35.6342,115,1
 UB16,UB16,Balakan Airport,2,41.733048,46.355677,935,1
 UBBA,UBBA,Akstafa Airport,2,41.123616,45.420793,1085,1
@@ -100,7 +100,7 @@ UGMM,UGMM,Mukhrani Airport,3,41.916,44.566,1807,1
 UGMS,UGMS,Mestia Queen Tamar Airport,2,43.053597,42.749012,4778,1
 UGSA,UGSA,Natakhtari Airfield,2,41.921737,44.712166,0,1
 UGSB,BUS,Batumi International Airport,1,41.61029816,41.59970093,105,1
-UGSS,SUI,Sukhumi Babushara /  Vladislav Ardzinba International Airport,1,42.8582,41.128101,53,1
+UGSS,SUI,Sukhumi BabusharaVladislav Ardzinba International Airport,1,42.8582,41.128101,53,1
 UGTB,TBS,Tbilisi International Airport,0,41.6692009,44.95470047,1624,1
 UKDB,ERD,Berdyansk Airport,3,46.814999,36.758099,171,1
 UKFK,KHC,Kerch Airport,2,45.37250137,36.40140152,171,1
@@ -121,6 +121,6 @@ URMP,URMP,Pyatigorsk Airport,3,44.04962715,43.02147388,0,1
 URMS,IGT,Magas Airport,1,43.32229996,45.01259995,1165,1
 URMT,STW,Stavropol Shpakovskoye Airport,1,45.10919952,42.1128006,1486,1
 URRE,URRE,Remontnoye Airport,2,46.544302,43.6457,409,1
-URRS,URRS,Sal'sk 2 Airfield,3,46.45755,41.483345,0,1
+URRS,URRS,Sal sk 2 Airfield,3,46.45755,41.483345,0,1
 URSS,AER,Sochi International Airport,0,43.449902,39.9566,89,1
 URWI,ESL,Elista Airport,1,46.37390137,44.33089828,501,1
