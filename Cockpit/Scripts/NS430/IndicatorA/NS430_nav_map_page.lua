@@ -101,7 +101,7 @@ Add(aircraft_pos_icon)
 
 -- Moving map airport display, max 100 airports
 -- 310 * 310 in display -> equal to 1900 * 1900  360 * 1024 
-for i = 0, 100, 1 do
+for i = 0, 200, 1 do
     -- airport icon
     local airport_icon 				      = CreateElement "ceTexPoly"
     airport_icon.vertices                 = GPS_vert_gen(128, 128)
