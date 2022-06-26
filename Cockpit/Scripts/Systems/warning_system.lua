@@ -5,7 +5,7 @@ dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 
 --设置循环次数
-local update_rate = 0.04 -- 20次每秒
+local update_rate = 0.02 -- 20次每秒
 make_default_activity(update_rate)
 
 local ic_ctrl = GetSelf()
@@ -34,6 +34,8 @@ target_status = {
 current_status = {
     {strobe_light_switch , SWITCH_OFF, SWITCH_OFF},
 }
+
+local element_name = {"FIRE_L_ENG", "CANOPY", "FIRE_R_ENG", "FUEL_L_ENG", "THRUST_REV", "FUEL_R_ENG", "OIL_L_ENG", "BRAKE", "OIL_R_ENG", "HYDRO_L", "CONVERT_A", "HYDRO_R", "GEN_L", "CONVERT_B", "GEN_R"}
 
 function post_initialize()
     local birth = LockOn_Options.init_conditions.birth_place
@@ -70,6 +72,9 @@ function update_switch_status()
 end
 
 warning_display = get_param_handle("WARNING_DIS_ENABLE")
+
+
+warn_tick = 0
 
 function update()
     if get_elec_dc_status() then
