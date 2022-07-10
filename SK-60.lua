@@ -11,7 +11,7 @@ SK_60 =  {
 	{
 		{
 			file  	 	= 'SK-60';--AG
-			life  	 	= 20; -- lifebar
+			life  	 	= 180; -- lifebar
 			vis   	 	= 2; -- visibility gain.
 			desrt    	= 'NCPC-7_destr'; -- Name of destroyed object file name
 			fire  	 	= { 300, 2}; -- Fire on the ground after destoyed: 300sec 2m
@@ -36,7 +36,7 @@ SK_60 =  {
 	"South Ossetia","Spain","Sweden","Switzerland","Syria","Turkey","UK","Ukraine","USA","USAF Aggressors"},
 	
 	
-	mapclasskey 		= "P0091000024",
+	mapclasskey 		= "P0091000025",
 	--attribute  		= {wsType_Air, wsType_Airplane, wsType_Fighter, F_15, "Fighters", "Refuelable",},--AG WSTYPE_PLACEHOLDER
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,"Battleplanes",},--AG WSTYPE_PLACEHOLDER
 	Categories			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
@@ -397,13 +397,16 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 	},
 	
 	Tasks = {
-        aircraft_task(CAP),
-     	aircraft_task(Escort),
-      	aircraft_task(FighterSweep),
-		aircraft_task(Intercept),
+        aircraft_task(GroundAttack),
+		aircraft_task(PinpointStrike),
+        aircraft_task(CAS),
+        aircraft_task(AFAC),
+		aircraft_task(RunwayAttack),
+		aircraft_task(SEAD),
+		aircraft_task(Escort),
 		aircraft_task(Reconnaissance),
     },	
-	DefaultTask = aircraft_task(CAP),
+	DefaultTask = aircraft_task(GroundAttack),
 
 	SFM_Data = {
 		aerodynamics = -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
