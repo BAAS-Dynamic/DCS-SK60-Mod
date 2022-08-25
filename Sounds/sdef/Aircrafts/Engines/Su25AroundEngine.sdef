@@ -5,5 +5,5 @@ cone_inner_angle = 60
 cone_outer_angle = 120
 cone_outer_gain = 0.3
 direction = {0, 0, 0}
-pitch = 0.5
-gain = 0
+pitch = 1.5
+gain = 4
