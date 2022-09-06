@@ -122,6 +122,12 @@ viewang_h = 0
 local cursor_mode = get_param_handle("DEBUG_LINE3")
 
 function SetCommand(command,value)
+    if (command == 2142) then
+        viewang_h = value
+        -- print_message_to_user("headx:"..value)
+    elseif (command == 2143) then
+        -- print_message_to_user("heady:"..value)
+    end
     -- print_message_to_user(command)
     --[[
     if (command == 9100) then
