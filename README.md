@@ -5,6 +5,8 @@
 <br>
 A Saab SK60 mod for Digital Combat Simulator World.
 <br>
+Note: The Externel FLight Model Code will be released later. 
+<br>
 ![team](Theme/ME/MainMenulogo.png)
 
 
