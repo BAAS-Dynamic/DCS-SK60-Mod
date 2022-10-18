@@ -76,11 +76,13 @@ function Airspeed_Gauge_AOA_G_Cal()
     else
         Gauge_display_state[airspeed_ind][2] = 0.95
     end
+    --[[
     if vertical_acc > 0 then
-        Gauge_display_state[current_g_ind][2] = vertical_acc/8
+        Gauge_display_state[current_g_ind][2] = vertical_acc/8*0.889
     else
-        Gauge_display_state[current_g_ind][2] = vertical_acc/3
+        Gauge_display_state[current_g_ind][2] = vertical_acc/3*0.749
     end
+    ]]--
 end
 
 function Altitude_Cal()

@@ -158,6 +158,7 @@ function SetCommand(command,value)
 end
 
 local testParam = get_param_handle("TEST_TEXTURE_STATE")
+local show_ias = get_param_handle("IAS_TEXT")
 local counter_test = 0
 
 local is_get_mission_route = 0
@@ -165,6 +166,7 @@ local is_get_mission_route = 0
 function update()
     --gps_base:set(1)
     hud_adi_rot:set(sensor_data.getRoll())
+    show_ias:set(1)
     hud_adi_pitch:set(-sensor_data.getPitch())
     hud_speed_dis:set(sensor_data.getIndicatedAirSpeed()*ias_conversion_to_kmh)
     hud_alt_dis:set(sensor_data.getBarometricAltitude())
