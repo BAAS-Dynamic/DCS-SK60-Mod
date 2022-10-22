@@ -311,3 +311,73 @@ declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd13}", "1
 declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd12}", "1x 14,5cm HEAT rocket", "M49_Rocket_145_HEAT.png", 1, 1450, "SK60_145_psrak", 0.025, 0.145, 0.43))
 declare_loadout(declear_rocket_pods("{d694b359-e7a8-4909-88d4-7100b77afd10}", "2x 14,5cm HEAT rocket", "M49_Rocket_145_HEAT.png", 2, 1450, "SK60_145_psrak", 0.025, 0.145, 0.43))
 
+-- here is the new gun pods
+-- 30 mm akan m/55
+function akan_m55_gun(tbl)
+	tbl.category = CAT_GUN_MOUNT
+	tbl.name     = "Akan M/55 30mm"
+	tbl.supply   =
+	{
+		-- use temp 20mm here
+		shells = { "20x110mm HE-I", "20x110mm AP-I", "20x110mm AP-T" },
+		mixes  = { { 1, 2, 1, 3 } }, -- 50% HE-i, 25% AP-I, 25% AP-T
+		count  = 600,
+	}
+	if tbl.mixes then
+		tbl.supply.mixes = tbl.mixes
+		tbl.mixes        = nil
+	end
+	tbl.gun =
+	{
+		max_burst_length = 2,
+		rates            = { 1700 },
+		recoil_coeff     = 0.6 * 1.3,
+		barrels_count    = 2,
+	}
+	if tbl.rates then
+		tbl.gun.rates = tbl.rates
+		tbl.rates     = nil
+	end
+	tbl.ejector_pos             = tbl.ejector_pos or { 0, 0, 0 }
+	tbl.ejector_pos_connector   = tbl.ejector_pos_connector or "Gun_point"
+	tbl.ejector_dir             = { -1, -6, 0 } -- left/right; back/front;?/?
+	tbl.supply_position         = tbl.supply_position or { 0, 0.3, -0.3 }
+	tbl.aft_gun_mount           = false
+	tbl.effective_fire_distance = 1400
+	tbl.drop_cartridge          = 204
+	tbl.muzzle_pos              = tbl.muzzle_pos or { 2.5, -0.4, 0 } -- all position from connector
+	tbl.muzzle_pos_connector    = tbl.muzzle_pos_connector or "Gun_point" -- all position from connector
+	tbl.azimuth_initial         = tbl.azimuth_initial or 0
+	tbl.elevation_initial       = tbl.elevation_initial or 0
+	if tbl.effects == nil then
+		tbl.effects = { { name = "FireEffect", arg = tbl.effect_arg_number or 436 },
+			{ name = "HeatEffectExt", shot_heat = 7, barrel_k = 0.4 * 2.5, body_k = 0.4 * 15 },
+			{ name = "SmokeEffect" } }
+	end
+	return declare_weapon(tbl)
+end
+
+AKAN_GUNPOD = {
+    category        = CAT_PODS,
+    CLSID           = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}",
+    attribute       = {wsType_Weapon,wsType_GContainer,wsType_Cannon_Cont,WSTYPE_PLACEHOLDER},
+    wsTypeOfWeapon  = {wsType_Weapon,wsType_Shell,wsType_Shell,WSTYPE_PLACEHOLDER},
+    Picture         = "SPPU22.png",
+    displayName     = _("AKAN m/55 Gunpod"),
+    Weight          = 196,
+    Cx_pil          = 0.001220703125,
+    Elements        = {{ShapeName = "SK60_AKAN"}},
+    kind_of_shipping = 2,   -- SOLID_MUNITION
+    gun_mounts      = {
+        akan_m55_gun({
+            muzzle_pos_connector = "AKAN_muzzle",
+            rates = {1700}, mixes = {{1,2,1,3}},
+            effect_arg_number = 1050,
+            azimuth_initial = 0,
+            elevation_initial = 0,
+            supply_position = {2, -0.3, -0.4}})
+    },
+    shape_table_data = {{file = 'SK60_AKAN'; username = 'SK60_AKAN'; index = WSTYPE_PLACEHOLDER;}}
+}
+
+declare_loadout(AKAN_GUNPOD)

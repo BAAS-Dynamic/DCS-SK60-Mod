@@ -19,6 +19,8 @@ local SWITCH_OFF = 0
 local SWITCH_ON = 1
 local SWITCH_TEST = -1
 
+local RAD_TO_DEGREE  = 57.29577951308233
+
 switch_count = 0
 function _switch_counter()
     switch_count = switch_count + 1
@@ -46,6 +48,9 @@ function post_initialize()
     elseif birth == "AIR_HOT" then
         
     end
+    -- center panel
+    sndhost_cockpit_warning          = create_sound_host("COCKPIT_MAIN","3D",0.3,-0.3,0.3) 
+    snd_stall_warning                = sndhost_cockpit_warning:create_sound("Aircrafts/SK-60/SK60_Warn_Stall")
 end
 
 ic_ctrl:listen_command()
@@ -79,6 +84,19 @@ warn_tick = 0
 function update()
     if get_elec_dc_status() then
         warning_display:set(1)
+        if (sensor_data.getIndicatedAirSpeed() > 20 or sensor_data.getWOW_NoseLandingGear() > 0.01) then
+            if (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 23 and set_aircraft_draw_argument_value(9) < 0.3) then
+                snd_stall_warning:play_continue()
+            elseif (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 15 and set_aircraft_draw_argument_value(9) >= 0.3) then
+                snd_stall_warning:play_continue()
+            else
+                snd_stall_warning:stop()
+            end
+        else
+            snd_stall_warning:stop()
+        end
+    else
+        snd_stall_warning:stop()
     end
 end
 

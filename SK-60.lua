@@ -283,7 +283,7 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = 0.1},-- Smokewinder orange
 				{CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3},
 				{CLSID = "{Robot74}"},
-				{CLSID = "{AKAN}"}, -- AKAN gun pod
+				{CLSID = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}", attach_point_position = {0.0, -0.3, 0.0}}, -- AKAN gun pod
 				{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
 				{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
 				{CLSID = "{M71BOMB}"}, -- HE bomb
@@ -338,7 +338,7 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = -0.1},-- Smokewinder orange
 				{CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3},
 				{CLSID = "{Robot74}"},
-				{CLSID = "{AKAN}"}, -- AKAN gun pod
+				{CLSID = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}", attach_point_position = {0.0, -0.3, 0.0}}, -- AKAN gun pod
 				{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
 				{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
 				{CLSID = "{M71BOMB}"}, -- HE bomb
