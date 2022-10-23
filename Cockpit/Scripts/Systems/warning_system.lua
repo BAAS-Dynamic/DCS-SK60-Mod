@@ -49,7 +49,7 @@ function post_initialize()
         
     end
     -- center panel
-    sndhost_cockpit_warning          = create_sound_host("COCKPIT_MAIN","3D",0.3,-0.3,0.3) 
+    sndhost_cockpit_warning          = create_sound_host("COCKPIT_WARN","3D",0.3,-0.3,0.3) 
     snd_stall_warning                = sndhost_cockpit_warning:create_sound("Aircrafts/SK-60/SK60_Warn_Stall")
 end
 
@@ -84,10 +84,12 @@ warn_tick = 0
 function update()
     if get_elec_dc_status() then
         warning_display:set(1)
-        if (sensor_data.getIndicatedAirSpeed() > 20 or sensor_data.getWOW_NoseLandingGear() > 0.01) then
-            if (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 23 and set_aircraft_draw_argument_value(9) < 0.3) then
+        if (sensor_data.getIndicatedAirSpeed() > 40 or sensor_data.getWOW_NoseLandingGear() < 0.01) then
+            if (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 13.5 and get_aircraft_draw_argument_value(9) < 0.3) then
                 snd_stall_warning:play_continue()
-            elseif (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 15 and set_aircraft_draw_argument_value(9) >= 0.3) then
+            elseif (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 9 and get_aircraft_draw_argument_value(9) >= 0.3) then
+                snd_stall_warning:play_continue()
+            elseif (sensor_data.getIndicatedAirSpeed() < 40) then
                 snd_stall_warning:play_continue()
             else
                 snd_stall_warning:stop()

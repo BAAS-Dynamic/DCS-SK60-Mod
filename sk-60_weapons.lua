@@ -321,7 +321,7 @@ function akan_m55_gun(tbl)
 		-- use temp 20mm here
 		shells = { "20x110mm HE-I", "20x110mm AP-I", "20x110mm AP-T" },
 		mixes  = { { 1, 2, 1, 3 } }, -- 50% HE-i, 25% AP-I, 25% AP-T
-		count  = 600,
+		count  = 300,
 	}
 	if tbl.mixes then
 		tbl.supply.mixes = tbl.mixes
@@ -366,14 +366,14 @@ AKAN_GUNPOD = {
     displayName     = _("AKAN m/55 Gunpod"),
     Weight          = 196,
     Cx_pil          = 0.001220703125,
-    Elements        = {{ShapeName = "SK60_AKAN"}},
+    Elements        = {{Position = {0,0,0}, ShapeName = "SK60_AKAN", Rotation = {0,0,-10},},},
     kind_of_shipping = 2,   -- SOLID_MUNITION
     gun_mounts      = {
         akan_m55_gun({
             muzzle_pos_connector = "AKAN_muzzle",
             rates = {1700}, mixes = {{1,2,1,3}},
             effect_arg_number = 1050,
-            azimuth_initial = 0,
+            azimuth_initial = -0.01,
             elevation_initial = 0,
             supply_position = {2, -0.3, -0.4}})
     },

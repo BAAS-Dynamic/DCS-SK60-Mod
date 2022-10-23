@@ -128,6 +128,11 @@ function check_load_status()
             -- this is a rocket, check the number of it
             loading_list[i] = 3 + station.count
             weapon_system_mode = 2
+        elseif (string.sub(station.CLSID,1,36) == "{5d5aa063-a002-4de8-8a89-6eda1e80ee7") then
+            -- gunpod
+            loading_list[i] = 3
+            weapon_system_mode = 1
+            print_message_to_user("gunpod on station "..i)
         else
             loading_list[i] = 0
         end
@@ -228,7 +233,6 @@ function launch_rockets(launch_mode)
             WeaponSystem:launch_station(i-1)
         end
     end
-    rocket_interval = 0.12
 end
 
 function SetCommand(command,value)
@@ -332,10 +336,15 @@ function update()
     end
     rocket_interval = rocket_interval - update_time_step
     if fire_trigger_status == 1 then
-        if (weapon_system_mode == 2 and rocket_interval <= 0) then
-            launch_rockets(rockets_fire_mode-1)
+        if (weapon_system_mode == 2) then
+            check_load_status()
+            if rocket_interval <= 0 then
+                rocket_interval = 0.12
+                launch_rockets(rockets_fire_mode-1)
+            end
         else
             for i = 1, 3, 1 do
+                -- WeaponSystem:launch_station(i-1)
                 if loading_list[i] == 3 then
                     WeaponSystem:launch_station(i-1)
                     WeaponSystem:launch_station(6-i)
