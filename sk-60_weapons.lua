@@ -319,8 +319,8 @@ function akan_m55_gun(tbl)
 	tbl.supply   =
 	{
 		-- use temp 20mm here
-		shells = { "20x110mm HE-I", "20x110mm AP-I", "20x110mm AP-T" },
-		mixes  = { { 1, 2, 1, 3 } }, -- 50% HE-i, 25% AP-I, 25% AP-T
+		shells = { "MINGR55", "MINGR55", "MINGR55" },
+		mixes  = { { 1, 2, 3, 1, 2, 3 } }, -- 50% HE-i, 25% AP-I, 25% AP-T
 		count  = 300,
 	}
 	if tbl.mixes then
@@ -331,7 +331,7 @@ function akan_m55_gun(tbl)
 	{
 		max_burst_length = 2,
 		rates            = { 1700 },
-		recoil_coeff     = 0.6 * 1.3,
+		recoil_coeff     = 0.7 * 1.3,
 		barrels_count    = 2,
 	}
 	if tbl.rates then
@@ -343,7 +343,7 @@ function akan_m55_gun(tbl)
 	tbl.ejector_dir             = { -1, -6, 0 } -- left/right; back/front;?/?
 	tbl.supply_position         = tbl.supply_position or { 0, 0.3, -0.3 }
 	tbl.aft_gun_mount           = false
-	tbl.effective_fire_distance = 1400
+	tbl.effective_fire_distance = 2000
 	tbl.drop_cartridge          = 204
 	tbl.muzzle_pos              = tbl.muzzle_pos or { 2.5, -0.4, 0 } -- all position from connector
 	tbl.muzzle_pos_connector    = tbl.muzzle_pos_connector or "Gun_point" -- all position from connector
