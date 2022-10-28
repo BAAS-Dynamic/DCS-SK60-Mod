@@ -102,12 +102,12 @@ function post_initialize()
     snd_stall_warning                = sndhost_cockpit_warning:create_sound("Aircrafts/SK-60/SK60_Warn_Stall")
 end
 
-ic_ctrl:listen_command()
+ic_ctrl:listen_command(Keys.WARN_MASTER_CANCEL)
 
 function SetCommand(command, value)
     if command == Keys.WARN_MASTER_CANCEL then
         MasterCautionArmed = 0
-        target_status[master_cau][2] = SWITCH_OFF
+        target_status[master_cau][2] = SWITCH_TEST
     end
 end
 
@@ -151,7 +151,7 @@ local MasterCautionArmed = 0
 function switchTargetStatus(uid, target)
     current_status[uid][3] = target_status[uid][2]
     target_status[uid][2] = target
-    if MasterCautionArmed == 0 and target_status[uid][2] == SWITCH_ON and current_status[uid][3] == SWITCH_OFF then
+    if target_status[uid][2] > 0.5 and current_status[uid][3] < 0.5 then
         MasterCautionArmed = 1
         target_status[master_cau][2] = 0.5
     end
@@ -200,12 +200,12 @@ function updateWarningSignal()
     else
         switchTargetStatus(r_eng_oil, SWITCH_OFF)
     end
-    if fuel_press_l:get() > 0.001 then
+    if fuel_press_l:get() > 0.15 then
         switchTargetStatus(l_eng_fuel, SWITCH_OFF)
     else
         switchTargetStatus(l_eng_fuel, SWITCH_ON)
     end
-    if fuel_press_r:get() > 0.001 then
+    if fuel_press_r:get() > 0.15 then
         switchTargetStatus(r_eng_fuel, SWITCH_OFF)
     else
         switchTargetStatus(r_eng_fuel, SWITCH_ON)

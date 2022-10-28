@@ -279,6 +279,7 @@ Keys =
     MusicLrcViewTrigger = __custom_counter(),
     MusicVolUp = __custom_counter(),
     MusicVolDown = __custom_counter(),
+    MusicScreenHide = __custom_counter(),
 
     --起落架手柄 5001// 5050 EFM - 6000 for EFM
     NoseWheelSteeringOn = 5050,
