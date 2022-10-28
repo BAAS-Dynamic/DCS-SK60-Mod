@@ -132,7 +132,7 @@ function check_load_status()
             -- gunpod
             loading_list[i] = 3
             weapon_system_mode = 1
-            print_message_to_user("gunpod on station "..i)
+            -- print_message_to_user("gunpod on station "..i)
         else
             loading_list[i] = 0
         end
