@@ -210,6 +210,23 @@ animation_list = {
     {"PTN_522", 522},
     {"PTN_523", 523},
     {"PTN_524", 524},
+   
+    -- warning panel
+    {"FIRE_L_ENG"   , 500}, 
+    {"CANOPY"       , 501},
+    {"FIRE_R_ENG"   , 502},
+    {"FUEL_L_ENG"   , 503},
+    {"THRUST_REV"   , 504},
+    {"FUEL_R_ENG"   , 505},
+    {"OIL_L_ENG"    , 506},
+    {"BRAKE"        , 507}, 
+    {"OIL_R_ENG"    , 508}, 
+    {"HYDRO_L"      , 509}, 
+    {"CONVERT_A"    , 510}, 
+    {"HYDRO_R"      , 511}, 
+    {"GEN_L"        , 512}, 
+    {"CONVERT_B"    , 513}, 
+    {"GEN_R"        , 514},
 
     -- ipad model shown
     {"IPAD_SHOWN", 950},

@@ -17,6 +17,7 @@ local air_brake_pos = 0
 local air_brake_pos_ind = get_param_handle("AIRBRAKE_IND")
 
 local parking_brake_handle = get_param_handle("PARKINGBREAK_HANDLE")
+local parking_brake_status = get_param_handle("PARK_BRAKE")
 
 -- 减速伞工作情况
 local drag_chute_target_state = 0 -- 0为关闭，1为打开，2为抛离
@@ -188,7 +189,7 @@ function update()
     set_aircraft_draw_argument_value(13,Flap_Current)
     set_aircraft_draw_argument_value(14,Flap_Current)
     air_brake_pos_ind:set(get_aircraft_draw_argument_value(21))
-
+    parking_brake_status:set(parking_brake_state)
 end
 
 --不关闭该lua

@@ -5,7 +5,7 @@ dofile(LockOn_Options.script_path.."debug_util.lua")
 dofile(LockOn_Options.script_path.."command_defs.lua")
 
 --设置循环次数
-local update_rate = 0.02 -- 20次每秒
+local update_rate = 0.1 -- 20次每秒
 make_default_activity(update_rate)
 
 local ic_ctrl = GetSelf()
@@ -27,26 +27,72 @@ function _switch_counter()
     return switch_count
 end
 
-local strobe_light_switch = _switch_counter()
+local l_eng_fire    = _switch_counter()
+local canopy        = _switch_counter()
+local r_eng_fire    = _switch_counter()
+local l_eng_fuel    = _switch_counter()
+local thrust_rev    = _switch_counter()
+local r_eng_fuel    = _switch_counter()
+local l_eng_oil     = _switch_counter()
+local brake         = _switch_counter()
+local r_eng_oil     = _switch_counter()
+local l_eng_hyd     = _switch_counter()
+local inverterA    = _switch_counter()
+local r_eng_hyd     = _switch_counter()
+local l_eng_gen     = _switch_counter()
+local inverterB    = _switch_counter()
+local r_eng_gen     = _switch_counter()
+
+local element_name = {"FIRE_L_ENG", "CANOPY", "FIRE_R_ENG", "FUEL_L_ENG", "THRUST_REV", "FUEL_R_ENG", "OIL_L_ENG", "BRAKE", "OIL_R_ENG", "HYDRO_L", "CONVERT_A", "HYDRO_R", "GEN_L", "CONVERT_B", "GEN_R"}
 
 target_status = {
-    {strobe_light_switch , SWITCH_OFF, get_param_handle("PTN_124"), "PTN_124"},
+    {l_eng_fire , SWITCH_OFF, get_param_handle(element_name[1]), element_name[1]},
+    {canopy     , SWITCH_OFF, get_param_handle(element_name[2]), element_name[2]},
+    {r_eng_fire , SWITCH_OFF, get_param_handle(element_name[3]), element_name[3]},
+    {l_eng_fuel , SWITCH_OFF, get_param_handle(element_name[4]), element_name[4]},
+    {thrust_rev , SWITCH_OFF, get_param_handle(element_name[5]), element_name[5]},
+    {r_eng_fuel , SWITCH_OFF, get_param_handle(element_name[6]), element_name[6]},
+    {l_eng_oil  , SWITCH_OFF, get_param_handle(element_name[7]), element_name[7]},
+    {brake      , SWITCH_OFF, get_param_handle(element_name[8]), element_name[8]},
+    {r_eng_oil  , SWITCH_OFF, get_param_handle(element_name[9]), element_name[9]},
+    {l_eng_hyd  , SWITCH_OFF, get_param_handle(element_name[10]), element_name[10]},
+    {inverterA  , SWITCH_OFF, get_param_handle(element_name[11]), element_name[11]},
+    {r_eng_hyd  , SWITCH_OFF, get_param_handle(element_name[12]), element_name[12]},
+    {l_eng_gen  , SWITCH_OFF, get_param_handle(element_name[13]), element_name[13]},
+    {inverterB  , SWITCH_OFF, get_param_handle(element_name[14]), element_name[14]},
+    {r_eng_gen  , SWITCH_OFF, get_param_handle(element_name[15]), element_name[15]},
 }
 
 current_status = {
-    {strobe_light_switch , SWITCH_OFF, SWITCH_OFF},
+    {l_eng_fire , SWITCH_OFF, SWITCH_OFF},
+    {canopy     , SWITCH_OFF, SWITCH_OFF},
+    {r_eng_fire , SWITCH_OFF, SWITCH_OFF},
+    {l_eng_fuel , SWITCH_OFF, SWITCH_OFF},
+    {thrust_rev , SWITCH_OFF, SWITCH_OFF},
+    {r_eng_fuel , SWITCH_OFF, SWITCH_OFF},
+    {l_eng_oil  , SWITCH_OFF, SWITCH_OFF},
+    {brake      , SWITCH_OFF, SWITCH_OFF},
+    {r_eng_oil  , SWITCH_OFF, SWITCH_OFF},
+    {l_eng_hyd  , SWITCH_OFF, SWITCH_OFF},
+    {inverterA  , SWITCH_OFF, SWITCH_OFF},
+    {r_eng_hyd  , SWITCH_OFF, SWITCH_OFF},
+    {l_eng_gen  , SWITCH_OFF, SWITCH_OFF},
+    {inverterB  , SWITCH_OFF, SWITCH_OFF},
+    {r_eng_gen  , SWITCH_OFF, SWITCH_OFF}
 }
-
-local element_name = {"FIRE_L_ENG", "CANOPY", "FIRE_R_ENG", "FUEL_L_ENG", "THRUST_REV", "FUEL_R_ENG", "OIL_L_ENG", "BRAKE", "OIL_R_ENG", "HYDRO_L", "CONVERT_A", "HYDRO_R", "GEN_L", "CONVERT_B", "GEN_R"}
 
 function post_initialize()
     local birth = LockOn_Options.init_conditions.birth_place
     if birth == "GROUND_HOT" then
-
+        updateWarningSignal()
     elseif birth == "GROUND_COLD" then
-
+        setWarnSystemPowerOff()
     elseif birth == "AIR_HOT" then
-        
+        updateWarningSignal()
+    end
+    for k,v in pairs(target_status) do
+        current_status[k][2] = target_status[k][2]
+        target_status[k][3]:set(current_status[k][2])
     end
     -- center panel
     sndhost_cockpit_warning          = create_sound_host("COCKPIT_WARN","3D",0.3,-0.3,0.3) 
@@ -70,20 +116,89 @@ function update_switch_status()
             current_status[k][2] = current_status[k][2] - switch_moving_step
         end
         target_status[k][3]:set(current_status[k][2])
-        local temp_switch_ref = get_clickable_element_reference(target_status[k][4])
-        temp_switch_ref:update()
+        -- local temp_switch_ref = get_clickable_element_reference(target_status[k][4])
+        -- temp_switch_ref:update()
         -- print_message_to_user(k)
     end
 end
 
-warning_display = get_param_handle("WARNING_DIS_ENABLE")
-
+-- warning_display = get_param_handle("WARNING_DIS_ENABLE")
 
 warn_tick = 0
 
+-- set warning panel to off
+function setWarnSystemPowerOff()
+    -- set whole system to power off
+    for k,v in pairs(target_status) do
+        target_status[k][2] = 0
+    end
+end
+
+local parking_brake_status = get_param_handle("PARK_BRAKE")
+local fuel_press_l = get_param_handle("OP_LEFT")
+local fuel_press_r = get_param_handle("OP_RIGHT")
+
+function updateWarningSignal()
+    -- canopy
+    if get_aircraft_draw_argument_value(38) < 0.05 then
+        target_status[canopy][2] = SWITCH_OFF
+    else
+        target_status[canopy][2] = SWITCH_ON
+    end
+    -- electric system
+    if get_elec_inverterA_status() then
+        target_status[inverterA][2] = SWITCH_OFF
+    else
+        target_status[inverterA][2] = SWITCH_ON
+    end
+    if get_elec_inverterB_status() then
+        target_status[inverterB][2] = SWITCH_OFF
+    else
+        target_status[inverterB][2] = SWITCH_ON
+    end
+    -- engine part
+    if sensor_data.getEngineLeftRPM() < 0.5 then
+        target_status[l_eng_gen][2] = SWITCH_ON
+        target_status[l_eng_hyd][2] = SWITCH_ON
+    else
+        target_status[l_eng_gen][2] = SWITCH_OFF
+        target_status[l_eng_hyd][2] = SWITCH_OFF
+    end
+    if sensor_data.getEngineRightRPM() < 0.5 then
+        target_status[r_eng_gen][2] = SWITCH_ON
+        target_status[r_eng_hyd][2] = SWITCH_ON
+    else
+        target_status[r_eng_gen][2] = SWITCH_OFF
+        target_status[r_eng_hyd][2] = SWITCH_OFF
+    end
+    if sensor_data.getEngineLeftRPM() < 0.04 then
+        target_status[l_eng_oil][2] = SWITCH_ON
+    else
+        target_status[l_eng_oil][2] = SWITCH_OFF
+    end
+    if sensor_data.getEngineRightRPM() < 0.04 then
+        target_status[r_eng_oil][2] = SWITCH_ON
+    else
+        target_status[r_eng_oil][2] = SWITCH_OFF
+    end
+    if fuel_press_l:get() > 0.00001 then
+        target_status[l_eng_fuel][2] = SWITCH_OFF
+    else
+        target_status[l_eng_fuel][2] = SWITCH_ON
+    end
+    if fuel_press_r:get() > 0.00001 then
+        target_status[r_eng_fuel][2] = SWITCH_OFF
+    else
+        target_status[r_eng_fuel][2] = SWITCH_ON
+    end
+end
+
 function update()
+    update_switch_status()
     if get_elec_dc_status() then
-        warning_display:set(1)
+        -- here start the warning system
+        updateWarningSignal()
+        -- warning_display:set(1)
         if (sensor_data.getIndicatedAirSpeed() > 40 or sensor_data.getWOW_NoseLandingGear() < 0.01) then
             if (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 13.5 and get_aircraft_draw_argument_value(9) < 0.3) then
                 snd_stall_warning:play_continue()
@@ -98,6 +213,7 @@ function update()
             snd_stall_warning:stop()
         end
     else
+        setWarnSystemPowerOff()
         snd_stall_warning:stop()
     end
 end
