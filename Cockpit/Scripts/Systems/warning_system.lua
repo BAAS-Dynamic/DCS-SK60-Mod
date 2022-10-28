@@ -42,6 +42,7 @@ local r_eng_hyd     = _switch_counter()
 local l_eng_gen     = _switch_counter()
 local inverterB    = _switch_counter()
 local r_eng_gen     = _switch_counter()
+local master_cau     = _switch_counter()
 
 local element_name = {"FIRE_L_ENG", "CANOPY", "FIRE_R_ENG", "FUEL_L_ENG", "THRUST_REV", "FUEL_R_ENG", "OIL_L_ENG", "BRAKE", "OIL_R_ENG", "HYDRO_L", "CONVERT_A", "HYDRO_R", "GEN_L", "CONVERT_B", "GEN_R"}
 
@@ -61,6 +62,7 @@ target_status = {
     {l_eng_gen  , SWITCH_OFF, get_param_handle(element_name[13]), element_name[13]},
     {inverterB  , SWITCH_OFF, get_param_handle(element_name[14]), element_name[14]},
     {r_eng_gen  , SWITCH_OFF, get_param_handle(element_name[15]), element_name[15]},
+    {master_cau , SWITCH_TEST, get_param_handle("MASTER_WARN"), "MASTER_WARN"},
 }
 
 current_status = {
@@ -78,7 +80,8 @@ current_status = {
     {r_eng_hyd  , SWITCH_OFF, SWITCH_OFF},
     {l_eng_gen  , SWITCH_OFF, SWITCH_OFF},
     {inverterB  , SWITCH_OFF, SWITCH_OFF},
-    {r_eng_gen  , SWITCH_OFF, SWITCH_OFF}
+    {r_eng_gen  , SWITCH_OFF, SWITCH_OFF},
+    {master_cau , SWITCH_TEST, SWITCH_TEST},
 }
 
 function post_initialize()
@@ -102,7 +105,10 @@ end
 ic_ctrl:listen_command()
 
 function SetCommand(command, value)
-
+    if command == Keys.WARN_MASTER_CANCEL then
+        MasterCautionArmed = 0
+        target_status[master_cau][2] = SWITCH_OFF
+    end
 end
 
 function update_switch_status()
@@ -132,64 +138,77 @@ function setWarnSystemPowerOff()
     for k,v in pairs(target_status) do
         target_status[k][2] = 0
     end
+    target_status[master_cau][2] = SWITCH_TEST
+    MasterCautionArmed = 0
 end
 
 local parking_brake_status = get_param_handle("PARK_BRAKE")
 local fuel_press_l = get_param_handle("OP_LEFT")
 local fuel_press_r = get_param_handle("OP_RIGHT")
 
+local MasterCautionArmed = 0
+
+function switchTargetStatus(uid, target)
+    current_status[uid][3] = target_status[uid][2]
+    target_status[uid][2] = target
+    if MasterCautionArmed == 0 and target_status[uid][2] == SWITCH_ON and current_status[uid][3] == SWITCH_OFF then
+        MasterCautionArmed = 1
+        target_status[master_cau][2] = 0.5
+    end
+end
+
 function updateWarningSignal()
     -- canopy
     if get_aircraft_draw_argument_value(38) < 0.05 then
-        target_status[canopy][2] = SWITCH_OFF
+        switchTargetStatus(canopy, SWITCH_OFF)
     else
-        target_status[canopy][2] = SWITCH_ON
+        switchTargetStatus(canopy, SWITCH_ON)
     end
     -- electric system
     if get_elec_inverterA_status() then
-        target_status[inverterA][2] = SWITCH_OFF
+        switchTargetStatus(inverterA, SWITCH_OFF)
     else
-        target_status[inverterA][2] = SWITCH_ON
+        switchTargetStatus(inverterA, SWITCH_ON)
     end
     if get_elec_inverterB_status() then
-        target_status[inverterB][2] = SWITCH_OFF
+        switchTargetStatus(inverterB, SWITCH_OFF)
     else
-        target_status[inverterB][2] = SWITCH_ON
+        switchTargetStatus(inverterB, SWITCH_ON)
     end
     -- engine part
     if sensor_data.getEngineLeftRPM() < 0.5 then
-        target_status[l_eng_gen][2] = SWITCH_ON
-        target_status[l_eng_hyd][2] = SWITCH_ON
+        switchTargetStatus(l_eng_gen, SWITCH_ON)
+        switchTargetStatus(l_eng_hyd, SWITCH_ON)
     else
-        target_status[l_eng_gen][2] = SWITCH_OFF
-        target_status[l_eng_hyd][2] = SWITCH_OFF
+        switchTargetStatus(l_eng_gen, SWITCH_OFF)
+        switchTargetStatus(l_eng_hyd, SWITCH_OFF)
     end
     if sensor_data.getEngineRightRPM() < 0.5 then
-        target_status[r_eng_gen][2] = SWITCH_ON
-        target_status[r_eng_hyd][2] = SWITCH_ON
+        switchTargetStatus(r_eng_gen, SWITCH_ON)
+        switchTargetStatus(r_eng_hyd, SWITCH_ON)
     else
-        target_status[r_eng_gen][2] = SWITCH_OFF
-        target_status[r_eng_hyd][2] = SWITCH_OFF
+        switchTargetStatus(r_eng_gen, SWITCH_OFF)
+        switchTargetStatus(r_eng_hyd, SWITCH_OFF)
     end
     if sensor_data.getEngineLeftRPM() < 0.04 then
-        target_status[l_eng_oil][2] = SWITCH_ON
+        switchTargetStatus(l_eng_oil, SWITCH_ON)
     else
-        target_status[l_eng_oil][2] = SWITCH_OFF
+        switchTargetStatus(l_eng_oil, SWITCH_OFF)
     end
     if sensor_data.getEngineRightRPM() < 0.04 then
-        target_status[r_eng_oil][2] = SWITCH_ON
+        switchTargetStatus(r_eng_oil, SWITCH_ON)
     else
-        target_status[r_eng_oil][2] = SWITCH_OFF
+        switchTargetStatus(r_eng_oil, SWITCH_OFF)
     end
     if fuel_press_l:get() > 0.001 then
-        target_status[l_eng_fuel][2] = SWITCH_OFF
+        switchTargetStatus(l_eng_fuel, SWITCH_OFF)
     else
-        target_status[l_eng_fuel][2] = SWITCH_ON
+        switchTargetStatus(l_eng_fuel, SWITCH_ON)
     end
     if fuel_press_r:get() > 0.001 then
-        target_status[r_eng_fuel][2] = SWITCH_OFF
+        switchTargetStatus(r_eng_fuel, SWITCH_OFF)
     else
-        target_status[r_eng_fuel][2] = SWITCH_ON
+        switchTargetStatus(r_eng_fuel, SWITCH_ON)
     end
 end
 

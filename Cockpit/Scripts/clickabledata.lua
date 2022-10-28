@@ -451,6 +451,9 @@ multi_tumb_click_list = {
     {"PTN_553", "UHF Key > (Enter)", devices.UHF_RADIO, nil, 553, Keys.UHF_Key_ENT},
 
     {"PTN_601", "Canopy Handle", devices.CANOPY, 601, nil, 71}, -- iCommandPlaneCanopy
+
+    -- warning system
+    {"PTN_135", "Master Caution Acknowledge", devices.WARNING_SYSTEM, 135, nil, Keys.WARN_MASTER_CANCEL},
 }
 
 for k,v in pairs(multi_tumb_click_list) do

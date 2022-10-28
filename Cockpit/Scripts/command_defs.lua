@@ -391,6 +391,9 @@ Keys =
     SND_ELECTRIC = 6004,
     SND_GEAR   = 6005,
     SND_BEACON_ROT = 6006,
+
+    -- 6100 - 6200 for further warning system
+    WARN_MASTER_CANCEL = 6100,
 }
 
 --从5000开始递增点击指令

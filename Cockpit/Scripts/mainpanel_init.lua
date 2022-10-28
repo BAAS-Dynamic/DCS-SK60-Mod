@@ -227,6 +227,7 @@ animation_list = {
     {"GEN_L"        , 512}, 
     {"CONVERT_B"    , 513}, 
     {"GEN_R"        , 514},
+    {"MASTER_WARN"  , 135},
 
     -- ipad model shown
     {"IPAD_SHOWN", 950},
