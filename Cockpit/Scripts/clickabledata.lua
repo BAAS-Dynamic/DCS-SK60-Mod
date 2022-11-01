@@ -370,7 +370,7 @@ elements["PTN_LTHRO"] = default_2_position_tumb("Left ENGINE IDLE",  devices.ENG
 elements["PTN_RTHRO"] = default_2_position_tumb("Right Engine IDLE",  devices.ENGINE, Keys.RightEngineIDLEPOS, 42)
 
 -- 
-elements["FLAP_LEVEL"] = default_multi_position_tumb("Flap handle", devices.FLAP_SYSTEM, Keys.FlapUp, Keys.FlapDown, 43, 5.0)
+elements["FLAP_LEVEL"] = default_multi_position_tumb("Flap handle", devices.BREAK_SYSTEM, Keys.FlapUp, Keys.FlapDown, 43, 5.0)
 
 elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BREAK_SYSTEM, Keys.ParkingBrakes, 50)
 
@@ -496,7 +496,7 @@ elements["PTN_528"] = default_axis("Right Small Knob", devices.HUD_DCMS, Keys.Na
 elements["PTN_554"] = default_axis("UHF Volume", devices.UHF_RADIO, Keys.UHF_Vol, 1134, 0, 0.1)
 
 -- Baro
-elements["ALT_down"] = default_axis("Baro Setting", devices.HUD_DCMS, Keys.EALT_BARO, 1134, 0, 0.1)
+elements["PTN_558"] = default_axis("Baro Setting", devices.HUD_DCMS, Keys.EALT_BARO, 1134, 0, 0.1)
 
 elements["PTN_179"] = springloaded_3_pos_tumb("UHF tens of Mega hertz", devices.RADIO_SYSTEM, Keys.UHFFreqAUP, Keys.UHFFreqASTOP, Keys.UHFFreqADOWN, Keys.UHFFreqASTOP, 1134)
 elements["PTN_180"] = springloaded_3_pos_tumb("UHF Mega hertz", devices.RADIO_SYSTEM, Keys.UHFFreqBUP, Keys.UHFFreqBSTOP, Keys.UHFFreqBDOWN, Keys.UHFFreqBSTOP, 1134)
