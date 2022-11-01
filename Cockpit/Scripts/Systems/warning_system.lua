@@ -107,12 +107,13 @@ ic_ctrl:listen_command(Keys.WARN_MASTER_CANCEL)
 function SetCommand(command, value)
     if command == Keys.WARN_MASTER_CANCEL then
         MasterCautionArmed = 0
+        current_status[master_cau][3] = SWITCH_TEST
         target_status[master_cau][2] = SWITCH_TEST
     end
 end
 
 function update_switch_status()
-    local switch_moving_step = 0.25
+    local switch_moving_step = 0.2 * update_rate
     for k,v in pairs(target_status) do
         if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
             current_status[k][2] = target_status[k][2]
@@ -138,6 +139,7 @@ function setWarnSystemPowerOff()
     for k,v in pairs(target_status) do
         target_status[k][2] = 0
     end
+    current_status[master_cau][3] = SWITCH_TEST
     target_status[master_cau][2] = SWITCH_TEST
     MasterCautionArmed = 0
 end
@@ -147,17 +149,22 @@ local fuel_press_l = get_param_handle("OP_LEFT")
 local fuel_press_r = get_param_handle("OP_RIGHT")
 
 local MasterCautionArmed = 0
+local unarmedCounter = 0
 
 function switchTargetStatus(uid, target)
     current_status[uid][3] = target_status[uid][2]
     target_status[uid][2] = target
-    if target_status[uid][2] > 0.5 and current_status[uid][3] < 0.5 then
-        MasterCautionArmed = 1
-        target_status[master_cau][2] = 0.5
+    if target_status[uid][2] > 0.5 then
+        unarmedCounter = unarmedCounter + 1
+        if current_status[uid][3] < 0.5 then
+            MasterCautionArmed = 1
+            current_status[master_cau][3] = SWITCH_ON
+        end
     end
 end
 
 function updateWarningSignal()
+    unarmedCounter = 0
     -- canopy
     if get_aircraft_draw_argument_value(38) < 0.05 then
         switchTargetStatus(canopy, SWITCH_OFF)
@@ -210,6 +217,23 @@ function updateWarningSignal()
     else
         switchTargetStatus(r_eng_fuel, SWITCH_ON)
     end
+    if unarmedCounter == 0 then
+        current_status[master_cau][3] = SWITCH_TEST
+    end
+end
+
+blink_rate = 3 -- 3 times per sec
+-- sometimes we need some drama function names
+function letTheLightBlink()
+    if current_status[master_cau][3] == SWITCH_ON then
+        if current_status[master_cau][2] > 0.98 then
+            target_status[master_cau][2] = -0.02
+        elseif current_status[master_cau][2] < -0.01 then
+            target_status[master_cau][2] = 1
+        end
+    else
+        target_status[master_cau][2] = SWITCH_TEST
+    end
 end
 
 function update()
@@ -217,6 +241,7 @@ function update()
     if get_elec_dc_status() then
         -- here start the warning system
         updateWarningSignal()
+        letTheLightBlink()
         -- warning_display:set(1)
         if (sensor_data.getIndicatedAirSpeed() > 40 or sensor_data.getWOW_NoseLandingGear() < 0.01) then
             if (sensor_data.getAngleOfAttack()*RAD_TO_DEGREE > 13.5 and get_aircraft_draw_argument_value(9) < 0.3) then
