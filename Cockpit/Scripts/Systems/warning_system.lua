@@ -113,7 +113,7 @@ function SetCommand(command, value)
 end
 
 function update_switch_status()
-    local switch_moving_step = 0.2 * update_rate
+    local switch_moving_step = 6 * update_rate
     for k,v in pairs(target_status) do
         if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
             current_status[k][2] = target_status[k][2]

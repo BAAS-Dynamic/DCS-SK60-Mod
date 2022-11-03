@@ -329,7 +329,7 @@ function update()
     update_switch_status()
     update_externel_light_status()
     updateSpecialAnimation()
-    if get_elec_dc_status() == true then
+    if get_elec_ac_status() == true then
         console_light:set(current_status[console_light_switch][2])
         instrument_light:set(current_status[instrument_light_switch][2])
     else

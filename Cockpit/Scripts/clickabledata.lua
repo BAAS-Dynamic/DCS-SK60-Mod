@@ -376,17 +376,19 @@ elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BRE
 
 elements["PTN_118"] = default_button("Boost Pump Test", devices.FUEL_SYSTEM, Keys.BoostPumpTestUP, Keys.BoostPumpTestDOWN, 118)
 
-elements["PTN_405"] = default_button("Left Engine Motor Starter", devices.HUD_DCMS, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE, 405, SOUND_DEFAULT_2_WAY_SWITCH )
-elements["PTN_407"] = default_button("Right Engine Motor Starter", devices.HUD_DCMS, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE, 407, SOUND_DEFAULT_2_WAY_SWITCH )
+-- elements["PTN_405"] = default_button("Left Engine Motor Starter", devices.HUD_DCMS, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE, 405, SOUND_DEFAULT_2_WAY_SWITCH )
+-- elements["PTN_407"] = default_button("Right Engine Motor Starter", devices.HUD_DCMS, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE, 407, SOUND_DEFAULT_2_WAY_SWITCH )
 
 elements["PTN_557"] = default_button("UHF Radio TAKE Press", devices.UHF_RADIO, Keys.UHF_TAKE_Button_Press, Keys.UHF_TAKE_Button_Release, 557)
 
 multi_tumb_click_list = {
     -- Engine Control
-    {"PTN_418", "Left Low Pressure Fuel Pump", devices.HUD_DCMS, 418, SOUND_DEFAULT_2_WAY_SWITCH , Keys.L_LP_PUMP},
-    {"PTN_420", "Right Low Pressure Fuel Pump", devices.HUD_DCMS, 420, SOUND_DEFAULT_2_WAY_SWITCH , Keys.R_LP_PUMP},
-    {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, SOUND_DEFAULT_2_WAY_SWITCH , Keys.L_HP_PUMP},
-    {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, SOUND_DEFAULT_2_WAY_SWITCH , Keys.R_HP_PUMP},
+    {"PTN_405", "Left Engine Motor Starter", devices.HUD_DCMS, 405, SOUND_DEFAULT_2_WAY_SWITCH, Keys.L_STARTER_PRESS, Keys.L_STARTER_RELEASE},
+    {"PTN_407", "Right Engine Motor Starter", devices.HUD_DCMS, 407, SOUND_DEFAULT_2_WAY_SWITCH, Keys.R_STARTER_PRESS, Keys.R_STARTER_RELEASE},
+    {"PTN_418", "Left Low Pressure Fuel Pump", devices.HUD_DCMS, 418, SOUND_DEFAULT_2_WAY_SWITCH, Keys.L_LP_PUMP},
+    {"PTN_420", "Right Low Pressure Fuel Pump", devices.HUD_DCMS, 420, SOUND_DEFAULT_2_WAY_SWITCH, Keys.R_LP_PUMP},
+    {"PTN_406", "Left Main Fuel Pump", devices.HUD_DCMS, 406, SOUND_DEFAULT_2_WAY_SWITCH, Keys.L_HP_PUMP},
+    {"PTN_408", "Right Main Fuel Pump", devices.HUD_DCMS, 408, SOUND_DEFAULT_2_WAY_SWITCH, Keys.R_HP_PUMP},
     {"PTN_604", "Left Throttle Idle", devices.HUD_DCMS, 604, nil, Keys.L_THROTTLE_IDLE},
     {"PTN_605", "Right Throttle Idle", devices.HUD_DCMS, 605, nil, Keys.R_THROTTLE_IDLE},
 
@@ -400,9 +402,10 @@ multi_tumb_click_list = {
     {"PTN_133", "Flood Light", devices.LIGHT_SYSTEM, 133, nil, Keys.LightFloodUP, Keys.LightFloodDOWN},
 
     -- Electric Power Switches
-    {"PTN_401", "Main Power Switch", devices.ELECTRIC_SYSTEM, 401, SOUND_DEFAULT_2_WAY_SWITCH , Keys.BatteryPower},
+    {"PTN_401", "Main Battery Switch", devices.ELECTRIC_SYSTEM, 401, SOUND_DEFAULT_2_WAY_SWITCH , Keys.BatteryPower},
     {"PTN_402", "Inverter 1 Switch", devices.ELECTRIC_SYSTEM, 402, SOUND_DEFAULT_2_WAY_SWITCH , Keys.PowerGeneratorLeft},
     {"PTN_404", "Inverter 2 Switch", devices.ELECTRIC_SYSTEM, 404, SOUND_DEFAULT_2_WAY_SWITCH , Keys.PowerGeneratorRight},
+    {"PTN_417", "Nav Power Switch", devices.ELECTRIC_SYSTEM, 417, SOUND_DEFAULT_2_WAY_SWITCH , Keys.Nav_Main_Power},
 
     {"PTN_413", "Master Arm", devices.WEAPON_SYSTEM, 413, SOUND_DEFAULT_2_WAY_SWITCH , Keys.WeaponMasterSwitch},
     {"PTN_414", "A/G mode", devices.WEAPON_SYSTEM, 414, SOUND_DEFAULT_2_WAY_SWITCH , Keys.WeaponAirGroundChange},
