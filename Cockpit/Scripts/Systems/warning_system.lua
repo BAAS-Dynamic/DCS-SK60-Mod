@@ -207,12 +207,12 @@ function updateWarningSignal()
     else
         switchTargetStatus(r_eng_oil, SWITCH_OFF)
     end
-    if fuel_press_l:get() > 0.15 then
+    if fuel_press_l:get() > 0.04 then
         switchTargetStatus(l_eng_fuel, SWITCH_OFF)
     else
         switchTargetStatus(l_eng_fuel, SWITCH_ON)
     end
-    if fuel_press_r:get() > 0.15 then
+    if fuel_press_r:get() > 0.04 then
         switchTargetStatus(r_eng_fuel, SWITCH_OFF)
     else
         switchTargetStatus(r_eng_fuel, SWITCH_ON)
