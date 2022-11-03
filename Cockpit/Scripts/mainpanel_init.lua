@@ -157,6 +157,7 @@ animation_list = {
     {"PTN_401", 401}, -- Main Power
     {"PTN_402", 402}, -- Left Gen
     {"PTN_404", 404}, -- Right Gen
+    {"PTN_417", 417}, -- Nav Bus
 
     -- Engine
     {"PTN_405", 405},

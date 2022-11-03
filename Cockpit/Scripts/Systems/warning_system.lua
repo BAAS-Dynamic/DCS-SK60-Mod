@@ -113,7 +113,7 @@ function SetCommand(command, value)
 end
 
 function update_switch_status()
-    local switch_moving_step = 6 * update_rate
+    local switch_moving_step = 3 * update_rate
     for k,v in pairs(target_status) do
         if math.abs(target_status[k][2] - current_status[k][2]) < switch_moving_step then
             current_status[k][2] = target_status[k][2]
@@ -226,10 +226,10 @@ blink_rate = 3 -- 3 times per sec
 -- sometimes we need some drama function names
 function letTheLightBlink()
     if current_status[master_cau][3] == SWITCH_ON then
-        if current_status[master_cau][2] > 0.98 then
-            target_status[master_cau][2] = -0.02
-        elseif current_status[master_cau][2] < -0.01 then
-            target_status[master_cau][2] = 1
+        if current_status[master_cau][2] >= 0.28 then
+            target_status[master_cau][2] = -0.3
+        elseif current_status[master_cau][2] <= -0.28 then
+            target_status[master_cau][2] = 0.3
         end
     else
         target_status[master_cau][2] = SWITCH_TEST
