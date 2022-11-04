@@ -1,4 +1,4 @@
 wave = "Effects/Aircrafts/SK-60/SK60_Main_Electrical"
 inner_radius = 2
 outer_radius = 5
-gain = 1.5
+gain = 0.8
