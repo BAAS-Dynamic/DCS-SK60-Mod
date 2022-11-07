@@ -267,7 +267,7 @@ Landinggearhandle.parameter_name	= "PTN_083"
 
 Fuel								= CreateGauge ()
 Fuel.arg_number						= 354
-Fuel.input							= {0, 1134}
+Fuel.input							= {0, 1640}
 Fuel.output							= {0, 1}
 Fuel.controller						= controllers.base_gauge_TotalFuelWeight
 

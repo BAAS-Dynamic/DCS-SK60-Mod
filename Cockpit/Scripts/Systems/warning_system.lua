@@ -108,7 +108,7 @@ function SetCommand(command, value)
     if command == Keys.WARN_MASTER_CANCEL then
         MasterCautionArmed = 0
         current_status[master_cau][3] = SWITCH_TEST
-        target_status[master_cau][2] = SWITCH_TEST
+        target_status[master_cau][2] = SWITCH_OFF
     end
 end
 
@@ -140,7 +140,7 @@ function setWarnSystemPowerOff()
         target_status[k][2] = 0
     end
     current_status[master_cau][3] = SWITCH_TEST
-    target_status[master_cau][2] = SWITCH_TEST
+    target_status[master_cau][2] = SWITCH_OFF
     MasterCautionArmed = 0
 end
 
@@ -226,10 +226,10 @@ blink_rate = 3 -- 3 times per sec
 -- sometimes we need some drama function names
 function letTheLightBlink()
     if current_status[master_cau][3] == SWITCH_ON then
-        if current_status[master_cau][2] >= 0.28 then
-            target_status[master_cau][2] = -0.3
-        elseif current_status[master_cau][2] <= -0.28 then
-            target_status[master_cau][2] = 0.3
+        if current_status[master_cau][2] >= 1 then
+            target_status[master_cau][2] = 0.2
+        elseif current_status[master_cau][2] <= 0.2 then
+            target_status[master_cau][2] = 1
         end
     else
         target_status[master_cau][2] = SWITCH_TEST

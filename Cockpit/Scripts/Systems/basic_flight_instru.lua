@@ -196,6 +196,8 @@ function update_Gauge_Display()
     end
 end
 
+local internal_fuel_value = get_param_handle("EFM_INTERNAL_FUEL")
+
 function update()
     Altitude_Cal()
     Airspeed_Gauge_AOA_G_Cal()
@@ -203,6 +205,7 @@ function update()
     calculate_Climb_Slide()
     update_HSI_Compass()
     update_Gauge_Display()
+    -- print_message_to_user(internal_fuel_value:get())
 end
 
 need_to_be_closed = false

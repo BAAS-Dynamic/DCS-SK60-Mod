@@ -89,8 +89,8 @@ keyCommands = {
     -- Engine Control
     {down = Keys.L_THROTTLE_IDLE,					name = _('Toggle Left Throttle IDLE/OFF'),			category = _('Engine')},
     {down = Keys.R_THROTTLE_IDLE,					name = _('Toggle Right Throttle IDLE/OFF'),		category = _('Engine')},
-    {down = Keys.L_THROTTLE_SETIDLE,    up = Keys.L_THROTTLE_SETOFF,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
-    {down = Keys.R_THROTTLE_SETIDLE,   up = Keys.R_THROTTLE_SETOFF,					name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
+    {down = Keys.L_THROTTLE_SETOFF,     up = Keys.L_THROTTLE_SETIDLE,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
+    {down = Keys.R_THROTTLE_SETOFF,     up = Keys.R_THROTTLE_SETIDLE,				name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
 
     {pressed = iCommandAltimeterPressureIncrease,	up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Increase'), category = _('Systems')},
     {pressed = iCommandAltimeterPressureDecrease, up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Decrease'), category = _('Systems')},
