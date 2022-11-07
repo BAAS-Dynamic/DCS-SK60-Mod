@@ -1,5 +1,5 @@
 # DCS-SK60-Mod
-[![release](https://img.shields.io/github/v/release/corsaircat/DCS-sk60-mod?include_prereleases)](RELEASE)
+[![release](https://img.shields.io/github/v/release/Breadmaker91/DCS-SK60-Mod/?include_prereleases)](RELEASES)
 ![platform](https://img.shields.io/badge/platform-windows-lightgrey)
 ![EFM](https://img.shields.io/badge/Flightmodel-EFM-green)
 <br>
