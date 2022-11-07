@@ -1,7 +1,9 @@
 # DCS-SK60-Mod
-[![release](https://img.shields.io/github/v/release/Breadmaker91/DCS-SK60-Mod/?include_prereleases)](RELEASES)
+[![release](https://img.shields.io/github/v/release/Breadmaker91/DCS-SK60-Mod?include_prereleases)](https://github.com/Breadmaker91/DCS-SK60-Mod/releases)
 ![platform](https://img.shields.io/badge/platform-windows-lightgrey)
 ![EFM](https://img.shields.io/badge/Flightmodel-EFM-green)
+![Status](https://img.shields.io/badge/status-closed%20Beta-ff69b4)
+![LICENSE](https://img.shields.io/github/license/Breadmaker91/DCS-SK60-Mod)
 <br>
 A Saab SK60 mod for Digital Combat Simulator World.
 <br>
