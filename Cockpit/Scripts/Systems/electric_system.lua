@@ -165,7 +165,6 @@ function post_initialize() --默认初始化函数
     target_status[right_real_gen_switch][2] = SWITCH_ON
     current_status[left_real_gen_switch][2] = SWITCH_ON
     current_status[right_real_gen_switch][2] = SWITCH_ON
-    nav_switch_transfer:set(target_status[main_nav_switch][2])
     update_switch_status()
     update_elec_state()
 end
@@ -238,6 +237,7 @@ end
 function update() --刷新状态
     update_switch_status()
     update_elec_state()
+    nav_switch_transfer:set(target_status[main_nav_switch][2])
 end
 
 --[[
