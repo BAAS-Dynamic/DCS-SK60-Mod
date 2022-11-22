@@ -69,8 +69,8 @@ function post_initialize()
             {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_424"), "PTN_424"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
-            {instrument_light_switch , SWITCH_ON, get_param_handle("PTN_132"), "PTN_132"},
-            {console_light_switch , 0.3, get_param_handle("PTN_131"), "PTN_131"},
+            {instrument_light_switch , SWITCH_ON, get_param_handle("PTN_136"), "PTN_136"},
+            {console_light_switch , 0.3, get_param_handle("PTN_137"), "PTN_137"},
             {approach_index_switch , SWITCH_OFF, get_param_handle("PTN_134"), "PTN_134"},
         }
     elseif birth == "AIR_HOT" then
@@ -80,8 +80,8 @@ function post_initialize()
             {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_424"), "PTN_424"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
-            {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
-            {console_light_switch , 0.3, get_param_handle("PTN_131"), "PTN_131"},
+            {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_136"), "PTN_136"},
+            {console_light_switch , 0.3, get_param_handle("PTN_137"), "PTN_137"},
             {approach_index_switch , SWITCH_OFF, get_param_handle("PTN_134"), "PTN_134"},
         }
     end

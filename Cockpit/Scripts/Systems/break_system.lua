@@ -245,7 +245,7 @@ function update()
 
     parking_brake_handle:set(parking_brake_state)
     --print_message_to_user(parking_brake_state)
-    local flap_moving_step = 0.02 / 5
+    local flap_moving_step = 0.02 / 10
     -- update flap status
     if get_hydro_system_status() == true then
         if math.abs(Flap_Target - Flap_Current) < flap_moving_step then
