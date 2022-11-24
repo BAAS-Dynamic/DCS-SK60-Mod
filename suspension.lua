@@ -1,4 +1,4 @@
-multiplier_suspen = 13000000000--24005000;
+multiplier_suspen = 5000000000--24005000;
 				--  16317400
 multi2 = 12 -- 6-- fit 2.5G max overload when fully retract
 
@@ -26,7 +26,7 @@ suspension_data =
 		amortizer_basic_length					= 0.15, -- - 3.25 + 3.394,
 		amortizer_spring_force_factor			= 3495463692326.1/500000, --10623.044,
 		amortizer_spring_force_factor_rate		= 3,
-		amortizer_static_force					= 1120,--4720,
+		amortizer_static_force					= 4720,--2897,
 		amortizer_reduce_length					= 0.15, -- - 3.25 + 3.394,
 		amortizer_direct_damper_force_factor	= 3800,
 		amortizer_back_damper_force_factor		= 2600,
@@ -71,7 +71,7 @@ suspension_data =
 		-- wheel_axle_offset 	= 0 ,
 		self_attitude	    = false,
 		yaw_limit		    = math.rad(0.0),
-		damper_coeff	    = 160.0,
+		damper_coeff	    = 300.0,
 		
 		allowable_hard_contact_length			= 0.37,
 
@@ -80,7 +80,7 @@ suspension_data =
 		amortizer_basic_length					= 0.45,
 		amortizer_spring_force_factor			= multiplier_suspen,
 		amortizer_spring_force_factor_rate		= multi2,
-		amortizer_static_force					= 2897,
+		amortizer_static_force					= 143, --1120
 		amortizer_reduce_length					= 0.14,
 		amortizer_direct_damper_force_factor 	= multi2_damp_f,
 		amortizer_back_damper_force_factor 		= multi2_damp_b,
@@ -130,7 +130,7 @@ suspension_data =
 		
 		self_attitude	    = false,
 		yaw_limit		    = math.rad(0.0),
-		damper_coeff	    = 160.0,
+		damper_coeff	    = 300.0,
 		
 		allowable_hard_contact_length			= 0.37,
 
@@ -139,7 +139,7 @@ suspension_data =
 		amortizer_basic_length					= 0.45,
 		amortizer_spring_force_factor			= multiplier_suspen,
 		amortizer_spring_force_factor_rate		= multi2,
-		amortizer_static_force					= 2897,
+		amortizer_static_force					= 143,  --1120
 		amortizer_reduce_length					= 0.14,
 		amortizer_direct_damper_force_factor 	= multi2_damp_f,
 		amortizer_back_damper_force_factor 		= multi2_damp_b,
