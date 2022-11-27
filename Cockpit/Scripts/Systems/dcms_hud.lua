@@ -233,9 +233,8 @@ function update()
         ehsi_compass:set(deg_heading)
     end
 
-    local temp_dbg1 = get_param_handle("AIRPORT_LON_0")
+    local temp_dbg1 = get_param_handle("DBG_OUTPUT")
     local temp_dbg2 = get_param_handle("MAP_CENTER_Y")
-    --print_message_to_user(temp_dbg:get())
     --print_message_to_user("maxI:"..temp_dbg1:get())
     --print_message_to_user("minI:"..temp_dbg2:get())
     --left_n1:set(sensor_data.getEngineLeftRPM())
