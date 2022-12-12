@@ -88,7 +88,7 @@ keyCommands = {
 
     -- Engine Control
     {down = Keys.L_THROTTLE_IDLE,					name = _('Toggle Left Throttle IDLE/OFF'),			category = _('Engine')},
-    {down = Keys.R_THROTTLE_IDLE,					name = _('Toggle Right Throttle IDLE/OFF'),		category = _('Engine')},
+    {down = Keys.R_THROTTLE_IDLE,					name = _('Toggle Right Throttle IDLE/OFF'),			category = _('Engine')},
     {down = Keys.L_THROTTLE_SETOFF,     up = Keys.L_THROTTLE_SETIDLE,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
     {down = Keys.R_THROTTLE_SETOFF,     up = Keys.R_THROTTLE_SETIDLE,				name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
 
@@ -373,7 +373,16 @@ keyCommands = {
     {down = Keys.MusicFastForward,			name = _('Music Play Fast Forward'),		category = _('Music Player')},
     {down = Keys.MusicFastBack,			    name = _('Music Play Fast Backward'),		category = _('Music Player')},
     {down = Keys.MusicLrcViewTrigger,		name = _('Music Display Lyrics'),			category = _('Music Player')},
+	
+	-- Breadmakers Additions
+	{down = 3401, up = 3401, cockpit_device_id = 1, value_down= 1, value_up = 0,name = _('Main Battery Switch'), category = _('Electrical')},
+	{down = Keys.L_HP_PUMP,					name = _('Left Fuel Pump'),					category = _('Engine Startup')},
+	{down = Keys.R_HP_PUMP,					name = _('Right Fuel Pump'),				category = _('Engine Startup')},
+	{down = Keys.L_STARTER_PRESS,			name = _('Left Starter Switch'),			category = _('Engine Startup')},
+	{down = Keys.R_STARTER_PRESS,			name = _('Right Starter Switch'),			category = _('Engine Startup')},
 },
+
+
 
 -- joystick axes 
 axisCommands = {
