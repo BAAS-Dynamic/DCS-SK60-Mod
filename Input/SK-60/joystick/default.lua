@@ -360,9 +360,9 @@ keyCommands = {
     {down = Keys.Flap_Pos_Up,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Up Position'),					category = _('HOTAS') },
     {down = Keys.Flap_Pos_Down,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Down Position'),				category = _('HOTAS') },
 
-    {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
+    {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),						category = _('Special Function') },
     {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
-    {down = Keys.Custom_Menu_Enter,			name = _('Menu Enter'),				category = _('Special Function') },
+    {down = Keys.Custom_Menu_Enter,		name = _('Menu Enter'),							category = _('Special Function') },
 
     -- Music Player
     {down = Keys.MusicPauseOrPlay,			name = _('Music Pause/Play'),				category = _('Music Player')},
@@ -375,7 +375,7 @@ keyCommands = {
     {down = Keys.MusicLrcViewTrigger,		name = _('Music Display Lyrics'),			category = _('Music Player')},
 	
 	-- Breadmakers Additions
-	{down = 3401, up = 3401, cockpit_device_id = 1, value_down= 1, value_up = 0,name = _('Main Battery Switch'), category = _('Electrical')},
+	{down = 3401, up = 3401, value_down= 1, value_up = 0,name = _('Main Battery Switch'), category = _('Electrical')},
 	{down = Keys.L_HP_PUMP,					name = _('Left Fuel Pump'),					category = _('Engine Startup')},
 	{down = Keys.R_HP_PUMP,					name = _('Right Fuel Pump'),				category = _('Engine Startup')},
 	{down = Keys.L_STARTER_PRESS,			name = _('Left Starter Switch'),			category = _('Engine Startup')},
@@ -399,7 +399,7 @@ axisCommands = {
     {	action = iCommandViewVertTransAbs,		name = _('Absolute Vertical Shift Camera View')},
     {	action = iCommandViewLongitudeTransAbs,	name = _('Absolute Longitude Shift Camera View')},
 
-    {action = iCommandPlaneRoll,			name = _('Roll')},
+    {action = iCommandPlaneRoll,		name = _('Roll')},
     {action = iCommandPlanePitch,		name = _('Pitch')},
     {action = iCommandPlaneRudder,		name = _('Rudder')},
     {action = iCommandPlaneThrustCommon, name = _('Thrust')},
