@@ -601,7 +601,7 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 		193, -- launch bar
 		194,
 		209,
-
+		250, -- wheel chocks, FOD and ladder
 		-- multicrew sync test
 		520,
 		521,

@@ -60,7 +60,7 @@ InputProfiles =
 mount_vfs_model_path	(current_mod_path.."/Shapes")
 mount_vfs_liveries_path (current_mod_path.."/Liveries")
 mount_vfs_texture_path  (current_mod_path.."/Textures")
-mount_vfs_texture_path  (current_mod_path.."/Textures/SK60_V2_Ext_Tex")
+mount_vfs_texture_path  (current_mod_path.."/Textures/SK60_Textures")
 mount_vfs_sound_path    (current_mod_path.."/Sounds")
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
