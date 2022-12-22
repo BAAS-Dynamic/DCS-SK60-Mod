@@ -19,7 +19,7 @@ update_id    = "SK-60",
 version		 = general_version, -- "2.0.1-alpha1", --
 state		 = "installed",
 developerName= _("BAAS Group"),
-info		 = _("SK-60 or Saab-105 is a swedish twin seat high performance training jet."),
+info		 = _("SK60 or Saab-105 is a swedish twin seat high performance training jet."),
 encyclopedia_path = current_mod_path..'/Encyclopedia',
 binaries   =
 {
