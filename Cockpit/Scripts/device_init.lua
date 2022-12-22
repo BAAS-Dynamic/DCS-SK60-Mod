@@ -42,6 +42,7 @@ creators[devices.IPAD_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/menu_ctrl_system.lua"}
 -- gps_receiver & the uplink databus to EFM
 creators[devices.UP_LINK]         ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gps_receiver.lua"}
+creators[devices.MISCELANIOUS]     ={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/miscelanious.lua"}
 -- 定义显示器
 -- Indicators
 indicators = {}
@@ -68,8 +69,8 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."RSGB6
 -- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."HUD/Indicator/hud_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
 -- Gunsight display
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."GunSight/gunsight_init.lua",nil,{{"hud_center","hud_down","hud_right"}}}
--- warning panel
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EWarningPanel/warning_init.lua",nil,{{"WarningPanel_center","WarningPanel_down","WarningPanel_right"}}}
+-- warning panel disabled as all moved to the animation
+-- indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."EWarningPanel/warning_init.lua",nil,{{"WarningPanel_center","WarningPanel_down","WarningPanel_right"}}}
 -- debug ipad
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."DBGiPad/ipad_init.lua",nil,{{"IPAD_center","IPAD_down","IPAD_right"},{sx_l =  -0.001,}}}
 -- custom menu indicator

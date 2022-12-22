@@ -122,6 +122,12 @@ viewang_h = 0
 local cursor_mode = get_param_handle("DEBUG_LINE3")
 
 function SetCommand(command,value)
+    if (command == 2142) then
+        viewang_h = value
+        -- print_message_to_user("headx:"..value)
+    elseif (command == 2143) then
+        -- print_message_to_user("heady:"..value)
+    end
     -- print_message_to_user(command)
     --[[
     if (command == 9100) then
@@ -152,6 +158,7 @@ function SetCommand(command,value)
 end
 
 local testParam = get_param_handle("TEST_TEXTURE_STATE")
+local show_ias = get_param_handle("IAS_TEXT")
 local counter_test = 0
 
 local is_get_mission_route = 0
@@ -159,6 +166,7 @@ local is_get_mission_route = 0
 function update()
     --gps_base:set(1)
     hud_adi_rot:set(sensor_data.getRoll())
+    show_ias:set(1)
     hud_adi_pitch:set(-sensor_data.getPitch())
     hud_speed_dis:set(sensor_data.getIndicatedAirSpeed()*ias_conversion_to_kmh)
     hud_alt_dis:set(sensor_data.getBarometricAltitude())
@@ -225,9 +233,8 @@ function update()
         ehsi_compass:set(deg_heading)
     end
 
-    local temp_dbg1 = get_param_handle("AIRPORT_LON_0")
+    local temp_dbg1 = get_param_handle("DBG_OUTPUT")
     local temp_dbg2 = get_param_handle("MAP_CENTER_Y")
-    --print_message_to_user(temp_dbg:get())
     --print_message_to_user("maxI:"..temp_dbg1:get())
     --print_message_to_user("minI:"..temp_dbg2:get())
     --left_n1:set(sensor_data.getEngineLeftRPM())
@@ -253,7 +260,9 @@ function update()
     ]]
     -- print_message_to_user(line1_lat:get())
     -- print_message_to_user(line1_lon:get())
-
+    -- local temp_dbg2 = get_param_handle("NS430_FPL_ACT_DISPLAY")
+    -- temp_dbg2:set(1)
+    -- print_message_to_user(temp_dbg2:get())
 end
 
 need_to_be_closed = false

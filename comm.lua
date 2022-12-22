@@ -8,39 +8,23 @@ local parameters = {
 }
 
 utils.verifyChunk(utils.loadfileIn('Scripts/UI/RadioCommandDialogPanel/Config/LockOnAirplane.lua', getfenv()))(parameters)
+utils.verifyChunk(utils.loadfileIn('Scripts/UI/RadioCommandDialogPanel/Config/Common/ATC.lua', getfenv()))(5, {[Airbase.Category.AIRDROME] = true})
+utils.verifyChunk(utils.loadfileIn('Scripts/UI/RadioCommandDialogPanel/Config/Common/Tanker.lua', getfenv()))(6)
+utils.verifyChunk(utils.loadfileIn('Scripts/UI/RadioCommandDialogPanel/Config/Common/AWACS.lua', getfenv()))(7, {tanker = true, radar = false})
+utils.verifyChunk(utils.loadfileIn('Scripts/UI/RadioCommandDialogPanel/Config/Common/Ground Crew.lua', getfenv()))(8)
 
--- set the rocket configration
-menus['Weapon Config'] = {
-	name = _('Rocket Configuration'),
+-- Wheel Choks and ladder
+menus['Wheel chocks and ladder'] = {
+	name = _('Wheel chocks and ladder'),
 	items = {
 		[1] = {
-			name = _('Fire in Pairs'), 		
-			command = 5059
+			name = _('Place ground equipment'), 		
+			command = sendMessage.new(Message.wMsgLeaderGroundToggleWheelChocks, true)
 		},
 		[2] = {
-			name = _('Fire in Single'),
-			command = 5058
-		},
-		[3] = {
-			name = _('Fire All'),
-			command = 5057
+			name = _('Remove ground equipment'),
+			command = sendMessage.new(Message.wMsgLeaderGroundToggleWheelChocks, false)
 		}
 	}
 }
-
-menus['Install Gunsight'] = {
-	name = _('Gunsight Installation'),
-	items = {
-		[1] = {
-			name = _('Install'), 		
-			command = 5062
-		},
-		[2] = {
-			name = _('Uninstall'),
-			command = 5063
-		}
-	}
-}
-
-menus['Ground Crew'].items[4] = { name = _('Weapon Configuration'), submenu = menus['Weapon Config']}
-menus['Ground Crew'].items[5] = { name = _('Gunsight Installation'), submenu = menus['Install Gunsight']}
+menus['Ground Crew'].items[4] = { name = _('Wheel chocks and ladder'), submenu = menus['Wheel chocks and ladder']}

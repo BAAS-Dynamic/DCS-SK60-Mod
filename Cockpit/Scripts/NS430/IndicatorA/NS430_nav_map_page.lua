@@ -2,7 +2,6 @@
 -- 790 * 475 // 1024 * 512
 local Moving_Map_Clip                   = CreateElement "ceMeshPoly" --This is the clipping layer
 Moving_Map_Clip.name 			        = "moving_map_clip"
-Moving_Map_Clip.primitivetype   	    = "triangles"
 Moving_Map_Clip.vertices 		        = { {0.7715, aspect * 0.92773}, {0.7715,-aspect * 0.92773}, {-0.7715,-aspect * 0.92773}, {-0.7715,aspect * 0.92773},} --四个边角
 Moving_Map_Clip.indices 		        = {0,1,2,0,2,3}
 Moving_Map_Clip.init_pos		        = {0.2285, 0.0722344, 0}
@@ -14,8 +13,29 @@ Moving_Map_Clip.isdraw		            = true
 Moving_Map_Clip.change_opacity          = false
 Moving_Map_Clip.element_params          = {"NS430_MAP_DISPLAY"}              -- Initialize the main display control
 Moving_Map_Clip.controllers             = {{"opacity_using_parameter",0}}
+Moving_Map_Clip.parent_element	        = "base_disp_clip"
+Moving_Map_Clip.isvisible		        = false--SHOW_MASKS
+Add(Moving_Map_Clip)
+
+--[[
+-- second clip
+local Moving_Map_Clip                   = CreateElement "ceMeshPoly" --This is the clipping layer
+Moving_Map_Clip.name 			        = "overlayer_clip"
+Moving_Map_Clip.vertices 		        = { {0.29297, aspect * 0.92773}, {0.29297,-aspect * 0.92773}, {-0.29297,-aspect * 0.92773}, {-0.29297,aspect * 0.92773},} --四个边角
+Moving_Map_Clip.indices 		        = {0,1,2,0,2,3}
+Moving_Map_Clip.init_pos		        = {0.70703-0.2285, 0, 0}
+Moving_Map_Clip.init_rot		        = {0, 0, 0}
+Moving_Map_Clip.material		        = "DBG_BLUE"
+Moving_Map_Clip.h_clip_relation         = h_clip_relations.INCREASE_IF_LEVEL --INCREASE_IF_LEVEL--COMPARE --REWRITE_LEVEL
+Moving_Map_Clip.level			        = NS430_DEFAULT_LEVEL - 1
+Moving_Map_Clip.isdraw		            = true
+Moving_Map_Clip.change_opacity          = false
+Moving_Map_Clip.element_params          = {"NS430_MAP_DISPLAY", "NS430_OVERLAYER_RIGHT"}              -- Initialize the main display control
+Moving_Map_Clip.controllers             = {{"opacity_using_parameter",0}, {"move_left_right_using_parameter",1,1}}
+Moving_Map_Clip.parent_element	        = "moving_map_clip"
 Moving_Map_Clip.isvisible		        = SHOW_MASKS
 Add(Moving_Map_Clip)
+]]--
 
 -- map_base
 local movingmap_offset_center                   = CreateElement "ceSimple"
@@ -81,7 +101,7 @@ Add(aircraft_pos_icon)
 
 -- Moving map airport display, max 100 airports
 -- 310 * 310 in display -> equal to 1900 * 1900  360 * 1024 
-for i = 0, 100, 1 do
+for i = 0, 200, 1 do
     -- airport icon
     local airport_icon 				      = CreateElement "ceTexPoly"
     airport_icon.vertices                 = GPS_vert_gen(128, 128)
@@ -125,9 +145,9 @@ for i = 0, 99, 1 do
     local test_line                     = CreateElement "ceSimpleLineObject"
     test_line.material                  = "BS430_PURPLE"
     test_line.name 			            = create_guid_string()
-    test_line.primitivetype             = "lines"
-    test_line.width                     = 2
-    test_line.vertices                  = {{0,0}, {0,1}}
+    -- test_line.primitivetype          = "lines"
+    test_line.width                     = 10/default_gps_x
+    test_line.vertices                  = {{0,0}, {0,1}}	
     -- test_line.tex_coords             = tex_coord_gen(1536,0,128,128,2048,2048)
     test_line.init_pos                  = {0, 0, 0}
     test_line.init_rot		            = {0, 0, 0}
@@ -140,4 +160,82 @@ for i = 0, 99, 1 do
     test_line.level                     = NS430_DEFAULT_LEVEL
     test_line.parent_element	        = "navu_moving_map_center"
     Add(test_line)
+
+    -- airport icon
+    local waypoint_icon 				    = CreateElement "ceTexPoly"
+    waypoint_icon.vertices                  = create_GPS_circle_pos(8, 0, 0, 15)
+    waypoint_icon.indices                   = create_GPS_circle_index(8)
+    -- waypoint_icon.tex_coords                = tex_coord_gen(1536,0,128,128,2048,2048)
+    waypoint_icon.material                  = "DBG_WHITE"--basic_ns430_material --"DBG_RED"--blue_ns430_material
+    waypoint_icon.name 			            = create_guid_string()
+    waypoint_icon.init_pos                  = {0, 0, 0}
+    waypoint_icon.init_rot		            = {0, 0, 0}
+    waypoint_icon.collimated	            = true
+    waypoint_icon.element_params            = {"BS430_WP_ENABLE_"..tostring(i), "BS430_WP_LON_"..tostring(i), "BS430_WP_LAT_"..tostring(i)}
+    waypoint_icon.controllers               = {{"opacity_using_parameter",0},{"move_up_down_using_parameter",2,map_scaler},{"move_left_right_using_parameter",1,map_scaler}}
+    waypoint_icon.use_mipfilter             = true
+    waypoint_icon.additive_alpha            = true
+    waypoint_icon.h_clip_relation           = h_clip_relations.COMPARE
+    waypoint_icon.level                     = NS430_DEFAULT_LEVEL
+    waypoint_icon.parent_element	        = "navu_moving_map_center"
+    Add(waypoint_icon)    
 end
+
+-- here start the textures for maps
+-- 
+local Map_Scaler_Preset = {0.5, 1, 2, 3.2, 8, 16, 32, 80};
+function state_map_scale_coord_gen()
+    temp = {}
+    for i = 1, 8, 1 do
+        temp[i] = cen_tex_coord_gen(1024,1024,1024*80/Map_Scaler_Preset[i],1024*80/Map_Scaler_Preset[i],2048,2048);
+    end
+    return temp
+end
+local temp_map_size = 2700;
+function get_map_verts(lon_min, lon_max, lat_min, lat_max)
+    local map_width = 36000*math.cos(math.rad(0.5*(lat_max+lat_min)))*(lon_max-lon_min)
+    local map_height = 36000*(lat_max-lat_min)
+    return GPS_vert_gen(map_width, map_height)
+end
+
+-- map materials
+water_ns430_caucasus_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_IND_WATER_Caucasus.dds", {0,50,150,255})
+water_ns430_persiangulf_material = MakeMaterial(GPS_IND_TEX_PATH.."NAVU_IND_WATER_PersianGulf.dds", {0,50,150,255})
+
+-- Longitude_Scaler = cos(temp_map_center.y * DEG_2_RAD);
+local water_map_caucasus 				    = CreateElement "ceTexPoly"
+water_map_caucasus.vertices                 =  get_map_verts(35,47,41,47) --GPS_vert_gen(2*80*temp_map_size*math.cos(math.rad(44)),80*temp_map_size)
+water_map_caucasus.indices                  = {0,1,2,2,3,0}
+water_map_caucasus.state_tex_coords         = state_map_scale_coord_gen()
+water_map_caucasus.material                 = water_ns430_caucasus_material --"DBG_GREEN"--blue_ns430_material
+water_map_caucasus.name 			        = create_guid_string()
+water_map_caucasus.init_pos                 = {0, 0, 0}
+water_map_caucasus.init_rot		            = {0, 0, 0}
+water_map_caucasus.collimated	            = true
+water_map_caucasus.element_params           = {"WATER_MAP_Caucasus", "MAP_SCALE_FACTOR"}
+water_map_caucasus.controllers              = {{"opacity_using_parameter",0},{"change_texture_state_using_parameter",1}}
+water_map_caucasus.use_mipfilter            = true
+water_map_caucasus.additive_alpha           = true
+water_map_caucasus.h_clip_relation          = h_clip_relations.COMPARE
+water_map_caucasus.level                    = NS430_DEFAULT_LEVEL
+water_map_caucasus.parent_element	        = "navu_moving_map_center"
+Add(water_map_caucasus)
+
+-- NAVU_IND_WATER_PersianGulf
+local water_map_caucasus 				    = CreateElement "ceTexPoly"
+water_map_caucasus.vertices                 =  get_map_verts(48,62,20,32) --GPS_vert_gen(2*80*temp_map_size*math.cos(math.rad(44)),80*temp_map_size)
+water_map_caucasus.indices                  = {0,1,2,2,3,0}
+water_map_caucasus.state_tex_coords         = state_map_scale_coord_gen()
+water_map_caucasus.material                 = water_ns430_persiangulf_material --"DBG_GREEN"--blue_ns430_material
+water_map_caucasus.name 			        = create_guid_string()
+water_map_caucasus.init_pos                 = {0, 0, 0}
+water_map_caucasus.init_rot		            = {0, 0, 0}
+water_map_caucasus.collimated	            = true
+water_map_caucasus.element_params           = {"WATER_MAP_PersianGulf", "MAP_SCALE_FACTOR"}
+water_map_caucasus.controllers              = {{"opacity_using_parameter",0},{"change_texture_state_using_parameter",1}}
+water_map_caucasus.use_mipfilter            = true
+water_map_caucasus.additive_alpha           = true
+water_map_caucasus.h_clip_relation          = h_clip_relations.COMPARE
+water_map_caucasus.level                    = NS430_DEFAULT_LEVEL
+water_map_caucasus.parent_element	        = "navu_moving_map_center"
+Add(water_map_caucasus)

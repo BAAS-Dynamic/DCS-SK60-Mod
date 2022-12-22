@@ -1,0 +1,4 @@
+wave = "Effects/Aircrafts/SK-60/SK60_Warn_Stall"
+inner_radius = 1
+outer_radius = 3
+gain = 0.6

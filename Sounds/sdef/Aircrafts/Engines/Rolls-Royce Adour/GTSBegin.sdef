@@ -1,4 +1,4 @@
 wave = "Effects/Aircrafts/Engines/Rolls-Royce Adour/GTSBegin"
-gain = 1.6
-inner_radius = 300
-outer_radius = 1500
+gain = 3
+inner_radius = 0
+outer_radius = 301500

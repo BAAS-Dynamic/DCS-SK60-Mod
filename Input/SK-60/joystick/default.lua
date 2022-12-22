@@ -61,9 +61,9 @@ keyCommands = {
     {down = iCommandPlaneCockpitIllumination,	name = _('Illumination Cockpit'),		category = _('Systems')},
     {down = iCommandPlaneLightsOnOff,			name = _('Navigation lights'),			category = _('Systems')},
     {down = iCommandPlaneHeadLightOnOff,		name = _('Gear Light Near/Far/Off'),	category = _('Systems')},
-    {down = iCommandPlaneFlaps,					name = _('Flaps Up/Down'),				category = _('Systems')},
-    {down = iCommandPlaneFlapsOn,				name = _('Flaps Landing Position'),		category = _('Systems')},
-    {down = iCommandPlaneFlapsOff,				name = _('Flaps Up'),					category = _('Systems')},
+    {down = iCommandPlaneFlaps,					name = _('Flaps Up/Down (Warthunder like logic)'),				category = _('Systems')},
+    {down = iCommandPlaneFlapsOn,				name = _('Flaps Move Down (One Step)'),		                    category = _('Systems')},
+    {down = iCommandPlaneFlapsOff,				name = _('Flaps Move Up (One Step)'),					        category = _('Systems')},
     {down = iCommandPlaneGear,					name = _('Landing Gear Up/Down'),		category = _('Systems')},
     {down = iCommandPlaneGearUp,				name = _('Landing Gear Up'),			category = _('Systems')},
     {down = iCommandPlaneGearDown,				name = _('Landing Gear Down'),			category = _('Systems')},
@@ -88,9 +88,9 @@ keyCommands = {
 
     -- Engine Control
     {down = Keys.L_THROTTLE_IDLE,					name = _('Toggle Left Throttle IDLE/OFF'),			category = _('Engine')},
-    {down = Keys.R_THROTTLE_IDLE,					name = _('Toggle Right Throttle IDLE/OFF'),		category = _('Engine')},
-    {down = Keys.L_THROTTLE_SETIDLE,    up = Keys.L_THROTTLE_SETOFF,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
-    {down = Keys.R_THROTTLE_SETIDLE,   up = Keys.R_THROTTLE_SETOFF,					name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
+    {down = Keys.R_THROTTLE_IDLE,					name = _('Toggle Right Throttle IDLE/OFF'),			category = _('Engine')},
+    {down = Keys.L_THROTTLE_SETOFF,     up = Keys.L_THROTTLE_SETIDLE,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
+    {down = Keys.R_THROTTLE_SETOFF,     up = Keys.R_THROTTLE_SETIDLE,				name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
 
     {pressed = iCommandAltimeterPressureIncrease,	up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Increase'), category = _('Systems')},
     {pressed = iCommandAltimeterPressureDecrease, up = iCommandAltimeterPressureStop, name = _('Altimeter Pressure Decrease'), category = _('Systems')},
@@ -360,9 +360,9 @@ keyCommands = {
     {down = Keys.Flap_Pos_Up,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Up Position'),					category = _('HOTAS') },
     {down = Keys.Flap_Pos_Down,	up = Keys.Flap_Pos_Half,			name = _('HOTAS Flap Down Position'),				category = _('HOTAS') },
 
-    {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
+    {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),						category = _('Special Function') },
     {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
-    {down = Keys.Custom_Menu_Enter,			name = _('Menu Enter'),				category = _('Special Function') },
+    {down = Keys.Custom_Menu_Enter,		name = _('Menu Enter'),							category = _('Special Function') },
 
     -- Music Player
     {down = Keys.MusicPauseOrPlay,			name = _('Music Pause/Play'),				category = _('Music Player')},
@@ -373,7 +373,16 @@ keyCommands = {
     {down = Keys.MusicFastForward,			name = _('Music Play Fast Forward'),		category = _('Music Player')},
     {down = Keys.MusicFastBack,			    name = _('Music Play Fast Backward'),		category = _('Music Player')},
     {down = Keys.MusicLrcViewTrigger,		name = _('Music Display Lyrics'),			category = _('Music Player')},
+	
+	-- Breadmakers Additions
+	{down = 3401, up = 3401, value_down= 1, value_up = 0,name = _('Main Battery Switch'), category = _('Electrical')},
+	{down = Keys.L_HP_PUMP,					name = _('Left Fuel Pump'),					category = _('Engine Startup')},
+	{down = Keys.R_HP_PUMP,					name = _('Right Fuel Pump'),				category = _('Engine Startup')},
+	{down = Keys.L_STARTER_PRESS,			name = _('Left Starter Switch'),			category = _('Engine Startup')},
+	{down = Keys.R_STARTER_PRESS,			name = _('Right Starter Switch'),			category = _('Engine Startup')},
 },
+
+
 
 -- joystick axes 
 axisCommands = {
@@ -390,7 +399,7 @@ axisCommands = {
     {	action = iCommandViewVertTransAbs,		name = _('Absolute Vertical Shift Camera View')},
     {	action = iCommandViewLongitudeTransAbs,	name = _('Absolute Longitude Shift Camera View')},
 
-    {action = iCommandPlaneRoll,			name = _('Roll')},
+    {action = iCommandPlaneRoll,		name = _('Roll')},
     {action = iCommandPlanePitch,		name = _('Pitch')},
     {action = iCommandPlaneRudder,		name = _('Rudder')},
     {action = iCommandPlaneThrustCommon, name = _('Thrust')},

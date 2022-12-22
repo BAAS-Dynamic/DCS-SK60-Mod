@@ -1,3 +1,4 @@
 wave = "Effects/Aircrafts/Engines/Distant_Jet_Front"
-outer_radius = 4500
-gain = 2.4
+outer_radius = 60000
+gain = 3
+pitch = 1.5

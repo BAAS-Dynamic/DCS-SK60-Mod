@@ -304,9 +304,9 @@ return {
     {combos = {{key = 'L'}},							down = iCommandPlaneCockpitIllumination,	name = _('Illumination Cockpit'),					category = _('Systems')},
     {combos = {{key = 'L', reformers = {'RCtrl'}}},		down = iCommandPlaneLightsOnOff,			name = _('Navigation lights'),						category = _('Systems')},
     {combos = {{key = 'L', reformers = {'RAlt'}}},		down = iCommandPlaneHeadLightOnOff,			name = _('Gear Light Near/Far/Off'),				category = _('Systems')},
-    {combos = {{key = 'F'}},							down = iCommandPlaneFlaps,					name = _('Flaps Up/Down'),							category = _('Systems')},
-    {combos = {{key = 'F', reformers = {'LShift'}}},	down = iCommandPlaneFlapsOn,				name = _('Flaps Landing Position'),					category = _('Systems')},
-    {combos = {{key = 'F', reformers = {'LCtrl'}}},		down = iCommandPlaneFlapsOff,				name = _('Flaps Up'),								category = _('Systems')},
+    {combos = {{key = 'F'}},							down = iCommandPlaneFlaps,					name = _('Flaps Up/Down (Warthunder like logic)'),	category = _('Systems')},
+    {combos = {{key = 'F', reformers = {'LShift'}}},	down = iCommandPlaneFlapsOn,				name = _('Flaps Move Down (One Step)'),			    category = _('Systems')},
+    {combos = {{key = 'F', reformers = {'LCtrl'}}},		down = iCommandPlaneFlapsOff,				name = _('Flaps Move Up (One Step)'),				category = _('Systems')},
     {combos = {{key = 'G'}},							down = iCommandPlaneGear,					name = _('Landing Gear Up/Down'),					category = _('Systems')},
     {combos = {{key = 'G', reformers = {'LCtrl'}}},		down = iCommandPlaneGearUp,					name = _('Landing Gear Up'),						category = _('Systems')},
     {combos = {{key = 'G', reformers = {'LShift'}}},	down = iCommandPlaneGearDown,				name = _('Landing Gear Down'),						category = _('Systems')},
@@ -335,8 +335,8 @@ return {
     -- Engine Control
     {down = Keys.L_THROTTLE_IDLE,					name = _('Set Left Throttle IDLE/OFF'),			category = _('Engine')},
     {down = Keys.R_THROTTLE_IDLE,					name = _('Set Right Throttle IDLE/OFF'),		category = _('Engine')},
-    {down = Keys.L_THROTTLE_SETIDLE,    up = Keys.L_THROTTLE_SETOFF,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
-    {down = Keys.R_THROTTLE_SETIDLE,   up = Keys.R_THROTTLE_SETOFF,					name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
+    {down = Keys.L_THROTTLE_SETOFF,    up = Keys.L_THROTTLE_SETIDLE,				name = _('Left Throttle IDLE (on/press) else OFF'),			category = _('Engine')},
+    {down = Keys.R_THROTTLE_SETOFF,   	up = Keys.R_THROTTLE_SETIDLE,					name = _('Right Throttle IDLE (on/press) else OFF'),		category = _('Engine')},
 
     -- Countermeasures
     {combos = {{key = 'Q', reformers = {'LShift'}}},	down = iCommandPlaneDropSnar,			name = _('Countermeasures Continuously Dispense'),					category = _('Countermeasures') , features = {"Countermeasures"}},

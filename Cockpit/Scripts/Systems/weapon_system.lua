@@ -63,8 +63,10 @@ end
 local smokepodstatus = 0
 local nozzlesmokestatus = 0
 
--- fireing mode, 1 is single, 2 is in pairs, 3 is fire all
+-- fireing mode, 1 is single, 2 is in pairs, 
 local rockets_fire_mode = 1
+-- ripple mode enable
+local rocket_ripple_enable = 0
 local has_smoke_pod = 0
 local has_nozzle_smoke = 0
 -- 0 is nothing, 1 is gunpod, 2 is rockets
@@ -126,6 +128,11 @@ function check_load_status()
             -- this is a rocket, check the number of it
             loading_list[i] = 3 + station.count
             weapon_system_mode = 2
+        elseif (string.sub(station.CLSID,1,36) == "{5d5aa063-a002-4de8-8a89-6eda1e80ee7") then
+            -- gunpod
+            loading_list[i] = 3
+            weapon_system_mode = 1
+            -- print_message_to_user("gunpod on station "..i)
         else
             loading_list[i] = 0
         end
@@ -133,6 +140,8 @@ function check_load_status()
 end
 
 local current_freq = 256E6
+
+local rocket_interval = 0
 
 function check_frequency_change()
     local dev=GetDevice(devices.UHF_RADIO)
@@ -230,9 +239,10 @@ function SetCommand(command,value)
     if (get_elec_dc_status() and current_status[master_switch][2] == SWITCH_ON ) then
         check_load_status()
         if (command == Keys.WeaponFireOn) then
-            if weapon_system_mode == 2 then
+            if (weapon_system_mode == 2 and rocket_ripple_enable == 0) then
                 -- rocket
                 launch_rockets(rockets_fire_mode-1)
+                fire_trigger_status = 0
             else
                 fire_trigger_status = 1
             end
@@ -241,8 +251,8 @@ function SetCommand(command,value)
         end
     end
     if (command == Keys.WeaponConfigAll) then
-        rockets_fire_mode = 3
-        dprintf("rocket fire mode All")
+        rocket_ripple_enable = 1 - rocket_ripple_enable
+        dprintf("rocket fire Ripple status change")
     elseif (command == Keys.WeaponConfigSingle) then
         rockets_fire_mode = 1
         dprintf("rocket fire mode Single")
@@ -324,11 +334,21 @@ function update()
     else
         gun_sight_display:set(0)
     end
+    rocket_interval = rocket_interval - update_time_step
     if fire_trigger_status == 1 then
-        for i = 1, 3, 1 do
-            if loading_list[i] == 3 then
-                WeaponSystem:launch_station(i-1)
-                WeaponSystem:launch_station(6-i)
+        if (weapon_system_mode == 2) then
+            check_load_status()
+            if rocket_interval <= 0 then
+                rocket_interval = 0.12
+                launch_rockets(rockets_fire_mode-1)
+            end
+        else
+            for i = 1, 3, 1 do
+                -- WeaponSystem:launch_station(i-1)
+                if loading_list[i] == 3 then
+                    WeaponSystem:launch_station(i-1)
+                    WeaponSystem:launch_station(6-i)
+                end
             end
         end
     end

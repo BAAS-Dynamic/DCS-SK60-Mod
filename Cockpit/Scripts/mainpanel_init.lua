@@ -81,7 +81,9 @@ animation_list = {
     {"MainLWPOS_IND", 319},
     {"MainRWPOS_IND", 320},
     {"MACH_IND", 322},
-    {"G_METER", 323},
+    -- {"G_METER", 323},
+    {"G_CURRENT_EFM", 323},
+    {"G_MAX_EFM", 324},
     {"GYRO_ROLL", 335},
     {"GYRO_PITCH", 334},
 
@@ -91,7 +93,7 @@ animation_list = {
     {"CLOCK_S", 344},
 
     {"OXY_QUAN", 329},
-    {"ALT_XH_DIGTAL", 330, {0, 1000}, {0, 1}},
+    {"ALT_XH_ANALOG", 330},
     {"BARO_x1H", 331},
     {"BARO_x1K", 332},
     {"BARO_x1W", 333},
@@ -127,7 +129,7 @@ animation_list = {
 	{"MainRWPOS_IND", 320},
 
     {"Inside_Canopy", 38, {0, 1}, {1, 0}},
-    {"RUDDER_PADDLE", 3},
+    {"RUDDER_PADDLE", 3, {-1, 1}, {1, -1}},
     {"BRAKE_LEFT", 4},
     {"BRAKE_RIGHT", 5},
 
@@ -141,16 +143,21 @@ animation_list = {
     {"PTN_117", 117},
 	{"PTN_131", 131}, --{0, 1}, {0.12, 0.19}},
     {"PTN_132", 132}, --{0, 1}, {0.7, 1}},
+
+    {"PTN_136", 136}, --{0, 1}, {0.12, 0.19}},
+    {"PTN_137", 137}, --{0, 1}, {0.7, 1}},
     
     {"PTN_601", 601},
 
     -- Airbrake Ind
     {"AIRBRAKE_IND", 316},
+    {"FLAP_LEVEL", 43},
 
     -- Electric power
     {"PTN_401", 401}, -- Main Power
     {"PTN_402", 402}, -- Left Gen
     {"PTN_404", 404}, -- Right Gen
+    {"PTN_417", 417}, -- Nav Bus
 
     -- Engine
     {"PTN_405", 405},
@@ -208,9 +215,29 @@ animation_list = {
     {"PTN_522", 522},
     {"PTN_523", 523},
     {"PTN_524", 524},
+   
+    -- warning panel
+    {"FIRE_L_ENG"   , 500}, 
+    {"CANOPY"       , 501},
+    {"FIRE_R_ENG"   , 502},
+    {"FUEL_L_ENG"   , 503},
+    {"THRUST_REV"   , 504},
+    {"FUEL_R_ENG"   , 505},
+    {"OIL_L_ENG"    , 506},
+    {"BRAKE"        , 507}, 
+    {"OIL_R_ENG"    , 508}, 
+    {"HYDRO_L"      , 509}, 
+    {"CONVERT_A"    , 510}, 
+    {"HYDRO_R"      , 511}, 
+    {"GEN_L"        , 512}, 
+    {"CONVERT_B"    , 513}, 
+    {"GEN_R"        , 514},
+    {"MASTER_WARN"  , 135},
 
     -- ipad model shown
     {"IPAD_SHOWN", 950},
+    -- show the ias panel
+    {"IAS_TEXT", 900},
 }
 
 --[[
@@ -240,7 +267,7 @@ Landinggearhandle.parameter_name	= "PTN_083"
 
 Fuel								= CreateGauge ()
 Fuel.arg_number						= 354
-Fuel.input							= {0, 1134}
+Fuel.input							= {0, 1640}
 Fuel.output							= {0, 1}
 Fuel.controller						= controllers.base_gauge_TotalFuelWeight
 

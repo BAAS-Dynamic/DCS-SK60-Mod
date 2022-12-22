@@ -19,7 +19,7 @@ update_id    = "SK-60",
 version		 = general_version, -- "2.0.1-alpha1", --
 state		 = "installed",
 developerName= _("BAAS Group"),
-info		 = _("SK-60 or Saab-105 is a swedish twin seat high performance training jet."),
+info		 = _("SK60 or Saab-105 is a swedish twin seat high performance training jet."),
 encyclopedia_path = current_mod_path..'/Encyclopedia',
 binaries   =
 {
@@ -60,7 +60,7 @@ InputProfiles =
 mount_vfs_model_path	(current_mod_path.."/Shapes")
 mount_vfs_liveries_path (current_mod_path.."/Liveries")
 mount_vfs_texture_path  (current_mod_path.."/Textures")
-mount_vfs_texture_path  (current_mod_path.."/Textures/SK60_V2_Ext_Tex")
+mount_vfs_texture_path  (current_mod_path.."/Textures/SK60_Textures")
 mount_vfs_sound_path    (current_mod_path.."/Sounds")
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@ if FM_dll then
 		-- the moment_of_inertia is following the data from nasa
 		-- reverse the axis of y and z
 		-- switched to a new estimation, which should be closer to real
-		moment_of_inertia = {4101.63245, 5354.650, 4878.804, 183.4},
+		moment_of_inertia = {4101.63245, 5354.650, 3278.804, 283.4},
 		suspension = suspension_data,
 	}
 else

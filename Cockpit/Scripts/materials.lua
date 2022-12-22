@@ -20,6 +20,10 @@ materials["HUD_DAY_COLOR"]          = {0,200,0,200}
 materials["EALT_BG_COLOR"]	= {0,50,255,255}
 materials["EALT_BG_DARK_COLOR"]	= {0,30,120,255}
 
+-- Test Color only
+materials["TEST_RED"]     = {255, 0, 0, 140}
+materials["TEST_GREEN"]   = {0, 255, 0, 140}
+
 -- EADI
 materials["SKY_BLUE"] = {0,170,230,255}
 materials["GROUND_YELLOW"] = {42,34,29,255}
@@ -30,6 +34,9 @@ materials["DBG_WHITE"] = {200,200,200,255}
 
 -- BS430
 materials["BS430_PURPLE"] 	= {217,40,113,255}
+
+-- Warning panel
+materials["Warn_BG"] = {0, 0, 0, 170}
 
 
 local IndicationFontPath = LockOn_Options.script_path.."../Textures/Fonts/"
@@ -466,6 +473,7 @@ fontdescription["unicodeCN"]	=	font_unicode(IndicationFontPath.."Font_UTF.dds")
 	fonts["EHSI_font_purple"]		= {fontdescription["font_EADI"], 10, {217,40,113,255} }
 	fonts["BS430_font_white"]		= {fontdescription["font_Pixel"], 10, {200,200,200,255} }
 	fonts["BS430_font_green"]		= {fontdescription["font_Pixel"], 10, {4,239,113,255} }
+	fonts["BS430_font_blue"]		= {fontdescription["font_Pixel"], 10, {110,201,221,255} }
 	fonts["BS430_font_purple"]		= {fontdescription["font_Pixel"], 10, {217,40,113,255} }
 	-- this is the chinese unicode font
 	fonts["unicode_cn"]				= {fontdescription["unicodeCN"], 10, materials["TEST_COLOR"] }

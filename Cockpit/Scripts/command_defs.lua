@@ -279,6 +279,7 @@ Keys =
     MusicLrcViewTrigger = __custom_counter(),
     MusicVolUp = __custom_counter(),
     MusicVolDown = __custom_counter(),
+    MusicScreenHide = __custom_counter(),
 
     --起落架手柄 5001// 5050 EFM - 6000 for EFM
     NoseWheelSteeringOn = 5050,
@@ -343,6 +344,8 @@ Keys =
     Display_Brighter = 5200,
     Display_Darker = 5201,
     EALT_BARO = 5202,
+    -- Main Nav Power Bus
+    Nav_Main_Power = 5500,
 
     -- 5500 - 5550 Engine Conrol
     L_LP_PUMP = 5501,
@@ -391,6 +394,9 @@ Keys =
     SND_ELECTRIC = 6004,
     SND_GEAR   = 6005,
     SND_BEACON_ROT = 6006,
+
+    -- 6100 - 6200 for further warning system
+    WARN_MASTER_CANCEL = 6100,
 }
 
 --从5000开始递增点击指令

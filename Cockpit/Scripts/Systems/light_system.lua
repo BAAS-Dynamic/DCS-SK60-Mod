@@ -44,8 +44,8 @@ target_status = {
     {wing_navi_switch , SWITCH_TEST, get_param_handle("PTN_424"), "PTN_424"},
     {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
     {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
-    {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
-    {console_light_switch , SWITCH_OFF, get_param_handle("PTN_131"), "PTN_131"},
+    {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_136"), "PTN_136"},
+    {console_light_switch , SWITCH_OFF, get_param_handle("PTN_137"), "PTN_137"},
     {approach_index_switch , SWITCH_OFF, get_param_handle("PTN_134"), "PTN_134"},
 }
 
@@ -69,8 +69,8 @@ function post_initialize()
             {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_424"), "PTN_424"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
-            {instrument_light_switch , SWITCH_ON, get_param_handle("PTN_132"), "PTN_132"},
-            {console_light_switch , 0.3, get_param_handle("PTN_131"), "PTN_131"},
+            {instrument_light_switch , SWITCH_ON, get_param_handle("PTN_136"), "PTN_136"},
+            {console_light_switch , 0.3, get_param_handle("PTN_137"), "PTN_137"},
             {approach_index_switch , SWITCH_OFF, get_param_handle("PTN_134"), "PTN_134"},
         }
     elseif birth == "AIR_HOT" then
@@ -80,8 +80,8 @@ function post_initialize()
             {wing_navi_switch , SWITCH_ON, get_param_handle("PTN_424"), "PTN_424"},
             {formation_switch , SWITCH_OFF, get_param_handle("PTN_130"), "PTN_130"},
             {flood_light_switch , SWITCH_OFF, get_param_handle("PTN_133"), "PTN_133"},
-            {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_132"), "PTN_132"},
-            {console_light_switch , 0.3, get_param_handle("PTN_131"), "PTN_131"},
+            {instrument_light_switch , SWITCH_OFF, get_param_handle("PTN_136"), "PTN_136"},
+            {console_light_switch , 0.3, get_param_handle("PTN_137"), "PTN_137"},
             {approach_index_switch , SWITCH_OFF, get_param_handle("PTN_134"), "PTN_134"},
         }
     end
@@ -322,10 +322,20 @@ function updateSpecialAnimation()
     end
 end
 
+local console_light = get_param_handle("PTN_131")
+local instrument_light = get_param_handle("PTN_132")
+
 function update()
     update_switch_status()
     update_externel_light_status()
     updateSpecialAnimation()
+    if get_elec_ac_status() == true then
+        console_light:set(current_status[console_light_switch][2])
+        instrument_light:set(current_status[instrument_light_switch][2])
+    else
+        console_light:set(0)
+        instrument_light:set(0)
+    end
 end
 
 need_to_be_closed = false

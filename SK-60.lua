@@ -1,7 +1,7 @@
 SK_60 =  {
       
 		Name 			= 'SK-60',--AG
-		DisplayName		= _('SK-60B'),--AG
+		DisplayName		= _('SK60B'),--AG
         Picture 		= "SK60.png",
         Rate 			= "50",
         Shape			= "SK-60",--AG	
@@ -11,7 +11,7 @@ SK_60 =  {
 	{
 		{
 			file  	 	= 'SK-60';--AG
-			life  	 	= 20; -- lifebar
+			life  	 	= 180; -- lifebar
 			vis   	 	= 2; -- visibility gain.
 			desrt    	= 'NCPC-7_destr'; -- Name of destroyed object file name
 			fire  	 	= { 300, 2}; -- Fire on the ground after destoyed: 300sec 2m
@@ -36,7 +36,7 @@ SK_60 =  {
 	"South Ossetia","Spain","Sweden","Switzerland","Syria","Turkey","UK","Ukraine","USA","USAF Aggressors"},
 	
 	
-	mapclasskey 		= "P0091000024",
+	mapclasskey 		= "P0091000025",
 	--attribute  		= {wsType_Air, wsType_Airplane, wsType_Fighter, F_15, "Fighters", "Refuelable",},--AG WSTYPE_PLACEHOLDER
 	attribute  			= {wsType_Air, wsType_Airplane, wsType_Fighter, WSTYPE_PLACEHOLDER,"Battleplanes",},--AG WSTYPE_PLACEHOLDER
 	Categories			= {"{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}", "Interceptor",},
@@ -262,10 +262,22 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "8",
             },
             {
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 1
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 1
+				--{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1,
+					forbidden = {
+						{station = 2, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1,
+					forbidden = {
+						{station = 2, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1,
+					forbidden = {
+						{station = 2, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 135 rocket * 1
             }
         ),
 
@@ -275,23 +287,26 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "7",
             },
             {
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 1, arg_increment = 0.1},-- Smokewinder red
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 1, arg_increment = 0.1},-- Smokewinder green
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 1, arg_increment = 0.1},-- Smokewinder blue
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 1, arg_increment = 0.1},-- Smokewinder white
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 1, arg_increment = 0.1},-- Smokewinder yellow
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = 0.1},-- Smokewinder orange
-				{CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3},
-				{CLSID = "{Robot74}"},
-				{CLSID = "{AKAN}"}, -- AKAN gun pod
-				{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
-				{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
-				{CLSID = "{M71BOMB}"}, -- HE bomb
-				{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
-				{CLSID = "{LYSBOMB}"}, -- Illumination bomb
-				{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
+				{CLSID = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}",  arg_value = 1, arg_increment = 0.1, attach_point_position = {0.4, -0.22, 0.0},
+					forbidden = {
+						{station = 1, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd10}"}},
+						{station = 1, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd11}"}},
+						{station = 1, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd12}"}},
+						{station = 1, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd13}"}},
+						{station = 3, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd10}"}},
+						{station = 3, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd11}"}},
+						{station = 3, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd12}"}},
+						{station = 3, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd13}"}},
+					}
+				}, -- AKAN gun pod
+				--{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
+				--{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
+				--{CLSID = "{M71BOMB}"}, -- HE bomb
+				--{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
+				--{CLSID = "{LYSBOMB}"}, -- Illumination bomb
+				--{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
 
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				--{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
 				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
 				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 1
 				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 135 rocket * 1
@@ -304,10 +319,22 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "6",
 			},
 			{
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 1
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 1
+				--{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0},
+					forbidden = {
+						{station = 2, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0},
+					forbidden = {
+						{station = 2, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0},
+					forbidden = {
+						{station = 2, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 135 rocket * 1
 			}
 		),
 
@@ -317,10 +344,22 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "3",
 			},
 			{
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 145 rocket * 1
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 1
+				--{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0}}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0},
+					forbidden = {
+						{station = 5, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0},
+					forbidden = {
+						{station = 5, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.135, 0.005, 0.0},
+					forbidden = {
+						{station = 5, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 135 rocket * 1
 			}
 		),
 
@@ -330,22 +369,25 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "2",
             },
             {
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 1, arg_increment = -0.1},-- Smokewinder red
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 1, arg_increment = -0.1},-- Smokewinder green
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 1, arg_increment = -0.1},-- Smokewinder blue
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 1, arg_increment = -0.1},-- Smokewinder white
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 1, arg_increment = -0.1},-- Smokewinder yellow
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = -0.1},-- Smokewinder orange
-				{CLSID = "{BCE4E030-38E9-423E-98ED-24BE3DA87C32}", arg_value = 0.3},
-				{CLSID = "{Robot74}"},
-				{CLSID = "{AKAN}"}, -- AKAN gun pod
-				{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
-				{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
-				{CLSID = "{M71BOMB}"}, -- HE bomb
-				{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
-				{CLSID = "{LYSBOMB}"}, -- Illumination bomb
-				{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
+				{CLSID = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}",  arg_value = 1, arg_increment = 0.1, attach_point_position = {0.4, -0.22, 0.0},
+					forbidden = {
+						{station = 4, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd10}"}},
+						{station = 4, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd11}"}},
+						{station = 4, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd12}"}},
+						{station = 4, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd13}"}},
+						{station = 6, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd10}"}},
+						{station = 6, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd11}"}},
+						{station = 6, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd12}"}},
+						{station = 6, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd13}"}},
+					}
+				}, -- AKAN gun pod
+				--{CLSID = "{ARAKM70BHE}"}, -- ARAK M70HE pod
+				--{CLSID = "{ARAKM70BAP}"}, -- ARAK M70AP pod
+				--{CLSID = "{M71BOMB}"}, -- HE bomb
+				--{CLSID = "{M71BOMBD}"}, -- HE bomb w chute
+				--{CLSID = "{LYSBOMB}"}, -- Illumination bomb
+				--{CLSID = "{BRU33_2X_MK-82}", arg_value = 0.5}, -- Mk-82 * 2 -- 暂无双联挂架
+				--{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
 				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 2
 				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 145 rocket * 1
 				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1, attach_point_position = { -0.035, 0.07, 0.0}}, -- 135 rocket * 1
@@ -358,10 +400,22 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "1",
 			},
 			{
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 2
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1}, -- 145 rocket * 1
-				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 1
+				--{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd10}", arg_value = 1, arg_increment = 0.1}, -- 135 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd11}", arg_value = 1, arg_increment = 0.1,
+					forbidden = {
+						{station = 5, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 2
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd12}", arg_value = 1, arg_increment = 0.1,
+					forbidden = {
+						{station = 5, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 145 rocket * 1
+				{CLSID = "{d694b359-e7a8-4909-88d4-7100b77afd13}", arg_value = 1, arg_increment = 0.1,
+					forbidden = {
+						{station = 5, loadout = {"{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}"}},
+					}
+				}, -- 135 rocket * 1
 			}
 		),
 
@@ -371,12 +425,12 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "Left Nozzle Smoke",
             },
             {
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
             }
         ),
 
@@ -386,24 +440,27 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "Right Nozzle Smoke",
 			},
 			{
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
-				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
+				--{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
 			}
 		),
 	},
 	
 	Tasks = {
-        aircraft_task(CAP),
-     	aircraft_task(Escort),
-      	aircraft_task(FighterSweep),
-		aircraft_task(Intercept),
+        aircraft_task(GroundAttack),
+		aircraft_task(PinpointStrike),
+        aircraft_task(CAS),
+        aircraft_task(AFAC),
+		aircraft_task(RunwayAttack),
+		aircraft_task(SEAD),
+		aircraft_task(Escort),
 		aircraft_task(Reconnaissance),
     },	
-	DefaultTask = aircraft_task(CAP),
+	DefaultTask = aircraft_task(GroundAttack),
 
 	SFM_Data = {
 		aerodynamics = -- Cx = Cx_0 + Cy^2*B2 +Cy^4*B4
@@ -528,7 +585,7 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 		193, -- launch bar
 		194,
 		209,
-
+		250, -- wheel chocks, FOD and ladder
 		-- multicrew sync test
 		520,
 		521,

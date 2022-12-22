@@ -118,52 +118,57 @@ function update()
             move_ability = 1
         end
         --dprintf("N:"..sensor_data.getWOW_NoseLandingGear());
-        
-        
-        if (nose_gear_status == 0 and n_gear_status > 0) then
-            -- in increments of time_increse_step (50x per second)
-            n_gear_status = n_gear_status - time_increse_step * move_ability
-            set_aircraft_draw_argument_value(0, n_gear_status)
-            if moving_starts == 0 and move_ability == 1 then
-                dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
-                moving_starts = 1
+
+        if math.abs(nose_gear_status - n_gear_status) < time_increse_step then
+            if move_ability > 0.5 then
+                n_gear_status = nose_gear_status
             end
-        elseif (nose_gear_status == 1 and n_gear_status < 1) then
-            -- in increments of time_increse_step (50x per second)
-            n_gear_status = n_gear_status + time_increse_step
-            set_aircraft_draw_argument_value(0, n_gear_status)
-            if moving_starts == 0 and move_ability == 1 then
-                dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
-                moving_starts = 1
+            moving_starts = 0
+        else
+            if (n_gear_status > nose_gear_status) then
+                n_gear_status = n_gear_status - time_increse_step * move_ability
+                if moving_starts == 0 and move_ability == 1 then
+                    dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
+                    moving_starts = 1
+                end
+            else
+                -- in increments of time_increse_step (50x per second)
+                n_gear_status = n_gear_status + time_increse_step
+                set_aircraft_draw_argument_value(0, n_gear_status)
+                if moving_starts == 0 and move_ability == 1 then
+                    dispatch_action(devices.SOUND_SYSTEM, Keys.SND_GEAR, 1)
+                    moving_starts = 1
+                end
+            end
+        end
+        set_aircraft_draw_argument_value(0, n_gear_status)
+
+        if math.abs(l_main_gear_status - l_gear_status) < time_increse_step then
+            if move_ability > 0.5 then
+                l_gear_status = l_main_gear_status
             end
         else
-            moving_starts = 0
+            if (l_gear_status > l_main_gear_status) then
+                l_gear_status = l_gear_status - time_increse_step * move_ability
+            else
+                l_gear_status = l_gear_status + time_increse_step * move_ability
+            end
         end
+        set_aircraft_draw_argument_value(5, l_gear_status)
 
-        if (nose_gear_status == 0 and n_gear_status <= 0) then
-            n_gear_status = 0
-        elseif (nose_gear_status == 1 and n_gear_status >= 1)then
-            n_gear_status = 1
+        if math.abs(r_main_gear_status - r_gear_status) < time_increse_step then
+            if move_ability > 0.5 then
+                l_gear_status = l_main_gear_status
+            end
+        else
+            if (r_gear_status > r_main_gear_status) then
+                r_gear_status = r_gear_status - time_increse_step * move_ability
+            else
+                r_gear_status = r_gear_status + time_increse_step * move_ability
+            end
         end
+        set_aircraft_draw_argument_value(3, r_gear_status)
 
-        if (l_main_gear_status == 0 and l_gear_status > 0) then
-            l_gear_status = l_gear_status - time_increse_step * move_ability
-            set_aircraft_draw_argument_value(5, l_gear_status)
-        elseif (l_main_gear_status == 1 and l_gear_status < 1) then
-            l_gear_status = l_gear_status + time_increse_step
-            set_aircraft_draw_argument_value(5, l_gear_status)
-        end
-
-        if (r_main_gear_status == 0 and r_gear_status > 0) then
-            -- lower canopy in increments of time_increse_step (50x per second)
-            r_gear_status = r_gear_status - time_increse_step * move_ability
-            set_aircraft_draw_argument_value(3, r_gear_status)
-        elseif (r_main_gear_status == 1 and r_gear_status < 1) then
-            -- lower canopy in increments of time_increse_step (50x per second)
-            r_gear_status = r_gear_status + time_increse_step
-            set_aircraft_draw_argument_value(3, r_gear_status)
-        end
-        
         -- level step slower
         if (nose_gear_status == 0 and gear_level_pos < 1) then
             -- lower canopy in increments of time_increse_step (50x per second)
@@ -176,6 +181,18 @@ function update()
             gear_level:set(gear_level_pos)
             gear_handle_click_ref:update()
         end
+
+        if math.abs(nose_gear_status - gear_level_pos) < 0.1 then
+            gear_level_pos = nose_gear_status
+        else
+            if (gear_level_pos > nose_gear_status) then
+                gear_level_pos = gear_level_pos + 0.1
+            else
+                gear_level_pos = gear_level_pos - 0.1
+            end
+        end
+        gear_level:set(gear_level_pos)
+        gear_handle_click_ref:update()
 
         -- the gear indication system  wont work without the dc power
         if get_elec_dc_status() then
