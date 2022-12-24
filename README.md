@@ -58,7 +58,8 @@ This project is aim to create a SK-60/Saab 105 light training jet module for DCS
 
 ## TODO
 ### Functions
-+ See in link below: https://docs.google.com/spreadsheets/d/1nlrEghej1rFCXLv4O9qpI_PqkWHY3rdk3nWyn6rrHKA/edit#gid=0
+#### We no longer use the google docs
+#### If you find any problems, plz post in the Issues
 + Radio System working, try implement the R&S GB6500 UHF radio
 + Add more elements and function to Navigation part
 + Change some clickable stuff to the keyboard/joystick input
