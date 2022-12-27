@@ -12,6 +12,8 @@ Note: The Externel FLight Model Code will be released later.
 <br>
 <a href="https://github.com/Breadmaker91/DCS-SK60-Mod/releases">Release Download</a>
 <br>
+### The privacy statement in the mod is only for Closed Beta Testers, We DO NOT collect any of your ip and data
+
 ![team](Theme/ME/MainMenulogo.png)
 ![avatar](Theme/ME/DEMO.png)
 
@@ -22,6 +24,7 @@ Note: The Externel FLight Model Code will be released later.
 - [Install](#install)
 - [Progress](#progress)
 - [TO-DO List](#todo)
+- [Issue Reporting](#Report-An-Issue)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -38,7 +41,13 @@ This project is aim to create a SK-60/Saab 105 light training jet module for DCS
 + R&S®GB6500 Remote control unit [radio] 
 
 ## Install
-+ <a href="https://github.com/Breadmaker91/DCS-SK60-Mod/releases">Release Download</a>
++ Download the mod from the release: <a href="https://github.com/Breadmaker91/DCS-SK60-Mod/releases">Release Download</a>
++ Find the following path depend on your version 
+    - ```C:\Users\<Your Username>\Saved Games\DCS\Mods\aircraft``` 
+    or 
+    - ```C:\Users\<Your Username>\Saved Games\DCS.openbeta\Mods\aircraft```
++ Unzip the downloaded mod into this path
++ Enjoy!
 
 ## Progress
 ### Fully Functional
@@ -55,11 +64,22 @@ This project is aim to create a SK-60/Saab 105 light training jet module for DCS
 + EHSI
 + Navigation Unit
 + Radio Unit
++ Music Player (follow [Music Converter](https://github.com/CorsairCat/OGG-Music-Converter) for guidence)
+
+## Report-An-Issue
+#### What to do if you find something working strangely
++ Go to [the issue page](https://github.com/Breadmaker91/DCS-SK60-Mod/issues) and look up if the same issue has been reported
++ If not, open a new one with following informations
+    - Brief of the unexpected response
+    - Which subsystem it belongs to
+    - What is the expected response
+    - How to reproduce the issue
+    - Give it a pre-defined tag so we can deal with it more efficient
++ We will do our best to solve these problems and we would like to express our thanks on your effort
+
 
 ## TODO
 ### Functions
-#### We no longer use the google docs
-#### If you find any problems, plz post in the Issues
 + Radio System working, try implement the R&S GB6500 UHF radio
 + Add more elements and function to Navigation part
 + Change some clickable stuff to the keyboard/joystick input
@@ -69,8 +89,7 @@ This project is aim to create a SK-60/Saab 105 light training jet module for DCS
 + Volume change validation
 
 ### Model update requirement
-+ seperate/change the 131 and 132 animation
-+ add the switch for baro setting
++ gear handle seems working not properly
 + cover animation of the low pressure pump (two switch at left and right of warning panel)
 + the box and animation of circuit breaker (in front of the right seat)
 + right inverter's animation, when switch on, it stops at middle
