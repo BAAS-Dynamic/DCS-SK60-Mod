@@ -375,11 +375,12 @@ keyCommands = {
     {down = Keys.MusicLrcViewTrigger,		name = _('Music Display Lyrics'),			category = _('Music Player')},
 	
 	-- Breadmakers Additions
-	{down = 3401, up = 3401, value_down= 1, value_up = 0,name = _('Main Battery Switch'), category = _('Electrical')},
-	{down = Keys.L_HP_PUMP,					name = _('Left Fuel Pump'),					category = _('Engine Startup')},
-	{down = Keys.R_HP_PUMP,					name = _('Right Fuel Pump'),				category = _('Engine Startup')},
-	{down = Keys.L_STARTER_PRESS,			name = _('Left Starter Switch'),			category = _('Engine Startup')},
-	{down = Keys.R_STARTER_PRESS,			name = _('Right Starter Switch'),			category = _('Engine Startup')},
+	{down = 3401, up = 3401, value_down= 1, value_up = 0,	name = _('Main Battery Switch'), category = _('Electrical')},
+	{down = Keys.L_HP_PUMP,	value_down= 1, value_up = 0,	name = _('Left Fuel Pump'),					category = _('Engine Startup')},
+	{down = Keys.R_HP_PUMP,	value_down= 1, value_up = 0,	name = _('Right Fuel Pump'),				category = _('Engine Startup')},
+	{down = Keys.L_STARTER_PRESS,							name = _('Left Starter Switch'),			category = _('Engine Startup')},
+	{down = Keys.R_STARTER_PRESS,							name = _('Right Starter Switch'),			category = _('Engine Startup')},
+	{down = Keys.WeaponMasterSwitch,						name = _('Master Arm (Toggle)'),					category = _('Weapons')},
 },
 
 

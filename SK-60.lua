@@ -625,27 +625,33 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 
 	lights_data = { typename = "collection", lights = {
 	
-    [1] = { typename = "collection", -- WOLALIGHT_STROBES
+    [WOLALIGHT_STROBES] = { typename = "collection", -- WOLALIGHT_STROBES
 					lights = {	
-						{typename = "natostrobelight", argument = 193, period = 1.2, phase_shift = 3},-- beacon lights
+						{typename = "argumentlight", argument = 192, period = 1.33, phase_shift = 0, color = {0.07,0,0, 0.5},},-- beacon lights
 							}
 			},
-	[2] = { typename = "collection",
+	[WOLALIGHT_LANDING_LIGHTS] = { typename = "collection",
 					lights = {-- 1=Landing light -- 2=Landing/Taxi light
-						{typename = "argumentlight", argument = 194, dir_correction = {elevation = math.rad(-1)}},--"MAIN_SPOT_PTR_02","RESERV_SPOT_PTR"
-						--{typename = "spotlight", connector = "MAIN_SPOT_PTR", argument = 208, dir_correction = {elevation = math.rad(3)}},--"MAIN_SPOT_PTR_01","RESERV_SPOT_PTR","MAIN_SPOT_PTL",
+						{typename = "argumentlight", argument = 194,},--"MAIN_SPOT_PTR_02","RESERV_SPOT_PTR"
 							}
 			},
-    [3]	= {	typename = "collection", -- nav_lights_default
+			
+	[WOLALIGHT_TAXI_LIGHTS] = { typename = "collection",
+					lights = {-- 1=Landing light -- 2=Landing/Taxi light
+						{typename = "argumentlight", argument = 194,},--"MAIN_SPOT_PTR_02","RESERV_SPOT_PTR"
+							}
+			},		
+    [WOLALIGHT_NAVLIGHTS]	= {	typename = "collection", -- nav_lights_default
 					lights = {
-						{typename  = "argumentlight",argument  =  190,color = {0.99, 0.11, 0.3}},-- Left Position(red)
-						{typename  = "argumentlight",argument  =  191,color = {0, 0.894, 0.6}},-- Right Position(green)
+						{typename  = "argumentlight",argument  =  191,color = {0.99, 0.11, 0.3}},-- Left Position(red)
+						{typename  = "argumentlight",argument  =  190,color = {0, 0.894, 0.6}},-- Right Position(green)
 						--{typename  = "omnilight",connector =  "BANO_0"  ,argument  =  192,color = {1, 1, 1}},-- Tail Position white)
 							}
 			},
-	[4] = { typename = "collection", -- formation_lights_default
+	[WOLALIGHT_FORMATION_LIGHTS] = { typename = "collection", -- formation_lights_default
 					lights = {
-						{typename  = "argumentlight" ,argument  =  192,},--old aircraft arg 
+						{typename  = "argumentlight" ,argument  =  192,},
+						{typename  = "argumentlight",argument  =  191,},--old aircraft arg 
 							}
 			},
 --[[			
