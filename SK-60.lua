@@ -222,9 +222,9 @@ SK_60 =  {
 
 Sensors 		= {
 },
-Countermeasures = {
-ECM 			= "AN/ALQ-135"--F15
-},
+--Countermeasures = {
+--ECM 			= "AN/ALQ-135"--F15
+--},
 	Failures = {
 			{ id = 'asc', 		label = _('ASC'), 		enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
 			{ id = 'autopilot', label = _('AUTOPILOT'), enable = false, hh = 0, mm = 0, mmint = 1, prob = 100 },
