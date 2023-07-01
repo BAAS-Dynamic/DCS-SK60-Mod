@@ -1,1 +1,63 @@
-﻿N/A
+Saab Sk 60
+
+SK-60
+
+
+Designation: Saab Model 105 / Sk60"
+Type:           Jet trainer and light attack 
+Developer:    Saab AB
+Origin:        Sweden
+Crew:           2
+
+Introduction:  July 1967
+Users:           Sweden, Austria. 
+Produced:      1963–1972
+Number built: 192
+
+>>>=========================
+
+>>> DIMENSIONS
+
+Length    : 10.8 m
+Wingspan: 9.5 m
+Height     : 2.7 m
+Wing area: 16.3 m2
+
+>>>=========================
+
+>>> PERFORMANCE
+
+Empty weight  : 6,281 lb. 
+Max T/O weight: 10,218 lb.
+
+Powerplant: 2 * turbofans 
+      Williams FJ44-1A (RM15), 1,900 lbf each
+
+Max. speed  : 600 mph at sea level.
+Ferry range: 1,200 nm. 
+Service ceiling: 44,900 ft.
+
+>>>=========================
+
+>>> ARMAMENT (as simulated)
+
+Fixed Guns: None
+Hardpoints: 6
+Weapons: 2 Akan m/55 Gunpods 
+       or up to 12 x 13.5 inch SRAK HE rockets.
+
+>>>=========================
+
+>>> SERVICE HISTORY
+
+Development of the Saab 105 began in 1959 as a private venture for an aircraft that could be used as trainer, recce and light attack, plus it was also proposed as a 4-5 seat business jet. The swedish Air Force got interested on the type and on December 1961 placed an oorder for 100 units.
+
+The first proptotype flew on June 1963 and on March 1965 the swedish order was increased to 130 aircrafts, to be denominated Saab Sk 60 and built in three versions: Sk 60A for training, Sk 60B for light attack and Sk 60C for attack and recce.
+
+The Sk60A entered service on July 1967. From November 1993, the surviving 115 aircrafts, were updated with a change of engine, its original Turbomeca Aubisque were replaced with Williams FJ44.
+
+On 1970 Austria became the only export user of this aircraft, purchasing 40 units, the last being delivered on 1972. It served unitil retired on December 2020.
+
+The swedish air force will replace its Sk 60 with a new training aircraft which should became operational on 2023, the Grob G120TP.
+
+(Data summarized from Wikipedia)
