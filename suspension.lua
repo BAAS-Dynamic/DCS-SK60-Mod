@@ -32,7 +32,7 @@ suspension_data =
 		amortizer_back_damper_force_factor		= 2600,
 
 
-		wheel_radius				  = 0.4 / 2,
+		wheel_radius				  = 0.413 / 2,
 		wheel_static_friction_factor  = 0.85 , --Static friction when wheel is not moving (fully braked)
 		wheel_side_friction_factor    = 0.85 ,
 		wheel_roll_friction_factor    = 0.06, -- Rolling friction factor when wheel moving
@@ -87,7 +87,7 @@ suspension_data =
 
 		anti_skid_installed = true,
 
-		wheel_radius				  = 0.572/2 ,
+		wheel_radius				  = 0.579/2 ,
 		wheel_static_friction_factor  = 0.95 ,
 		wheel_side_friction_factor    = 0.85 ,
 		wheel_roll_friction_factor    = 0.03,
