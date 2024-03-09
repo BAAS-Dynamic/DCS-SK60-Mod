@@ -275,6 +275,12 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "7",
             },
             {
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 1, arg_increment = 0.1},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 1, arg_increment = 0.1},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 1, arg_increment = 0.1},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 1, arg_increment = 0.1},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 1, arg_increment = 0.1},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = 0.1},-- Smokewinder orange
 				{CLSID = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}",  arg_value = 1, arg_increment = 0.1, attach_point_position = {0.4, -0.22, 0.0},
 					forbidden = {
 						{station = 1, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd10}"}},
@@ -333,6 +339,12 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 				DisplayName 	= "2",
             },
             {
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c1}", arg_value = 1, arg_increment = -0.1},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c2}", arg_value = 1, arg_increment = -0.1},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c3}", arg_value = 1, arg_increment = -0.1},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c4}", arg_value = 1, arg_increment = -0.1},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c5}", arg_value = 1, arg_increment = -0.1},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9c6}", arg_value = 1, arg_increment = -0.1},-- Smokewinder orange
 				{CLSID = "{5d5aa063-a002-4de8-8a89-6eda1e80ee7b}",  arg_value = 1, arg_increment = 0.1, attach_point_position = {0.4, -0.22, 0.0},
 					forbidden = {
 						{station = 4, loadout = {"{d694b359-e7a8-4909-88d4-7100b77afd10}"}},
@@ -371,6 +383,35 @@ pylons_enumeration = {6, 5, 4, 8, 7, 3, 2, 1},
 			}
 		),
 
+		pylon(7, 2, - 2.5, 0, -0.7668,
+            {
+				use_full_connector_position=true,
+				DisplayName 	= "Left Nozzle Smoke",
+            },
+            {
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
+            }
+        ),
+
+		pylon(8, 2, - 2.5, 0, 0.7668,
+			{
+				use_full_connector_position=true,
+				DisplayName 	= "Right Nozzle Smoke",
+			},
+			{
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d1}"},-- Smokewinder red
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d2}"},-- Smokewinder green
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d3}"},-- Smokewinder blue
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d4}"},-- Smokewinder white
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d5}"},-- Smokewinder yellow
+				{CLSID = "{3d7bfa20-fefe-4642-ba1f-380d5ae4f9d6}"},-- Smokewinder orange
+			}
+		),
 	},
 	
 	Tasks = {
