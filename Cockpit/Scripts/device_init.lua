@@ -10,7 +10,7 @@ creators  = {}
 -- Basic power module
 creators[devices.ELECTRIC_SYSTEM] ={"avSimpleElectricSystem",LockOn_Options.script_path.."Systems/electric_system.lua"}
 -- Control plane module
-creators[devices.PRISURFACE]      ={"avLuaDevice"           ,LockOn_Options.script_path.."priControlSurface.lua"}
+--creators[devices.PRISURFACE]      ={"avLuaDevice"           ,LockOn_Options.script_path.."priControlSurface.lua"}
 -- Hatch, the simplest single monitoring module
 creators[devices.CANOPY]          ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/canopy.lua"}
 -- Brakes include air brakes, which mainly depend on the dispatch action of the braking system.

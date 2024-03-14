@@ -272,7 +272,7 @@ Fuel.output							= {0, 1}
 Fuel.controller						= controllers.base_gauge_TotalFuelWeight
 
 
-local PilotDraw          = CreateGauge("parameter")
+PilotDraw                = CreateGauge("parameter")
 PilotDraw.arg_number     = 3100
 PilotDraw.input          = {0, 1}
 PilotDraw.output         = {0, 1}
