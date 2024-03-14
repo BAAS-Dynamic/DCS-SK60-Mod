@@ -22,7 +22,7 @@ keyCommands = {
     -- Gameplay
     {down = iCommandPlaneShipTakeOff,		name = _('Ship Take Off Position'), category = _('General') , features = {"shiptakeoff"}},
     --{down = iCommandCockpitShowPilotOnOff,	name = _('Show Pilot Body'),		category = _('General')},
-	{down = pilotToggle,	name = _('Show Pilot Body'),		category = _('General')},
+	{down = Keys.pilotToggle,	name = _('Show Pilot Body'),		category = _('General')},
 
     --Flight Control
     {down = iCommandPlaneUpStart,				up = iCommandPlaneUpStop,			name = _('Aircraft Pitch Down'),	category = _('Flight Control')},

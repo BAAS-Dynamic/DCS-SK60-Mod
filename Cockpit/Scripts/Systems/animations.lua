@@ -1,4 +1,5 @@
 dofile(LockOn_Options.script_path .. "command_defs.lua")
+dofile(LockOn_Options.script_path.."devices.lua")
 
 
 
@@ -14,12 +15,14 @@ misc:listen_command(Keys.pilotToggle)
 
 local pilotToggle = get_param_handle("pilotToggle")
 
-function post_initialize()
 
+
+function post_initialize()
+	show_param_handles_list(true) --For testing.
 end
 
 function update()
-
+	
 end
 
 function SetCommand(command, value)
