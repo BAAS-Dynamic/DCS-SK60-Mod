@@ -1,4 +1,4 @@
---初始化加载要用lua文件
+--Lua files are used for initial loading
 dofile(LockOn_Options.common_script_path.."devices_defs.lua")
 dofile(LockOn_Options.script_path.."Systems/electric_system_api.lua")
 dofile(LockOn_Options.script_path.."debug_util.lua")
@@ -6,11 +6,11 @@ dofile(LockOn_Options.script_path.."command_defs.lua")
 dofile(LockOn_Options.script_path.."sounds_def.lua")
 
 local SoundSystem = GetSelf()
---设置循环次数
+--Set the number of cycles
 local update_rate = 0.05 -- 20次每秒
 -- make_default_activity(update_rate)
 
---初始化DCS读取API
+--Initialize DCS read API
 local sensor_data = get_base_data()
 
 function post_initialize()

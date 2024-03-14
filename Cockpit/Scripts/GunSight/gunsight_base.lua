@@ -2,14 +2,15 @@ dofile(LockOn_Options.script_path.."GunSight/gunsight_def.lua")
 
 SHOW_MASKS = false
 
--- 这个操作可以将新建的裁剪块对齐到三个标记
+-- This operation aligns the newly created clipping block to three markers
 local half_width   = GetScale()
 local half_height  = GetAspect() * half_width
 
 local aspect       = GetAspect()
 
--- 这个是最上面的总仪表裁剪层
-HUD_base_clip 			 	    = CreateElement "ceMeshPoly" --这是裁剪层
+-- This is the topmost dashboard clipping layer
+HUD_base_clip 			 	    = CreateElement "ceMeshPoly" --This is the clipping layer
+
 HUD_base_clip.name 			    = "hud_base_data_clip"
 HUD_base_clip.primitivetype   	= "triangles"
 HUD_base_clip.vertices 		    = { {1, 0.5 * aspect}, { 1,-aspect}, { -1,-aspect}, {-1,aspect*0.5}, {-0.76,aspect}, {0.76,aspect}}
@@ -21,7 +22,8 @@ HUD_base_clip.h_clip_relation   = h_clip_relations.REWRITE_LEVEL --INCREASE_IF_L
 HUD_base_clip.level			    = GUNSIGHT_DEFAULT_NOCLIP_LEVEL
 HUD_base_clip.isdraw		    = true
 HUD_base_clip.change_opacity    = false
-HUD_base_clip.element_params    = {"GUNSIGHT_ENABLE"}              -- 初始化主显示控制
+HUD_base_clip.element_params    = {"GUNSIGHT_ENABLE"}              -- Initialize main display control
+
 HUD_base_clip.controllers       = {{"opacity_using_parameter",0}}
 HUD_base_clip.isvisible		    = SHOW_MASKS
 Add(HUD_base_clip)

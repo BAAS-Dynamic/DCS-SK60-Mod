@@ -1,32 +1,32 @@
 dofile(LockOn_Options.script_path.."devices.lua")
-dofile(LockOn_Options.script_path.."materials.lua") -- 加载材质
+dofile(LockOn_Options.script_path.."materials.lua") -- Load material
 
 -- set panel
--- 初始化舱内仪表台
+-- Initialize the cabin instrument panel
 MainPanel = {"ccMainPanel",LockOn_Options.script_path.."mainpanel_init.lua"}
 
 creators  = {}
 
--- 基础的电力模块
+-- Basic power module
 creators[devices.ELECTRIC_SYSTEM] ={"avSimpleElectricSystem",LockOn_Options.script_path.."Systems/electric_system.lua"}
--- 控制面模块
+-- Control plane module
 creators[devices.PRISURFACE]      ={"avLuaDevice"           ,LockOn_Options.script_path.."priControlSurface.lua"}
--- 舱盖，最简单的单监听模块
+-- Hatch, the simplest single monitoring module
 creators[devices.CANOPY]          ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/canopy.lua"}
--- 刹车包含空气刹车, 主要是看调用刹车系统（dispatch action
+-- Brakes include air brakes, which mainly depend on the dispatch action of the braking system.
 creators[devices.BREAK_SYSTEM]    ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/break_system.lua"}
--- 武器模块
+-- weapon module
 creators[devices.WEAPON_SYSTEM]	  ={"avSimpleWeaponSystem"  ,LockOn_Options.script_path.."Systems/weapon_system.lua"}
--- 这两个是为了调用地勤
+-- These two are for calling ground staff
 creators[devices.INTERCOM]        ={"avIntercom"            ,LockOn_Options.script_path.."Intercom.lua", {devices.UHF_RADIO} }
 creators[devices.UHF_RADIO]       ={"avUHF_ARC_164"         ,LockOn_Options.script_path.."uhf_radio.lua", {devices.INTERCOM, devices.ELECTRIC_SYSTEM} }
--- 雷达模块
+-- radar module
 creators[devices.RADAR_RAW]		  ={"avSimpleRadar"			,LockOn_Options.script_path.."avRadar/Device/Radar_init.lua"}
 -- hud Display processor
 creators[devices.HUD_DCMS]        ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/dcms_hud.lua"}
 -- Basic instrument, including an array that I encapsulated to process instrument animation and update function can simplify basic flight instrument drawing
 creators[devices.BASIC_FLIGHT_INS]={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/basic_flight_instru.lua"}
--- 时钟系统，包含读取系统时间（游戏内任务时间
+-- Clock system, including reading system time (in-game task time
 creators[devices.CLOCK]           ={"avLuaDevice"           ,LockOn_Options.script_path.."aviation_clock.lua"}
 --
 creators[devices.GEAR_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gear_system.lua"}
@@ -43,7 +43,8 @@ creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scri
 -- gps_receiver & the uplink databus to EFM
 creators[devices.UP_LINK]         ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gps_receiver.lua"}
 creators[devices.MISCELANIOUS]     ={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/miscelanious.lua"}
--- 定义显示器
+--creators[devices.EXTRA]     		={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/extra.lua"}
+-- Define display
 -- Indicators
 indicators = {}
 

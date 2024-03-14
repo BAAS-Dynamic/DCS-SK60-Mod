@@ -26,13 +26,13 @@ HUD_DAY_COLOR               = {233,139,42,255}
 -- this hud texture model is belong to another mod i made
 basic_HUD_material = MakeMaterial(HUD_IND_TEX_PATH.."HUD_base_ind_tex.dds", HUD_DAY_COLOR)
 
--- 定义hud默认长宽
+-- Define the default length and width of hud
 default_hud_x = 2000
 default_hud_y = 2000 
 
--- 定义默认HUD旋转角度和hud显示深度
+-- Define the default HUD rotation angle and hud display depth
 default_hud_z_offset = 750
-default_hud_y_offset = - 0.889 * default_hud_z_offset -- - 0.839 * X - 0.2
+default_hud_y_offset = - 0.95 * default_hud_z_offset -- - 0.839 * X - 0.2
 default_hud_rot_offset = 40
 default_hud_size_scaler = 150
 
