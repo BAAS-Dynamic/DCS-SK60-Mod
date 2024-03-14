@@ -43,7 +43,7 @@ creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scri
 -- gps_receiver & the uplink databus to EFM
 creators[devices.UP_LINK]         ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gps_receiver.lua"}
 creators[devices.MISCELANIOUS]     ={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/miscelanious.lua"}
---creators[devices.EXTRA]     		={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/extra.lua"}
+creators[devices.animations]     		={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/animations.lua"}
 -- Define display
 -- Indicators
 indicators = {}
