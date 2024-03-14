@@ -264,7 +264,7 @@ return {
 
         -- General (Gameplay)
     {combos = {{key = 'U'}},							down = iCommandPlaneShipTakeOff,			name = _('Ship Take Off Position'),		category = _('General') , features = {"shiptakeoff"}},
-    --{combos = {{key = 'P', reformers = {'RShift'}}},	down = iCommandCockpitShowPilotOnOff,		name = _('Show Pilot Body'),			category = _('General')},
+    {combos = {{key = 'P', reformers = {'RShift'}}},	down = iCommandCockpitShowPilotOnOff,		name = _('Show Pilot Body'),			category = _('General')},
 
     -- Flight Control
     {combos = {{key = 'Up'}},		down = iCommandPlaneUpStart,			up = iCommandPlaneUpStop,			name = _('Aircraft Pitch Down'),	category = _('Flight Control')},
@@ -375,7 +375,7 @@ return {
     {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
     {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
     {down = Keys.Custom_Menu_Enter,			name = _('Menu Enter'),				category = _('Special Function') },
-	{down = Keys.PilotBody,			name = _('Toggle Pilot'),				category = _('Special Function') },
+	--{down = Keys.PilotBody,			name = _('Toggle Pilot'),				category = _('Special Function') },
 
     -- Music Player
     {down = Keys.MusicPauseOrPlay,			name = _('Music Pause/Play'),				category = _('Music Player')},

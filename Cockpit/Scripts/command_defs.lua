@@ -8,6 +8,8 @@ end
 
 Keys =
 {
+	iCommandCockpitShowPilotOnOff = __custom_counter()
+
 	PlanePickleOn	= 350,
 	PlanePickleOff	= 351,
     PlaneChgWeapon  = 101,
