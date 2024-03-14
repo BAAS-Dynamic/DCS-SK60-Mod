@@ -8,7 +8,7 @@ end
 
 Keys =
 {
-	iCommandCockpitShowPilotOnOff = __custom_counter()
+	pilotToggle = __custom_counter(), 
 
 	PlanePickleOn	= 350,
 	PlanePickleOff	= 351,

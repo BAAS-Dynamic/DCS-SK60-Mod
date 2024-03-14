@@ -9,7 +9,7 @@ make_default_activity(updateTimeStep)
 
 local misc = GetSelf()
 
-misc:listen_command(Keys.iCommandCockpitShowPilotOnOff)
+misc:listen_command(Keys.pilotToggle)
 
 
 local pilotToggle = get_param_handle("pilotToggle")
@@ -23,7 +23,7 @@ function update()
 end
 
 function SetCommand(command, value)
-	if command == Keys.iCommandCockpitShowPilotOnOff then
+	if command == Keys.pilotToggle then
 		if pilotToggle:get() == 1 then
 			pilotToggle:set(0)
 		else
