@@ -44,6 +44,7 @@ creators[devices.MENU_SYSTEM]     ={"avLuaDevice"           ,LockOn_Options.scri
 creators[devices.UP_LINK]         ={"avLuaDevice"           ,LockOn_Options.script_path.."Systems/gps_receiver.lua"}
 creators[devices.MISCELANIOUS]     ={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/miscelanious.lua"}
 creators[devices.animations]     		={"avLuaDevice"            ,LockOn_Options.script_path.."Systems/animations.lua"}
+creators[devices.gunsight]              = {"avLuaDevice", LockOn_Options.script_path .. "GunSight/Device/Gunsight.lua"}
 -- Define display
 -- Indicators
 indicators = {}

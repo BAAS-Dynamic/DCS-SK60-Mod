@@ -74,7 +74,7 @@ local weapon_system_mode = 0
 local fire_trigger_status = 0
 local gun_sight_is_installed = 0
 
-local gun_sight_display = get_param_handle("GUNSIGHT_ENABLE")
+local gun_sight_display = get_param_handle("gunsightEnable")
 
 -- PYLON_INFO_LIST[pylonSelection + 1] = {station_data.weapon.level2, station_data.weapon.level3, station_data.count}
 
@@ -128,10 +128,12 @@ function check_load_status()
             -- this is a rocket, check the number of it
             loading_list[i] = 3 + station.count
             weapon_system_mode = 2
+			get_param_handle("armamentType"):set(2)
         elseif (string.sub(station.CLSID,1,36) == "{5d5aa063-a002-4de8-8a89-6eda1e80ee7") then
             -- gunpod
             loading_list[i] = 3
             weapon_system_mode = 1
+			get_param_handle("armamentType"):set(1)
             -- print_message_to_user("gunpod on station "..i)
         else
             loading_list[i] = 0
