@@ -17,9 +17,9 @@ local pilotToggle = get_param_handle("pilotToggle")
 
 
 
-function post_initialize()
-	show_param_handles_list(true) --For testing.
-end
+--function post_initialize()
+	--show_param_handles_list(true) --For testing.
+--end
 
 function update()
 	
