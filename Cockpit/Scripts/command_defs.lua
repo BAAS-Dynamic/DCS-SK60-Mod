@@ -8,6 +8,8 @@ end
 
 Keys =
 {
+	pilotToggle = __custom_counter(), 
+
 	PlanePickleOn	= 350,
 	PlanePickleOff	= 351,
     PlaneChgWeapon  = 101,
@@ -54,19 +56,19 @@ Keys =
 
     PlaneChgTargetPrev = 1315,   -- iCommandPlaneUFC_STEER_DOWN
 
-    -- 自定义按键从这里开始，可以自动从10000开始增加，避免冲突 --
-    ThrottleAxisTest = __custom_counter(),  --油门位置
-    EnginesStart = __custom_counter(), --自定义引擎启动输入
-    EnginesStop = __custom_counter(), --自定义引擎关闭输入
-    EnginesStartStop = __custom_counter(), --自定义引擎开关按下
-    EnginesStartStopUp = __custom_counter(), --自定义引擎开关松开
+    -- Customized buttons start here and can be automatically added from 10,000 to avoid conflicts. --
+    ThrottleAxisTest = __custom_counter(),  --Throttle position
+    EnginesStart = __custom_counter(), --Custom engine start input
+    EnginesStop = __custom_counter(), --Custom engine shutdown input
+    EnginesStartStop = __custom_counter(), --Custom engine switch pressed
+    EnginesStartStopUp = __custom_counter(), --Custom engine switch released
 
-    BrakesOn = __custom_counter(), --自定义刹车
-    BrakesOff = __custom_counter(), --自定义刹车关闭
+    BrakesOn = __custom_counter(), --Custom brakes
+    BrakesOff = __custom_counter(), --Custom brake off
 
-    DragParachute = __custom_counter(), --自定义减速伞释放
+    DragParachute = __custom_counter(), --Customized parachute release
 
-    --PlaneFlapsStop = __custom_counter(),      --目前屏蔽手动缝翼
+    --PlaneFlapsStop = __custom_counter(),      --Manual slats currently blocked
     --PlaneFlapsUpHotas = __custom_counter(),   --
     --PlaneFlapsDownHotas = __custom_counter(), --
     
@@ -78,11 +80,11 @@ Keys =
     PickleOn = __custom_counter(),  -- replaces iCommandPlanePickleOn
     PickleOff = __custom_counter(), -- replaces iCommandPlanePickleOff
 
-    -- 武器测试用按键
+    -- Weapon testing button
     WeaponSelectNext = __custom_counter(),
     WeaponLaunch = __custom_counter(),
 
-    -- 襟翼动作
+    -- flap action
     FlapUp = __custom_counter(),
     FlapDown = __custom_counter(),
 
@@ -397,9 +399,13 @@ Keys =
 
     -- 6100 - 6200 for further warning system
     WARN_MASTER_CANCEL = 6100,
+	
+	--6500 - 6900 Breadmakers special additions
+	PilotBody = 6500,
+	
 }
 
---从5000开始递增点击指令
+--Increment click instructions starting from 5000
 start_command   = 5000
 local __count_click = start_command-1
 local function __click_counter()
@@ -410,5 +416,5 @@ end
 
 click_cmd =
 {
-    GearLevel = __click_counter(), --起落架手柄
+    GearLevel = __click_counter(), --Landing gear handle
 }

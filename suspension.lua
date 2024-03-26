@@ -32,9 +32,9 @@ suspension_data =
 		amortizer_back_damper_force_factor		= 2600,
 
 
-		wheel_radius				  = 0.4 / 2,
+		wheel_radius				  = 0.413 / 2,
 		wheel_static_friction_factor  = 0.85 , --Static friction when wheel is not moving (fully braked)
-		wheel_side_friction_factor    = 0.65 ,
+		wheel_side_friction_factor    = 0.85 ,
 		wheel_roll_friction_factor    = 0.06, -- Rolling friction factor when wheel moving
 		wheel_glide_friction_factor   = 0.35 , -- Sliding aircraft
 		wheel_damage_force_factor     = 1450.0, -- Tire is explosing due to hard landing
@@ -87,18 +87,18 @@ suspension_data =
 
 		anti_skid_installed = true,
 
-		wheel_radius				  = 0.572/2 ,
-		wheel_static_friction_factor  = 0.85 ,
-		wheel_side_friction_factor    = 0.65 ,
-		wheel_roll_friction_factor    = 0.08,
-		wheel_glide_friction_factor   = 0.35,
+		wheel_radius				  = 0.579/2 ,
+		wheel_static_friction_factor  = 0.95 ,
+		wheel_side_friction_factor    = 0.85 ,
+		wheel_roll_friction_factor    = 0.03,
+		wheel_glide_friction_factor   = 0.45,
 		wheel_damage_force_factor     = 1450.0,
 		wheel_damage_speed			  = 180.0,
 		wheel_moment_of_inertia   = 3.6, --wheel moi as rotation body
 
-		wheel_brake_moment_max = 4000.0, -- maximum value of braking moment  , N*m 
+		wheel_brake_moment_max = 1944, -- maximum value of braking moment  , N*m 
 
-		wheel_kz_factor					= 0.25,
+		wheel_kz_factor					= 0.20,
 		noise_k							= 0.4,
 		wheel_damage_speedX				= 108,
 		wheel_damage_delta_speedX		= 15,
@@ -147,17 +147,17 @@ suspension_data =
 		anti_skid_installed = true,
 
 		wheel_radius				  = 0.572/2 ,
-		wheel_static_friction_factor  = 0.85,
-		wheel_side_friction_factor    = 0.65,
-		wheel_roll_friction_factor    = 0.08,
-		wheel_glide_friction_factor   = 0.35 ,
+		wheel_static_friction_factor  = 0.95,
+		wheel_side_friction_factor    = 0.85,
+		wheel_roll_friction_factor    = 0.03,
+		wheel_glide_friction_factor   = 0.45 ,
 		wheel_damage_force_factor     = 1450.0,
 		wheel_damage_speed			  = 180.0,
 		wheel_moment_of_inertia   = 3.6, --wheel moi as rotation body
 
-		wheel_brake_moment_max = 4000.0, -- maximum value of braking moment  , N*m 
+		wheel_brake_moment_max = 1944, -- maximum value of braking moment  , N*m 
 
-		wheel_kz_factor					= 0.25,
+		wheel_kz_factor					= 0.20,
 		noise_k							= 0.4,
 		wheel_damage_speedX				= 108,
 		wheel_damage_delta_speedX		= 15,

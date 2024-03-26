@@ -12,8 +12,8 @@ local WHEELCHOCKS_LADDER_ANIM_ARG = 250
 
 local WHEELCHOCKS_STATE = 0 					-- state of wheel chocks
 
-dev:listen_command(10038)
-dev:listen_command(10039)
+dev:listen_command("Keys.BrakesOn")
+dev:listen_command("Keys.BrakesOff")
 
 dev:listen_event("WheelChocksOn")
 dev:listen_event("WheelChocksOff")
@@ -28,9 +28,9 @@ end
 
 function update()		
 	if WHEELCHOCKS_STATE == 1 then
-	dispatch_action(nil,10038)
+	dispatch_action(nil,"Keys.BrakesOn")
 	elseif WHEELCHOCKS_STATE == 0 then
-	dispatch_action(nil,10039)
+	dispatch_action(nil,"Keys.BrakesOff")
 	WHEELCHOCKS_STATE = -1
 	end
 

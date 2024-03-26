@@ -27,20 +27,20 @@ night_texture_set_value = 0.1
 
 -- mirror settings
 mirrors_data = {
-    center_point      	= { 0.418, 0.2 , 0.0 }, --F/B,U/D,L/R location of reflection image generation--{ 0.279, 0.4, 0.00 } 0.279, 0.3, 0.00, difference from cockpit_local_point {2.00, 0.2553,-0.2576},
-    width 			  	= 1.9, --integrated (keep in mind that mirrors can be none planar old=0.7)
-    aspect 			  	= 1,--0.8/0.3,
-	rotation 	 	 	= math.rad(0);
+    center_point      	= { 0.6, -0.05 , 0.1 }, --F/B,U/D,L/R location of reflection image generation--{ 0.279, 0.4, 0.00 } 0.279, 0.3, 0.00, difference from cockpit_local_point {2.00, 0.2553,-0.2576},
+    width 			  	= 3.5, --integrated (keep in mind that mirrors can be none planar old=0.7)
+    aspect 			  	= 2,--0.8/0.3,
+	rotation 	 	 	= math.rad(12);
 	animation_speed  	= 2.0;
-	near_clip 		  	= 0.1;
-	--middle_clip		= 100;		
-	--far_clip		  	= 60000;	
+	near_clip 		  	= 0.01;
+	middle_clip			= 40;		
+	far_clip		  	= 60000;	
 	arg_value_when_on 	= 1.0;
 }
 
 TEMP_VAR = {}
 
--- 这是封装的设置舱内动画与parameter绑定的函数
+-- This is an encapsulated function that sets the cabin animation and binds parameters.
 
 function create_cockpit_animation_controller(input_num, set_parameter, _arg_number, _input, _output)
     if (_input == nil) then
@@ -270,6 +270,14 @@ Fuel.arg_number						= 354
 Fuel.input							= {0, 1640}
 Fuel.output							= {0, 1}
 Fuel.controller						= controllers.base_gauge_TotalFuelWeight
+
+
+PilotDraw                = CreateGauge("parameter")
+PilotDraw.arg_number     = 3100
+PilotDraw.input          = {0, 1}
+PilotDraw.output         = {0, 1}
+PilotDraw.parameter_name = "pilotToggle"
+
 
 
 need_to_be_closed = false

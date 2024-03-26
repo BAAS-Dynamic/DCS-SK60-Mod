@@ -1,44 +1,34 @@
 # DCS-SK60-Mod
-[![release](https://img.shields.io/github/v/release/Breadmaker91/DCS-SK60-Mod?include_prereleases)](https://github.com/Breadmaker91/DCS-SK60-Mod/releases)
+[![release](https://img.shields.io/github/v/release/corsaircat/DCS-sk60-mod?include_prereleases)](RELEASE)
 ![platform](https://img.shields.io/badge/platform-windows-lightgrey)
 ![EFM](https://img.shields.io/badge/Flightmodel-EFM-green)
-![Status](https://img.shields.io/badge/status-Public%20Released-ff69b4)
-![LICENSE](https://img.shields.io/github/license/Breadmaker91/DCS-SK60-Mod)
-![DOWNLOAD](https://img.shields.io/github/downloads/Breadmaker91/DCS-SK60-Mod/total)
 <br>
 A Saab SK60 mod for Digital Combat Simulator World.
 <br>
-Note: The Externel FLight Model Code will be released later. 
-<br>
-<a href="https://github.com/Breadmaker91/DCS-SK60-Mod/releases">Release Download</a>
-<br>
 ![team](Theme/ME/MainMenulogo.png)
-![avatar](Theme/ME/DEMO.png)
 
 
 ## Table of Contents
 - [Background](#background)
-- [Aircraft Info](#aircraft)
+- [Aircraft Info](#(Aircraft))
+- [Progress](#Progress)
+- [TO-DO List](#TO-DO)
 - [Install](#install)
-- [Progress](#progress)
-- [TO-DO List](#todo)
+- [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
 ## Background
-This project is aim to create a SK-60/Saab 105 light training jet module for DCS World Simulation. 
-<br>The project will kept on mod level and use the EFM (externel flight model).
-<br>Creating of the 3D model is based on the Blender.
+This project is aim to create a SK-60/Saab 105 light training jet module for DCS World Simulation. The project will kept on mod level and use the EFM (externel flight model)
+Creating of the 3D model is based on the Blender.
+![avatar](Theme/ME/DEMO.png)
 
-## Aircraft
+## Aircraft Info
 ### Instruments
 + Garmin NS430 [navigation]
 + SAAB F35-1, OCH-2 [eadi]
 + Sandel SN3500 [ehsi]
 + R&S®GB6500 Remote control unit [radio] 
-
-## Install
-+ <a href="https://github.com/Breadmaker91/DCS-SK60-Mod/releases">Release Download</a>
 
 ## Progress
 ### Fully Functional
@@ -56,10 +46,9 @@ This project is aim to create a SK-60/Saab 105 light training jet module for DCS
 + Navigation Unit
 + Radio Unit
 
-## TODO
+## TO-DO
 ### Functions
-#### We no longer use the google docs
-#### If you find any problems, plz post in the Issues
++ See in link below: https://docs.google.com/spreadsheets/d/1nlrEghej1rFCXLv4O9qpI_PqkWHY3rdk3nWyn6rrHKA/edit#gid=0
 + Radio System working, try implement the R&S GB6500 UHF radio
 + Add more elements and function to Navigation part
 + Change some clickable stuff to the keyboard/joystick input
@@ -95,7 +84,6 @@ This project is aim to create a SK-60/Saab 105 light training jet module for DCS
 </div>
 
 ## License
-### DO NOT Redistribute Without Permission
 #### Possibly need license
 + font on EADI: http://aircraft-in-focus.com/ath_aircraft_fonts/
 + Radio System (enabling the in-game radio funtion)

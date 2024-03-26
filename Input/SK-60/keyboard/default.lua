@@ -120,7 +120,7 @@ return {
     
     -- Cockpit view
     {combos = {{key = 'L', reformers = {'LAlt'}}},				down = 3256,	cockpit_device_id = 0,	value_down = 1.0,						name = _('Flashlight'),						category = _('View Cockpit')},
-    {combos = {{key = 'P', reformers = {'RShift'}}},			down = iCommandCockpitShowPilotOnOff, 											name = _('Toggle Pilot'), 					category = _('View Cockpit')},
+    --{combos = {{key = 'P', reformers = {'RShift'}}},			down = iCommandCockpitShowPilotOnOff, 											name = _('Toggle Pilot'), 					category = _('View Cockpit')},
     {combos = {{key = 'Num0'}},									down = iCommandViewTempCockpitOn,		up = iCommandViewTempCockpitOff,		name = _('Cockpit panel view in'),			category = _('View Cockpit')},
     {combos = {{key = 'Num0', reformers = {'RCtrl'}}},			down = iCommandViewTempCockpitToggle,											name = _('Cockpit panel view toggle'),		category = _('View Cockpit')},
     --// Save current cockpit camera angles for fast numpad jumps
@@ -264,7 +264,8 @@ return {
 
         -- General (Gameplay)
     {combos = {{key = 'U'}},							down = iCommandPlaneShipTakeOff,			name = _('Ship Take Off Position'),		category = _('General') , features = {"shiptakeoff"}},
-    {combos = {{key = 'P', reformers = {'RShift'}}},	down = iCommandCockpitShowPilotOnOff,		name = _('Show Pilot Body'),			category = _('General')},
+    --{combos = {{key = 'P', reformers = {'RShift'}}},	down = iCommandCockpitShowPilotOnOff,		name = _('Show Pilot Body'),			category = _('General')},
+	{combos = {{key = 'P', reformers = {'RShift'}}},	down = Keys.pilotToggle,		name = _('Show Pilot Body'),			category = _('General')},
 
     -- Flight Control
     {combos = {{key = 'Up'}},		down = iCommandPlaneUpStart,			up = iCommandPlaneUpStop,			name = _('Aircraft Pitch Down'),	category = _('Flight Control')},
@@ -375,6 +376,7 @@ return {
     {down = Keys.SpecialSence,			name = _('Tjena Hejsan'),				category = _('Special Function') },
     {down = Keys.Custom_Menu,			name = _('Trigger on Screen Menu'),				category = _('Special Function') },
     {down = Keys.Custom_Menu_Enter,			name = _('Menu Enter'),				category = _('Special Function') },
+	--{down = Keys.PilotBody,			name = _('Toggle Pilot'),				category = _('Special Function') },
 
     -- Music Player
     {down = Keys.MusicPauseOrPlay,			name = _('Music Pause/Play'),				category = _('Music Player')},
