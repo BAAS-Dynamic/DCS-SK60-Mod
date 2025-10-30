@@ -1,99 +1,155 @@
-dofile(LockOn_Options.common_script_path.."elements_defs.lua")
+dofile(LockOn_Options.common_script_path .. "elements_defs.lua")
 
-HUD_IND_TEX_PATH        = LockOn_Options.script_path .. "../Textures/HUD/"  --定义屏幕贴图路径
 
---这个应该是设置弧度单位（？），用来定义屏幕倾斜 1mrad=0.001弧度=0.0573度
--- 此处存疑，A4雷达屏幕用的是FOV
--- 这个是画面比例计算模式
--- Fov 提供了-1 -> 1， - aspect -> aspect 的屏幕映射
+
 SetScale(FOV)
 
--- 一些预定义角度/弧度换算(均为全局变量)
-DEGREE_TO_MRAD = 17.4532925199433
-DEGREE_TO_RAD  = 0.0174532925199433
-RAD_TO_DEGREE  = 57.29577951308233
-MRAD_TO_DEGREE = 0.05729577951308233
 
-GUNSIGHT_DEFAULT_LEVEL = 8                              -- 二次裁剪显示层
-GUNSIGHT_DEFAULT_NOCLIP_LEVEL  = GUNSIGHT_DEFAULT_LEVEL - 1 -- 一次裁剪显示层
 
--- 默认hud单色吧
--- 排错颜色（大雾）
-DEBUG_COLOR                 = {0,255,0,200}
--- 白天模式hud的颜色
-HUD_DAY_COLOR               = {233,139,42,255}
+ctrl = {
+	argInRange    = "draw_argument_in_range",                      --{ctrl.argInRange,argNum, greaterThanValue, lessThanValue} If greaterThanValue < argValue < lessThanValue then obj is visible.
+	changeColor   = "change_color_when_parameter_equal_to_number", --{ctrl.changeColor,paramNum, num, r, g, b} If paramNum == num then set color to rgb.
+	compareNum    = "parameter_compare_with_number",               --{ctrl.compareNum,paramNum, num} If paramValue == num then obj is visible.
+	compareParams = "compare_parameters",                          --{ctrl.compare,param1Num, param2Num} If param1Value == param1Value then obj is visible.
+	inRange       = "parameter_in_range",                          --{ctrl.inRange,paramNum, greaterThanValue, lessThanValue} If greaterThanValue < paramValue < lessThanValue then obj is visible.
+	moveX         = "move_left_right_using_parameter",             --{ctrl.moveX,paramNum, gain} Moves obj 1 gain on the x plane per value.
+	moveY         = "move_up_down_using_parameter",                --{ctrl.moveY,paramNum, gain} Moves obj 1 gain on the y plane per value.
+	opacity       = "opacity_using_parameter",                     --{ctrl.opacity,paramNum} Changes opacity with value (1 = 100%, 0 = 0%).
+	rotate        = "rotate_using_parameter",                      --{ctrl.rotate,paramNum, gain} Rotates obj 1 gain per value.
+	setPoint      = "line_object_set_point_using_parameters",      --{ctrl.setPoint,verticeNum, paramX, paramY, gainX, gainY} (ONLY APPLIES TO "ceSimpleLineObject") Moves verticeNum 1 gainX on the x plane per paramXValue + Moves verticeNum 1 gainY on the y plane per paramYValue.
+	text          = "text_using_parameter"                         --{ctrl.text,paramNum, formatNum} Prints paramNum value (dunno what formatNum means).
+}
 
--- this hud texture model is belong to another mod i made
-basic_HUD_material = MakeMaterial(HUD_IND_TEX_PATH.."HUD_base_ind_tex.dds", HUD_DAY_COLOR)
 
--- 定义hud默认长宽
-default_hud_x = 2000
-default_hud_y = 2000 
+hcr = {
+	cmp   = h_clip_relations.COMPARE, 
+	dec   = h_clip_relations.DECREASE_LEVEL, 
+	decIf = h_clip_relations.DECREASE_IF_LEVEL, 
+	inc   = h_clip_relations.INCREASE_LEVEL, 
+	incIf = h_clip_relations.INCREASE_IF_LEVEL, 
+	rw    = h_clip_relations.REWRITE_LEVEL
+}
 
--- 定义默认HUD旋转角度和hud显示深度
-default_hud_z_offset = 750
-default_hud_y_offset = - 0.889 * default_hud_z_offset -- - 0.839 * X - 0.2
-default_hud_rot_offset = 40
-default_hud_size_scaler = 150
 
-function hud_vert_gen(width, height)
-    return {{(0 - width) / 2 / default_hud_x , (0 + height) / 2 / default_hud_y},
-    {(0 + width) / 2 / default_hud_x , (0 + height) / 2 / default_hud_y},
-    {(0 + width) / 2 / default_hud_x , (0 - height) / 2 / default_hud_y},
-    {(0 - width) / 2 / default_hud_x , (0 - height) / 2 / default_hud_y},}
-end
+lvl = {
+	def    = 8, 
+	mask   = 5, 
+	noclip = 7, 
+}
 
-function hud_duo_vert_gen(width, total_height, not_include_height)
-    return {
-        {(0 - width) / 2 / default_hud_x , (0 + total_height) / 2 / default_hud_y},
-        {(0 + width) / 2 / default_hud_x , (0 + total_height) / 2 / default_hud_y},
-        {(0 + width) / 2 / default_hud_x , (0 + not_include_height) / 2 / default_hud_y},
-        {(0 - width) / 2 / default_hud_x , (0 + not_include_height) / 2 / default_hud_y},
-        {(0 + width) / 2 / default_hud_x , (0 - not_include_height) / 2 / default_hud_y},
-        {(0 - width) / 2 / default_hud_x , (0 - not_include_height) / 2 / default_hud_y},
-        {(0 + width) / 2 / default_hud_x , (0 - total_height) / 2 / default_hud_y},
-        {(0 - width) / 2 / default_hud_x , (0 - total_height) / 2 / default_hud_y},
-    }
-end
 
--- 自动算贴图位置
-function tex_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)
-    -- 参数说明，裁减点X,y 要裁减的宽高，原图尺寸
-    return {{x_dis / size_X , y_dis / size_Y},
-			{(x_dis + width) / size_X , y_dis / size_Y},
-			{(x_dis + width) / size_X , (y_dis + height) / size_Y},
-			{x_dis / size_X , (y_dis + height) / size_Y},}
-end
+matl = {
+	mY   = MakeMaterial(nil, {233, 139, 42, 255}), 
+	mask = MakeMaterial(nil, {255, 0, 255, 255/2})
+}
 
--- 反向贴图生成
-function mirror_tex_coord_gen(x_dis,y_dis,width,height,size_X,size_Y)
-    return {{(x_dis + width) / size_X , y_dis / size_Y},
-			{x_dis / size_X , y_dis / size_Y},
-			{x_dis / size_X , (y_dis + height) / size_Y},
-			{(x_dis + width) / size_X , (y_dis + height) / size_Y},}
-end
 
-function create_circle_index(total_dots)
-    local return_group = {}
-    -- we can calculate for every three
-    for i = 1, (total_dots - 1), 1 do
-        return_group[i*3 - 2] = 0;
-        return_group[i*3 - 1] = i;
-        return_group[i*3] = i + 1;
+gunsightZOffset = 750
+gunsightYOffset = -0.95 * gunsightZOffset
+gunsightRotOffset = 40
+gunsightSizeScaler = 150
+
+
+
+function create_circle_index(totalDots)
+    local returnGroup = {}
+
+    for i = 1, totalDots - 1, 1 do
+        returnGroup[i * 3 - 2] = 0;
+        returnGroup[i * 3 - 1] = i;
+        returnGroup[i * 3] = i + 1;
     end
-    return return_group
+
+    return returnGroup
 end
 
-function create_circle_pos(total_dots, center_X, center_y, radius)
-    local return_group = {}
-    local temp_deg = 0
-    local temp_x = 0
-    local temp_y = 0
-    for i = 1, total_dots, 1 do
-        temp_x = math.sin(math.rad(temp_deg)) * radius + center_X
-        temp_y = math.cos(math.rad(temp_deg)) * radius + center_y
-        return_group[i] = {temp_x/ default_hud_x, temp_y/ default_hud_y}
-        temp_deg = temp_deg + 360 / total_dots
+function create_circle_pos(totalDots, centerX, centerY, radius)
+    local returnGroup = {}
+    local tmpDeg = 0
+    local tmpX = 0
+    local tmpY = 0
+
+    for i = 1, totalDots, 1 do
+        tmpX = math.sin(math.rad(tmpDeg)) * radius + centerX
+        tmpY = math.cos(math.rad(tmpDeg)) * radius + centerY
+        returnGroup[i] = {tmpX / 2000, tmpY / 2000}
+        tmpDeg = tmpDeg + 360 / totalDots
     end
-    return return_group
+
+    return returnGroup
+end
+
+
+function setGunsightBrightness(obj, elementParams, controllers)
+	if elementParams and controllers then
+		elementParams[#elementParams + 1] = "gunsightBrightness"
+		controllers[#controllers + 1]     = {ctrl.opacity,#elementParams - 1}
+
+		obj.element_params = elementParams
+		obj.controllers    = controllers
+	else
+		obj.element_params = {"gunsightBrightness"}
+		obj.controllers    = {{ctrl.opacity,0}}
+	end
+end
+
+function setCommonGunsightProperties(obj, name, pos, rot, parentElement, hClip, level, elementParams, controllers, isMask)
+	obj.name                   = name or create_guid_string()
+	obj.init_pos               = pos or nil
+	obj.init_rot               = rot or nil
+	if parentElement then
+		if type(parentElement) == 'userdata' and parentElement.name then
+			obj.parent_element = parentElement.name
+		elseif type(parentElement) == 'string' then
+			obj.parent_element = parentElement
+		end
+	end
+	obj.h_clip_relation        = hClip or hcr.cmp
+	obj.level                  = level or lvl.def
+	setGunsightBrightness(obj, elementParams, controllers)
+	obj.collimated             = true
+	obj.use_mipfilter          = true
+	obj.additive_alpha         = true
+	obj.blend_mode             = blend_mode.IBM_REGULAR_ADDITIVE_ALPHA
+	obj.isvisible              = not isMask
+	Add(obj)
+
+	return obj
+end
+
+
+function addGunsightSimple(name, pos, rot, parentElement, hClip, level, elementParams, controllers)
+	local simple = CreateElement "ceSimple"
+	setCommonGunsightProperties(simple, name, pos, rot, parentElement, hClip, level, elementParams, controllers)
+
+	return simple
+end
+
+
+function addGunsightMeshPoly(name, pos, rot, parentElement, hClip, level, elementParams, controllers, vertices, indices, material, isMask)
+	local meshPoly         = CreateElement "ceMeshPoly"
+	meshPoly.primitivetype = "triangles"
+	meshPoly.vertices      = vertices
+	meshPoly.indices       = indices
+	meshPoly.material      = material or matl.mY
+	setCommonGunsightProperties(meshPoly, name, pos, rot, parentElement, hClip, level, elementParams, controllers, isMask)
+
+	return meshPoly
+end
+
+function addGunsightCircle(name, pos, rot, parentElement, hClip, level, elementParams, controllers, outerRadius, innerRadius, arc, res, material, isMask)
+	local circle = {}
+	set_circle(circle, outerRadius, innerRadius, arc, res)
+
+	return addGunsightMeshPoly(name, pos, rot, parentElement, hClip, level, elementParams, controllers, circle.vertices, circle.indices, material, isMask)
+end
+
+function addGunsightSimpleLine(name, pos, rot, parentElement, hClip, level, elementParams, controllers, width, vertices, material, isMask)
+	local simpleLine           = CreateElement "ceSimpleLineObject"
+	simpleLine.width           = width or 0.5
+	simpleLine.vertices        = vertices or {{0}, {0}}
+	simpleLine.material        = material or matl.mY
+	setCommonGunsightProperties(simpleLine, name, pos, rot, parentElement, hClip, level, elementParams, controllers, isMask)
+
+	return simpleLine
 end

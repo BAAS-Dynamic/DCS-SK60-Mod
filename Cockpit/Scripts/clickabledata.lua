@@ -372,7 +372,7 @@ elements["PTN_RTHRO"] = default_2_position_tumb("Right Engine IDLE",  devices.EN
 -- 
 elements["FLAP_LEVEL"] = default_multi_position_tumb("Flap handle", devices.BREAK_SYSTEM, Keys.FlapUp, Keys.FlapDown, 43, 5.0)
 
-elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BREAK_SYSTEM, Keys.ParkingBrakes, 50)
+elements["PARKING_BREAK"] = default_2_position_tumb("Parking Break", devices.BREAK_SYSTEM, Keys.ParkingBrakes, 432)
 
 elements["PTN_118"] = default_button("Boost Pump Test", devices.FUEL_SYSTEM, Keys.BoostPumpTestUP, Keys.BoostPumpTestDOWN, 118)
 
