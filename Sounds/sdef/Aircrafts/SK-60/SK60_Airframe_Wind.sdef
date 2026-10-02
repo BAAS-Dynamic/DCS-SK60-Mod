@@ -1,0 +1,9 @@
+wave = "Effects/Aircrafts/SK-60/SK60_Airframe_Wind"
+
+pitch = 1.5
+gain = 0.65
+attack = 0.15
+release = 0.35
+
+inner_radius = 1
+outer_radius = 3

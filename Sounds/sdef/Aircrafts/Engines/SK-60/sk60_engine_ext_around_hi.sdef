@@ -1,0 +1,15 @@
+wave = "Effects/Aircrafts/Engines/SK-60/sk60_engine_ext_around_hi"
+
+pitch = 1.0
+gain = 1
+attack = 0.2
+release = 0.3
+
+silent_radius = 3
+inner_radius = 100
+outer_radius = 1000
+
+position = {0.0, 0.0, 0.0}
+
+nodoppler = false
+auto_width = true

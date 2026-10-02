@@ -1,0 +1,16 @@
+wave = "Effects/Aircrafts/Engines/SK-60/sk60_engine_ext_far_roar"
+
+pitch = 1.0
+gain = 15
+attack = 0.3
+release = 0.5
+
+silent_radius = 50
+peak_radius = 200
+inner_radius = 100
+outer_radius = 8000
+
+position = {-2.0, 0.0, 0.0}
+
+nodoppler = false
+auto_width = true

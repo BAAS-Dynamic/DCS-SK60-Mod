@@ -1,0 +1,9 @@
+wave = "Effects/Aircrafts/SK-60/SK60_Engine_Cockpit_Startup"
+
+pitch = 1.0
+gain = 0.3
+attack = 0.0
+release = 0.1
+
+inner_radius = 1
+outer_radius = 8

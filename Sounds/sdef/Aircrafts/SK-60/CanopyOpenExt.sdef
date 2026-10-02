@@ -1,0 +1,15 @@
+wave = "Effects/Aircrafts/SK-60/SK60_CanopyOpen"
+
+pitch = 1.0
+gain = 1.0
+attack = 0.0
+release = 0.1
+
+silent_radius = 0
+inner_radius = 20
+outer_radius = 180
+
+position = {0.5, 0.8, 0.0}
+
+nodoppler = true
+auto_width = true

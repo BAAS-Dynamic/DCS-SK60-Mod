@@ -1,0 +1,20 @@
+wave = "Effects/Aircrafts/Engines/SK-60/sk60_engine_ext_front_lo"
+
+pitch = 1.0
+gain = 0
+attack = 0.3
+release = 0.4
+
+silent_radius = 2
+inner_radius = 50
+outer_radius = 1000
+
+position = {3.0, 0.0, 0.0}
+direction = {1.0, 0.0, 0.0}
+cone_inner_angle = 55
+cone_outer_angle = 105
+cone_inner_gain = 0.90
+cone_outer_gain = 0.02
+
+nodoppler = false
+auto_width = true

@@ -1,0 +1,9 @@
+wave = "Effects/Aircrafts/SK-60/SK60_Airframe_Rattle"
+
+pitch = 1.0
+gain = 0.7
+attack = 0.05
+release = 0.2
+
+inner_radius = 1
+outer_radius = 3
