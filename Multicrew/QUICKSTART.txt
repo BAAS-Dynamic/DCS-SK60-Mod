@@ -1,0 +1,102 @@
+SK60 CREW - PLAYER QUICK START
+
+Experimental shared panel with right-seat navigation, radio and transponder commands.
+It still needs testing inside DCS on two computers.
+
+ONCE ON EACH PLAYER'S PC
+1. Use an existing SK60 installation based on the supported repository revision:
+   3628753709b4390e70507e0cdaaa3f151b0f7b48.
+   The installer is an overlay, not the full aircraft. It checks files before
+   replacement and refuses unexpected changes. Use a separate test profile.
+2. Save SK60 Crew.exe in a folder (extract it first if supplied in a zip).
+   Close DCS and open the exe. No companion files or Python installation are required.
+3. Select your Saved Games DCS profile and installed SK60 folder.
+   Your chosen profile is remembered between launches, including custom drives.
+   Client and server selections are stored separately under %LOCALAPPDATA%/SK60Crew.
+4. Click Install / update aircraft support. Original files are backed up.
+5. Restart DCS. Automatic connection starts after installation; on subsequent
+   app launches it starts for the initially selected installed profile.
+
+EACH FLIGHT
+For a supporting server, select Automatic. If the connection has already started
+and you want to change modes, click Stop first.
+1. Keep SK60 Crew open. If needed, click Start automatic connection.
+2. Join a DCS server whose operator is running SK60 Crew Server.
+3. Pilot takes the left seat. Co-pilot joins the right seat of the SAME aircraft.
+4. Wait for the in-cockpit shared-cockpit connected message before relying on
+   the co-pilot panel. Pairing follows the server's seat roster automatically.
+
+There are no invitation codes, client port-forwarding steps, paid service,
+or third-party VPN accounts. The DCS host operates the relay on its own PC.
+Each PC uses its own local credential; players must not copy settings between PCs.
+
+DIRECT CONNECTION (NO SK60 SERVICE ON THE DCS SERVER)
+Both players still need a DCS server that supports SK60 multicrew, and must select
+the same aircraft. Direct mode does not verify your pairing against its roster.
+1. Pilot clicks Stop if needed, selects Host as pilot, chooses a TCP port
+   (default 10660) and enters any non-empty password. Length and complexity are
+   your choice. The password is case-sensitive. Port and password are remembered;
+   the saved password is protected for your Windows account using DPAPI.
+   The public IP field fills automatically through an HTTPS lookup to ipify.
+   Use Detect public IP to refresh it. You can also type
+   the address manually. No password or DCS data is sent to the lookup service.
+2. Pilot forwards that TCP port to their PC and allows the program through their
+   firewall. Click Start hosting, then Copy invitation. Share the invitation,
+   port and password privately with your co-pilot.
+3. Co-pilot clicks Stop if needed, selects Join as co-pilot, enters those details
+   and clicks Connect to pilot. Paste the WHOLE invitation (address#identity)
+   in the address field; enter the port in its separate field.
+4. Check Crew connected: YES on both apps. This works before DCS is started.
+   Then take the left/right seats in the same aircraft. DCS ready and Data syncing
+   turn YES separately when the local cockpit is ready and updates are confirmed.
+Only one co-pilot can connect. Stop hosting to disconnect them; edit the code and
+start again to require a new code. Manual mode ignores automatic server routes.
+An incorrect code is rejected; repeated attempts may require waiting one minute.
+The connection is TLS encrypted. The invitation pins the host certificate before
+any password proof is sent. There is no fallback to an unverified host or the old
+handshake. Obtain the invitation directly from your pilot through a trusted channel.
+Passwords are not sent as plaintext. Short passwords still permit online guesses.
+IP lookup is a convenience, not a connectivity test. A VPN can affect the detected
+address; lookup failure does not prevent manual hosting. Port forwarding is still needed.
+CGNAT may prevent incoming connections even with router forwarding configured.
+
+CURRENT AVIONICS TEST
+The pilot owns the shared systems. The co-pilot receives panel snapshots and
+can operate navigation, FR31/FR33 tuning and the transponder. Engine start remains
+left-seat only. This does not yet support DCS J flight-control handover.
+Personal visor/body settings, intercom/PTT and ejection remain local.
+Do not use DCS's request/take-control command during these tests.
+On link loss the activated co-pilot shared panel freezes and reports waiting.
+This build must not be treated as a verified fully synchronized DCS module.
+
+TROUBLESHOOTING
+Three independent confirmations are shown:
+- DCS ready: the local Export connection is providing current cockpit traffic.
+- Crew connected: the friend is authenticated (manual mode works before DCS).
+- Data syncing: the receiving cockpit confirms successful application of updates.
+The host sees confirmation from the co-pilot, not just sent packets. Confirmation
+expires after 2.5 seconds without fresh feedback/data. It confirms application of
+the selected cockpit values, not visual correctness of every instrument.
+Copy connection status includes indicators and packet counts without credentials.
+If an unpublished cockpit file is reported, install the updated aircraft support
+on BOTH computers and restart DCS. Merely replacing the EXE does not update Lua.
+- No active seat announcement: check the DCS server has the server hook installed,
+  both hooks were loaded after a DCS restart, and you occupy an SK60 seat.
+- Cannot reach service: operator checks public address, TCP port and firewall.
+- Different version: both players install the same build and restart DCS.
+- Unsupported mod revision: do not force overwrite; build an overlay for that
+  revision. The full source checkout contains the build scripts.
+- Multiple profiles: select the profile used by this running DCS instance.
+  Only one SK60 Crew client can use its default local bridge port at a time.
+
+BACKUPS / DISABLE
+Backups are stored under Saved Games/<profile>/Config/SK60Crew/backups/.
+Each backup includes a manifest mapping the original paths to saved .bin files.
+Stop the app to disconnect. To disable cockpit integration completely, change
+enabled = true to enabled = false in Config/SK60Multicrew.lua and restart DCS.
+To fully revert, restore the original files listed in the backup manifest,
+remove files marked as having no original backup, and remove only the managed
+SK60 Crew block from Export.lua. Preserve SRS and other export integrations.
+
+The Windows executable is not code-signed. No files are installed until you click
+Install / update; no firewall settings, DCS installation files or accounts change.

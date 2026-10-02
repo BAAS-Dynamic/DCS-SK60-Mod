@@ -1,0 +1,71 @@
+SK60 CREW - DCS SERVER OPERATOR
+
+Run this on the SAME Windows computer and Saved Games profile as your DCS
+multiplayer server. No separate hosting subscription or domain is needed.
+An internet-reachable address is required, just as for your DCS server.
+
+ONE-TIME SETUP
+1. Save SK60 Crew Server.exe in a folder (extract it first if supplied in a zip).
+   Close DCS and open the exe. No companion files are required.
+   Python is not required.
+2. Choose the Saved Games profile used by this DCS server instance.
+3. Enter the public hostname or IPv4 address plus port, for example
+   your-actual-public-address:10660. Use 10660 as the listening port, or choose
+   another unused port. The public and listening port must match in this build.
+4. Click Install / update server hook. Existing files are backed up.
+5. Allow TCP 10660 (or your chosen port) through the host firewall. Forward it
+   on the router if required. This is additional to the ordinary DCS port.
+   The app does not change firewall/router settings for you.
+6. Click Start server, then start/restart the DCS multiplayer server.
+7. Look for 'DCS hook active' in SK60 Crew Server. Keep both programs running.
+
+PLAYERS
+Players install SK60 Crew and the matching aircraft overlay once. They join DCS
+and take their seats. The server announces the connection privately and pairs
+the two occupants of each SK60 automatically. Several aircraft can fly at once.
+The left seat sends snapshots; right-seat NAV, radio and transponder commands
+are permitted. Engine start remains left-seat only. J handover is not yet supported.
+
+If you also fly from the hosting PC, install/run the PLAYER application too in
+the same DCS profile. Both applications can run together. A local route is used
+for the listen-server pilot instead of requiring router NAT loopback.
+
+The dedicated server does not generate cockpit snapshots: the pilot's client does.
+No SK60 cockpit installation is required by this relay's server-side installer.
+Normal aircraft/mission requirements imposed by DCS are separate.
+
+OPERATION
+- The server uses encrypted TLS with an automatically generated certificate.
+  Clients check its SHA-256 fingerprint delivered by the joined DCS server.
+  No certificate purchase, registration or central relay is needed.
+- Seat credentials change on slot changes, mission changes and relay restart.
+- A stale/missing DCS roster closes active connections after a four-second lease.
+- Leave/rejoin and client network reconnects create a fresh synchronization
+  generation. Historical co-pilot commands are not replayed.
+- Support is limited to static numeric DCS slot IDs and second-seat IDs ending
+  in _2 (cockpit crew index 1). Unknown slot formats and other aircraft fail closed. Dynamic slots need
+  DCS validation and a separate mapping before they can be supported safely.
+- Limits: 256 authenticated roster seats, 256 active connections, 16 connections
+  per source IP. Relay/host capacity and real-flight bandwidth need load testing.
+- Keep Config/SK60CrewServer private: it contains the certificate key and tickets.
+  Do not publish that directory, private machine announcements, or route files.
+- Restart the relay if the public address changes. Players update automatically
+  after a fresh server announcement; no per-player address editing is needed.
+
+HEADLESS SOURCE USE
+After setup, Python with cryptography installed can run:
+  python server_host.py --profile "C:/Users/you/Saved Games/DCS.server"
+The packaged GUI is intended for manually managed servers. Automatic Windows
+service installation/startup is not implemented in this version.
+
+TEST STATUS
+The live client list shows DCS name, aircraft slot, seat and Waiting/Paired status.
+Names come from the local DCS server hook. Install / update server hook and restart
+DCS after upgrading this program to enable player names. An older hook displays
+Player <ID> as a fallback. Paired indicates relay connectivity, not verified panel
+rendering. Disconnected/revoked clients disappear automatically.
+
+This is an experimental implementation. Mock DCS hooks and real TLS sockets are
+tested automatically; two-player DCS flight testing is still required. In
+particular validate slot suffixes, private-chat callback behavior, hook coexistence,
+late joining, native radio state and visual panel coverage in your DCS build.

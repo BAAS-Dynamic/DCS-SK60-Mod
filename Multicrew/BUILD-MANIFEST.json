@@ -1,0 +1,254 @@
+{
+  "status": "Experimental; two-PC DCS verification required",
+  "base_commit": "3628753709b4390e70507e0cdaaa3f151b0f7b48",
+  "build": "Visual Studio 2022 v143 / Release x64",
+  "sha256": {
+    "Cockpit/Scripts/aviation_clock.lua": "f213553385f3b32c3a3918697ec90c81a1763ed7f675c6575111134256bf963e",
+    "Cockpit/Scripts/avRadar/Device/Radar_init.lua": "94f887b8e03e3fbb11d556ca7e365a66185433387dcd305fdc91beba98cf7a19",
+    "Cockpit/Scripts/clickabledata.lua": "15f41db582a63a65fd328b56f9f3dc48dad18db909352d577e8d8ee07a433976",
+    "Cockpit/Scripts/device_init.lua": "1394c7b3063f7f23a609b5a8b47ff5e261fc895ed823e30fe0749648bb8c0da7",
+    "Cockpit/Scripts/devices.lua": "d9f3896e246d2c2b494d0204caa85764c7b605bd59dd86a366fd5eb02d3b884c",
+    "Cockpit/Scripts/EADI/EADI_base_L.lua": "42e98cb2567a7d32c714d144c49b915e65d9ec708a3e9ef80b7f37acff1b1815",
+    "Cockpit/Scripts/EADI/EADI_base_R.lua": "a4388c94327c0fb9928913928f9f0c559f7c6ef9d49d25546cf5ae5a8d94e3d4",
+    "Cockpit/Scripts/GunSight/Device/Gunsight.lua": "97cb91a10688a02ed970d0c66bb972fafa803479c9bedb0e7248b2560a388c1a",
+    "Cockpit/Scripts/mainpanel_init.lua": "b9456d55b37c78e7f445aa8266468512ff3e33ba6c0590fdf7f924db525ae38d",
+    "Cockpit/Scripts/Multicrew/device.lua": "b78c588ba018bc0565627c31b3802b69d147be193c3cec21b9e2be4f11df2373",
+    "Cockpit/Scripts/Multicrew/runtime.lua": "c348b81b5768d9250df9891dc665784aab7d5ecaaf5778339fd90e9475063add",
+    "Cockpit/Scripts/RSGB6500/Radio_base.lua": "d4f7c44418f3b3c8426a6357806356891d411734737923041f2c0bb15fd830bb",
+    "Cockpit/Scripts/Systems/basic_flight_instru.lua": "d5d66abef688170d70b77919581349118ad0470a66585809b409363de8495c1a",
+    "Cockpit/Scripts/Systems/break_system.lua": "7616d1879aa19c06456f4532e5467fc7f436a7b5770850350cc0bc97a4cabb36",
+    "Cockpit/Scripts/Systems/canopy.lua": "edf437a749abed7f27fa25d918a9496b62cbacc156883ba7976151419c3dd8bf",
+    "Cockpit/Scripts/Systems/dcms_hud.lua": "e890556ca718cce739ec582b7c820f9f49a6b46a50847d43a49847dfee1e0d1a",
+    "Cockpit/Scripts/Systems/electric_system.lua": "58b222cc1ced959aca81a9edc4c2a4d426154e440eaf9755933f7860e3e51d26",
+    "Cockpit/Scripts/Systems/fr31_radio.lua": "8a01566d4f8aa0451be12f08d08d756bb70a0fbd476c08192c5a9d1e57a39dcb",
+    "Cockpit/Scripts/Systems/fr33_radio.lua": "8a4f32d90a1429b40f6956c8ab36a2f68a07631480af2944067c71a1bf2cdf6e",
+    "Cockpit/Scripts/Systems/gear_system.lua": "b5484cda864b59587658b3168628d86f6fa7cf865da704a6e8d47b4e440eaea2",
+    "Cockpit/Scripts/Systems/light_system.lua": "6f7d0f00ab978637a0726745d22bada00f3810d6b7054cf158b1f1ac7931dccb",
+    "Cockpit/Scripts/Systems/nav_system.lua": "09ea73af3c71f7c73e2a90062ab577077ecae2c388a5d3f7a6ad2713284ebf1f",
+    "Cockpit/Scripts/Systems/transponder.lua": "48a8d1a40d17c572cbd37eb89bd0edfa031c7d06ec811d4ee87f6aa181dbe67a",
+    "Cockpit/Scripts/Systems/warning_system.lua": "286c31bae4d76ead75582d1f3820ecf867e0b8e6f1a3d2edc01760ffcb0f96d9",
+    "Cockpit/Scripts/Systems/weapon_system.lua": "8c2d69f7e0f3c3798f723682f35aadd9353812ceaf92a6188fadfc0287c317ab",
+    "Multicrew/config.example.lua": "d3da5589e9744a0d2f50aee388d9e83a9232c1f9ace0aa8a8accaf541296f8c1",
+    "Multicrew/display_contract.lua": "102a18151187fc2e5a4b48bba3761ae0edbe7171265ac74fce7a7c2e570ec190",
+    "Multicrew/export.lua": "94e717290215980ce781d38d8122b0833df807944d472a02648e8ed91d4dc995",
+    "Multicrew/NATIVE-DCS-REVIEW.md": "1cf8506160ff3e5f0eaeda88696b5c3c4c61b329ddcd066ad35b21f38902993c",
+    "Multicrew/network_limits.py": "0706e923e611d8e899911a1dd2d81298aebd2e08b2e7000691c7c460f93467b9",
+    "Multicrew/panel_state.lua": "1a6bc82f4568e4dd5ea425f4011ff6c3b097c42cc20685873579aca7ddd9b306",
+    "Multicrew/PERFORMANCE.md": "6222d7421edfe915af48dd852104e67ed84b84c533a35a09a4a46e7698f5015b",
+    "Multicrew/protocol.lua": "0a2a7595c171ae56b921d6fbf9141b401d7336d0af49be7d6cc1b63db42f2655",
+    "Multicrew/QUICKSTART.txt": "289fcbe669303db42f389edf89b924592ad938d4ab32fa9fa2c7c1dda916c0ad",
+    "Multicrew/README.md": "5b7d8768f2f68afbcb2bde19597f9bff483439beb7728ae88d3e04f5075bf261",
+    "Multicrew/relay.py": "440d9807f4dddfdce90b16bcacf943305f3e15957db0cbea3dd6680a646ec1c7",
+    "Multicrew/RIGHT-SEAT-SV.md": "8856caece6ff63204784f65555fa05ee21208c055032f99de7c3504d6cceba4b",
+    "Multicrew/schema.lua": "afe1e05565b9c7f7c5e11b8f34e8b26f3fdd294fc13901c0c5cc8809cfad86e8",
+    "Multicrew/SERVER-HOSTED.md": "083ddcd1f3fe6e945f13278bcf385053a911d7ea06bb7d4be670d9607895b719",
+    "Multicrew/SERVER-SETUP.txt": "f813b54698f5c0090070a5ccadb469f6ea09c14bc82e5c118b9a01fe28b4b1c1",
+    "Multicrew/state_sync.lua": "8ed8c5a269296c7b70d6e230b13989ac0ebfd73676bdfdd35de89c4601fb3ec4",
+    "bin/SAAB_SK60_FM.dll": "27f747e51c2770f95893d5dfc2edef5da2ee57bfd81b43ac4d957d13c19b982c"
+  },
+  "base_sha256": {
+    "Cockpit/Scripts/aviation_clock.lua": [
+      "f213553385f3b32c3a3918697ec90c81a1763ed7f675c6575111134256bf963e"
+    ],
+    "Cockpit/Scripts/avRadar/Device/Radar_init.lua": [
+      "94f887b8e03e3fbb11d556ca7e365a66185433387dcd305fdc91beba98cf7a19"
+    ],
+    "Cockpit/Scripts/device_init.lua": [
+      "1394c7b3063f7f23a609b5a8b47ff5e261fc895ed823e30fe0749648bb8c0da7"
+    ],
+    "Cockpit/Scripts/devices.lua": [
+      "d9f3896e246d2c2b494d0204caa85764c7b605bd59dd86a366fd5eb02d3b884c"
+    ],
+    "Cockpit/Scripts/EADI/EADI_base_L.lua": [
+      "42e98cb2567a7d32c714d144c49b915e65d9ec708a3e9ef80b7f37acff1b1815"
+    ],
+    "Cockpit/Scripts/EADI/EADI_base_R.lua": [
+      "a4388c94327c0fb9928913928f9f0c559f7c6ef9d49d25546cf5ae5a8d94e3d4"
+    ],
+    "Cockpit/Scripts/GunSight/Device/Gunsight.lua": [
+      "97cb91a10688a02ed970d0c66bb972fafa803479c9bedb0e7248b2560a388c1a"
+    ],
+    "Cockpit/Scripts/mainpanel_init.lua": [
+      "6768df3ccb88ddd5b2749af759006a423fda1f5ecd3145c08e1e4782d7d40baa",
+      "911767a5bb4a38b088ee4192bdc976d4f55097ffd8376a2ec7e1451bdccafe49",
+      "b9456d55b37c78e7f445aa8266468512ff3e33ba6c0590fdf7f924db525ae38d",
+      "cb5f20791f02f54636194334fd24db396ee6cc77e86aa9f050ed7cf23f38ef02"
+    ],
+    "Cockpit/Scripts/Multicrew/device.lua": [
+      "111ef02a3d2d0955f8bb8d31bb4494e9c105ee9907344153496b8e311e528ffe",
+      "7e42e83de23684e6a8e5460791d0b0acd1ff6d50c720d062cebec8bf44c69b3d",
+      "8b5ab649a0577247fcdc377204b45feccbd266f855cc557ca0d6b61ab402d033",
+      "b78c588ba018bc0565627c31b3802b69d147be193c3cec21b9e2be4f11df2373",
+      "bee57b5406eebe7657be135d7a09732aa4aaa3b83953bad4b2e7aadf58a52a41",
+      "f0f01df28af02e395e0e004ec230b659b811c265b79789d08a559d7167044247",
+      "fe32490c01f03e28107dc55143ba8a43051fab1b5def3fbc26deb0cdfa27ca03"
+    ],
+    "Cockpit/Scripts/Multicrew/runtime.lua": [
+      "19a9df1fe795d6b58c25af93fd03659fe651ac4c1e5d01db285bff952263cb9a",
+      "68398957e6736d6e844445db21e81e80ef5333a421380767b8d9ae585bc64e27",
+      "dcde122f719abef5e1dec72eb6e9e5a2ec0528383fe90cafc313194ddcdb49a0"
+    ],
+    "Cockpit/Scripts/RSGB6500/Radio_base.lua": [
+      "d4f7c44418f3b3c8426a6357806356891d411734737923041f2c0bb15fd830bb"
+    ],
+    "Cockpit/Scripts/Systems/basic_flight_instru.lua": [
+      "d5d66abef688170d70b77919581349118ad0470a66585809b409363de8495c1a"
+    ],
+    "Cockpit/Scripts/Systems/break_system.lua": [
+      "7616d1879aa19c06456f4532e5467fc7f436a7b5770850350cc0bc97a4cabb36"
+    ],
+    "Cockpit/Scripts/Systems/canopy.lua": [
+      "edf437a749abed7f27fa25d918a9496b62cbacc156883ba7976151419c3dd8bf"
+    ],
+    "Cockpit/Scripts/Systems/dcms_hud.lua": [
+      "e890556ca718cce739ec582b7c820f9f49a6b46a50847d43a49847dfee1e0d1a"
+    ],
+    "Cockpit/Scripts/Systems/electric_system.lua": [
+      "58b222cc1ced959aca81a9edc4c2a4d426154e440eaf9755933f7860e3e51d26"
+    ],
+    "Cockpit/Scripts/Systems/fr31_radio.lua": [
+      "8a01566d4f8aa0451be12f08d08d756bb70a0fbd476c08192c5a9d1e57a39dcb"
+    ],
+    "Cockpit/Scripts/Systems/fr33_radio.lua": [
+      "0e7df5aece4f8fb5981df214716ec0f13e5ff54cc960d64cbb4096abac86b44c",
+      "609fc4cb5b8303f4b7251ab95680aa3f717c609e6d10c55d7560779febb6f0a5",
+      "8a4f32d90a1429b40f6956c8ab36a2f68a07631480af2944067c71a1bf2cdf6e"
+    ],
+    "Cockpit/Scripts/Systems/gear_system.lua": [
+      "b5484cda864b59587658b3168628d86f6fa7cf865da704a6e8d47b4e440eaea2"
+    ],
+    "Cockpit/Scripts/Systems/light_system.lua": [
+      "6f7d0f00ab978637a0726745d22bada00f3810d6b7054cf158b1f1ac7931dccb"
+    ],
+    "Cockpit/Scripts/Systems/nav_system.lua": [
+      "09ea73af3c71f7c73e2a90062ab577077ecae2c388a5d3f7a6ad2713284ebf1f"
+    ],
+    "Cockpit/Scripts/Systems/transponder.lua": [
+      "48a8d1a40d17c572cbd37eb89bd0edfa031c7d06ec811d4ee87f6aa181dbe67a",
+      "886432034a61ebf3103ddeda2751ee8d8ce34d8a37772cd85d61c8f1794dfa58",
+      "ed5dcaff22a0072e0fdfbbd7bf523eb4817f53b421a9d4bb3ff69cf2493b8d39"
+    ],
+    "Cockpit/Scripts/Systems/warning_system.lua": [
+      "286c31bae4d76ead75582d1f3820ecf867e0b8e6f1a3d2edc01760ffcb0f96d9"
+    ],
+    "Cockpit/Scripts/Systems/weapon_system.lua": [
+      "8c2d69f7e0f3c3798f723682f35aadd9353812ceaf92a6188fadfc0287c317ab"
+    ],
+    "Multicrew/config.example.lua": [
+      "d3da5589e9744a0d2f50aee388d9e83a9232c1f9ace0aa8a8accaf541296f8c1"
+    ],
+    "Multicrew/display_contract.lua": [
+      "102a18151187fc2e5a4b48bba3761ae0edbe7171265ac74fce7a7c2e570ec190"
+    ],
+    "Multicrew/export.lua": [
+      "6f43b174c5379b437823b24c5fec51d5e8ffda1b169f67cdf75c3c902fd4625c",
+      "801c82656316a792647ebd515bf326f0f97c775e2af3fe731853ee06799d32a3",
+      "94e717290215980ce781d38d8122b0833df807944d472a02648e8ed91d4dc995"
+    ],
+    "Multicrew/NATIVE-DCS-REVIEW.md": [
+      "1cf8506160ff3e5f0eaeda88696b5c3c4c61b329ddcd066ad35b21f38902993c"
+    ],
+    "Multicrew/network_limits.py": [
+      "0706e923e611d8e899911a1dd2d81298aebd2e08b2e7000691c7c460f93467b9"
+    ],
+    "Multicrew/panel_state.lua": [
+      "089c8d359f431becfa1cce18773374d109e11823662be82ca30f6a55be4e65fa"
+    ],
+    "Multicrew/PERFORMANCE.md": [
+      "6222d7421edfe915af48dd852104e67ed84b84c533a35a09a4a46e7698f5015b"
+    ],
+    "Multicrew/protocol.lua": [
+      "0a2a7595c171ae56b921d6fbf9141b401d7336d0af49be7d6cc1b63db42f2655",
+      "0fed091a4d60045e1775334b75b320c4b3f120098282fc96723c745656eeca89",
+      "ab7193b0cfad03e3e6d8eef541e0f2ad71cbee71be9a62c47c5677315ea2dbeb"
+    ],
+    "Multicrew/QUICKSTART.txt": [
+      "1ce6c88e7d85d1c0495e0e1ba1fd631d6fd5b1b815b6033adab78463276ef0ce",
+      "289fcbe669303db42f389edf89b924592ad938d4ab32fa9fa2c7c1dda916c0ad",
+      "4b965436029f0b36cf723902dacb1c2705c09f8632b0d90c45544219a9dc6a33",
+      "6ac9b224e223e0c48d419c27b4bd2923e2be9781f88f270e644fe4eb05a593be",
+      "924f47ebaaaf1316c4ef0ac612b793a702a3f1491997141f455c2f14d6a64372",
+      "b287d610085651b24ed7a853d98e21fdbf0ccdc8c5c5e6f5166bcaad40b37d8d",
+      "bc9fc3c5aea05e177ad92b0c7a84e6e937af2bd19c7b2109d03eefd66cde8856",
+      "bef59f5131fc77cf8912b45488be7c6fba92283ee26dbdc051bbbe2e07c1b5d2",
+      "c33f9ead785fc94c5e18a4116ac584a9276d2bb18de14db27a341db57fac1302"
+    ],
+    "Multicrew/README.md": [
+      "485b3f4839a7a2a2528d99abe35d316203d6d1894a51c475ec42e695b2d01fb8",
+      "5b7d8768f2f68afbcb2bde19597f9bff483439beb7728ae88d3e04f5075bf261"
+    ],
+    "Multicrew/relay.py": [
+      "124622ddda2fea8c1a873438372889ce3083a85e541d0cdcc79aa510be3ed7be",
+      "440d9807f4dddfdce90b16bcacf943305f3e15957db0cbea3dd6680a646ec1c7",
+      "8722d7890313e984961c3de9cff5fe48dc307a8b204c5410327ed3d007977f0e",
+      "be901955da1792b2332629f5345a729c4a9085acc8c8a5b018a3b113c7692b51",
+      "cf98c338469289faaae8d12ea2680aecff73a66ad530f71adfd7a92347a50538"
+    ],
+    "Multicrew/RIGHT-SEAT-SV.md": [
+      "8856caece6ff63204784f65555fa05ee21208c055032f99de7c3504d6cceba4b"
+    ],
+    "Multicrew/schema.lua": [
+      "199d5b0016d82097ac46b18a8250390f8d8157ba806518dc44d829ec00842dcc",
+      "19e64d4e6480d396c3b2c167a58ceb9d1fc987aca7496bbdfe8b822534ef5dbc",
+      "1f204b0b6880ce25d034e32063283ba7613be3847a2484415482e85ad0f59767",
+      "349831d9eee1983ddbdcd53408e2e3425759dafe21ae02b76d902e8a593e5b78",
+      "6c95901fa536c65fc4f2276396dbf8ecf167c9fb135a61aa86df6eebde683cb4",
+      "895054389535fa443672b1bbcd84b26b7c02f66652a9d58845ad138f4ba3c5e5",
+      "ab7a9ddbe58b7f8fe318a44cf4a40faf38f6649b620d2c504613a8b26312b966",
+      "ae889967d669df48d9ae6f1e47d944f60e8760a5380499b43c2d8d74e94ccc18",
+      "b36f636259e16e221e53db859b92a448144eea28401924336db9075f0580fc62",
+      "e02ee9c50bb0f313fbc556fd8a6af4457c2f59b1d711155ba9cf9c02b5a15c01"
+    ],
+    "Multicrew/SERVER-HOSTED.md": [
+      "083ddcd1f3fe6e945f13278bcf385053a911d7ea06bb7d4be670d9607895b719",
+      "33a292f25871dc98eba1c9dcbe3e80ca1fb4d9ecf8b365e74c32ea3853503919",
+      "3f7a7e1a94bf2fc4fa11c61c6b8319205dae18dfe1ba9918a5517ea069a6bf3b",
+      "63d5b9546df5280e7b22bc46b873767832bc23797d4799fefd97e0e306cabfd9",
+      "684c796f2588fcbab25d7391f1cf2994eb3bf091f329751c1b09704ce4acd474",
+      "e62cd8babb22d38b687baf74628c94192233908aa67d48f5e476076a1ee09e92",
+      "ecfdb37c6de211a916083668f57910cce65b441871843cc2a70277de4d0b7496"
+    ],
+    "Multicrew/SERVER-SETUP.txt": [
+      "51f8523c68288706c101a4f15658c7d5d1bba0cf96bc154890b90168828084c0",
+      "a7287240c12ee8a94b63c6f033f80dd94956cbbd8c5ab1819858aa2abdc29f38",
+      "aa858042148612fe7dbfcee310d94d89fc7fea582290599a364031831dad4e65",
+      "ea245acccd633f5f1e4725d843ccc69de4ba2a1b0d7b3bbd682f00b77b786191",
+      "eed1176639dff86f3c2fdff71317ef10df877bbd21dc02b25bc6812f49693543",
+      "f813b54698f5c0090070a5ccadb469f6ea09c14bc82e5c118b9a01fe28b4b1c1"
+    ],
+    "Multicrew/state_sync.lua": [
+      "8ed8c5a269296c7b70d6e230b13989ac0ebfd73676bdfdd35de89c4601fb3ec4"
+    ],
+    "bin/SAAB_SK60_FM.dll": [
+      "27f747e51c2770f95893d5dfc2edef5da2ee57bfd81b43ac4d957d13c19b982c",
+      "72a570c6e00521d9abe45bd63385849dd095e33c4d73018c21184d7ddded6856",
+      "b16947e02215e99fafea2244b037ee8bfe458512580188f06076f471ea6b867d"
+    ]
+  },
+  "base_git_blob": {
+    "Cockpit/Scripts/EADI/EADI_base_L.lua": "17444346f2686fc14f34f00d28ec15b465ad8229",
+    "Cockpit/Scripts/EADI/EADI_base_R.lua": "4f8f8745b68dbad29320a31ba53d470f859c4fa6",
+    "Cockpit/Scripts/GunSight/Device/Gunsight.lua": "ea970b8008ab99dbd479adc403d5dc0296e88179",
+    "Cockpit/Scripts/RSGB6500/Radio_base.lua": "7b1103fd2e64b063c64246c96d40bbf6fe5bfb82",
+    "Cockpit/Scripts/Systems/basic_flight_instru.lua": "e235f3a9c14f046e018c4b73d70b7c3969fbd321",
+    "Cockpit/Scripts/Systems/break_system.lua": "ca3800bd7cf6a7eee9475816fd1f5e3795a1a5b9",
+    "Cockpit/Scripts/Systems/canopy.lua": "3944491d7ad74c23565976c0a952710ad0416323",
+    "Cockpit/Scripts/Systems/dcms_hud.lua": "94eb80ea62629bc7a528aa5271935a8942a93030",
+    "Cockpit/Scripts/Systems/electric_system.lua": "5eb697b7b3570646eac7d69ebd8cc1bb5e1b8276",
+    "Cockpit/Scripts/Systems/fr31_radio.lua": "88794b0f59a8fa87fddb20d97d41edb09083cd2c",
+    "Cockpit/Scripts/Systems/fr33_radio.lua": "bf95d7ff96bcd9d96379261fe2a3dab2a3bf476f",
+    "Cockpit/Scripts/Systems/gear_system.lua": "b16f4330510605ae869b2232f4c081e5e981ae2b",
+    "Cockpit/Scripts/Systems/light_system.lua": "bccafe7f106fef27bf5838253f4455390cea63cc",
+    "Cockpit/Scripts/Systems/nav_system.lua": "d302ee487e227dd6ec990d79cbf4c2c1ad62a232",
+    "Cockpit/Scripts/Systems/transponder.lua": "3f70ca3759fc025d70258bba7ab4ead1ffad0b35",
+    "Cockpit/Scripts/Systems/warning_system.lua": "237bba21d15ff5214fc36deff4f98ecc848e9e25",
+    "Cockpit/Scripts/Systems/weapon_system.lua": "ff20a8b5ee4bd1f5c25a944df5c04199f946814a",
+    "Cockpit/Scripts/avRadar/Device/Radar_init.lua": "203f4c3c2d0f8237df5c6673ae180c1ecfdbdc77",
+    "Cockpit/Scripts/aviation_clock.lua": "f9c292da3d325b686d07a054db5dc10d8362e8a8",
+    "Cockpit/Scripts/clickabledata.lua": "b58267ec469a65a6a871cc79e45c03dc6952ccf1",
+    "Cockpit/Scripts/device_init.lua": "5a00a852783d15dc6a35a3296ffd361b97a87263",
+    "Cockpit/Scripts/devices.lua": "f9dfe31b99e9ab408ee22138eaa23063f482375f",
+    "Cockpit/Scripts/mainpanel_init.lua": "ad92042ccef29b27d4b6affcee5978f3abc37456",
+    "bin/SAAB_SK60_FM.dll": "e4779270e485cf1d692455e2aa7b270e99aeb6f0"
+  }
+}
