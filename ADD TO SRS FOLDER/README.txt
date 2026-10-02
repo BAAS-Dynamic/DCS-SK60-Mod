@@ -1,0 +1,1 @@
+Place the SK60.lua file in: "...SavedGames\DCS\Mods\Services\DCS-SRS\Scripts\DCS-SRS-Modules"
