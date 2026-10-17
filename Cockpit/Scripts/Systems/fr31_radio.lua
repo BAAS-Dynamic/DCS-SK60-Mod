@@ -152,6 +152,35 @@ local function is_powered()
     return main_power:get() > 0.5
 end
 
+-- Drive the native ARC-164 from FPL NAT independently of the SRS export status.
+local native_power_state = nil
+local native_power_log_pending = false
+local function update_native_radio_power()
+    local powered = is_powered()
+    if native_power_state ~= powered then
+        -- Native ARC-164 function selector commands: OFF / MAIN.
+        dispatch_action(nil, powered and 1219 or 1218, 1.0)
+        if log and log.write then
+            log.write("SK60RadioDiag", log.INFO,
+                "POWER_COMMAND main_power=" .. tostring(main_power:get())
+                .. " command=" .. tostring(powered and 1219 or 1218))
+        end
+        native_power_state = powered
+        native_power_log_pending = true
+    elseif native_power_log_pending then
+        native_power_log_pending = false
+        local radio = GetDevice(devices.UHF_RADIO)
+        local ok, state = pcall(function() return radio:is_on() end)
+        local message = (powered and "FPL_NET_ON" or "FPL_NET_OFF")
+            .. " main_power=" .. tostring(main_power:get())
+            .. " backing_is_on=" .. tostring(ok and state or false)
+            .. " query_ok=" .. tostring(ok)
+        if log and log.write then
+            log.write("SK60RadioDiag", log.INFO, message)
+        end
+    end
+end
+
 local function is_valid_fr31_frequency(freq_hz)
     if freq_hz == nil or freq_hz < 104E6 or freq_hz > 407.975E6 then
         return false
@@ -540,6 +569,7 @@ function SetCommand(command, value)
 end
 
 function update()
+    update_native_radio_power()
     sync_from_backing_radio()
 
     local switch_modulation = mode_switch:get() > 0.5 and 1 or 0

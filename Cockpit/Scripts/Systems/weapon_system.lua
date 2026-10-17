@@ -64,8 +64,19 @@ WeaponSystem:listen_command(iCommandPlaneJettisonWeapons)
 local pod_smoke_light = get_param_handle("POD_SMOKE")
 local nozzle_smoke_light = get_param_handle("NOZZLE_SMOKE")
 
-function post_initialize()
+local gun_sight_is_installed = 0
 
+function post_initialize()
+    local value = nil
+    if type(get_aircraft_property) == "function" then
+        value = get_aircraft_property("GunsightMounted")
+    end
+    if type(value) == "string" then
+        value = value:lower()
+        value = value == "1" or value == "true" or value == "yes" or value == "on"
+    end
+    gun_sight_is_installed = (value == true or value == 1) and 1 or 0
+    gun_sight_animation:set(1 - gun_sight_is_installed)
 end
 
 local smokepodstatus = 0
@@ -95,7 +106,6 @@ local weapon_system_mode = 0
 local selected_weapon_mode = 0
 local fire_trigger_status = 0
 local safety_trigger_status = 0
-local gun_sight_is_installed = 0
 
 local gun_sight_display = get_param_handle("gunsightEnable")
 local safety_trigger_animation = get_param_handle("WEAPON_SAFETY_TRIGGER")

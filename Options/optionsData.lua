@@ -1,5 +1,6 @@
 cdata =
 {
+	USE_VISOR_TINT_EFFECT = _('Use visor tint effect'),
 	PLANENAME = _('SK-60B'),
 	PITCH_TRIM_MODE = _('Pitch trim mode'),
 	TRIM_MODE_INSTANT_HELP = _('Instant / Conventional: Hold the trim hat to move the simulated stick center immediately.'),

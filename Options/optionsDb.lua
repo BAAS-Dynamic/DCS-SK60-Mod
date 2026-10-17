@@ -3,6 +3,7 @@ local i18n = require('i18n')
 local _ = i18n.ptranslate
 
 return {
+	UseVisorTintEffect = DbOption.new():setValue(true):checkbox(),
 	-- Kept for compatibility with existing configurations; it is no longer
 	-- presented in the SK-60 Special Options panel.
 	NWS_Coupled_Separate_Input_Device = DbOption.new():setValue(true):checkbox(),

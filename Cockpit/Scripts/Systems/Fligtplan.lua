@@ -31,7 +31,7 @@ return {
         ["selected_offset_distance_nm"] = 42.299999999999983,
         ["selected_offset_radial_deg"] = 107,
         ["selected_vor_course_deg"] = 213,
-        ["tuned_ndb_frequency_khz"] = 289,
+        ["tuned_ndb_frequency_khz"] = 292,
         ["tuned_vor_frequency_mhz"] = 115.80000000000001,
         ["version"] = 1,
     },

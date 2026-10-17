@@ -363,7 +363,7 @@ elements["PTN_781"] = default_button(_("Emergency Weapons Jettison"), devices.WE
 
 
 --elements["PTN_003"] = default_2_position_tumb("Landing Gear Handle", devices.GEAR_SYSTEM, click_cmd.GearLevel, 3)
-elements["PNT_083"] = default_2_position_tumb(_("Landing Gear Handle"), devices.GEAR_SYSTEM, click_cmd.GearLevel, 83, 4)
+elements["PTN_083"] = default_2_position_tumb(_("Landing Gear Handle"), devices.GEAR_SYSTEM, click_cmd.GearLevel, 83, 4)
 
 -- Power Systems
 -- elements["PTN_107"] = default_2_position_tumb("Battry Swith", devices.ELECTRIC_SYSTEM, Keys.BatteryPower, 107)

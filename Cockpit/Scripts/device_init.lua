@@ -94,7 +94,10 @@ indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."GunSi
 -- custom menu indicator
 indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."CustomMenu/menu_init.lua",nil,{{}, {sh = 0.5, sw = 0.5}, 4}}
 -- Player-view tinted visor overlay
-indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."VisorEffect/visor_init.lua", nil}
+-- Missing saved preference keeps the existing visor effect enabled.
+if get_plugin_option_value("SK-60", "UseVisorTintEffect", "local") ~= false then
+	indicators[#indicators + 1] = {"ccIndicator", LockOn_Options.script_path.."VisorEffect/visor_init.lua", nil}
+end
 
 
 -- Enable KneeBoard for Test

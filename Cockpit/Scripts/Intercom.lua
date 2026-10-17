@@ -25,6 +25,11 @@ function update()
 end
 
 function post_initialize()
+	-- Configure the transmitter after the intercom itself has initialized.
+	-- FR31 is the native radio used by the in-game communications menu.
+	dev:set_communicator(devices.UHF_RADIO)
+	dev:make_setup_for_communicator(devices.UHF_RADIO)
+
     str_ptr = string.sub(tostring(dev.link),10)
     local set_intercom_pointer = get_param_handle("INTERCOM_POINTER")
     set_intercom_pointer:set(str_ptr)

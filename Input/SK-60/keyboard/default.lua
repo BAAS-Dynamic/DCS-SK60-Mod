@@ -370,8 +370,8 @@ return {
     {down = Keys.WeaponSafetyTrigger, name = _('Weapon Safety Trigger Toggle'), category = _('Weapons')},
     {down = Keys.WeaponSafetyTriggerOn, value_down = 1, name = _('Weapon Safety Trigger ARMED'), category = _('Weapons')},
     {down = Keys.WeaponSafetyTriggerOn, value_down = 0, name = _('Weapon Safety Trigger SAFE'), category = _('Weapons')},
-    {down = Keys.GunSightInstall, value_down = 1, value_up = 0, name = _('Sikte Installera'), category = _('Weapons')},
-    {down = Keys.GunSightUninstall, value_down = 0.0, value_up = 0.0, name = _('Sikte Parkera '), category = _('Weapons')},
+    {down = Keys.GunSightInstall, value_down = 1, value_up = 0, name = _('Install Gunsight'), category = _('Weapons')},
+    {down = Keys.GunSightUninstall, value_down = 0.0, value_up = 0.0, name = _('Remove Gunsight'), category = _('Weapons')},
     -- debug
     --{down = 5005,	name = _('DEBUG RECORD'),		category = _('Debugs')},
 

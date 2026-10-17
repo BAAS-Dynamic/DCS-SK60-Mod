@@ -9,6 +9,32 @@ local gettext = require("i_18n")
 _ = gettext.translate
 
 local dev = GetSelf()
+-- Capture DCS's native query before the SRS compatibility override below.
+local native_radio_is_on = dev.is_on
+local function radio_diagnostic(reason, command_value)
+    local function query(fn)
+        local ok, value = pcall(fn)
+        return ok and tostring(value) or ("ERROR: " .. tostring(value))
+    end
+    local native_on = query(function() return native_radio_is_on(dev) end)
+    local available = query(function()
+        return GetDevice(devices.INTERCOM):is_communicator_available(devices.UHF_RADIO)
+    end)
+    local frequency = query(function() return dev:get_frequency() end)
+    local message = reason .. " value=" .. tostring(command_value)
+        .. " native_on=" .. native_on .. " intercom_available=" .. available
+        .. " frequency=" .. frequency
+    if log and log.write then
+        log.write("SK60RadioDiag", log.INFO, message)
+    else
+        print("SK60RadioDiag " .. message)
+    end
+end
+
+function dev:sk60_log_native_state(reason)
+    radio_diagnostic(reason, nil)
+end
+
 local iCommandPlaneIntercomUHFPress = 1172
 local radio_power = get_param_handle("RADIO_POWER")
 local function update_radio_power()
@@ -86,9 +112,7 @@ function post_initialize()
 	wake_radio:set(0.0)
 	dev:set_frequency(current_freq)
   	dev:set_modulation(MODULATION_AM)
-  	local intercom = GetDevice(devices.INTERCOM)
-  	intercom:set_communicator(devices.UHF_RADIO)
-	intercom:make_setup_for_communicator()
+	-- Intercom.lua selects FR31 after the intercom has initialized.
 
 	--set up the pointer for the radio system
   	str_ptr = string.sub(tostring(dev.link),10)
@@ -101,17 +125,26 @@ function post_initialize()
 	local freq_uplink_signal = get_param_handle("RADIO_2EFM_CHANGED")
 	freq_efm_signal:set(0)
 	freq_uplink_signal:set(0)
+	radio_diagnostic("POST_INITIALIZE", nil)
 end
 
 
 function SetCommand(command,value)
+    if command == iCommandPlaneIntercomUHFPress then
+        radio_diagnostic("FR31_MENU", value)
+    end
 	-- avUHF_ARC_164 handles iCommandPlaneIntercomUHFPress internally once this
 	-- Lua side listens to it. Keep SetCommand lightweight so the native radio
 	-- command can open the airborne communications menu.
 	check_frequency_change()
 end
 
+local radio_diagnostic_pending = true
 function update()
+    if radio_diagnostic_pending then
+        radio_diagnostic_pending = false
+        radio_diagnostic("FIRST_UPDATE", nil)
+    end
 	update_radio_power()
 	check_frequency_change()
 end

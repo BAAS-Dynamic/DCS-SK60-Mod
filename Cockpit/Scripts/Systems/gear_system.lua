@@ -122,7 +122,7 @@ end
 local moving_starts = 0
 
 function update()
-    local gear_handle_click_ref = get_clickable_element_reference("PNT_083")
+    local gear_handle_click_ref = get_clickable_element_reference("PTN_083")
 
        --takes 7 seconds to full extended
        -- set globle time count

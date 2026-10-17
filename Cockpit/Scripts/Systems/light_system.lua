@@ -223,7 +223,6 @@ STROBE_ROTATION = 0
 function update_externel_light_status()
     local anticolmulti = 1;
     if get_elec_ac_status() == true then
-        set_aircraft_draw_argument_value(51, current_status[taxi_light_switch][2]) -- taxi light 51
 
         -- rotation mode
         if math.abs(current_status[strobe_light_switch][2]) > 0.5 then
@@ -285,7 +284,6 @@ function update_externel_light_status()
     else
         nav_blink_elapsed = 0
         nav_blink_on = true
-        set_aircraft_draw_argument_value(51, 0) -- taxi light 51
         set_aircraft_draw_argument_value(190, 0)
         set_aircraft_draw_argument_value(191, 0)
         set_aircraft_draw_argument_value(192, 0)

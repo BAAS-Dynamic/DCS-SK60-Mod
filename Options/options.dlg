@@ -2,6 +2,19 @@ dialog = {
 	["children"] = {
 		["containerPlugin"] = {
 			["children"] = {
+
+				["UseVisorTintEffectCheckbox"] = {
+					["params"] = {
+						["bounds"] = { ["h"] = 25, ["w"] = 400, ["x"] = 50, ["y"] = 240 },
+						["enabled"] = true,
+						["text"] = "$USE_VISOR_TINT_EFFECT",
+						["tooltip"] = "",
+						["visible"] = true,
+						["zindex"] = 0,
+					},
+					["skin"] = { ["params"] = { ["name"] = "checkBoxSkin_options" } },
+					["type"] = "CheckBox",
+				},
 				["nameLabel"] = {
 					["params"] = {
 						["bounds"] = { ["h"] = 26, ["w"] = 180, ["x"] = 50, ["y"] = 35 },
