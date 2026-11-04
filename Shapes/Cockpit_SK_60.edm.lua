@@ -2,3 +2,5 @@
 CockpitIBL = { 2.0, 1.0, 1.0 }
 
 CockpitDropletScale = 0.25
+
+MirrorsRenderScheme = 4

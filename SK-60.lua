@@ -284,6 +284,13 @@ ECM 			= "AN/ALQ-135"--F15
 	},
 	AddPropAircraft = {
 		{
+			id = "GunsightMounted",
+			control = "checkbox",
+			label = _("Gunsight mounted"),
+			defValue = false,
+			weightWhenOn = 0,
+		},
+		{
 			id = "SoloFlight",
 			control = "checkbox",
 			label = _("Solo flight"),

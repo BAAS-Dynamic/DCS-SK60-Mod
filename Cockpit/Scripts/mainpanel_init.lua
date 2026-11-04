@@ -33,17 +33,73 @@ end
 day_texture_set_value   = 0.0
 night_texture_set_value = 0.1
 
--- mirror settings
+-- Four independent animated mirror cameras; arguments are authored in the EDM.
+mirrors_present = true
 mirrors_data = {
- center_point        = {0.4, 0.03 , 0.1}, --F/B,U/D,L/R location of reflection image generation--{ 0.279, 0.4, 0.00 } 0.279, 0.3, 0.00, difference from cockpit_local_point {2.00, 0.2553,-0.2576},
-    width               = 2.2, --integrated (keep in mind that mirrors can be none planar old=0.7)
-    aspect              = 2,
-    rotation            = math.rad(-6),
-    animation_speed     = 2.0,
-    near_clip           = 0.10,
-    middle_clip         = 20,
-    far_clip            = 60000,
-    arg_value_when_on   = 1.0,
+    center_point = {0, 0, 0},--{0.4, 0.03, 0.1},
+    width = 0.7,
+    aspect = 1.5,
+    rotation = math.rad(0),
+    animation_speed = 2.0,
+    near_clip = 0.05,
+    middle_clip = 100,
+    far_clip = 60000,
+    arg_value_when_on = 1.0,
+    use_z_correction = false,
+    flaps_data = {
+        {
+            elem_name = "PNT-MIRROR-LEFT-1",
+            connector = "PNT-MIRROR-LEFT-1",
+            connector_correction = {0, 0, 0.1},
+            availability_arg = 920,
+            availability_arg_range = {-1, 1},
+            connector_flip = false,
+            target = 0,
+            aspect = 1,
+            rotation_x = math.rad(0),
+            rotation_y = math.rad(75),
+            rotation_z = math.rad(-10),
+        },
+        {
+            elem_name = "PNT-MIRROR-LEFT-2",
+            connector = "PNT-MIRROR-LEFT-2",
+            connector_correction = {0, 0, 0},
+            availability_arg = 921,
+            availability_arg_range = {-1, 1},
+            connector_flip = false,
+            target = 1,
+            aspect = 1,
+            rotation_x = math.rad(0),
+            rotation_y = math.rad(-110),
+            rotation_z = math.rad(0),
+        },
+        {
+            elem_name = "PNT-MIRROR-RIGHT-1",
+            connector = "PNT-MIRROR-RIGHT-1",
+            connector_correction = {0, 0, 0},
+            availability_arg = 922,
+            availability_arg_range = {-1, 1},
+            connector_flip = false,
+            target = 2,
+            aspect = 1,
+            rotation_x = math.rad(0),
+            rotation_y = math.rad(-90),
+            rotation_z = math.rad(-10),
+        },
+        {
+            elem_name = "PNT-MIRROR-RIGHT-2",
+            connector = "PNT-MIRROR-RIGHT-2",
+            connector_correction = {0.05, 0, 0},
+            availability_arg = 923,
+            availability_arg_range = {-1, 1},
+            connector_flip = false,
+            target = 3,
+            aspect = 1,
+            rotation_x = math.rad(0),
+            rotation_y = math.rad(100),
+            rotation_z = math.rad(-10),
+        },
+    },
 }
 
 mirrors_draw                    = CreateGauge()
@@ -375,3 +431,12 @@ dofile(LockOn_Options.common_script_path.."tools.lua")
 
 
 -- get_player_crew_index()  -- this function can be used to get the index of the player crew in a multi-crew aircraft
+
+-- Local mirror adjustments deliberately bypass the received multicrew panel.
+for mirror_index = 1, 4 do
+    local gauge = CreateGauge("parameter")
+    gauge.parameter_name = "SK60_MIRROR_PITCH_" .. mirror_index
+    gauge.arg_number = 919 + mirror_index
+    gauge.input = {-1, 1}
+    gauge.output = {-1, 1}
+end

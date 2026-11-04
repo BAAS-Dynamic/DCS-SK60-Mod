@@ -21,6 +21,20 @@ forceFeedback = {
 },
 
 keyCommands = {
+    -- Independent mirror pitch; assign buttons in the Mirrors category.
+    {down = mirror_commands.Mirror1Pitch, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 1 - Pitch Increase"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror1Pitch, cockpit_device_id = devices.MIRRORS, value_down = -1, name = _("Mirror 1 - Pitch Decrease"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror1Reset, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 1 - Reset"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror2Pitch, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 2 - Pitch Increase"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror2Pitch, cockpit_device_id = devices.MIRRORS, value_down = -1, name = _("Mirror 2 - Pitch Decrease"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror2Reset, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 2 - Reset"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror3Pitch, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 3 - Pitch Increase"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror3Pitch, cockpit_device_id = devices.MIRRORS, value_down = -1, name = _("Mirror 3 - Pitch Decrease"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror3Reset, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 3 - Reset"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror4Pitch, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 4 - Pitch Increase"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror4Pitch, cockpit_device_id = devices.MIRRORS, value_down = -1, name = _("Mirror 4 - Pitch Decrease"), category = _("Mirrors")},
+    {down = mirror_commands.Mirror4Reset, cockpit_device_id = devices.MIRRORS, value_down = 1, name = _("Mirror 4 - Reset"), category = _("Mirrors")},
+
 
     -- Gameplay
     --{down = iCommandPlaneShipTakeOff,		name = _('Ship Take Off Position'), category = _('General') , features = {"shiptakeoff"}},

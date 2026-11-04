@@ -493,3 +493,18 @@ click_cmd =
 {
     GearLevel = __click_counter(), --Landing gear handle
 }
+
+-- Mirror device commands (separate from EDM animation arguments).
+mirror_commands = {}
+mirror_commands.Mirror1Pitch = 5901
+mirror_commands.Mirror1Reset = 5911
+mirror_commands.Mirror1Mouse = 5921
+mirror_commands.Mirror2Pitch = 5902
+mirror_commands.Mirror2Reset = 5912
+mirror_commands.Mirror2Mouse = 5922
+mirror_commands.Mirror3Pitch = 5903
+mirror_commands.Mirror3Reset = 5913
+mirror_commands.Mirror3Mouse = 5923
+mirror_commands.Mirror4Pitch = 5904
+mirror_commands.Mirror4Reset = 5914
+mirror_commands.Mirror4Mouse = 5924

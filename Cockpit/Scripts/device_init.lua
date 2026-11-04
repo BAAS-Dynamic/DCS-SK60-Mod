@@ -102,3 +102,5 @@ end
 
 -- Enable KneeBoard for Test
 dofile(LockOn_Options.common_script_path.."KNEEBOARD/declare_kneeboard_device.lua")
+
+creators[devices.MIRRORS] = {"avLuaDevice", LockOn_Options.script_path .. "Systems/mirrors.lua"}

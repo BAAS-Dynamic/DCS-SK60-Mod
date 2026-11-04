@@ -585,3 +585,15 @@ elements["PTN_558"] = default_axis("Baro Setting", devices.HUD_DCMS, Keys.EALT_B
 --	   o.use_OBB   = true
 --	end
 --end
+
+-- Same relative, spring-centred input as the transponder digit selectors.
+local mirror_connectors = {
+    "PNT-MIRROR-LEFT-1", "PNT-MIRROR-LEFT-2",
+    "PNT-MIRROR-RIGHT-1", "PNT-MIRROR-RIGHT-2",
+}
+for i, connector in ipairs(mirror_connectors) do
+    elements[connector] = default_axis(
+        _("Mirror " .. i .. " - Pitch (0.05 steps)"), devices.MIRRORS,
+        mirror_commands["Mirror" .. i .. "Mouse"], 1919+i, 0, 1.0, true, true)
+    elements[connector].animated = {false}
+end

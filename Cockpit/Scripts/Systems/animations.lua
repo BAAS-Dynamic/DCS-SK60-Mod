@@ -733,6 +733,8 @@ local function command_ejection_if_armed()
 		-- sequence. The EFM and the Lua-operated systems use this shared latch to
 		-- reject any later pilot input while the abandoned aircraft keeps flying.
 		ejectionCommanded:set(1.0)
+		-- Notify EFM before DCS tears down the cockpit.
+		dispatch_action(nil, 10083, 1.0)
 		dispatch_action(nil, EJECTION_COMMAND)
 	end
 end

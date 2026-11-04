@@ -36,3 +36,5 @@ devices["FR33_RADIO"]               = counter() --25 FR33 controller
 devices["TRANSPONDER"]              = counter() --26 transponder controller
 
 devices["MULTICREW"] = counter() --27 appended; preserve all existing IDs
+
+devices["MIRRORS"] = counter() -- appended; existing device IDs unchanged

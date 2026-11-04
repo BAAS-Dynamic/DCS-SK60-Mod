@@ -144,12 +144,12 @@ local M56_ARAK135HE = {
             work_time   = 3.2, -- Time of mid-flight engine action
             boost_factor= 1, -- Booster to cruise trust ratio
             nozzle_position =  {{-0.858, 0, 0}}, -- meters
-            tail_width  = 0.180, -- contrail thickness 
+            tail_width  = 0.720, -- contrail thickness 
             boost_tail  = 1.5,
             work_tail   = 1.5,
 			-- black smoke
-            smoke_color = {0.15, 0.15, 0.15},
-			smoke_transparency = 0.6,--0.8,
+            smoke_color = {0.08, 0.08, 0.08},
+			smoke_transparency = 0.85, -- Exhaust smoke alpha; tune visually in DCS.
         },
 
 	warhead	=
@@ -228,7 +228,7 @@ ORAK60M70.fm.caliber = 0.060
 ORAK60M70.fm.L = 0.912
 ORAK60M70.engine.fuel_mass = math.min(ORAK60M70.engine.fuel_mass, 2.0)
 ORAK60M70.engine.nozzle_position = {{-0.456, 0, 0}}
-ORAK60M70.engine.tail_width = 0.060
+ORAK60M70.engine.tail_width = 0.320
 
 declare_weapon(ORAK60M70)
 
@@ -267,12 +267,12 @@ local M49_PSRAK145HEAT = {
             work_time   = 3.2, -- Time of mid-flight engine action
             boost_factor= 1, -- Booster to cruise trust ratio
             nozzle_position =  {{-0.875, 0, 0}}, -- meters
-            tail_width  = 0.150, -- contrail thickness 
+            tail_width  = 0.660, -- contrail thickness 
             boost_tail  = 1.5,
             work_tail   = 1.5,
 
-            smoke_color = {0.1, 0.1, 0.1},
-			smoke_transparency = 0.1,--0.8,
+            smoke_color = {0.08, 0.08, 0.08},
+			smoke_transparency = 0.85, -- Exhaust smoke alpha; tune visually in DCS.
         },
 
 	warhead	=
