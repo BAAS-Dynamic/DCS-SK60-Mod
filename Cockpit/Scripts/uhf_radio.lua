@@ -80,7 +80,7 @@ GUI = {
 local current_freq = 124.8E6
 
 dev:listen_command(Keys.RadioUpdate)
-dev:listen_command(iCommandPlaneIntercomUHFPress)
+-- FR31 controller owns menu input; avoid a second native PTT path.
 
 function check_frequency_change()
 	-- check if override by efm radio system
@@ -130,12 +130,7 @@ end
 
 
 function SetCommand(command,value)
-    if command == iCommandPlaneIntercomUHFPress then
-        radio_diagnostic("FR31_MENU", value)
-    end
-	-- avUHF_ARC_164 handles iCommandPlaneIntercomUHFPress internally once this
-	-- Lua side listens to it. Keep SetCommand lightweight so the native radio
-	-- command can open the airborne communications menu.
+	-- Menu dispatch lives in the FR31 controller; SRS/radio tuning stays here.
 	check_frequency_change()
 end
 

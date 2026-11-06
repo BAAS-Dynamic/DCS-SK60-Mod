@@ -584,3 +584,6 @@ need_to_be_closed = false
 
 -- SK60 shared cockpit integration
 dofile(LockOn_Options.script_path .. "Multicrew/runtime.lua").install(23)
+
+-- Local DCS menu input must not be synchronized between seats.
+dofile(LockOn_Options.script_path .. "Systems/fr31_menu_bridge.lua").install()
